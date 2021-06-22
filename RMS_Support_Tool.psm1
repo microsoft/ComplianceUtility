@@ -6,11 +6,8 @@
    ║ WHEN ANALYZING YOUR ENVIRONMENT.                                          ║
    ╚═══════════════════════════════════════════════════════════════════════════╝ #>
 
-# Copyright (c) Microsoft Corporation
-# Licensed under the MIT License
-
 <# Defining global variables #>
-[Version]$Global:strVersion = "2.0.2" <# Defining version #>
+[Version]$Global:strVersion = "2.0.1" <# Defining version #>
 $Global:strWindowsEdition = (Get-CimInstance Win32_OperatingSystem).Caption <# Defining variable to evaluate Windows version #>
 $Global:strTempFolder = (Get-Item Env:"Temp").Value <# Defining variable for user temp folder #>
 $Global:strUserLogPath = New-Item -ItemType Directory -Force -Path $Global:strTempFolder"\RMS_Support_Tool\Logs" <# Defining default user log path #>
@@ -62,10 +59,10 @@ Function RMS_Support_Tool {
         DISCLAIMER OF WARRANTY: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. PLEASE DO UNDERSTAND THAT THERE IS NO GUARANTEE THAT THIS SOFTWARE WILL RUN WITH ANY GIVEN ENVIRONMENT OR CONFIGURATION. BY INSTALLING AND USING THE SOFTWARE YOU ACCEPT THIS DISCLAIMER OF WARRANTY. IF YOU DO NOT ACCEPT THE TERMS, DO NOT INSTALL OR USE THIS SOFTWARE.
         
         VERSION
-        2.0.2
+        2.0.1
         
         CREATE DATE
-        06/22/2021
+        02/09/2021
 
         AUTHOR
         Claus Schiroky
@@ -208,10 +205,10 @@ Function RMS_Support_Tool {
         - You must run the RMS_Support_Tool in an administrative PowerShell window as a user with local administrative permissions to continue with this option. Please contact your administrator if necessary.
         - You need to know your Microsoft® 365 global administrator account information to proceed with this option, as you will be asked for your credentials.
 
-    .PARAMETER CollectLabelsAndPolicies
-        This parameter collects the labels and policy definitions from your Microsoft® 365 Security Center. Those with protection and those with classification only.
+    .PARAMETER CollectMSCLabelsAndPolicies
+        This parameter collects the labels and policy definitions from your Microsoft® 365 Security Center (MSC). Those with protection and those with classification only.
 
-        Results are written into log file LabelsAndPolicies.log in the subfolder "Collect" of the Logs folder.
+        Results are written into log file MSCLabelsAndPolicies.log in the subfolder "Collect" of the Logs folder.
 
         Note:
 
@@ -318,8 +315,8 @@ Function RMS_Support_Tool {
         This parameter collects AIP protection templates of your tenant.
 
     .EXAMPLE
-        RMS_Support_Tool -CollectLabelsAndPolicies
-        This parameter collects the labels and policy definitions from your Microsoft® 365 Security Center
+        RMS_Support_Tool -CollectMSCLabelsAndPolicies
+        This parameter collects the labels and policy definitions from your Microsoft® 365 Security Center (MSC)
 
     .EXAMPLE
         RMS_Support_Tool -AnalyzeEndpointURLs
@@ -400,10 +397,10 @@ Function RMS_Support_Tool {
         [Parameter(ParameterSetName = "Reset and logging")]
         [switch]$CollectAIPProtectionTemplates,
 
-        <# Parameter definition for CollectLabelsAndPolicies #>
+        <# Parameter definition for CollectMSCLabelsAndPolicies #>
         [Alias("l")]
         [Parameter(ParameterSetName = "Reset and logging")]
-        [switch]$CollectLabelsAndPolicies,
+        [switch]$CollectMSCLabelsAndPolicies,
 
         <# Parameter definition for AnalyzeEndpointURLs #>
         [Alias("u")]
@@ -512,14 +509,14 @@ Function RMS_Support_Tool {
 
     }
 
-    <# Action if the parameter '-CollectLabelsAndPolicies' has been selected #>
-    If ($PSBoundParameters.ContainsKey("CollectLabelsAndPolicies")) {
+    <# Action if the parameter '-CollectMSCLabelsAndPolicies' has been selected #>
+    If ($PSBoundParameters.ContainsKey("CollectMSCLabelsAndPolicies")) {
 
         <# Verbose/Logging #>
-        fncLogging -strLogFunction "RMS_Support_Tool" -strLogDescription "Parameter CollectLabelsAndPolicies" -strLogValue "Triggered"
+        fncLogging -strLogFunction "RMS_Support_Tool" -strLogDescription "Parameter CollectMSCLabelsAndPolicies" -strLogValue "Triggered"
 
-        <# Calling function to collect labels and policies #>
-        fncCollectLabelsAndPolicies
+        <# Calling function to collect MSC labels and policies #>
+        fncCollectMSCLabelsAndPolicies
 
     }
 
@@ -2850,16 +2847,16 @@ Function fncCollectAIPProtectionTemplates {
 }
 
 <# Function to collect labels and policies from Security Center #>
-Function fncCollectLabelsAndPolicies {
+Function fncCollectMSCLabelsAndPolicies {
 
     <# Console output #>
-    Write-Output "COLLECT LABELS AND POLICIES:"
+    Write-Output "COLLECT MSC LABELS AND POLICIES:"
 
     <# Checking if not running as administrator #>
     If ($Global:bolRunningAsAdmin -eq $false) {
 
         <# Console output #>
-        Write-Output (Write-Host "ATTENTION: You must run the RMS_Support_Tool in an administrative PowerShell window as a user with local administrative permissions to continue with this option.`nCOLLECT LABELS AND POLICIES: Failed.`n" -ForegroundColor Red)
+        Write-Output (Write-Host "ATTENTION: You must run the RMS_Support_Tool in an administrative PowerShell window as a user with local administrative permissions to continue with this option.`nCOLLECT MSC LABELS AND POLICIES: Failed.`n" -ForegroundColor Red)
 
         <# Signal sound #>
         [console]::beep(500,200)
@@ -2895,7 +2892,7 @@ Function fncCollectLabelsAndPolicies {
     Write-Output "Initializing, please wait..."
 
     <# Verbose/Logging #>
-    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Collect labels and policies" -strLogValue "Initiated"
+    fncLogging -strLogFunction "fncCollectMSCLabelsAndPolicies" -strLogDescription "Collect MSC labels and policies" -strLogValue "Initiated"
 
     <# Check and update needed modules for PowerShell Gallery #>
     fncUpdateRequiredModules
@@ -2920,7 +2917,7 @@ Function fncCollectLabelsAndPolicies {
                 Update-Module -Verbose:$false -Name ExchangeOnlineManagement -Force -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
 
                 <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module" -strLogValue "Updated"
+                fncLogging -strLogFunction "fncCollectMSCLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module" -strLogValue "Updated"
 
             }
 
@@ -2932,7 +2929,7 @@ Function fncCollectLabelsAndPolicies {
         Else { <# Actions if we can't connect to PowerShell Gallery (no internet connection) #>
 
             <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module update" -strLogValue "Failed"
+            fncLogging -strLogFunction "fncCollectMSCLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module update" -strLogValue "Failed"
 
         }
 
@@ -2951,7 +2948,7 @@ Function fncCollectLabelsAndPolicies {
             Install-Module -Verbose:$false -Name ExchangeOnlineManagement -Scope CurrentUser -Repository PSGallery -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
 
             <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module" -strLogValue "Installed"
+            fncLogging -strLogFunction "fncCollectMSCLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module" -strLogValue "Installed"
 
             <# Console output #>
             Write-Output "Exchange Online PowerShell V2 module installed."
@@ -2973,16 +2970,16 @@ Function fncCollectLabelsAndPolicies {
         Else { <# Actions if we can't connect to PowerShell Gallery (no internet connection) #>
 
             <# Console output #>
-            Write-Output (Write-Host "ATTENTION: Collecting labels and policies could not be performed.`nEither PowerShell Gallery cannot be reached or there is no connection to the Internet.`n`nYou must have Exchange Online PowerShell V2 module installed to proceed.`n`nPlease check the following website and install the latest version of the ExchangeOnlineManagement modul:`nhttps://www.powershellgallery.com/packages/ExchangeOnlineManagement`n" -ForegroundColor Red)
+            Write-Output (Write-Host "ATTENTION: Collecting MSC labels and policies could not be performed.`nEither PowerShell Gallery cannot be reached or there is no connection to the Internet.`n`nYou must have Exchange Online PowerShell V2 module installed to proceed.`n`nPlease check the following website and install the latest version of the ExchangeOnlineManagement modul:`nhttps://www.powershellgallery.com/packages/ExchangeOnlineManagement`n" -ForegroundColor Red)
 
             <# Signal sound #>
             [console]::beep(500,200)
 
             <# Console output #>
-            Write-Output (Write-Host "COLLECT LABELS AND POLICIES: Failed.`n" -ForegroundColor Red)
+            Write-Output (Write-Host "COLLECT MSC LABELS AND POLICIES: Failed.`n" -ForegroundColor Red)
 
             <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module installation" -strLogValue "Failed"
+            fncLogging -strLogFunction "fncCollectMSCLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module installation" -strLogValue "Failed"
 
             <# Action if function was called from the menu #>
             If ($Global:bolCommingFromMenu -eq $true) {
@@ -3014,30 +3011,30 @@ Function fncCollectLabelsAndPolicies {
     }
 
     <# Verbose/Logging #>
-    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module version" -strLogValue (Get-Module -Verbose:$false -ListAvailable -Name ExchangeOnlineManagement).Version
+    fncLogging -strLogFunction "fncCollectMSCLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module version" -strLogValue (Get-Module -Verbose:$false -ListAvailable -Name ExchangeOnlineManagement).Version
 
     <# Console output #>
-    Write-Output "Connecting to Microsoft 365 Security Center..."
+    Write-Output "Connecting to Microsoft 365 Security Center (MSC)..."
 
     <# Remember default progress bar status: 'Continue' #>
     $Private:strOriginalPreference = $Global:ProgressPreference 
     $Global:ProgressPreference = "SilentlyContinue" <# Hiding progress bar #>
 
-    <# Try to connect/logon to Security Center #>
+    <# Try to connect/logon to Security Center (MSC) #>
     Try {
 
-        <# Connect/logon to Microsoft 365 Security Center #>
+        <# Connect/logon to MSC #>
         Connect-IPPSSession -Verbose:$false -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
 
     }
     Catch { <# Catch action for any error that occur on connect/logon #>
 
         <# Verbose/Logging #>
-        fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft 365 Security Center connected" -strLogValue $false 
-        fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft 365 Security Center" -strLogValue "Login failed"
+        fncLogging -strLogFunction "fncCollectMSCLabelsAndPolicies" -strLogDescription "Microsoft 365 Security Center (MSC) connected" -strLogValue $false 
+        fncLogging -strLogFunction "fncCollectMSCLabelsAndPolicies" -strLogDescription "Microsoft 365 Security Center (MSC)" -strLogValue "Login failed"
     
         <# Console output #>
-        Write-Output (Write-Host "COLLECT LABELS AND POLICIES: Login failed. Please try again.`n" -ForegroundColor Red)
+        Write-Output (Write-Host "COLLECT MSC LABELS AND POLICIES: Login failed. Please try again.`n" -ForegroundColor Red)
 
         <# Signal sound #>
         [console]::beep(500,200)
@@ -3070,13 +3067,13 @@ Function fncCollectLabelsAndPolicies {
     }
 
     <# Console output #> 
-    Write-Output "Microsoft 365 Security Center connected."
+    Write-Output "Microsoft 365 Security Center (MSC) connected."
 
     <# Verbose/Logging #>
-    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft 365 Security Center connected" -strLogValue $true
+    fncLogging -strLogFunction "fncCollectMSCLabelsAndPolicies" -strLogDescription "Microsoft 365 Security Center (MSC) connected" -strLogValue $true
     
     <# Console output #> 
-    Write-Output "Collecting labels and policies..."
+    Write-Output "Collecting MSC labels and policies..."
 
     <# Checking if 'Collect'-folder exist and create it, if not #>
     If ($(Test-Path -Path $Global:strUserLogPath"\Collect") -Eq $false) {
@@ -3085,46 +3082,46 @@ Function fncCollectLabelsAndPolicies {
 
     }
 
-    <# Check for existing LabelsAndPolicies.log file and create it, if it not exist #>
-    If ($(Test-Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log") -Eq $false) {
+    <# Check for existing MSCLabelsAndPolicies.log file and create it, if it not exist #>
+    If ($(Test-Path $Global:strUserLogPath"\Collect\MSCLabelsAndPolicies.log") -Eq $false) {
 
         <# Create CollectLabels.log logging file #>
-        Out-File -FilePath $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
+        Out-File -FilePath $Global:strUserLogPath"\Collect\MSCLabelsAndPolicies.log" -Encoding UTF8 -Append -Force
 
     }
 
     <# Check for existing CollectLabels.log file and extend it, if it exist #>
-    If ($(Test-Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log") -Eq $true) {
+    If ($(Test-Path $Global:strUserLogPath"\Collect\MSCLabelsAndPolicies.log") -Eq $true) {
 
         <# Collecting data #>
-        Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "CURRENT POLICY:`n"
-        (Get-LabelPolicy).Name | ft -AutoSize | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force | Format-List 
-        Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "`nALL LABELS:"
-        Get-Label | ft -AutoSize | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
-        Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "ALL LABELS WITH DETAILS:"
-        Get-Label | fl * | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
-        Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "LABEL POLICIES:"
-        Get-LabelPolicy | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
+        Add-Content -Path $Global:strUserLogPath"\Collect\MSCLabelsAndPolicies.log" -Value "CURRENT POLICY:`n"
+        (Get-LabelPolicy).Name | ft -AutoSize | Out-File $Global:strUserLogPath"\Collect\MSCLabelsAndPolicies.log" -Encoding UTF8 -Append -Force | Format-List 
+        Add-Content -Path $Global:strUserLogPath"\Collect\MSCLabelsAndPolicies.log" -Value "`nALL LABELS:"
+        Get-Label | ft -AutoSize | Out-File $Global:strUserLogPath"\Collect\MSCLabelsAndPolicies.log" -Encoding UTF8 -Append -Force
+        Add-Content -Path $Global:strUserLogPath"\Collect\MSCLabelsAndPolicies.log" -Value "ALL LABELS WITH DETAILS:"
+        Get-Label | fl * | Out-File $Global:strUserLogPath"\Collect\MSCLabelsAndPolicies.log" -Encoding UTF8 -Append -Force
+        Add-Content -Path $Global:strUserLogPath"\Collect\MSCLabelsAndPolicies.log" -Value "LABEL POLICIES:"
+        Get-LabelPolicy | Out-File $Global:strUserLogPath"\Collect\MSCLabelsAndPolicies.log" -Encoding UTF8 -Append -Force
 
     }
 
-    <# Disconnect from Exchange Online Protection (EOP) #>
+    <# Disconnect from MSC/Exchange Online Protection (EOP) #>
     Remove-PSSession -ComputerName (Get-PSSession).ComputerName
 
     <# Set back progress bar to previous default #>
     $Global:ProgressPreference = $Private:strOriginalPreference
 
     <# Console output #>
-    Write-Output "Microsoft 365 Security Center disconnected."
+    Write-Output "Microsoft 365 Security Center (MSC) disconnected."
 
     <# Verbose/Logging #>
-    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft 365 Security Center disconnected" -strLogValue $true
-    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Export labels and policy" -strLogValue "LabelsAndPolicies.log"
-    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Collect labels and policies" -strLogValue "Proceeded"
+    fncLogging -strLogFunction "fncCollectMSCLabelsAndPolicies" -strLogDescription "Microsoft 365 Security Center (MSC) disconnected" -strLogValue $true
+    fncLogging -strLogFunction "fncCollectMSCLabelsAndPolicies" -strLogDescription "Export labels and policy" -strLogValue "MSCLabelsAndPolicies.log"
+    fncLogging -strLogFunction "fncCollectMSCLabelsAndPolicies" -strLogDescription "Collect MSC labels and policies" -strLogValue "Proceeded"
 
     <# Console output #> 
-    Write-Output "`nLog file: $Global:strUserLogPath\Collect\LabelsAndPolicies.log"
-    Write-Output (Write-Host "COLLECT LABELS AND POLICIES: Proceeded.`n" -ForegroundColor Green)
+    Write-Output "`nLog file: $Global:strUserLogPath\Collect\MSCLabelsAndPolicies.log"
+    Write-Output (Write-Host "COLLECT MSC LABELS AND POLICIES: Proceeded.`n" -ForegroundColor Green)
 
     <# Signal sound #>
     [console]::beep(1000,200)
@@ -3939,7 +3936,7 @@ Function fncShowMenu {
     If (@($Global:MenuCollectExtended) -Match $true) {
         Write-Output (Write-Host "   ├──[A] AIP service configuration" -ForegroundColor Yellow)
         Write-Output (Write-Host "   ├──[O] AIP protection templates" -ForegroundColor Yellow)
-        Write-Output (Write-Host "   └──[L] Labels and policies" -ForegroundColor Yellow)
+        Write-Output (Write-Host "   └──[L] MSC labels and policies" -ForegroundColor Yellow)
         Write-Output (Write-Host "  [Y] ANALYZE" -ForegroundColor Yellow)
         If (@($Global:MenuAnalyzeExtended) -Match $true) {
             Write-Output (Write-Host "   ├──[U] Endpoint URLs" -ForegroundColor Yellow)
@@ -4093,17 +4090,17 @@ Function fncShowMenu {
 
     }
 
-    <# Actions for labels and policies menu selected #>
+    <# Actions for MSC labels and policies menu selected #>
     If ($Private:intMenuSelection -Eq "L") {
     
         <# Verbose/Logging #>
-        fncLogging -strLogFunction "fncShowMenu" -strLogDescription "[L] Labels and policies" -strLogValue "Selected"
+        fncLogging -strLogFunction "fncShowMenu" -strLogDescription "[L] MSC labels and policies" -strLogValue "Selected"
         
         <# Clearing console #>
         Clear-Host
         
         <# Calling Labels and Policies function #>
-        fncCollectLabelsAndPolicies
+        fncCollectMSCLabelsAndPolicies
         
         <# Calling pause function #>
         fncPause
@@ -4220,3 +4217,225 @@ fncCheckWindowsAndPSVersion
 
 <# Export functions for script module manifest #>
 Export-ModuleMember -Function RMS_Support_Tool
+
+# SIG # Begin signature block
+# MIIpAQYJKoZIhvcNAQcCoIIo8jCCKO4CAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
+# gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUn/UDc2R0YOQihsrA2Eu9JbaZ
+# +DaggiLoMIIEMjCCAxqgAwIBAgIBATANBgkqhkiG9w0BAQUFADB7MQswCQYDVQQG
+# EwJHQjEbMBkGA1UECAwSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHDAdTYWxm
+# b3JkMRowGAYDVQQKDBFDb21vZG8gQ0EgTGltaXRlZDEhMB8GA1UEAwwYQUFBIENl
+# cnRpZmljYXRlIFNlcnZpY2VzMB4XDTA0MDEwMTAwMDAwMFoXDTI4MTIzMTIzNTk1
+# OVowezELMAkGA1UEBhMCR0IxGzAZBgNVBAgMEkdyZWF0ZXIgTWFuY2hlc3RlcjEQ
+# MA4GA1UEBwwHU2FsZm9yZDEaMBgGA1UECgwRQ29tb2RvIENBIExpbWl0ZWQxITAf
+# BgNVBAMMGEFBQSBDZXJ0aWZpY2F0ZSBTZXJ2aWNlczCCASIwDQYJKoZIhvcNAQEB
+# BQADggEPADCCAQoCggEBAL5AnfRu4ep2hxxNRUSOvkbIgwadwSr+GB+O5AL686td
+# UIoWMQuaBtDFcCLNSS1UY8y2bmhGC1Pqy0wkwLxyTurxFa70VJoSCsN6sjNg4tqJ
+# VfMiWPPe3M/vg4aijJRPn2jymJBGhCfHdr/jzDUsi14HZGWCwEiwqJH5YZ92IFCo
+# kcdmtet4YgNW8IoaE+oxox6gmf049vYnMlhvB/VruPsUK6+3qszWY19zjNoFmag4
+# qMsXeDZRrOme9Hg6jc8P2ULimAyrL58OAd7vn5lJ8S3frHRNG5i1R8XlKdH5kBjH
+# Ypy+g8cmez6KJcfA3Z3mNWgQIJ2P2N7Sw4ScDV7oL8kCAwEAAaOBwDCBvTAdBgNV
+# HQ4EFgQUoBEKIz6W8Qfs4q8p74Klf9AwpLQwDgYDVR0PAQH/BAQDAgEGMA8GA1Ud
+# EwEB/wQFMAMBAf8wewYDVR0fBHQwcjA4oDagNIYyaHR0cDovL2NybC5jb21vZG9j
+# YS5jb20vQUFBQ2VydGlmaWNhdGVTZXJ2aWNlcy5jcmwwNqA0oDKGMGh0dHA6Ly9j
+# cmwuY29tb2RvLm5ldC9BQUFDZXJ0aWZpY2F0ZVNlcnZpY2VzLmNybDANBgkqhkiG
+# 9w0BAQUFAAOCAQEACFb8AvCb6P+k+tZ7xkSAzk/ExfYAWMymtrwUSWgEdujm7l3s
+# Ag9g1o1QGE8mTgHj5rCl7r+8dFRBv/38ErjHT1r0iWAFf2C3BUrz9vHCv8S5dIa2
+# LX1rzNLzRt0vxuBqw8M0Ayx9lt1awg6nCpnBBYurDC/zXDrPbDdVCYfeU0BsWO/8
+# tqtlbgT2G9w84FoVxp7Z8VlIMCFlA2zs6SFz7JsDoeA3raAVGI/6ugLOpyypEBMs
+# 1OUIJqsil2D4kF501KKaU73yqWjgom7C12yxow+ev+to51byrvLjKzg6CYG1a4XX
+# vi3tPxq3smPi9WIsgtRqAEFQ8TmDn5XpNpaYbjCCBTUwggQdoAMCAQICEQD6qz5L
+# Urby8Fq5J0CbhY2DMA0GCSqGSIb3DQEBCwUAMHwxCzAJBgNVBAYTAkdCMRswGQYD
+# VQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGDAWBgNV
+# BAoTD1NlY3RpZ28gTGltaXRlZDEkMCIGA1UEAxMbU2VjdGlnbyBSU0EgQ29kZSBT
+# aWduaW5nIENBMB4XDTIwMTAwMjAwMDAwMFoXDTIzMTAwMjIzNTk1OVowfTELMAkG
+# A1UEBhMCREUxDjAMBgNVBBEMBTg1Nzc4MRMwEQYDVQQHDApIYWltaGF1c2VuMRcw
+# FQYDVQQJDA5Sb3NlbmdhcnRlbiAxMjEXMBUGA1UECgwOQ2xhdXMgU2NoaXJva3kx
+# FzAVBgNVBAMMDkNsYXVzIFNjaGlyb2t5MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A
+# MIIBCgKCAQEAql4rdGo8azsKVrEpCinKhNEuYbSU1nZnTSAgulRQ5jd5xaomSH/m
+# TrZfLcLRK7nYQN3NCj6dMxvqsgZ5239TxSZ62PcinkeasBTvSlga+zwvgt12H0iW
+# hA0bCirAnLfBduo8ZZpaonmj1uWJleENZT7/soESkMSVX2K3eyc0tB+UTU13B7Uv
+# wwTj9+j567acb9yIs4mzqqKS6KKOfSBN5vQOiXtfhNZbKQN87KBxeN6IYzxluRXk
+# iiWVfa63x9qywtJ5clMxizdKf9KVddfqorUVlOfHzB6Pa1ib5ZB4xmanQwgyl45e
+# QS/2BZP0MPQL0FSqSdj6IVLB2oZovmruuQIDAQABo4IBrzCCAaswHwYDVR0jBBgw
+# FoAUDuE6qFM6MdWKvsG7rWcaA4WtNA4wHQYDVR0OBBYEFOvLju/LLcXXqoiGhz5p
+# rj+K410EMA4GA1UdDwEB/wQEAwIHgDAMBgNVHRMBAf8EAjAAMBMGA1UdJQQMMAoG
+# CCsGAQUFBwMDMBEGCWCGSAGG+EIBAQQEAwIEEDBKBgNVHSAEQzBBMDUGDCsGAQQB
+# sjEBAgEDAjAlMCMGCCsGAQUFBwIBFhdodHRwczovL3NlY3RpZ28uY29tL0NQUzAI
+# BgZngQwBBAEwQwYDVR0fBDwwOjA4oDagNIYyaHR0cDovL2NybC5zZWN0aWdvLmNv
+# bS9TZWN0aWdvUlNBQ29kZVNpZ25pbmdDQS5jcmwwcwYIKwYBBQUHAQEEZzBlMD4G
+# CCsGAQUFBzAChjJodHRwOi8vY3J0LnNlY3RpZ28uY29tL1NlY3RpZ29SU0FDb2Rl
+# U2lnbmluZ0NBLmNydDAjBggrBgEFBQcwAYYXaHR0cDovL29jc3Auc2VjdGlnby5j
+# b20wHQYDVR0RBBYwFIESY2xhdXNAc2NoaXJva3kuY29tMA0GCSqGSIb3DQEBCwUA
+# A4IBAQAXcQqm8N5PEolwJKf7Da8rD+G7AyDQGbBHMMShtPr+99aw1+gaLFNiJbLs
+# PHDHTMqT/HDx4JVmn/GfL8bhWmIuwtyzmv1dul3pRAcFOZ3mNeCreXHrKs2xFT9U
+# BOC7X7wt/jSZN4W4D7XirfU/xSa7uuAA6rnFO38BIYDfWctqEY5aZ2B7e7iRSkCy
+# loO9+YQvSBX+CM9fQbldQEh9tqGcRZc4hXvYklTf+5Xrf9csbraKhnxRrQLnhcbV
+# b6OFY0XW1RYcujrSDkUErJgMNPv9f0iRSU4cbjLPD2CcQI7oSj97WrOV8ED3bjJL
+# G8qjC7aCVF1Umv/cMlgwsuLjgrJ1MIIFgTCCBGmgAwIBAgIQOXJEOvkit1HX02wQ
+# 3TE1lTANBgkqhkiG9w0BAQwFADB7MQswCQYDVQQGEwJHQjEbMBkGA1UECAwSR3Jl
+# YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHDAdTYWxmb3JkMRowGAYDVQQKDBFDb21v
+# ZG8gQ0EgTGltaXRlZDEhMB8GA1UEAwwYQUFBIENlcnRpZmljYXRlIFNlcnZpY2Vz
+# MB4XDTE5MDMxMjAwMDAwMFoXDTI4MTIzMTIzNTk1OVowgYgxCzAJBgNVBAYTAlVT
+# MRMwEQYDVQQIEwpOZXcgSmVyc2V5MRQwEgYDVQQHEwtKZXJzZXkgQ2l0eTEeMBwG
+# A1UEChMVVGhlIFVTRVJUUlVTVCBOZXR3b3JrMS4wLAYDVQQDEyVVU0VSVHJ1c3Qg
+# UlNBIENlcnRpZmljYXRpb24gQXV0aG9yaXR5MIICIjANBgkqhkiG9w0BAQEFAAOC
+# Ag8AMIICCgKCAgEAgBJlFzYOw9sIs9CsVw127c0n00ytUINh4qogTQktZAnczomf
+# zD2p7PbPwdzx07HWezcoEStH2jnGvDoZtF+mvX2do2NCtnbyqTsrkfjib9DsFiCQ
+# CT7i6HTJGLSR1GJk23+jBvGIGGqQIjy8/hPwhxR79uQfjtTkUcYRZ0YIUcuGFFQ/
+# vDP+fmyc/xadGL1RjjWmp2bIcmfbIWax1Jt4A8BQOujM8Ny8nkz+rwWWNR9XWrf/
+# zvk9tyy29lTdyOcSOk2uTIq3XJq0tyA9yn8iNK5+O2hmAUTnAU5GU5szYPeUvlM3
+# kHND8zLDU+/bqv50TmnHa4xgk97Exwzf4TKuzJM7UXiVZ4vuPVb+DNBpDxsP8yUm
+# azNt925H+nND5X4OpWaxKXwyhGNVicQNwZNUMBkTrNN9N6frXTpsNVzbQdcS2qlJ
+# C9/YgIoJk2KOtWbPJYjNhLixP6Q5D9kCnusSTJV882sFqV4Wg8y4Z+LoE53MW4LT
+# TLPtW//e5XOsIzstAL81VXQJSdhJWBp/kjbmUZIO8yZ9HE0XvMnsQybQv0FfQKlE
+# RPSZ51eHnlAfV1SoPv10Yy+xUGUJ5lhCLkMaTLTwJUdZ+gQek9QmRkpQgbLevni3
+# /GcV4clXhB4PY9bpYrrWX1Uu6lzGKAgEJTm4Diup8kyXHAc/DVL17e8vgg8CAwEA
+# AaOB8jCB7zAfBgNVHSMEGDAWgBSgEQojPpbxB+zirynvgqV/0DCktDAdBgNVHQ4E
+# FgQUU3m/WqorSs9UgOHYm8Cd8rIDZsswDgYDVR0PAQH/BAQDAgGGMA8GA1UdEwEB
+# /wQFMAMBAf8wEQYDVR0gBAowCDAGBgRVHSAAMEMGA1UdHwQ8MDowOKA2oDSGMmh0
+# dHA6Ly9jcmwuY29tb2RvY2EuY29tL0FBQUNlcnRpZmljYXRlU2VydmljZXMuY3Js
+# MDQGCCsGAQUFBwEBBCgwJjAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuY29tb2Rv
+# Y2EuY29tMA0GCSqGSIb3DQEBDAUAA4IBAQAYh1HcdCE9nIrgJ7cz0C7M7PDmy14R
+# 3iJvm3WOnnL+5Nb+qh+cli3vA0p+rvSNb3I8QzvAP+u431yqqcau8vzY7qN7Q/aG
+# NnwU4M309z/+3ri0ivCRlv79Q2R+/czSAaF9ffgZGclCKxO/WIu6pKJmBHaIkU4M
+# iRTOok3JMrO66BQavHHxW/BBC5gACiIDEOUMsfnNkjcZ7Tvx5Dq2+UUTJnWvu6rv
+# P3t3O9LEApE9GQDTF1w52z97GA1FzZOFli9d31kWTz9RvdVFGD/tSo7oBmF0Ixa1
+# DVBzJ0RHfxBdiSprhTEUxOipakyAvGp4z7h/jnZymQyd/teRCBaho1+VMIIF9TCC
+# A92gAwIBAgIQHaJIMG+bJhjQguCWfTPTajANBgkqhkiG9w0BAQwFADCBiDELMAkG
+# A1UEBhMCVVMxEzARBgNVBAgTCk5ldyBKZXJzZXkxFDASBgNVBAcTC0plcnNleSBD
+# aXR5MR4wHAYDVQQKExVUaGUgVVNFUlRSVVNUIE5ldHdvcmsxLjAsBgNVBAMTJVVT
+# RVJUcnVzdCBSU0EgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkwHhcNMTgxMTAyMDAw
+# MDAwWhcNMzAxMjMxMjM1OTU5WjB8MQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3Jl
+# YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0
+# aWdvIExpbWl0ZWQxJDAiBgNVBAMTG1NlY3RpZ28gUlNBIENvZGUgU2lnbmluZyBD
+# QTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAIYijTKFehifSfCWL2MI
+# Hi3cfJ8Uz+MmtiVmKUCGVEZ0MWLFEO2yhyemmcuVMMBW9aR1xqkOUGKlUZEQauBL
+# Yq798PgYrKf/7i4zIPoMGYmobHutAMNhodxpZW0fbieW15dRhqb0J+V8aouVHltg
+# 1X7XFpKcAC9o95ftanK+ODtj3o+/bkxBXRIgCFnoOc2P0tbPBrRXBbZOoT5Xax+Y
+# vMRi1hsLjcdmG0qfnYHEckC14l/vC0X/o84Xpi1VsLewvFRqnbyNVlPG8Lp5UEks
+# 9wO5/i9lNfIi6iwHr0bZ+UYc3Ix8cSjz/qfGFN1VkW6KEQ3fBiSVfQ+noXw62oY1
+# YdMCAwEAAaOCAWQwggFgMB8GA1UdIwQYMBaAFFN5v1qqK0rPVIDh2JvAnfKyA2bL
+# MB0GA1UdDgQWBBQO4TqoUzox1Yq+wbutZxoDha00DjAOBgNVHQ8BAf8EBAMCAYYw
+# EgYDVR0TAQH/BAgwBgEB/wIBADAdBgNVHSUEFjAUBggrBgEFBQcDAwYIKwYBBQUH
+# AwgwEQYDVR0gBAowCDAGBgRVHSAAMFAGA1UdHwRJMEcwRaBDoEGGP2h0dHA6Ly9j
+# cmwudXNlcnRydXN0LmNvbS9VU0VSVHJ1c3RSU0FDZXJ0aWZpY2F0aW9uQXV0aG9y
+# aXR5LmNybDB2BggrBgEFBQcBAQRqMGgwPwYIKwYBBQUHMAKGM2h0dHA6Ly9jcnQu
+# dXNlcnRydXN0LmNvbS9VU0VSVHJ1c3RSU0FBZGRUcnVzdENBLmNydDAlBggrBgEF
+# BQcwAYYZaHR0cDovL29jc3AudXNlcnRydXN0LmNvbTANBgkqhkiG9w0BAQwFAAOC
+# AgEATWNQ7Uc0SmGk295qKoyb8QAAHh1iezrXMsL2s+Bjs/thAIiaG20QBwRPvrjq
+# iXgi6w9G7PNGXkBGiRL0C3danCpBOvzW9Ovn9xWVM8Ohgyi33i/klPeFM4MtSkBI
+# v5rCT0qxjyT0s4E307dksKYjalloUkJf/wTr4XRleQj1qZPea3FAmZa6ePG5yOLD
+# CBaxq2NayBWAbXReSnV+pbjDbLXP30p5h1zHQE1jNfYw08+1Cg4LBH+gS667o6XQ
+# hACTPlNdNKUANWlsvp8gJRANGftQkGG+OY96jk32nw4e/gdREmaDJhlIlc5KycF/
+# 8zoFm/lv34h/wCOe0h5DekUxwZxNqfBZslkZ6GqNKQQCd3xLS81wvjqyVVp4Pry7
+# bwMQJXcVNIr5NsxDkuS6T/FikyglVyn7URnHoSVAaoRXxrKdsbwcCtp8Z359Luko
+# TBh+xHsxQXGaSynsCz1XUNLK3f2eBVHlRHjdAd6xdZgNVCT98E7j4viDvXK6yz06
+# 7vBeF5Jobchh+abxKgoLpbn0nu6YMgWFnuv5gynTxix9vTp3Los3QqBqgu07SqqU
+# EKThDfgXxbZaeTMYkuO1dfih6Y4KJR7kHvGfWocj/5+kUZ77OYARzdu1xKeogG/l
+# U9Tg46LC0lsa+jImLWpXcBw8pFguo/NbSwfcMlnzh6cabVgwggbsMIIE1KADAgEC
+# AhAwD2+s3WaYdHypRjaneC25MA0GCSqGSIb3DQEBDAUAMIGIMQswCQYDVQQGEwJV
+# UzETMBEGA1UECBMKTmV3IEplcnNleTEUMBIGA1UEBxMLSmVyc2V5IENpdHkxHjAc
+# BgNVBAoTFVRoZSBVU0VSVFJVU1QgTmV0d29yazEuMCwGA1UEAxMlVVNFUlRydXN0
+# IFJTQSBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTAeFw0xOTA1MDIwMDAwMDBaFw0z
+# ODAxMTgyMzU5NTlaMH0xCzAJBgNVBAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1h
+# bmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGDAWBgNVBAoTD1NlY3RpZ28gTGlt
+# aXRlZDElMCMGA1UEAxMcU2VjdGlnbyBSU0EgVGltZSBTdGFtcGluZyBDQTCCAiIw
+# DQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAMgbAa/ZLH6ImX0BmD8gkL2cgCFU
+# k7nPoD5T77NawHbWGgSlzkeDtevEzEk0y/NFZbn5p2QWJgn71TJSeS7JY8ITm7aG
+# PwEFkmZvIavVcRB5h/RGKs3EWsnb111JTXJWD9zJ41OYOioe/M5YSdO/8zm7uaQj
+# QqzQFcN/nqJc1zjxFrJw06PE37PFcqwuCnf8DZRSt/wflXMkPQEovA8NT7ORAY5u
+# nSd1VdEXOzQhe5cBlK9/gM/REQpXhMl/VuC9RpyCvpSdv7QgsGB+uE31DT/b0OqF
+# jIpWcdEtlEzIjDzTFKKcvSb/01Mgx2Bpm1gKVPQF5/0xrPnIhRfHuCkZpCkvRuPd
+# 25Ffnz82Pg4wZytGtzWvlr7aTGDMqLufDRTUGMQwmHSCIc9iVrUhcxIe/arKCFiH
+# d6QV6xlV/9A5VC0m7kUaOm/N14Tw1/AoxU9kgwLU++Le8bwCKPRt2ieKBtKWh97o
+# aw7wW33pdmmTIBxKlyx3GSuTlZicl57rjsF4VsZEJd8GEpoGLZ8DXv2DolNnyrH6
+# jaFkyYiSWcuoRsDJ8qb/fVfbEnb6ikEk1Bv8cqUUotStQxykSYtBORQDHin6G6Ui
+# rqXDTYLQjdprt9v3GEBXc/Bxo/tKfUU2wfeNgvq5yQ1TgH36tjlYMu9vGFCJ10+d
+# M70atZ2h3pVBeqeDAgMBAAGjggFaMIIBVjAfBgNVHSMEGDAWgBRTeb9aqitKz1SA
+# 4dibwJ3ysgNmyzAdBgNVHQ4EFgQUGqH4YRkgD8NBd0UojtE1XwYSBFUwDgYDVR0P
+# AQH/BAQDAgGGMBIGA1UdEwEB/wQIMAYBAf8CAQAwEwYDVR0lBAwwCgYIKwYBBQUH
+# AwgwEQYDVR0gBAowCDAGBgRVHSAAMFAGA1UdHwRJMEcwRaBDoEGGP2h0dHA6Ly9j
+# cmwudXNlcnRydXN0LmNvbS9VU0VSVHJ1c3RSU0FDZXJ0aWZpY2F0aW9uQXV0aG9y
+# aXR5LmNybDB2BggrBgEFBQcBAQRqMGgwPwYIKwYBBQUHMAKGM2h0dHA6Ly9jcnQu
+# dXNlcnRydXN0LmNvbS9VU0VSVHJ1c3RSU0FBZGRUcnVzdENBLmNydDAlBggrBgEF
+# BQcwAYYZaHR0cDovL29jc3AudXNlcnRydXN0LmNvbTANBgkqhkiG9w0BAQwFAAOC
+# AgEAbVSBpTNdFuG1U4GRdd8DejILLSWEEbKw2yp9KgX1vDsn9FqguUlZkClsYcu1
+# UNviffmfAO9Aw63T4uRW+VhBz/FC5RB9/7B0H4/GXAn5M17qoBwmWFzztBEP1dXD
+# 4rzVWHi/SHbhRGdtj7BDEA+N5Pk4Yr8TAcWFo0zFzLJTMJWk1vSWVgi4zVx/AZa+
+# clJqO0I3fBZ4OZOTlJux3LJtQW1nzclvkD1/RXLBGyPWwlWEZuSzxWYG9vPWS16t
+# oytCiiGS/qhvWiVwYoFzY16gu9jc10rTPa+DBjgSHSSHLeT8AtY+dwS8BDa153fL
+# nC6NIxi5o8JHHfBd1qFzVwVomqfJN2Udvuq82EKDQwWli6YJ/9GhlKZOqj0J9QVs
+# t9JkWtgqIsJLnfE5XkzeSD2bNJaaCV+O/fexUpHOP4n2HKG1qXUfcb9bQ11lPVCB
+# bqvw0NP8srMftpmWJvQ8eYtcZMzN7iea5aDADHKHwW5NWtMe6vBE5jJvHOsXTpTD
+# eGUgOw9Bqh/poUGd/rG4oGUqNODeqPk85sEwu8CgYyz8XBYAqNDEf+oRnR4GxqZt
+# Ml20OAkrSQeq/eww2vGnL8+3/frQo4TZJ577AWZ3uVYQ4SBuxq6x+ba6yDVdM3aO
+# 8XwgDCp3rrWiAoa6Ke60WgCxjKvj+QrJVF3UuWp0nr1IrpgwggcHMIIE76ADAgEC
+# AhEAjHegAI/00bDGPZ86SIONazANBgkqhkiG9w0BAQwFADB9MQswCQYDVQQGEwJH
+# QjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3Jk
+# MRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxJTAjBgNVBAMTHFNlY3RpZ28gUlNB
+# IFRpbWUgU3RhbXBpbmcgQ0EwHhcNMjAxMDIzMDAwMDAwWhcNMzIwMTIyMjM1OTU5
+# WjCBhDELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQ
+# MA4GA1UEBxMHU2FsZm9yZDEYMBYGA1UEChMPU2VjdGlnbyBMaW1pdGVkMSwwKgYD
+# VQQDDCNTZWN0aWdvIFJTQSBUaW1lIFN0YW1waW5nIFNpZ25lciAjMjCCAiIwDQYJ
+# KoZIhvcNAQEBBQADggIPADCCAgoCggIBAJGHSyyLwfEeoJ7TB8YBylKwvnl5XQlm
+# Bi0vNX27wPsn2kJqWRslTOrvQNaafjLIaoF9tFw+VhCBNToiNoz7+CAph6x00Bti
+# vD9khwJf78WA7wYc3F5Ok4e4mt5MB06FzHDFDXvsw9njl+nLGdtWRWzuSyBsyT5s
+# /fCb8Sj4kZmq/FrBmoIgOrfv59a4JUnCORuHgTnLw7c6zZ9QBB8amaSAAk0dBahV
+# 021SgIPmbkilX8GJWGCK7/GszYdjGI50y4SHQWljgbz2H6p818FBzq2rdosggNQt
+# lQeNx/ULFx6a5daZaVHHTqadKW/neZMNMmNTrszGKYogwWDG8gIsxPnIIt/5J4Kh
+# g1HCvMmCGiGEspe81K9EHJaCIpUqhVSu8f0+SXR0/I6uP6Vy9MNaAapQpYt2lRtm
+# 6+/a35Qu2RrrTCd9TAX3+CNdxFfIJgV6/IEjX1QJOCpi1arK3+3PU6sf9kSc1ZlZ
+# xVZkW/eOUg9m/Jg/RAYTZG7p4RVgUKWx7M+46MkLvsWE990Kndq8KWw9Vu2/eGe2
+# W8heFBy5r4Qtd6L3OZU3b05/HMY8BNYxxX7vPehRfnGtJHQbLNz5fKrvwnZJaGLV
+# i/UD3759jg82dUZbk3bEg+6CviyuNxLxvFbD5K1Dw7dmll6UMvqg9quJUPrOoPMI
+# gRrRRKfM97gxAgMBAAGjggF4MIIBdDAfBgNVHSMEGDAWgBQaofhhGSAPw0F3RSiO
+# 0TVfBhIEVTAdBgNVHQ4EFgQUaXU3e7udNUJOv1fTmtufAdGu3tAwDgYDVR0PAQH/
+# BAQDAgbAMAwGA1UdEwEB/wQCMAAwFgYDVR0lAQH/BAwwCgYIKwYBBQUHAwgwQAYD
+# VR0gBDkwNzA1BgwrBgEEAbIxAQIBAwgwJTAjBggrBgEFBQcCARYXaHR0cHM6Ly9z
+# ZWN0aWdvLmNvbS9DUFMwRAYDVR0fBD0wOzA5oDegNYYzaHR0cDovL2NybC5zZWN0
+# aWdvLmNvbS9TZWN0aWdvUlNBVGltZVN0YW1waW5nQ0EuY3JsMHQGCCsGAQUFBwEB
+# BGgwZjA/BggrBgEFBQcwAoYzaHR0cDovL2NydC5zZWN0aWdvLmNvbS9TZWN0aWdv
+# UlNBVGltZVN0YW1waW5nQ0EuY3J0MCMGCCsGAQUFBzABhhdodHRwOi8vb2NzcC5z
+# ZWN0aWdvLmNvbTANBgkqhkiG9w0BAQwFAAOCAgEASgN4kEIz7Hsagwk2M5hVu51A
+# BjBrRWrxlA4ZUP9bJV474TnEW7rplZA3N73f+2Ts5YK3lcxXVXBLTvSoh90ihaZX
+# u7ghJ9SgKjGUigchnoq9pxr1AhXLRFCZjOw+ugN3poICkMIuk6m+ITR1Y7ngLQ/P
+# ATfLjaL6uFqarqF6nhOTGVWPCZAu3+qIFxbradbhJb1FCJeA11QgKE/Ke7OzpdIA
+# sGA0ZcTjxcOl5LqFqnpp23WkPnlomjaLQ6421GFyPA6FYg2gXnDbZC8Bx8GhxySU
+# o7I8brJeotD6qNG4JRwW5sDVf2gaxGUpNSotiLzqrnTWgufAiLjhT3jwXMrAQFzC
+# n9UyHCzaPKw29wZSmqNAMBewKRaZyaq3iEn36AslM7U/ba+fXwpW3xKxw+7OkXfo
+# IBPpXCTH6kQLSuYThBxN6w21uIagMKeLoZ+0LMzAFiPJkeVCA0uAzuRN5ioBPsBe
+# haAkoRdA1dvb55gQpPHqGRuAVPpHieiYgal1wA7f0GiUeaGgno62t0Jmy9nZay9N
+# 2N4+Mh4g5OycTUKNncczmYI3RNQmKSZAjngvue76L/Hxj/5QuHjdFJbeHA5wsCqF
+# arFsaOkq5BArbiH903ydN+QqBtbD8ddo408HeYEIE/6yZF7psTzm0Hgjsgks4iZi
+# vzupl1HMx0QygbKvz98xggWDMIIFfwIBATCBkTB8MQswCQYDVQQGEwJHQjEbMBkG
+# A1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYD
+# VQQKEw9TZWN0aWdvIExpbWl0ZWQxJDAiBgNVBAMTG1NlY3RpZ28gUlNBIENvZGUg
+# U2lnbmluZyBDQQIRAPqrPktStvLwWrknQJuFjYMwCQYFKw4DAhoFAKB4MBgGCisG
+# AQQBgjcCAQwxCjAIoAKAAKECgAAwGQYJKoZIhvcNAQkDMQwGCisGAQQBgjcCAQQw
+# HAYKKwYBBAGCNwIBCzEOMAwGCisGAQQBgjcCARUwIwYJKoZIhvcNAQkEMRYEFHEp
+# HFr4B4hymnPKz0ctiId9ILELMA0GCSqGSIb3DQEBAQUABIIBAHKVvwkeJois+lb9
+# eLikcsvz9iaejZMks7Fu7oFDkgqq7+Idme+Gnq3pITzOeOLWPCgFy9kXZMbUubeK
+# T838TGCKiyOUITwifXDtj+jf2KM/a2U+aOsvzxK52l+TjlGpTC7gOO9RCYlZVn4S
+# ZpSJ6WObD78Uz720Fa0RESTyyCnwvOrqMj0gsIzv9N+hgzsF5AIukLWJB7kYU93W
+# fvHQi3rD3Y111Tx267n2BDhLT5jZ2vE4r3KuuXGWXhMTO3heZFIp7Z1DG003nAy1
+# jCKJlBfCyEYkClOG+c5IxACF0XyV7yGu6pJX7sCZBk0PUqnxiMLziK2i4Obuoue2
+# dstGpYqhggNMMIIDSAYJKoZIhvcNAQkGMYIDOTCCAzUCAQEwgZIwfTELMAkGA1UE
+# BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2Fs
+# Zm9yZDEYMBYGA1UEChMPU2VjdGlnbyBMaW1pdGVkMSUwIwYDVQQDExxTZWN0aWdv
+# IFJTQSBUaW1lIFN0YW1waW5nIENBAhEAjHegAI/00bDGPZ86SIONazANBglghkgB
+# ZQMEAgIFAKB5MBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkF
+# MQ8XDTIxMDMwMjA5MjkxNVowPwYJKoZIhvcNAQkEMTIEMJ5p55VXxxYcTvLN1OD0
+# Xy8AbwF933/P5vOW/+u7xTbrqV/TH+9trxVGFFQ7iTcr0jANBgkqhkiG9w0BAQEF
+# AASCAgAiyYzpVoj9Ymtlws5z78J2VNnhNcST/nQH//v7DkJ1OKMX3JkRTb5gK5NW
+# 54wDo2cXARNVFMaq4Q9rLvg8Tir3LNssYSgwuq1dqWk2HQc6uImgtlWxqBdyDycX
+# 25oJ3+GUFCKW5bMKmAvWqYWqlDe+Euri4VblMgMhHaGY7BjeshQr6WFGyGmy2/Vd
+# Ou8PIohIrI5JkDksAi7jxokua1g7kQgDshYqiA6hOr34qbK2n59Knjynk1oUaNo+
+# baZ4hmIhi9dA3/kOdYRzCe645mz2H+Htv0/bgWnMxLvDNB8m2Y1Bo8ssG0wAjgrS
+# z5PtLEsIe7ZmlG7sXK2D9mcf20FBlsD9nxrIDXtGqzc39dDt83Ar1TXCvXk+HU8f
+# ugdk17Oq9zOIu1braW9Cvg7RBVa7SdqsqqRAgcA3v7Hp1+EvUILSARh21JOGlCS/
+# Lvf7JOcHJFjpxl7dDzfh5EzjdWeOsS9d+7Ft3byTKiuyLp1n6Mvj6qoVUA0jshTF
+# yYMS7Uz3wr2NHLVDeEJDa+4yP+v2bg2DBSyeDspNBLWjEG71XqTuM+avMyxY/wKY
+# qvgbEb8/PYlnymRs1/2smcpWyLyWPaRAb43OEKK8FRqISMWe6QNi5wfydvKIvqci
+# nN937Ygjgifay/hCYZ74a5kopl0wBFrL1G6y9jWwT6doWaBPpA==
+# SIG # End signature block
