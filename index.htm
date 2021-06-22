@@ -5,8 +5,8 @@
 
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta content="en-us" http-equiv="Content-Language" />
-<meta content="2.0.2" http-equiv="VERSION" />
-<meta content="06/22/2021" http-equiv="CREATEDATE" />
+<meta content="2.0.1" http-equiv="VERSION" />
+<meta content="25/05/2021" http-equiv="CREATEDATE" />
 <meta content="Claus Schiroky" http-equiv="AUTHOR" />
 <meta content="https://aka.ms/RMS_Support_Tool/Latest" http-equiv="SOURCE" />
 <meta content="Copyright ©2021 by Microsoft®. All rights reserved." http-equiv="COPYRIGHT" />
@@ -258,7 +258,7 @@
 				<span style='line-height:115%;
   color:white;' class="auto-style7">
 				<span class="HeaderSubtitle">
-				Version 2.0.2</span></span></p>
+				Version 2.0.1</span></span></p>
 
 
             </div>
@@ -518,8 +518,8 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/exchange/exchange-online/exchange-online-powershell-v2/exchange-online-powershell-v2" target="_blank">Exchange Online PowerShell V2 
 				module</a> is required to 
 				proceed the option
-				<a class="Hyperlink" href="#[L]_Labels_and_policies_/_-CollectLabelsAndPolicies">
-				Labels and policies</a> from the<strong> </strong>menu<strong>
+				<a class="Hyperlink" href="#[L]_MSC_labels_and_policies_/_-CollectMSCLabelsAndPolicies">
+				MSC labels and policies</a> from the<strong> </strong>menu<strong>
 				</strong><a class="Hyperlink" href="#[C]_COLLECT_/_-">COLLECT</a>.</p>
 				<p>If you do not have this module installed, the 
 				RMS_Support_Tool will install it from
@@ -1117,7 +1117,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
    			 &nbsp;&nbsp; ├──[O] AIP protection templates</p>
 				<p class="ConsoleListShadow">
 
-   			 &nbsp;&nbsp; └──[L] Labels and policies</p>
+   			 &nbsp;&nbsp; └──[L] MSC labels and policies</p>
 				<p class="ConsoleListShadow">
 
    			    &nbsp;</p>
@@ -1168,16 +1168,16 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					be asked for your credentials.</li>
 				</ul>
 				<p class="Header3">
-				<a name="[L]_Labels_and_policies_/_-CollectLabelsAndPolicies">[L] 
-				Labels and policies / -CollectLabelsAndPolicies</a></p>
+				<a name="[L]_MSC_labels_and_policies_/_-CollectMSCLabelsAndPolicies">[L] 
+				MSC labels and policies / -CollectMSCLabelsAndPolicies</a></p>
 				<p>This parameter collects the labels and policy definitions 
 				from your 
 				<span lang="EN-US">
 				<a class="Hyperlink" href="https://www.microsoft.com/en-us/microsoft-365" target="_blank">
-				Microsoft® 365</a></span> Security Center. Those with 
+				Microsoft® 365</a></span> Security Center (MSC). Those with 
 				protection and those with classification only.</p>
 				<p>Results are written into log file
-				<a class="Hyperlink" href="#LabelsAndPolicies.log">LabelsAndPolicies.log</a> 
+				<a class="Hyperlink" href="#MSCLabelsAndPolicies.log">MSCLabelsAndPolicies.log</a> 
 				in the subfolder "Collect" of the Logs folder.</p>
 				<p><em>Note:</em></p>
 				<ul>
@@ -1707,13 +1707,13 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/module/aipservice/get-aipservicetemplate" rel="nofollow" target="_blank">Get-AipServiceTemplate</a>.</p>
 				<ul>
 					<li>
-					<p class="Header4"><a name="LabelsAndPolicies.log">LabelsAndPolicies.log</a></p>
+					<p class="Header4"><a name="MSCLabelsAndPolicies.log">MSCLabelsAndPolicies.log</a></p>
 					</li>
 				</ul>
 				<p class="Logs-Text">This file is created by the
 				collect option
-				<a class="Hyperlink" href="#[L]_Labels_and_policies_/_-CollectLabelsAndPolicies">
-				Labels and policies</a>.</p>
+				<a class="Hyperlink" href="#[L]_MSC_labels_and_policies_/_-CollectMSCLabelsAndPolicies">
+				MSC labels and policies</a>.</p>
 				<p class="Logs-Text">For more information, please see the following documentation:
 				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps" target="_blank">
 				Get-Label</a> and
@@ -1797,7 +1797,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				
 				<p>
 				RMS Support Tool is maintained by 				
-				<a href="mailto:claus.schiroky@microsoft.com?subject=RMS_Support_Tool" style="border-style: none; border-color: currentColor; border-width: 0px; margin: 0px; padding: 0px; border-image: url('none') 100% 1 0 stretch; color: rgb(242, 242, 242); font-family: inherit; font-size-adjust: none; font-stretch: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; text-decoration: underline; text-shadow: none; transition-delay: 0s; transition-duration: 0.5s; transition-property: text-shadow; transition-timing-function: ease; vertical-align: baseline;" target="_blank">Claus Schiroky</a>,
+				<a href="https://github.com/schiroky" style="border-style: none; border-color: currentColor; border-width: 0px; margin: 0px; padding: 0px; border-image: url('none') 100% 1 0 stretch; color: rgb(242, 242, 242); font-family: inherit; font-size-adjust: none; font-stretch: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; text-decoration: underline; text-shadow: none; transition-delay: 0s; transition-duration: 0.5s; transition-property: text-shadow; transition-timing-function: ease; vertical-align: baseline;" target="_blank">Claus Schiroky</a>,
 				<span class="auto-style7">Microsof</span>t® C<span>ustomer 
 				Service &amp; Support EMEA.</span><span lang=EN-US style='line-height:115%;
   color:white;' class="auto-style7"><br />
