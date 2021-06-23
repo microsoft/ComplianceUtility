@@ -20,6 +20,14 @@ This applies only to a manual installation: If you downloaded the RMS_Support_To
 
 If you see this message in a PowerShell command window, you are most likely affected by the Windows® Group Policy setting "Turn on Script Execution":
 
-"Set-ExecutionPolicy : PowerShell updated your local preference successfully, but the setting is overridden by the group policy applied to your system or Set-ExecutionPolicy : Windows PowerShell updated your execution policy successfully, but the setting is overridden by a policy defined at a more specific scope."
+```PowerShell
+Set-ExecutionPolicy : PowerShell updated your local preference successfully, but the setting is overridden by the group
+policy applied to your system or Set-ExecutionPolicy : Windows PowerShell updated your execution policy successfully,
+but the setting is overridden by a policy defined at a more specific scope.
+```
 
-**Resolution:** To resolve this problem, you must remove this Group Policy setting or configure a setting that allows scripts to run. Please request assistance from your administrator to do this. Please also read Use Group Policy to Manage Execution Policy and Set-ExecutionPolicy.
+**Resolution:** To resolve this problem, you must remove this Group Policy setting or configure a setting that allows scripts to run. Please request assistance from your administrator to do this. Please also read [Use Group Policy to Manage Execution Policy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1#use-group-policy-to-manage-execution-policy) and [Set-ExecutionPolicy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1).
+
+## Microsoft Support Policy  
+
+Support for this **PROJECT or PRODUCT** is limited to the resources listed above.
