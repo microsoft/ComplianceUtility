@@ -17,7 +17,7 @@ The RMS_Support_Tool uses GitHub [Issues](https://github.com/microsoft/RMS_Suppo
 issues and the following known issues section before filing new issues to avoid duplicates. For new issues, file your bug or 
 feature request as a new Issue. Please describe the Issue as detailed as possible. A screenshot of an error and/or a step-by-step description to reproduce a problem are very helpful.
 
-## Known issues:
+## Known issues
 
 **Set-ExecutionPolicy has no effect**
 
