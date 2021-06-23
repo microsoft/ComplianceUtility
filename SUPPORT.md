@@ -30,4 +30,19 @@ but the setting is overridden by a policy defined at a more specific scope.
 
 ## Microsoft Support Policy  
 
+When creating the RMS_Support_Tool, great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
+
+Should you ever encounter a problemr with the RMS_Support_Tool, please use the information on this page to report it so that the problem can be resolved in a next release.
+
+Please describe the problem as detailed as possible. A screenshot of the error and/or a step-by-step description to reproduce the problem are very helpful.
+
+
 Support for this **PROJECT or PRODUCT** is limited to the resources listed above.
+
+Under this policy, the RMS_Support_Tool remains in support if the following criteria are met:
+
+- You're using the [lastet version](https://aka.ms/RMS_Support_Tool/Latest) of the RMS_Support_Tool.
+- You must be licensed with a product or service that uses [Microsoft Information Protection](https://www.microsoft.com/en-us/us-partner-blog/2018/11/05/microsoft-information-protection-and-unified-labeling/).
+
+
+
