@@ -5,8 +5,8 @@
 
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta content="en-us" http-equiv="Content-Language" />
-<meta content="2.0.1" http-equiv="VERSION" />
-<meta content="25/05/2021" http-equiv="CREATEDATE" />
+<meta content="2.0.2" http-equiv="VERSION" />
+<meta content="06/23/2021" http-equiv="CREATEDATE" />
 <meta content="Claus Schiroky" http-equiv="AUTHOR" />
 <meta content="https://aka.ms/RMS_Support_Tool/Latest" http-equiv="SOURCE" />
 <meta content="Copyright ©2021 by Microsoft®. All rights reserved." http-equiv="COPYRIGHT" />
@@ -235,9 +235,6 @@
 	background-color: #f4f4f4;
 	margin-left: 40px;
 }
-.auto-style1 {
-	color: #0366D6;
-}
 </style>
 
 <meta content="The RMS_Support_Tool provides the functionality to reset all Microsoft® AIP/AD RMS services. Its main purpose is to delete the currently downloaded policies and reset the user settings for AIP/AD RMS service, and it can also be used to collect data for troubleshooting." name="description" />
@@ -258,7 +255,7 @@
 				<span style='line-height:115%;
   color:white;' class="auto-style7">
 				<span class="HeaderSubtitle">
-				Version 2.0.1</span></span></p>
+				Version 2.0.2</span></span></p>
 
 
             </div>
@@ -358,6 +355,18 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					<a class="Hyperlink" href="#Script_log_file">Script log file</a></li>
 					<li class="Hyperlink">
 					<a class="Hyperlink" href="#Log files and folders">Log files and folders</a></li>
+					<li class="Hyperlink">
+					<a class="Hyperlink" href="#Support">Support</a><ul>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#Microsoft_Support_Policy">
+						Microsoft Support Policy</a></li>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#How_to_file_issues_and_get_help">
+						How to file issues and get help</a></li>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#Known_issues">Known issues</a></li>
+					</ul>
+					</li>
 				</ul>
 				<p>&nbsp;</p>
 				<p class="Header1">
@@ -396,7 +405,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				user-specific settings being reset. By the way: The latter 
 				option is sufficient in most cases to reset
 				<a class="Hyperlink" href="https://www.microsoft.com/en-us/microsoft-365" target="_blank">
-				Microsoft® 365</a> apps, while a complete reset 
+				Microsoft® 365</a> Apps, while a complete reset 
 				is usually useful for all other applications.</span></p>
 				<p><em>Note:</em></p>
 				<ul>
@@ -409,8 +418,6 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					<li>It is recommended to test the RMS_Support_Tool with a 
 					test environment before executing it in a live 
 					environment.</li>
-					<li>There is no support for the RMS_Support_Tool. Please see the 
-					disclaimer below.</li>
 					<li>Nomenclature:
 					<ul>
 						<li>AIP = <strong>A</strong>zure <strong>I</strong>nformation
@@ -482,7 +489,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					versions:<ul>
 						<li>Microsoft® Office 2013, 
 						Microsoft® Office 2016, and 
-						Microsoft® 365.</li>
+						Microsoft® 365 Apps.</li>
 					</ul>
 					</li>
 				</ul>
@@ -518,8 +525,8 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/exchange/exchange-online/exchange-online-powershell-v2/exchange-online-powershell-v2" target="_blank">Exchange Online PowerShell V2 
 				module</a> is required to 
 				proceed the option
-				<a class="Hyperlink" href="#[L]_MSC_labels_and_policies_/_-CollectMSCLabelsAndPolicies">
-				MSC labels and policies</a> from the<strong> </strong>menu<strong>
+				<a class="Hyperlink" href="#[L]_Labels_and_policies_/_-CollectLabelsAndPolicies">
+				Labels and policies</a> from the<strong> </strong>menu<strong>
 				</strong><a class="Hyperlink" href="#[C]_COLLECT_/_-">COLLECT</a>.</p>
 				<p>If you do not have this module installed, the 
 				RMS_Support_Tool will install it from
@@ -679,40 +686,11 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				the following parameters:</p>
 				<p><span class="ConsoleTextShadow">PS C:\&gt; Set-ExecutionPolicy -Scope CurrentUser 
 				-ExecutionPolicy RemoteSigned -Force</span></p>
-				<p><em>Know issues:</em></p>
+				<p><em>Note:</em></p>
 				<ul>
-					<li><strong>Set-ExecutionPolicy has no effect</strong><br />
-					This 
-					applies only to a manual installation: If 
-					you downloaded the RMS_Support_Tool from its
-					<a class="Hyperlink" href="https://aka.ms/RMS_Support_Tool/Latest" target="_blank">GitHub website</a>, it will 
-					be extended by an
-					<a class="Hyperlink" href="https://blogs.technet.microsoft.com/askcore/2013/03/24/alternate-data-streams-in-ntfs" rel="nofollow" target="_blank">Alternate Data Streams in NTFS</a> (ADS). If the 
-					corresponding website in the ADS is not trusted in your 
-					environment, the PowerShell command "Set-ExecutionPolicy" 
-					has no effect.<br />
-					There're two methods to solve this issue: 
-					Either you right-click the downloaded script files and 
-					"Unblock" it, or you add the correcponding website to your 
-					trusted sites settings.</li>
-					<li><strong>Script does not start and returns an error<br />
-					</strong>"Set-ExecutionPolicy : PowerShell updated your local 
-					preference successfully, but the setting is overridden by 
-					the group policy applied to your system or 
-					Set-ExecutionPolicy : Windows PowerShell updated your 
-					execution policy successfully, but the setting is overridden 
-					by a policy defined at a more specific scope.<strong>"<br />
-					</strong>If 
-					you see this message in a PowerShell command window, you are 
-					most likely affected by the Windows® Group Policy setting "Turn on 
-					Script Execution".<br />
-					To resolve this problem, you must remove 
-					this Group Policy setting or configure a setting that allows 
-					scripts to run. Please request assistance from your 
-					administrator to do this. Please also read
-					<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1#use-group-policy-to-manage-execution-policy" rel="nofollow" target="_blank">Use Group Policy to Manage Execution Policy</a> and
-					<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1" target="_blank">
-					Set-ExecutionPolicy</a>.</li>
+					<li>Please pay attention to the
+					<a class="Hyperlink" href="#Known_issues">Known issues</a> 
+					section.</li>
 				</ul>
 				<p class="Header3">
 				<a name="Manual_Installation">Manual Installation</a></p>
@@ -724,7 +702,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p>To install the RMS_Support_Tool manually, you must create the 
 				following folder, and copy/paste all the RMS_Support_Tool files (RMS_Support_Tool.psm1, RMS_Support_Tool.psd1, and RMS_Support_Tool.htm) 
 				into this folder:</p>
-				<p><span class="ConsoleTextShadow">%USERPROFILE%\Documents\WindowsPowerShell\Modules\RMS_Support_Tool\2.0.1</span></p>
+				<p><span class="ConsoleTextShadow">%USERPROFILE%\Documents\WindowsPowerShell\Modules\RMS_Support_Tool\2.0.2</span></p>
 				<p>This path must be listed in the PSModulePath environment 
 					variable. For more information, please read how
 					<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable" rel="nofollow" target="_blank">to view the PSModulePath variable</a>.</p>
@@ -791,7 +769,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">----------&nbsp;&nbsp; -------&nbsp;&nbsp; ----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				----------------</p>
 				<p class="ConsolteListShadowButton">Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				2.0.1&nbsp;&nbsp;&nbsp;&nbsp; RMS_Support_Tool&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				2.0.2&nbsp;&nbsp;&nbsp;&nbsp; RMS_Support_Tool&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				RMS_Support_Tool</p>
 				<p>To verify that an installation was performed using PowerShell 
 				Gallery, you can run the following command:</p>
@@ -808,7 +786,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">-------&nbsp;&nbsp;&nbsp;&nbsp; 
 				----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				----------&nbsp;&nbsp;&nbsp;&nbsp; -----------</p>
-				<p class="ConsolteListShadowButton">2.0.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				<p class="ConsolteListShadowButton">2.0.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				RMS_Support_Tool&nbsp;&nbsp;&nbsp;&nbsp; PSGallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				The 'RMS Support Tool' provides the functionality to reset...</p>
 				<p>&nbsp;</p>
@@ -977,7 +955,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					<span lang="EN-US">
 					This is sufficient in most cases to reset
 				<a class="Hyperlink" href="https://www.microsoft.com/en-us/microsoft-365" target="_blank">
-				Microsoft® 365</a> apps, while a complete reset 
+				Microsoft® 365</a> Apps, while a complete reset 
 				is useful for all other applications.</span></li>
 					<li>If you want a complete reset, you must run the 
 					RMS_Support_Tool in an administrative PowerShell window as a 
@@ -1117,7 +1095,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
    			 &nbsp;&nbsp; ├──[O] AIP protection templates</p>
 				<p class="ConsoleListShadow">
 
-   			 &nbsp;&nbsp; └──[L] MSC labels and policies</p>
+   			 &nbsp;&nbsp; └──[L] Labels and policies</p>
 				<p class="ConsoleListShadow">
 
    			    &nbsp;</p>
@@ -1168,16 +1146,16 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					be asked for your credentials.</li>
 				</ul>
 				<p class="Header3">
-				<a name="[L]_MSC_labels_and_policies_/_-CollectMSCLabelsAndPolicies">[L] 
-				MSC labels and policies / -CollectMSCLabelsAndPolicies</a></p>
+				<a name="[L]_Labels_and_policies_/_-CollectLabelsAndPolicies">[L] 
+				Labels and policies / -CollectLabelsAndPolicies</a></p>
 				<p>This parameter collects the labels and policy definitions 
 				from your 
 				<span lang="EN-US">
 				<a class="Hyperlink" href="https://www.microsoft.com/en-us/microsoft-365" target="_blank">
-				Microsoft® 365</a></span> Security Center (MSC). Those with 
+				Microsoft® 365</a></span> Security Center. Those with 
 				protection and those with classification only.</p>
 				<p>Results are written into log file
-				<a class="Hyperlink" href="#MSCLabelsAndPolicies.log">MSCLabelsAndPolicies.log</a> 
+				<a class="Hyperlink" href="#LabelsAndPolicies.log">LabelsAndPolicies.log</a> 
 				in the subfolder "Collect" of the Logs folder.</p>
 				<p><em>Note:</em></p>
 				<ul>
@@ -1707,13 +1685,13 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/module/aipservice/get-aipservicetemplate" rel="nofollow" target="_blank">Get-AipServiceTemplate</a>.</p>
 				<ul>
 					<li>
-					<p class="Header4"><a name="MSCLabelsAndPolicies.log">MSCLabelsAndPolicies.log</a></p>
+					<p class="Header4"><a name="LabelsAndPolicies.log">LabelsAndPolicies.log</a></p>
 					</li>
 				</ul>
 				<p class="Logs-Text">This file is created by the
 				collect option
-				<a class="Hyperlink" href="#[L]_MSC_labels_and_policies_/_-CollectMSCLabelsAndPolicies">
-				MSC labels and policies</a>.</p>
+				<a class="Hyperlink" href="#[L]_Labels_and_policies_/_-CollectLabelsAndPolicies">
+				Labels and policies</a>.</p>
 				<p class="Logs-Text">For more information, please see the following documentation:
 				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps" target="_blank">
 				Get-Label</a> and
@@ -1780,6 +1758,77 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				analyze option
 					<a class="Hyperlink" href="#[T]_Protection_/_-AnalyzeProtection">
 				Protection</a> and can be used for troubleshooting.&nbsp;</p>
+				<p class="Header1"><a name="Support">Support</a></p>
+				<p>When creating the RMS_Support_Tool, great care was taken to 
+				ensure quality and functionality. Extensive tests were carried 
+				out before publication to intercept and handle any errors. 
+				However, there is no guarantee that an error will not occur in a 
+				wide variety of configurations and environments.<br />
+				<br />
+				Should you ever encounter a problem with the RMS_Support_Tool, 
+				please use the information on this page to report it so that the 
+				problem can be resolved.</p>
+				<p class="Header3"><a name="Microsoft_Support_Policy">Microsoft 
+				Support Policy</a></p>
+				<p>Under this policy, the RMS_Support_Tool remains in support if 
+				the following criteria are met:</p>
+				<ul>
+					<li>You're using the
+					<a class="Hyperlink" href="https://aka.ms/RMS_Support_Tool/Latest" target="_blank">
+					lastet version</a> of the RMS_Support_Tool.</li>
+					<li>You must be licensed with a product or service that uses
+					<a class="Hyperlink" href="https://www.microsoft.com/en-us/us-partner-blog/2018/11/05/microsoft-information-protection-and-unified-labeling/" target="_blank">
+					Microsoft Information Protection</a>.</li>
+				</ul>
+				<p class="Header3"><a name="How_to_file_issues_and_get_help">How 
+				to file issues and get help</a></p>
+				<p>The RMS_Support_Tool uses GitHub
+				<a class="Hyperlink" href="https://github.com/microsoft/RMS_Support_Tool/issues" target="_blank">
+				Issues</a> to track problems and feature requests. Please search 
+				the existing issues and the following known issues section 
+				before filing new issues to avoid duplicates. For new issues, 
+				file your bug or feature request as a new Issue. Please describe 
+				the Issue as detailed as possible. A screenshot of the error 
+				and/or a step-by-step description of how to reproduce a problem 
+				would be very helpful for this.</p>
+				<p class="Header3"><a name="Known_issues">Known issues</a></p>
+				<p class="Header4">Set-ExecutionPolicy has no effect</p>
+				<p>This applies only to a manual installation: If you downloaded 
+				the RMS_Support_Tool from its
+				<a class="Hyperlink" href="https://aka.ms/RMS_Support_Tool/Latest" target="_blank">
+				GitHub website</a>, it will be extended by an
+				<a class="Hyperlink" href="https://blogs.technet.microsoft.com/askcore/2013/03/24/alternate-data-streams-in-ntfs" target="_blank">
+				Alternate Data Streams in NTFS</a> (ADS). If the corresponding 
+				website in the ADS is not trusted in your environment, the 
+				PowerShell command "Set-ExecutionPolicy" has no effect.</p>
+				<p><span class="Header4">Resolution:</span> Either you 
+				right-click the downloaded script files and "Unblock" it, or you 
+				add the corresponding website to your trusted sites settings.</p>
+				<p class="Header4">Script does not start and returns an error</p>
+				<p>If you see this message in a PowerShell command window, you 
+				are most likely affected by the Windows® Group Policy setting 
+				"Turn on Script Execution":&nbsp;&nbsp;</p>
+				<p class="ConsoleListShadowTop">Set-ExecutionPolicy : PowerShell updated your local 
+				preference successfully, but 
+				the setting is</p>
+				<p class="ConsoleListShadow">overridden by the group policy 
+				applied to your system or 
+				Set-ExecutionPolicy : Windows PowerShell</p>
+				<p class="ConsoleListShadow">updated your execution policy 
+				successfully, but the setting 
+				is overridden by a policy defined at a</p>
+				<p class="ConsolteListShadowButton">more specific scope.</p>
+				<p><span class="Header4">Resolution:</span> To resolve this 
+				problem, you must remove this Group Policy setting or configure 
+				a setting that allows scripts to run. Please request assistance 
+				from your administrator to do this. Please also read
+				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1#use-group-policy-to-manage-execution-policy" target="_blank">
+				Use Group Policy to Manage Execution Policy</a> and
+				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1" target="_blank">
+				Set-ExecutionPolicy</a>.</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
 				<p>&nbsp;</p>
 				<p>&nbsp;</p>
 
@@ -1797,7 +1846,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				
 				<p>
 				RMS Support Tool is maintained by 				
-				<a href="https://github.com/schiroky" style="border-style: none; border-color: currentColor; border-width: 0px; margin: 0px; padding: 0px; border-image: url('none') 100% 1 0 stretch; color: rgb(242, 242, 242); font-family: inherit; font-size-adjust: none; font-stretch: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; text-decoration: underline; text-shadow: none; transition-delay: 0s; transition-duration: 0.5s; transition-property: text-shadow; transition-timing-function: ease; vertical-align: baseline;" target="_blank">Claus Schiroky</a>,
+				<a href="mailto:claus.schiroky@microsoft.com?subject=RMS_Support_Tool" style="border-style: none; border-color: currentColor; border-width: 0px; margin: 0px; padding: 0px; border-image: url('none') 100% 1 0 stretch; color: rgb(242, 242, 242); font-family: inherit; font-size-adjust: none; font-stretch: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; text-decoration: underline; text-shadow: none; transition-delay: 0s; transition-duration: 0.5s; transition-property: text-shadow; transition-timing-function: ease; vertical-align: baseline;" target="_blank">Claus Schiroky</a>,
 				<span class="auto-style7">Microsof</span>t® C<span>ustomer 
 				Service &amp; Support EMEA.</span><span lang=EN-US style='line-height:115%;
   color:white;' class="auto-style7"><br />
