@@ -9,7 +9,7 @@ Should you ever encounter a problem with the RMS_Support_Tool, please use the in
 Under this policy, the RMS_Support_Tool remains in support if the following criteria are met:
 
 - You're using the [lastet version](https://aka.ms/RMS_Support_Tool/Latest) of the RMS_Support_Tool.
-- You must be licensed with a product or service that uses [Microsoft Information Protection](https://www.microsoft.com/en-us/us-partner-blog/2018/11/05/microsoft-information-protection-and-unified-labeling/).
+- You must be licensed with a product or service that uses [Microsoft Information Protection and Unified Labeling](https://www.microsoft.com/en-us/us-partner-blog/2018/11/05/microsoft-information-protection-and-unified-labeling/).
 
 ## How to file issues and get help  
 
