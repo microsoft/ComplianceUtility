@@ -21,13 +21,13 @@ For new issues, file your bug or feature request as a new Issue. Please describe
 
 ## Known issues
 
-**Set-ExecutionPolicy has no effect**
+* **Set-ExecutionPolicy has no effect**
 
 This applies only to a manual installation: If you downloaded the RMS_Support_Tool from its [GitHub website](https://aka.ms/RMS_Support_Tool/Latest), it will be extended by an [Alternate Data Streams in NTFS](https://blogs.technet.microsoft.com/askcore/2013/03/24/alternate-data-streams-in-ntfs) (ADS). If the corresponding website in the ADS is not trusted in your environment, the PowerShell command "Set-ExecutionPolicy" has no effect.
 
 **Resolution:** Either you right-click the downloaded script files and "Unblock" it, or you add the corresponding website to your trusted sites settings.
 
-**Script does not start and returns an error**
+* **Script does not start and returns an error**
 
 If you see this message in a PowerShell command window, you are most likely affected by the Windows® Group Policy setting "Turn on Script Execution":
 
@@ -39,7 +39,7 @@ the setting is overridden by a policy defined at a more specific scope.
 
 **Resolution:** To resolve this problem, you must remove this Group Policy setting or configure a setting that allows scripts to run. Please request assistance from your administrator to do this. Please also read [Use Group Policy to Manage Execution Policy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1#use-group-policy-to-manage-execution-policy) and [Set-ExecutionPolicy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1).
 
-**Installing PowerShellGet module cause an error**
+* **Installing PowerShellGet module cause an error**
 
 This applies only to a manual installation: If you follow step 2. Install PowerShellGet-module from the [step-by-step installation](https://aka.ms/RMS_Support_Tool/#Step-by-step_installation), you may see the following error:
 
