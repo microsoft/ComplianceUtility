@@ -15,7 +15,7 @@ Under this policy, the RMS_Support_Tool remains in support if the following crit
 
 The RMS_Support_Tool uses GitHub [Issues](https://github.com/microsoft/RMS_Support_Tool/issues) to track problems and feature requests.
 
-Please check for known issues before submitting new issues to avoid duplicates.
+Please check for [known issues](https://aka.ms/RMS_Support_Tool/blob/main/SUPPORT.md#known-issues) before submitting new issues to avoid duplicates.
 
 For new issues, file your bug or feature request as a new Issue. Please describe the Issue as detailed as possible. A screenshot of the error and/or a step-by-step description of how to reproduce a problem would be very helpful for this.
 
