@@ -32,9 +32,9 @@ This applies only to a manual installation: If you downloaded the RMS_Support_To
 If you see this message in a PowerShell command window, you are most likely affected by the Windows® Group Policy setting "Turn on Script Execution":
 
 ```Text
-Set-ExecutionPolicy : PowerShell updated your local preference successfully, but the setting is overridden by the group policy
-applied to your system or Set-ExecutionPolicy : Windows PowerShell updated your execution policy successfully, but the setting
-is overridden by a policy defined at a more specific scope.
+Set-ExecutionPolicy : PowerShell updated your local preference successfully, but the setting is overridden by the group
+policy applied to your system or Set-ExecutionPolicy : Windows PowerShell updated your execution policy successfully, but
+the setting is overridden by a policy defined at a more specific scope.
 ```
 
 **Resolution:** To resolve this problem, you must remove this Group Policy setting or configure a setting that allows scripts to run. Please request assistance from your administrator to do this. Please also read [Use Group Policy to Manage Execution Policy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1#use-group-policy-to-manage-execution-policy) and [Set-ExecutionPolicy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1).
@@ -44,13 +44,12 @@ is overridden by a policy defined at a more specific scope.
 This applies only to a manual installation: If you follow step 2. Install PowerShellGet-module from the [step-by-step installation](https://aka.ms/RMS_Support_Tool/#Step-by-step_installation), you may see the following error:
 
 ```Text
-PackageManagement\Install-Package : No match was found for the specified search criteria and module name
-'PowerShellGet'. Try Get-PSRepository to see all available registered module repositories.
+PackageManagement\Install-Package : No match was found for the specified search criteria and module name 'PowerShellGet'.
+Try Get-PSRepository to see all available registered module repositories.
 At C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\1.0.0.1\PSModule.psm1:1772 char:21
 + ...          $null = PackageManagement\Install-Package @PSBoundParameters
 +                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo : ObjectNotFound: (Microsoft.Power....InstallPackage:InstallPackage) [Install-Package],
-Exception
+    + CategoryInfo : ObjectNotFound: (Microsoft.Power....InstallPackage:InstallPackage) [Install-Package], Exception
     + FullyQualifiedErrorId : NoMatchFoundForCriteria,Microsoft.PowerShell.PackageManagement.Cmdlets. InstallPackage
 ```
 
