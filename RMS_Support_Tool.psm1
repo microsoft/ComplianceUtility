@@ -10,7 +10,7 @@
 # Licensed under the MIT License
 
 <# Defining global variables #>
-[Version]$Global:strVersion = "2.0.2" <# Defining version #>
+[Version]$Global:strVersion = "2.0.3" <# Defining version #>
 $Global:strWindowsEdition = (Get-CimInstance Win32_OperatingSystem).Caption <# Defining variable to evaluate Windows version #>
 $Global:strTempFolder = (Get-Item Env:"Temp").Value <# Defining variable for user temp folder #>
 $Global:strUserLogPath = New-Item -ItemType Directory -Force -Path $Global:strTempFolder"\RMS_Support_Tool\Logs" <# Defining default user log path #>
@@ -61,10 +61,10 @@ Function RMS_Support_Tool {
         DISCLAIMER OF WARRANTY: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. PLEASE DO UNDERSTAND THAT THERE IS NO GUARANTEE THAT THIS SOFTWARE WILL RUN WITH ANY GIVEN ENVIRONMENT OR CONFIGURATION. BY INSTALLING AND USING THE SOFTWARE YOU ACCEPT THIS DISCLAIMER OF WARRANTY. IF YOU DO NOT ACCEPT THE TERMS, DO NOT INSTALL OR USE THIS SOFTWARE.
         
         VERSION
-        2.0.2
+        2.0.3
         
         CREATE DATE
-        06/22/2021
+        08/06/2021
 
         AUTHOR
         Claus Schiroky
@@ -87,7 +87,7 @@ Function RMS_Support_Tool {
         https://privacy.microsoft.com/PrivacyStatement
 
         COPYRIGHT
-        Copyright® 2021 Microsoft®. All rights reserved.
+        Copyright (c) Microsoft Corporation.
 
     .PARAMETER Information
         This parameter shows syntax and a description.
@@ -878,7 +878,7 @@ Function fncInformation {
     If ($Global:bolCommingFromMenu -eq $true) {
     
         <# Console output #>
-        Write-Output "NAME:`nRMS_Support_Tool`n`nDESCRIPTION:`nThe RMS_Support_Tool provides the functionality to reset all Microsoft® AIP/MIP/AD RMS client services. Its main purpose is to delete the currently downloaded policies, reset all settings for AIP/MIP/AD RMS services, and it can also be used to collect and analyze troubleshooting data.`n`nVERSION:`n$Global:strVersion`n`nAUTHOR:`nClaus Schiroky`nCustomer Service & Support - EMEA Modern Work Team`nMicrosoft Deutschland GmbH`n`nHOMEPAGE:`nhttps://aka.ms/RMS_Support_Tool`n`nSPECIAL THANKS TO:`nMatthias Meiling`nInformation Protection - EMEA Security Team`nMicrosoft Romania SRL`n`nSteve Light`nInformation Protection - ATC Security Team`nMicrosoft Corp.`n`nPRIVACY STATEMENT:`nhttps://privacy.microsoft.com/PrivacyStatement`n`nCOPYRIGHT:`nCopyright® 2021 Microsoft®. All rights reserved.`n"
+        Write-Output "NAME:`nRMS_Support_Tool`n`nDESCRIPTION:`nThe RMS_Support_Tool provides the functionality to reset all Microsoft® AIP/MIP/AD RMS client services. Its main purpose is to delete the currently downloaded policies, reset all settings for AIP/MIP/AD RMS services, and it can also be used to collect and analyze troubleshooting data.`n`nVERSION:`n$Global:strVersion`n`nAUTHOR:`nClaus Schiroky`nCustomer Service & Support - EMEA Modern Work Team`nMicrosoft Deutschland GmbH`n`nHOMEPAGE:`nhttps://aka.ms/RMS_Support_Tool`n`nSPECIAL THANKS TO:`nMatthias Meiling`nInformation Protection - EMEA Security Team`nMicrosoft Romania SRL`n`nSteve Light`nInformation Protection - ATC Security Team`nMicrosoft Corp.`n`nPRIVACY STATEMENT:`nhttps://privacy.microsoft.com/PrivacyStatement`n`nCOPYRIGHT:`nCopyright (c) Microsoft Corporation.`n"
 
     }
 
@@ -1900,18 +1900,41 @@ Function fncCollectLogging {
         <# Action with AIPv2 client #>
         ElseIf ($strAIPClientVersion.StartsWith("2") -eq $true) {
 
-            <# Remember default progress bar status: 'Continue' #>
-            $Private:strOriginalPreference = $Global:ProgressPreference 
-            $Global:ProgressPreference = "SilentlyContinue" <# Hiding progress bar #>
-            
-            <# Exporting AIP log folders #>
-            Export-AIPLogs -FileName "$Global:strUniqueLogFolder\AIPLogs.zip" | Out-Null
-            
+            <# Checking if running as administrator #>
+            If ($Global:bolRunningAsAdmin -eq $true) {
+
+                <# Authenticate for accessing logs #>
+                Set-AIPAuthentication
+
+                <# Remember default progress bar status: 'Continue' #>
+                $Private:strOriginalPreference = $Global:ProgressPreference 
+                $Global:ProgressPreference = "SilentlyContinue" <# Hiding progress bar #>
+
+                <# Exporting AIP log folders #>
+                Export-AIPLogs -FileName "$Global:strUniqueLogFolder\AIPLogs.zip" | Out-Null
+
+                <# Set back progress bar to previous setting #>
+                $Global:ProgressPreference = $Private:strOriginalPreference
+
+            }
+            Else {
+
+                <# Copy MSIP content to logs folder #>
+                fncCopyItem $env:LOCALAPPDATA\Microsoft\MSIP $Global:strUniqueLogFolder"\MSIP" "MSIP\*"
+
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export MSIP content" -strLogValue "\MSIP"
+
+                <# Copy MSIPC content to logs folder #>
+                fncCopyItem $env:LOCALAPPDATA\Microsoft\MSIPC $Global:strUniqueLogFolder"\MSIPC" "MSIPC\*"
+
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export MSIPC content" -strLogValue "\MSIPC"
+
+            }
+
             <# Verbose/Logging #>
             fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export AIP Log folders" -strLogValue $true
-
-            <# Set back progress bar to previous setting #>
-            $Global:ProgressPreference = $Private:strOriginalPreference
 
         }
 
