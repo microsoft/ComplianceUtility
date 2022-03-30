@@ -5,8 +5,8 @@
 
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta content="en-us" http-equiv="Content-Language" />
-<meta content="3.0.1" http-equiv="VERSION" />
-<meta content="10/14/2021" http-equiv="CREATEDATE" />
+<meta content="3.0.2" http-equiv="VERSION" />
+<meta content="03/24/2022" http-equiv="CREATEDATE" />
 <meta content="Claus Schiroky" http-equiv="AUTHOR" />
 <meta content="https://aka.ms/UnifiedLabelingSupportTool/Latest" http-equiv="SOURCE" />
 <meta content="Copyright (c) Microsoft Coporation." http-equiv="COPYRIGHT" />
@@ -261,7 +261,7 @@
 				
 				<p>
 				<span class="HeaderTitle">Unified Labeling Support Tool</span><br />
-				Version 3.0.1</p>
+				Version 3.0.2</p>
 
 
             </div>
@@ -579,7 +579,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				computer, you will be prompted to do so. You may need to confirm 
 				the installation of NuGet Provider and PowerShell Gallery as a 
 				trusted repository, and you may also need to confirm the 
-				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-5.1" target="_blank">installation of PowerShellGet</a>..</li>
+				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-5.1" target="_blank">installation of PowerShellGet</a>.</li>
 				</ul>
 				<p class="Header4"><a name="Allow_signed_PowerShell_scripts">Allow signed PowerShell scripts</a></p>
 				<p>If PowerShell script execution is restricted in your 
@@ -608,7 +608,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				UnifiedLabelingSupportTool.psd1 and ULSupportTool-Win.htm) 
 				into this folder:</p>
 				<p><span class="ConsoleTextShadow">
-				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.0.1</span></p>
+				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.0.2</span></p>
 				<p>This path must be listed in the PSModulePath environment 
 					variable. For more information, please read how
 					<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable" rel="nofollow" target="_blank">to view the PSModulePath variable</a>.</p>
@@ -640,7 +640,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">----------&nbsp;&nbsp; -------&nbsp;&nbsp;&nbsp; ----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
 				----------------</p>
 				<p class="ConsolteListShadowButton">Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				3.0.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
+				3.0.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
 				{UnifiedLabelingSupportTool, ULSupportTool}</p>
 				<p>To verify that an installation was performed using PowerShell 
 				Gallery, you can run the following command:</p>
@@ -657,7 +657,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">-------&nbsp;&nbsp; 
 				----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				----------&nbsp;&nbsp;&nbsp;&nbsp; -----------</p>
-				<p class="ConsolteListShadowButton">3.0.1&nbsp;&nbsp;&nbsp;&nbsp; 
+				<p class="ConsolteListShadowButton">3.0.2&nbsp;&nbsp;&nbsp;&nbsp; 
 				UnifiedLabelingSupportTool&nbsp;&nbsp; PSGallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				Have you ever used the Sensitivity button in...</p>
 				<p>&nbsp;</p>
@@ -802,8 +802,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				removes all relevant policies, labels and settings:</p>
 				<p><span class="ConsoleTextShadow">UnifiedLabelingSupportTool 
 				-Reset Default</span></p>
-				<p>All group policy settings are reapplied by "<a class="Hyperlink" href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/gpupdate" target="_blank">gpupdate 
-				/force</a>", and the following registry keys are cleaned up:</p>
+				<p>With the above command the following registry keys are cleaned up:</p>
 				<p class="ConsoleListShadowTop">[HKCU:\SOFTWARE\Classes\Local 
 				Settings\Software\Microsoft\MSIPC]</p>
 				<p class="ConsoleListShadow">[HKCU:\SOFTWARE\Classes\Local 
@@ -820,6 +819,10 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				[HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\15.0\Common\DRM]</p>
 				<p class="ConsoleListShadow">
 				[HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\DRM]</p>
+				<p class="ConsoleListShadow">
+				[HKCU:\SOFTWARE\Policies\Microsoft\Office\15.0\Common\DRM]</p>
+				<p class="ConsoleListShadow">
+				[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM]</p>
 				<p class="ConsoleListShadow">
 				[HKCU:\SOFTWARE\Microsoft\XPSViewer\Common\DRM]</p>
 				<p class="ConsoleListShadow">
@@ -886,7 +889,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsolteListShadowButton">
 				[HKLM:\SOFTWARE\WOW6432Node\Microsoft\MSIP]</p>
 				<p><strong>Silent:</strong></p>
-				<p>This command line-parameter argument does the same as "-Reset 
+				<p>This command line parameter argument does the same as "-Reset 
 				Default", but does not print any output - unless an error occurs 
 				when attempting to reset:</p>
 				<p><span class="ConsoleTextShadow">UnifiedLabelingSupportTool 
@@ -1008,13 +1011,13 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				</ul>
 				<p class="Header3">
 				<a name="[U]_Endpoint_URLs_/_-CollectEndpointURLs">[U] Endpoint URLs / -CollectEndpointURLs</a></p>
-				<p>This parameter collects important enpoint URLs.<br />
+				<p>This parameter collects important endpoint URLs.<br />
 				The URLs are taken from your local registry or your tenant's AIP service configuration 
 				information, and extended by additional relevant URLs.</p>
 				<p>In a first step, this parameter is used to check whether you 
 				can access the URL.</p>
 				<p>In a second step, the issuer of the corresponding certificate 
-				of the URL is validated.</p>
+				of the URL is collected.</p>
 				<p>This process is represented by an output with the Tenant Id, 
 				Endpoint 
 				name, URL, and Issuer of the 
@@ -1049,6 +1052,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<a name="[L]_Labels_and_policies_/_-CollectLabelsAndPolicies">[L] 
 				Labels and policies / -CollectLabelsAndPolicies</a></p>
 				<p>This parameter collects the labels and policy definitions 
+				(with detailled label actions and policy rules) 
 				from your 
 				<span lang="EN-US">
 				<a class="Hyperlink" href="https://www.microsoft.com/en-us/microsoft-365" target="_blank">
@@ -1376,8 +1380,18 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="Logs-ConsoleListShadow">[HKCR:\MSIP.WordAddin]</p>
 				<p class="Logs-ConsoleListShadow">[HKCR:\MSIP.PowerPointAddin]</p>
 				<p class="Logs-ConsoleListShadow">[HKCR:\MSIP.OutlookAddin]</p>
-				<p class="Logs-ConsolteListShadowButton">[HKCR:\Local 
+				<p class="Logs-ConsoleListShadow">[HKCR:\Local 
 				Settings\Software\Microsoft\MSIPC]</p>
+				<p class="Logs-ConsoleListShadow">
+				[HKCU:\SOFTWARE\Policies\Microsoft\Office\15.0\Common\DRM]</p>
+				<p class="Logs-ConsoleListShadow">
+				[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM]</p>
+				<p class="Logs-ConsoleListShadow">
+				[HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security]</p>
+				<p class="Logs-ConsoleListShadow">
+				[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]</p>
+				<p class="Logs-ConsolteListShadowButton">
+				[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security]</p>
 				<ul>
 					<li>
 					<p class="Header4ParagraphSpaceBefore">Gpresult.htm</p>

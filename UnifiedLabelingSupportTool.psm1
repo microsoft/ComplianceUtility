@@ -10,7 +10,7 @@
 # Licensed under the MIT License
 
 <# Global variables #>
-[Version]$Global:strVersion = "3.0.0" <# Define version #>
+$Global:strVersion = "3.0.2" <# Define version #>
 $Global:strDefaultWindowTitle = $Host.UI.RawUI.WindowTitle <# Caching window title #>
 $Global:host.UI.RawUI.WindowTitle = "Unified Labeling Support Tool ($Global:strVersion)" <# Set window title #>
 $Global:MenuCollectExtended = $false <# Define variable for COLLECT menu handling #>
@@ -190,10 +190,10 @@ Function UnifiedLabelingSupportTool {
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         
         VERSION
-        3.0.0
+        3.0.2
         
         CREATE DATE
-        10/05/2021
+        03/24/2022
 
         AUTHOR
         Claus Schiroky
@@ -248,13 +248,15 @@ Function UnifiedLabelingSupportTool {
 
         UnifiedLabelingSupportTool -Reset Default
 
-        All group policy settings are reapplied by "gpupdate /force", and the following registry keys are cleaned up:
+        With the above command the following registry keys are cleaned up:
 
         [HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\MSIPC]
         [HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\AIPMigration]
         [HKCU:\SOFTWARE\Classes\Microsoft.IPViewerChildMenu]
         [HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\DRM]
         [HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\DRM]
+        [HKCU:\SOFTWARE\Policies\Microsoft\Office\15.0\Common\DRM]
+        [HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM]
         [HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\15.0\Common\DRM]
         [HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\DRM]
         [HKCU:\SOFTWARE\Microsoft\XPSViewer\Common\DRM]
@@ -301,7 +303,7 @@ Function UnifiedLabelingSupportTool {
 
         Silent:
 
-        This command line-parameter argument does the same as "-Reset Default", but does not print any output - unless an error occurs when attempting to reset:
+        This command line parameter argument does the same as "-Reset Default", but does not print any output - unless an error occurs when attempting to reset:
 
         UnifiedLabelingSupportTool -Reset Silent
 
@@ -370,12 +372,12 @@ Function UnifiedLabelingSupportTool {
         - This feature is not available on Apple macOS.
 
     .PARAMETER CollectEndpointURLs
-        This parameter collects important enpoint URLs.
+        This parameter collects important endpoint URLs.
         The URLs are taken from your local registry or your tenant's AIP service configuration information, and extended by additional relevant URLs.
 
         In a first step, this parameter is used to check whether you can access the URL.
 
-        In a second step, the issuer of the corresponding certificate of the URL is validated. 
+        In a second step, the issuer of the corresponding certificate of the URL is collected. 
         This process is represented by an output with the Tenant Id, Endpoint name, URL, and Issuer of the certificate. For example:
 
         --------------------------------------------------
@@ -1062,19 +1064,19 @@ Function fncDeleteRegistrySetting ($strRegistryKey, $strRegistrySetting) {
                 Remove-ItemProperty -Path $strRegistryKey -Name $strRegistrySetting -Force -ErrorAction Stop -WarningAction SilentlyContinue
                 
                 <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncDeleteRegistrySetting" -strLogDescription $strRegistrySetting -strLogValue "Removed"
+                fncLogging -strLogFunction "fncDeleteRegistrySetting" -strLogDescription "$strRegistrySetting ($strRegistryKey)" -strLogValue "Removed"
 
             }
             Catch [System.Management.Automation.ItemNotFoundException] {
 
                 <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncDeleteRegistrySetting" -strLogDescription $strRegistrySetting -strLogValue "Requested registry access is not allowed or setting does not exist."
+                fncLogging -strLogFunction "fncDeleteRegistrySetting" -strLogDescription "$strRegistrySetting ($strRegistryKey)" -strLogValue "Requested registry access is not allowed or setting does not exist."
 
             }
             Catch {
 
                 <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncDeleteRegistrySetting" -strLogDescription $strRegistrySetting -strLogValue "ERROR: Failed"
+                fncLogging -strLogFunction "fncDeleteRegistrySetting" -strLogDescription "$strRegistrySetting ($strRegistryKey)" -strLogValue "ERROR: Failed"
 
             }
 
@@ -1139,158 +1141,190 @@ Function fncReset ($strResetMethod) {
 
     }
 
-    <# Detect Windows and run actions to reset #>
-    If ([System.Environment]::OSVersion.Platform -eq "Win32NT") {
+    <# Actions if "Yes" was selected #>
+    If ($Private:ReadHost -eq "Y") {
 
-        <# If "registry overrides" exist, create a backup copy #>
-        If ($(Test-Path -Path "HKLM:\SOFTWARE\Microsoft\MSIPC\ServiceLocation") -Eq $true) {
+        <# Detect Windows and run actions to reset #>
+        If ([System.Environment]::OSVersion.Platform -eq "Win32NT") {
 
-            <# Backup registry settings to a reg file #>
-            REG EXPORT "HKLM\SOFTWARE\Microsoft\MSIPC\ServiceLocation" $Private:PSScriptRoot\ServiceLocationBackup.reg /Y | Out-Null
+            <# If "registry overrides" exist, create a backup copy #>
+            If ($(Test-Path -Path "HKLM:\SOFTWARE\Microsoft\MSIPC\ServiceLocation") -Eq $true) {
 
-            <# Console output #>
-            Write-Output "Your ServiceLocation registry settings were stored to"$Private:PSScriptRoot\ServiceLocationBackup.reg
+                <# Backup registry settings to a reg file #>
+                REG EXPORT "HKLM\SOFTWARE\Microsoft\MSIPC\ServiceLocation" $Private:PSScriptRoot\ServiceLocationBackup.reg /Y | Out-Null
 
-            <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncReset" -strLogDescription "Export ServiceLocation backup" -strLogValue "ServiceLocationBackup.reg"
+                <# Console output #>
+                Write-Output "Your ServiceLocation registry settings were stored to"$Private:PSScriptRoot\ServiceLocationBackup.reg
 
-        }
-
-        <# Force update group policy settings #>
-        Write-Output Y | gpupdate /force | Out-Null
-
-        <# Clean user registry keys #>
-        fncDeleteItem "HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\MSIPC"
-        fncDeleteItem "HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\AIPMigration"
-        fncDeleteItem "HKCU:\SOFTWARE\Classes\Microsoft.IPViewerChildMenu"
-        fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Cloud\Office"
-        fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\DRM"
-        fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\DRM"
-        fncDeleteItem "HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\15.0\Common\DRM"
-        fncDeleteItem "HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\DRM"
-        fncDeleteItem "HKCU:\SOFTWARE\Microsoft\XPSViewer\Common\DRM"
-        fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity"
-        fncDeleteItem "HKCU:\SOFTWARE\Microsoft\MSIP"
-        fncDeleteItem "HKCU:\SOFTWARE\Microsoft\MSOIdentityCRL"
-
-        <# Clean registry settings #>
-        fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels" -strRegistrySetting "UseOfficeForLabelling"
-        fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security\Labels" -strRegistrySetting "UseOfficeForLabelling"
-        fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security\Lables" -strRegistrySetting "UseOfficeForLabelling"
-        fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security" -strRegistrySetting "OpenXMLEncryptProperty"
-        fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security" -strRegistrySetting "OpenXMLEncryptProperty"
-        fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Office\15.0\Common\Security" -strRegistrySetting "DRMEncryptProperty"
-        fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security" -strRegistrySetting "DRMEncryptProperty"
-        fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Security" -strRegistrySetting "DRMEncryptProperty"
-        fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security" -strRegistrySetting "DRMEncryptProperty"
-
-        <# Clean client classes registry keys #>
-        fncDeleteItem "HKCR:\AllFilesystemObjects\shell\Microsoft.Azip.Inspect"
-        fncDeleteItem "HKCR:\AllFilesystemObjects\shell\Microsoft.Azip.RightClick"
-
-        <# Clean client folders in file system #>
-        fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Office\DLP\mip"
-        fncDeleteItem "$env:TEMP\Diagnostics"
-        fncDeleteItem "$env:LOCALAPPDATA\Microsoft\MSIP"
-        fncDeleteItem "$env:LOCALAPPDATA\Microsoft\MSIPC"
-        fncDeleteItem "$env:LOCALAPPDATA\Microsoft\DRM"
-
-        <# Additional actions to proceed administrative reset #>
-        If ($Global:bolRunningPrivileged -eq $true) {
-
-            # Clean machine registry keys #>
-            fncDeleteItem "HKLM:\SOFTWARE\Wow6432Node\Microsoft\MSIPC"
-            fncDeleteItem "HKLM:\SOFTWARE\Microsoft\MSIPC"
-            fncDeleteItem "HKLM:\SOFTWARE\Microsoft\MSDRM"
-            fncDeleteItem "HKLM:\SOFTWARE\Wow6432Node\Microsoft\MSDRM"
-            fncDeleteItem "HKLM:\SOFTWARE\WOW6432Node\Microsoft\MSIP"
-
-        }
-
-        <# Check for Office 2013, and enable modern authentication if installed #>
-        If ($(fncCheckForOffice2013) -Eq $true) { 
-
-            <# Check for Office 2013 registry key #>
-            If ($(Test-Path -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0") -Eq $true) {
-        
-                <# Create registry key (overwrite) #>
-                New-Item -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity" -ErrorAction SilentlyContinue | Out-Null
-        
-                <# Implement registry settings to enable modern authentication for Office 2013 #>
-                New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity" -Name "EnableADAL" -Value 1 -PropertyType DWord -ErrorAction SilentlyContinue | Out-Null
-                New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity" -Name "Version" -Value 1 -PropertyType DWord -ErrorAction SilentlyContinue | Out-Null
-        
                 <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncReset" -strLogDescription "ADAL for Office 2013" -strLogValue "Enabled"
+                fncLogging -strLogFunction "fncReset" -strLogDescription "Export ServiceLocation backup" -strLogValue "ServiceLocationBackup.reg"
+
+            }
+
+            <# Clean user registry keys #>
+            fncDeleteItem "HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\MSIPC"
+            fncDeleteItem "HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\AIPMigration"
+            fncDeleteItem "HKCU:\SOFTWARE\Classes\Microsoft.IPViewerChildMenu"
+            fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Cloud\Office"
+            fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\DRM"
+            fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\DRM"
+            fncDeleteItem "HKCU:\SOFTWARE\Policies\Microsoft\Office\15.0\Common\DRM"
+            fncDeleteItem "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM"
+            fncDeleteItem "HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\15.0\Common\DRM"
+            fncDeleteItem "HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\DRM"
+            fncDeleteItem "HKCU:\SOFTWARE\Microsoft\XPSViewer\Common\DRM"
+            fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity"
+            fncDeleteItem "HKCU:\SOFTWARE\Microsoft\MSIP"
+            fncDeleteItem "HKCU:\SOFTWARE\Microsoft\MSOIdentityCRL"
+
+            <# Clean registry settings #>
+            fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels" -strRegistrySetting "UseOfficeForLabelling"
+            fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security\Labels" -strRegistrySetting "UseOfficeForLabelling"
+            fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security\Lables" -strRegistrySetting "UseOfficeForLabelling"
+            fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security" -strRegistrySetting "OpenXMLEncryptProperty"
+            fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security" -strRegistrySetting "OpenXMLEncryptProperty"
+            fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Office\15.0\Common\Security" -strRegistrySetting "DRMEncryptProperty"
+            fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security" -strRegistrySetting "DRMEncryptProperty"
+            fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Security" -strRegistrySetting "DRMEncryptProperty"
+            fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security" -strRegistrySetting "DRMEncryptProperty"
+
+            <# Clean client classes registry keys #>
+            fncDeleteItem "HKCR:\AllFilesystemObjects\shell\Microsoft.Azip.Inspect"
+            fncDeleteItem "HKCR:\AllFilesystemObjects\shell\Microsoft.Azip.RightClick"
+
+            <# Clean client folders in file system #>
+            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Office\DLP\mip"
+            fncDeleteItem "$env:TEMP\Diagnostics"
+            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\MSIP"
+            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\MSIPC"
+            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\DRM"
+
+            <# Additional actions to proceed administrative reset #>
+            If ($Global:bolRunningPrivileged -eq $true) {
+
+                # Clean machine registry keys #>
+                fncDeleteItem "HKLM:\SOFTWARE\Wow6432Node\Microsoft\MSIPC"
+                fncDeleteItem "HKLM:\SOFTWARE\Microsoft\MSIPC"
+                fncDeleteItem "HKLM:\SOFTWARE\Microsoft\MSDRM"
+                fncDeleteItem "HKLM:\SOFTWARE\Wow6432Node\Microsoft\MSDRM"
+                fncDeleteItem "HKLM:\SOFTWARE\WOW6432Node\Microsoft\MSIP"
+
+            }
+
+            <# Check for Office 2013, and enable modern authentication if installed #>
+            If ($(fncCheckForOffice2013) -Eq $true) { 
+
+                <# Check for Office 2013 registry key #>
+                If ($(Test-Path -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0") -Eq $true) {
+            
+                    <# Create registry key (overwrite) #>
+                    New-Item -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity" -ErrorAction SilentlyContinue | Out-Null
+            
+                    <# Implement registry settings to enable modern authentication for Office 2013 #>
+                    New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity" -Name "EnableADAL" -Value 1 -PropertyType DWord -ErrorAction SilentlyContinue | Out-Null
+                    New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity" -Name "Version" -Value 1 -PropertyType DWord -ErrorAction SilentlyContinue | Out-Null
+            
+                    <# Verbose/Logging #>
+                    fncLogging -strLogFunction "fncReset" -strLogDescription "ADAL for Office 2013" -strLogValue "Enabled"
+
+                }
+
+            }
+
+            <# Actions on PowerShell 7.1 (or higher) for compatibility mode #>
+            If ([Version]::new($PSVersionTable.PSVersion.Major, $PSVersionTable.PSVersion.Minor) -ge [Version]::new("7.1") -eq $true) {
+
+                <# Remove AIPService and AzureInformationProtection module, because it's not compatible with PowerShell 7.1 (or higher) #>
+                Remove-Module -Name AzureInformationProtection -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Out-Null
+
+                <# Import AIPService and AzureInformationProtection module in compatiblity mode #>
+                Import-Module -Name AzureInformationProtection -UseWindowsPowerShell -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Out-Null
+
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncReset" -strLogDescription "AzureInformationProtection compatiblity mode" -strLogValue $true
+
+            }
+
+            <# Clear user settings #>
+            If (Get-Module -ListAvailable -Name AzureInformationProtection) { <# Check for installed AIP client #>
+        
+                <# Clear user settings #>
+                Clear-AIPAuthentication -ErrorAction SilentlyContinue | Out-Null
+
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncReset" -strLogDescription "AIPAuthentication" -strLogValue "Cleared"
 
             }
 
         }
 
-        <# Actions on PowerShell 7.1 (or higher) for compatibility mode #>
-        If ([Version]::new($PSVersionTable.PSVersion.Major, $PSVersionTable.PSVersion.Minor) -ge [Version]::new("7.1") -eq $true) {
+        <# Reset for macOS #>
+        If ($IsMacOS -eq $true) {
 
-            <# Remove AIPService and AzureInformationProtection module, because it's not compatible with PowerShell 7.1 (or higher) #>
-            Remove-Module -Name AzureInformationProtection -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Out-Null
+            <# Clean Office client folders/*.policy.xml file #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/CLP" <# Word #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/Office/CLP" <# Excel #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/Office/CLP" <# PowerPoint #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/Office/CLP" <# Outlook #>
 
-            <# Import AIPService and AzureInformationProtection module in compatiblity mode #>
-            Import-Module -Name AzureInformationProtection -UseWindowsPowerShell -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Out-Null
+            <# Clean Office log folders (ULS, MIP) #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Word/Data/Library/Logs" <# Word #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Excel/Data/Library/Logs" <# Excel #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.PowerPoint/Data/Library/Logs" <# PowerPoint #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Outlook/Data/Library/Logs" <# Outlook #>
 
-            <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncReset" -strLogDescription "AzureInformationProtection compatiblity mode" -strLogValue $true
+            <# Clean RMS Sharing App log folders #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs" <# Outlook #>
 
-        }
-
-        <# Clear user settings #>
-        If (Get-Module -ListAvailable -Name AzureInformationProtection) { <# Check for installed AIP client #>
-    
-            <# Clear user settings #>
-            Clear-AIPAuthentication -ErrorAction SilentlyContinue | Out-Null
-
-            <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncReset" -strLogDescription "AIPAuthentication" -strLogValue "Cleared"
+            <# Clean Office MIP SDK #>
+            fncDeleteItem "$(printenv HOME)/Library/Group Containers/UBF8T346G9.Office/mip_policy/mip/logs" <# MIP #>
 
         }
 
-    }
+        <# Action if function was not called silent from command line #>
+        If ($strResetMethod -notmatch "Silent") {
 
-    <# Reset for macOS #>
-    If ($IsMacOS -eq $true) {
+            <# Console output #>
+            Write-Output (Write-Host "RESET: Proceeded.`n" -ForegroundColor Green)
 
-        <# Clean Office client folders/*.policy.xml file #>
-        fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/CLP" <# Word #>
-        fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/Office/CLP" <# Excel #>
-        fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/Office/CLP" <# PowerPoint #>
-        fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/Office/CLP" <# Outlook #>
+            <# Verbose/Logging #>
+            fncLogging -strLogFunction "fncReset" -strLogDescription "Reset Default" -strLogValue "Proceeded"
 
-        <# Clean Office log folders (ULS, MIP) #>
-        fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Word/Data/Library/Logs" <# Word #>
-        fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Excel/Data/Library/Logs" <# Excel #>
-        fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.PowerPoint/Data/Library/Logs" <# PowerPoint #>
-        fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Outlook/Data/Library/Logs" <# Outlook #>
+        }
+        Else { <# Action if function was called with the silent argument #>
 
-        <# Clean RMS Sharing App log folders #>
-        fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs" <# Outlook #>
+            <# Verbose/Logging #>
+            fncLogging -strLogFunction "fncReset" -strLogDescription "Reset Silent" -strLogValue "Proceeded"
 
-        <# Clean Office MIP SDK #>
-        fncDeleteItem "$(printenv HOME)/Library/Group Containers/UBF8T346G9.Office/mip_policy/mip/logs" <# MIP #>
+        }
 
     }
-
-    <# Action if function was not called silent from command line #>
-    If ($strResetMethod -notmatch "Silent") {
-
-        <# Console output #>
-        Write-Output (Write-Host "RESET: Proceeded.`n" -ForegroundColor Green)
+    Else { <# Actions if any other key was pressed #>
 
         <# Verbose/Logging #>
-        fncLogging -strLogFunction "fncReset" -strLogDescription "Reset Default" -strLogValue "Proceeded"
+        fncLogging -strLogFunction "fncReset" -strLogDescription "Reset" -strLogValue "Canceled"
 
-    }
-    Else { <# Action if function was called with the silent argument #>
+        <# Action if function was called from command line #>
+        If ($Global:bolCommingFromMenu -eq $false) {
 
-        <# Verbose/Logging #>
-        fncLogging -strLogFunction "fncReset" -strLogDescription "Reset Silent" -strLogValue "Proceeded"
+            <# Set back window title to default #>
+            $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
+
+            <# Exit function #>
+            Break
+
+        }
+
+        <# Action if function was called from the menu #>
+        If ($Global:bolCommingFromMenu -eq $true) {
+ 
+            <# Clear console #>
+            Clear-Host
+ 
+            <# Call show menu function #>
+            fncShowMenu    
+ 
+        }
 
     }
 
@@ -1527,19 +1561,19 @@ Function fncRecordProblem {
             If ($Global:bolRunningPrivileged -eq $false) {
 
                 <# Console output, if not running with administrative privileges #>
-                Write-Output "Record problem is now activated for user `"$Env:UserName`"."
+                Write-Output "Recording is now underway for user `"$Env:UserName`"."
 
             }
             Else {
 
                 <# Console output if running with administrative privileges #>
-                Write-Output "Record problem is now activated for administrator `"$Env:UserName`"."
+                Write-Output "Recording is now underway for administrator `"$Env:UserName`"."
 
             }
 
             <# Console output #>
-            Write-Output (Write-Host "IMPORTANT: Now start to reproduce your problem, but leave this window open." -ForegroundColor Red)
-            Read-Host "After reproducing the problem, close all applications you have used for, then come back here and press enter to continue"
+            Write-Output (Write-Host "IMPORTANT: Now reproduce the problem, but leave this window open." -ForegroundColor Red)
+            Read-Host "After reproducing the problem, close all the applications you were using, return here and press enter to complete the recording."
 
             <# Console output #>
             Write-Output "Collecting logs, please wait...`n"
@@ -1569,8 +1603,8 @@ Function fncRecordProblem {
             fncLogging "fncRecordProblem" -strLogDescription "New log folder created" -strLogValue $Private:strUniqueFolderName
 
             <# Console output #>
-            Write-Output (Write-Host "IMPORTANT: Now start to reproduce your problem, but leave this window open." -ForegroundColor Red)
-            Read-Host "After reproducing the problem, close all applications you have used for, then come back here and press enter to continue"
+            Write-Output (Write-Host "IMPORTANT: Now reproduce the problem, but leave this window open." -ForegroundColor Red)
+            Read-Host "After reproducing the problem, close all the applications you were using, return here and press enter to complete the recording."
 
             <# Console output #>
             Write-Output "Collecting logs, please wait...`n"
@@ -2124,24 +2158,11 @@ Function fncCollectLogging {
             <# Feed variable with AIP client version information #>
             $strAIPClientVersion = $((Get-Module -ListAvailable -Name AzureInformationProtection).Version).ToString()
 
-            <# Action with AIPv1 client #>
-            If ($strAIPClientVersion.StartsWith("1") -eq $true) {
-                
-                <# Copy MSIP content to logs folder #>
-                fncCopyItem $env:LOCALAPPDATA\Microsoft\MSIP "$Global:strUniqueLogFolder\MSIP" "MSIP\*"
+            <# Logging: AIP client version information #>
+            fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "AIP client version" -strLogValue $strAIPClientVersion
 
-                <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export MSIP content" -strLogValue "\MSIP"
-
-                <# Copy MSIPC content to logs folder #>
-                fncCopyItem $env:LOCALAPPDATA\Microsoft\MSIPC "$Global:strUniqueLogFolder\MSIPC" "MSIPC\*"
-
-                <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export MSIPC content" -strLogValue "\MSIPC"
-
-            }
             <# Action with AIPv2 client #>
-            ElseIf ($strAIPClientVersion.StartsWith("2") -eq $true) {
+            If ($strAIPClientVersion.StartsWith("2") -eq $true) {
 
                 <# Remember default progress bar status: 'Continue' #>
                 $Private:strOriginalPreference = $Global:ProgressPreference 
@@ -2176,6 +2197,9 @@ Function fncCollectLogging {
 
                         }
 
+                        <# Clear authentication #>
+                        Clear-AIPAuthentication -ErrorAction SilentlyContinue | Out-Null
+
                         <# Authenticate for accessing logs #>
                         Set-AIPAuthentication
 
@@ -2202,6 +2226,9 @@ Function fncCollectLogging {
 
         }
         Else {<# Action without any AIP client #>
+
+            <# Logging: If no AIP client is installed #>
+            fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "AIP client installed" -strLogValue $false
 
             <# Export Office MIP content to logs folder #>
             fncCopyItem $env:LOCALAPPDATA\Microsoft\Office\DLP\mip "$Global:strUniqueLogFolder\Office" "mip\*"
@@ -2415,7 +2442,6 @@ Function fncCollectLogging {
                                 "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Office\PowerPoint\Addins",
                                 "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Office\Outlook\Addins",
                                 "HKCU:\SOFTWARE\Microsoft\MSIP",
-                                "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security",
                                 "HKCU:\Software\Microsoft\Office\16.0\Common\Identity",
                                 "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Internet",
                                 "HKCU:\SOFTWARE\Microsoft\Office\Word\Addins",
@@ -2432,7 +2458,12 @@ Function fncCollectLogging {
                                 "HKCR:\MSIP.WordAddin",
                                 "HKCR:\MSIP.PowerPointAddin",
                                 "HKCR:\MSIP.OutlookAddin",
-                                "HKCR:\Local Settings\SOFTWARE\Microsoft\MSIPC"
+                                "HKCR:\Local Settings\SOFTWARE\Microsoft\MSIPC",
+                                "HKCU:\SOFTWARE\Policies\Microsoft\Office\15.0\Common\DRM",
+                                "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM",
+                                "HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security",
+                                "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security",
+                                "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security"
 
         <# Loop though array and cache to a temp file #>
         ForEach ($_ in $Private:arrRegistryKeys) {
@@ -2440,7 +2471,7 @@ Function fncCollectLogging {
             If ($(Test-Path -Path $_) -Eq $true) {
 
                 $Private:strTempFile = $Private:strTempFile + 1
-                & REG EXPORT $_.Replace(":", $null) "$Global:strTempFolder\$Private:strTempFile.reg" /Y | Out-Null <# Remove ":" for export (replace) #>
+                & REG EXPORT $_.Replace(":", $null) "$Global:strTempFolder\$Private:strTempFile.reg" /Y | Out-Null <# Remove the ":" to export (replace) #>
 
             }
 
@@ -2457,9 +2488,6 @@ Function fncCollectLogging {
 
         <# Verbose/Logging #>
         fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export AIP registry keys" -strLogValue "Registry.log"
-
-
-
 
     }
 
@@ -2525,11 +2553,14 @@ Function fncUpdateRequiredModules {
     <# Check for powershellgallery.com as trusted repository #>
     If (-not(Get-PSRepository -Name PSGallery -ErrorAction SilentlyContinue)) {
 
+        <# Verbose/Logging #>
+        fncLogging -strLogFunction "fncUpdateRequiredModules" -strLogDescription "PSGallery trust" -strLogValue "Initiated"
+
         <# Define powershellgallery.com as trusted location, if it's not trusted yet. To be able to install AIPService module #>
         Set-PSRepository -Name PSGallery -InstallationPolicy Trusted -ErrorAction SilentlyContinue -WarningAction SilentlyContinue -Verbose:$false | Out-Null
 
         <# Verbose/Logging #>
-        fncLogging -strLogFunction "fncUpdateRequiredModules" -strLogDescription "PSGallery trust" -strLogValue "Set"
+        fncLogging -strLogFunction "fncUpdateRequiredModules" -strLogDescription "PSGallery trust" -strLogValue "Proceeded"
 
     }
 
@@ -2543,11 +2574,15 @@ Function fncUpdateRequiredModules {
         <# Actions if PowerShell Gallery can be reached #>
         If (Find-PackageProvider -Name NuGet -ErrorAction SilentlyContinue -WarningAction SilentlyContinue) {
 
+            <# Verbose/Logging #>
+            fncLogging -strLogFunction "fncUpdateRequiredModules" -strLogDescription "NuGet update" -strLogValue "Initiated"
+
             <# Install/update nuGet provider to be able to install the latest modules #>
             Install-PackageProvider -Name NuGet -MinimumVersion "2.8.5.208" -ForceBootstrap -Scope CurrentUser -ErrorAction SilentlyContinue -WarningAction SilentlyContinue -Verbose:$false | Out-Null
 
             <# Verbose/Logging #>
             fncLogging -strLogFunction "fncUpdateRequiredModules" -strLogDescription "NuGet version" -strLogValue (Find-PackageProvider -Verbose:$false -Name NuGet).Version
+            fncLogging -strLogFunction "fncUpdateRequiredModules" -strLogDescription "NuGet update" -strLogValue "Proceeded"
 
         }
         Else { <# Actions if PowerShell Gallery can not be reached (no internet connection) #>
@@ -2580,6 +2615,9 @@ Function fncUpdateRequiredModules {
             <# Compare local version vs. online version #>
             If ([Version]::new($Private:strAIPOnlineVersion.Major, $Private:strAIPOnlineVersion.Minor, $Private:strAIPOnlineVersion.Build, $Private:strAIPOnlineVersion.Revision) -gt [Version]::new($Private:strAIPLocalVersion.Major, $Private:strAIPLocalVersion.Minor, $Private:strAIPLocalVersion.Build, $Private:strAIPLocalVersion.Revision) -eq $true) {
 
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncUpdateRequiredModules" -strLogDescription "AIPService module update" -strLogValue "Initiated"
+
                 <# Console output #>
                 Write-Output "Updating AIPService module..."
 
@@ -2587,7 +2625,7 @@ Function fncUpdateRequiredModules {
                 Update-Module -Verbose:$false -Name AIPService -Force -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
 
                 <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncUpdateRequiredModules" -strLogDescription "AIPService module" -strLogValue "Updated"
+                fncLogging -strLogFunction "fncUpdateRequiredModules" -strLogDescription "AIPService module update" -strLogValue "Proceeded"
 
             }
 
@@ -2611,6 +2649,9 @@ Function fncUpdateRequiredModules {
         <# Install AIPService if we can connect to PowerShell Gallery #>
         If (Find-Module -Name AIPService -Repository PSGallery -ErrorAction SilentlyContinue -WarningAction SilentlyContinue) {
 
+            <# Verbose/Logging #>
+            fncLogging -strLogFunction "fncUpdateRequiredModules" -strLogDescription "AIPService module installation" -strLogValue "Initiated"
+
             <# Console output #>
             Write-Output "Installing AIPService module..."
 
@@ -2618,7 +2659,7 @@ Function fncUpdateRequiredModules {
             Install-Module -Verbose:$false -Name AIPService -Repository PSGallery -Scope CurrentUser -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
 
             <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncUpdateRequiredModules" -strLogDescription "AIPService module" -strLogValue "Installed"
+            fncLogging -strLogFunction "fncUpdateRequiredModules" -strLogDescription "AIPService module installation" -strLogValue "Proceeded"
 
             <# Console output #>
             Write-Output "AIPService module installed."
@@ -3507,13 +3548,21 @@ Function fncCollectLabelsAndPolicies {
 
         <# Collecting data #>
         Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "CURRENT POLICY:`n"
-        (Get-LabelPolicy).Name | Format-Table -AutoSize | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force | Format-List 
+        (Get-LabelPolicy).Name | Format-Table -AutoSize | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force | Format-List
+
         Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "`nALL LABELS:"
         Get-Label | Format-Table -AutoSize | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
+
         Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "ALL LABELS WITH DETAILS:"
-        Get-Label | Format-List * | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
+        Get-Label -IncludeDetailedLabelActions $true | Format-List * | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
+
         Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "LABEL POLICIES:"
         Get-LabelPolicy | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
+
+        Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "LABEL POLICY RULES:"
+        $Private:PolicyRules = Foreach ($AP in Get-LabelPolicy) {Get-LabelPolicyRule -Policy $AP.ExchangeObjectId.guid}
+        $Private:PolicyRules | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
+        $Private:PolicyRules = $null
 
     }
 
@@ -3577,7 +3626,6 @@ Function fncCollectEndpointURLs {
     <# Define and fill variables with static URLs #>
     $Private:MyUnifiedLabelingDistributionPointUrl = "dataservice.protection.outlook.com"
     $Private:MyTelemetryDistributionPointUrl = "self.events.data.microsoft.com"
-    $Private:MyAIPv1PolicyDistributionPointUrl = "api.informationprotection.azure.com"
 
     <# Define and fill variable with date/time for unique log folder #>
     $Private:MyTimestamp = (Get-Date -Verbose:$false -UFormat "%y%m%d-%H%M%S")
@@ -3653,7 +3701,6 @@ Function fncCollectEndpointURLs {
                 fncVerifyIssuer -strCertURL $Private:MyCertificationDistributionPointUrl -strEndpointName "CertificationDistributionPointUrl" -strLogPath $Private:strCertLogPath
                 fncVerifyIssuer -strCertURL $Private:MyUnifiedLabelingDistributionPointUrl -strEndpointName "UnifiedLabelingDistributionPointUrl" -strLogPath $Private:strCertLogPath
                 fncVerifyIssuer -strCertURL $Private:MyTelemetryDistributionPointUrl -strEndpointName "TelemetryDistributionPointUrl" -strLogPath $Private:strCertLogPath
-                fncVerifyIssuer -strCertURL $Private:MyAIPv1PolicyDistributionPointUrl -strEndpointName "AIPv1PolicyDistributionPointUrl" -strLogPath $Private:strCertLogPath
 
                 <# Verbose/Logging #>
                 fncLogging -strLogFunction "fncCollectEndpointURLs" -strLogDescription "Export endpoint URLs" -strLogValue "EndpointURLs.log"
@@ -3710,7 +3757,6 @@ Function fncCollectEndpointURLs {
                     fncVerifyIssuer -strCertURL $Private:MyCertificationDistributionPointUrl -strEndpointName "CertificationDistributionPointUrl" -strLogPath $Private:strCertLogPath
                     fncVerifyIssuer -strCertURL $Private:MyUnifiedLabelingDistributionPointUrl -strEndpointName "UnifiedLabelingDistributionPointUrl" -strLogPath $Private:strCertLogPath
                     fncVerifyIssuer -strCertURL $Private:MyTelemetryDistributionPointUrl -strEndpointName "TelemetryDistributionPointUrl" -strLogPath $Private:strCertLogPath
-                    fncVerifyIssuer -strCertURL $Private:MyTelemetryDistributionPointUrl -strEndpointName "AIPv1PolicyDistributionPointUrl" -strLogPath $Private:strCertLogPath
                     
                 }
             
@@ -3840,7 +3886,6 @@ Function fncCollectEndpointURLs {
             fncVerifyIssuer -strCertURL $Private:MyCertificationDistributionPointUrl -strEndpointName "CertificationDistributionPointUrl" -strLogPath $Private:strCertLogPath
             fncVerifyIssuer -strCertURL $Private:MyUnifiedLabelingDistributionPointUrl -strEndpointName "UnifiedLabelingDistributionPointUrl" -strLogPath $Private:strCertLogPath
             fncVerifyIssuer -strCertURL $Private:MyTelemetryDistributionPointUrl -strEndpointName "TelemetryDistributionPointUrl" -strLogPath $Private:strCertLogPath
-            fncVerifyIssuer -strCertURL $Private:MyAIPv1PolicyDistributionPointUrl -strEndpointName "AIPv1PolicyDistributionPointUrl" -strLogPath $Private:strCertLogPath
 
             <# Disconnect from AIPService #>
             Disconnect-AIPService | Out-Null
