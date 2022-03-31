@@ -1,0 +1,752 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="3.0.3" http-equiv="VERSION" />
+<meta content="03/31/2022" http-equiv="CREATEDATE" />
+<meta content="Claus Schiroky" http-equiv="AUTHOR" />
+<meta content="https://aka.ms/UnifiedLabelingSupportTool/Latest" http-equiv="SOURCE" />
+<meta content="Copyright (c) Microsoft Coporation." http-equiv="COPYRIGHT" />
+
+<title>Unified Labeling Support Tool </title>
+
+<style type="text/css">
+.HeaderBackground {
+	background-color: #2b579a;
+	width: 100%;
+	color: #FFFFFF;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+	height: 163px;
+}
+.HeaderTitle {
+	font-size: 42px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+.HeaderSubtitle {
+	font-size: 18px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+.Hyperlink {
+	background-color: transparent;
+	box-sizing: border-box;
+	color: rgb(3, 102, 214);
+	text-decoration: none;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+.Header1 {
+	border-bottom-color: rgb(234, 236, 239);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	box-sizing: border-box;
+	color: rgb(36, 41, 46);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+	font-size: 32px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 600;
+	letter-spacing: normal;
+	line-height: 1.25;
+	margin-bottom: 16px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	orphans: 2;
+	padding-bottom: 0.3em;
+	text-align: left;
+	text-decoration: none;
+	text-indent: 0px;
+	text-transform: none;
+	-webkit-text-stroke-width: 0px;
+	white-space: normal;
+	word-spacing: 0px;
+}
+.Header1ParagraphSpaceBefore {
+	border-bottom: 1px solid rgb(234, 236, 239);
+	box-sizing: border-box;
+	color: rgb(36, 41, 46);
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+	font-size: 32px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 600;
+	letter-spacing: normal;
+	line-height: 150%;
+	margin-bottom: 16px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 18px;
+	orphans: 2;
+	padding-bottom: 0.3em;
+	text-align: left;
+	text-decoration: none;
+	text-indent: 0px;
+	text-transform: none;
+	-webkit-text-stroke-width: 0px;
+	white-space: normal;
+	word-spacing: 0px;
+}
+.Header3 {
+	border-bottom-color: rgb(234, 236, 239);
+	box-sizing: border-box;
+	color: #000000;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+	font-size: 1.25em;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 600;
+	letter-spacing: normal;
+	line-height: 1.25;
+	margin-bottom: 16px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	orphans: 2;
+	padding-bottom: 0.3em;
+	text-align: left;
+	text-decoration: none;
+	text-indent: 0px;
+	text-transform: none;
+	white-space: normal;
+	word-spacing: 0px;
+}
+.Header4 {
+	border-bottom-color: rgb(234, 236, 239);
+	box-sizing: border-box;
+	color: #000000;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+	font-size: 1.10em;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 600;
+	letter-spacing: normal;
+	line-height: 1.25;
+	margin-bottom: 16px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	orphans: 2;
+	padding-bottom: 0.3em;
+	text-align: left;
+	text-decoration: none;
+	text-indent: 0px;
+	text-transform: none;
+	white-space: normal;
+	word-spacing: 0px;
+}
+.Header4ParagraphSpaceBefore {
+	margin: 16px 0px;
+	border-bottom-color: rgb(234, 236, 239);
+	box-sizing: border-box;
+	color: #000000;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+	font-size: 1.10em;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 600;
+	letter-spacing: normal;
+	line-height: 150%;
+	orphans: 2;
+	padding-bottom: 0.3em;
+	text-align: left;
+	text-decoration: none;
+	text-indent: 0px;
+	text-transform: none;
+	white-space: normal;
+	word-spacing: 0px;
+}
+.ConsoleTextShadow {
+	box-shadow: #DFDFDF;
+	padding: 3px 5px 3px 5px;
+	font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+	font-size: 13px;
+	background-color: #f4f4f4;
+}
+.ConsoleListShadowTop {
+	box-shadow: #f6f8fa;
+	padding: 18px 5px 2px 18px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+	font-size: 13px;
+	background-color: #f4f4f4;
+	text-decoration: none;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.ConsoleListShadow {
+	box-shadow: #f6f8fa;
+	padding: 2px 5px 2px 18px;
+	font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+	font-size: 13px;
+	background-color: #f4f4f4;
+	text-decoration: none;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.ConsolteListShadowButton {
+	box-shadow: #f6f8fa;
+	padding: 2px 5px 18px 18px;
+	font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+	font-size: 13px;
+	background-color: #f4f4f4;
+	text-decoration: none;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.Logs-Text {
+	margin-left: 40px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+.Logs-ConsoleListShadowTop {
+	box-shadow: #f6f8fa;
+	padding: 18px 5px 2px 18px;
+	font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+	font-size: 13px;
+	background-color: #f4f4f4;
+	text-decoration: none;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 40px;
+}
+.Logs-ConsoleListShadow {
+	box-shadow: #f6f8fa;
+	padding: 2px 5px 2px 18px;
+	font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+	font-size: 13px;
+	background-color: #f4f4f4;
+	text-decoration: none;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 40px;
+}
+.Logs-ConsolteListShadowButton {
+	box-shadow: #f6f8fa;
+	padding: 2px 5px 18px 18px;
+	font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+	font-size: 13px;
+	background-color: #f4f4f4;
+	text-decoration: none;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 40px;
+}
+.Logs-ConsoleTextShadow {
+	box-shadow: #DFDFDF;
+	padding: 3px 5px 3px 5px;
+	font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+	font-size: 13px;
+	background-color: #f4f4f4;
+	margin-left: 40px;
+}
+.auto-style3 {
+	font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+.auto-style4 {
+	margin-left: 40px;
+}
+</style>
+
+<meta content="The 'Unified Labeling Support Tool' provides the functionality to reset all corresponding client services (UL, AIP, MIP, etc.). Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for failure analysis and problem solving." name="description" />
+
+</head>
+
+<body style="margin: 0">
+
+<div class="HeaderBackground">
+	<br />
+        <div style="border-left: 1px solid lightgray; border-right: 0px solid lightgray; border-top: 0px solid lightgray; border-bottom: 0px solid lightgray; padding: 0px 20px; width:950px; margin:auto; background-color:#2b579a; height: 93px;">
+
+            <div class="PageSize" style="width: 900px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 12pt; height: 94px;">
+				
+				
+				<p>
+				<span class="HeaderTitle">Unified Labeling Support Tool</span><br />
+				Version 3.0.3</p>
+
+
+            </div>
+        </div>
+</div>
+<p>
+&nbsp;</p>
+        <div style="width:950px; margin:auto;border:1px solid lightgray;-webkit-box-shadow: 10px 10px 20px 0px rgba(136,136,136,0.76);-moz-box-shadow: 10px 10px 20px 0px rgba(136,136,136,0.76);box-shadow: 10px 10px 20px 0px rgba(136,136,136,0.76);background-color:white;padding-left:20px;padding-bottom:20px;padding-top:20px;padding-right:20px">
+
+            <div class="auto-style3" style="width: 900px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'; font-size: 12pt;">
+				
+				
+				<p class="Header1">
+				Content<img src="data:image/png;base64,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" 
+width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right"> </p>
+				<ul>
+					<li class="Hyperlink">
+					<a href="#Introduction" class="Hyperlink">Introduction</a><ul>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#MIT_License">MIT License</a></li>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#Microsoft®_Privacy_Statement">Microsoft Privacy Statement</a></li>
+					</ul>
+					</li>
+					<li class="Hyperlink">
+					<a href="#Requirements" class="Hyperlink">Requirements</a><ul>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#Internet_access">Internet 
+						Access</a></li>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#Microsoft_PowerShell">Microsoft PowerShell</a></li>
+					</ul>
+					</li>
+					<li class="Hyperlink">
+					<a class="Hyperlink" href="#Installation">Installation</a><ul>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#Check_installation">Check 
+						installation</a></li>
+					</ul>
+					</li>
+					<li class="Hyperlink">
+					<a href="#Uninstall" class="Hyperlink">Uninstall</a></li>
+					<li class="Hyperlink">
+					<a href="#User_experience" class="Hyperlink">User experience</a></li>
+					<li class="Hyperlink"><a href="#Features" class="Hyperlink">Features</a><ul>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#[I]_INFORMATION_/_-Information">INFORMATION</a></li>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#[G]_HELP_/_-Help">HELP</a></li>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#[R]_RESET_/_-Reset_String">RESET</a></li>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#[P]_RECORD_PROBLEM_/_-RecordProblem">RECORD PROBLEM</a></li>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#[Z]_COMPRESS_LOGS_/_-CompressLogs">COMPRESS LOGS</a></li>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#[X]_EXIT_/_-">EXIT</a></li>
+					</ul>
+					</li>
+					<li class="Hyperlink">
+					<a class="Hyperlink" href="#Script_log_file">Script log file</a></li>
+					<li class="Hyperlink">
+					<a class="Hyperlink" href="#Log files and folders">Log files and folders</a></li>
+					<li class="Hyperlink"><a class="Hyperlink" href="#Support">Support</a><ul>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#Microsoft_Support_Policy">Microsoft Support Policy</a></li>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#How_to_file_issues_and_get_help">How to file issues and get help</a></li>
+					</ul>
+					</li>
+				</ul>
+				<p>&nbsp;</p>
+				<p class="Header1"><a name="Introduction">Introduction</a></p>
+				<p>This information gives you background and usage information for 
+				the
+				<a class="Hyperlink" href="https://aka.ms/UnifiedLabelingSupportTool/Latest" target="_blank">UnifiedLabelingSupportTool</a> PowerShell script module.</p>
+				<p>Have you ever used the Sensitivity button in a
+				<span lang="EN-US">
+				<a class="Hyperlink" href="https://www.microsoft.com/en-us/microsoft-365" target="_blank">Microsoft 365</a></span> App? If so, you've used the
+				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide" target="_blank">Office's built-in labeling solution</a>. In case something 
+				doesn't work as expected or you don't see any labeling at all, 
+				the 
+				<span lang="EN-US">'Unified Labeling Support Tool' </span>will help you.</p>
+				<p><span lang="EN-US">The
+				'Unified Labeling Support Tool' provides the functionality to reset all 
+				corresponding client services (UL, AIP, MIP, etc.). Its main 
+				purpose is to delete the currently downloaded sensitivity label 
+				policies and thus reset all settings, and it can also be used to 
+				collect data for failure analysis and problem solving.<o:p></o:p></span></p>
+				<p><em>Note:</em></p>
+				<ul>
+					<li><strong>Please only run '<span lang="EN-US">Unified 
+					Labeling Support Tool'</span> if you have 
+					been prompted to do so by a Microsoft support engineer.</strong></li>
+					<li><strong>Do not modify or delete any component of the 
+					'<span lang="EN-US">Unified Labeling Support Tool'</span> or the resulting trace files, as 
+					this will result in incorrect information when analyzing 
+					your environment.</strong></li>
+					<li>Nomenclature:
+					<ul>
+						<li>UL = <strong>U</strong>nified <strong>L</strong>abeling</li>
+						<li>AIP = <strong>A</strong>zure <strong>I</strong>nformation
+						<strong>P</strong>rotection.</li>
+						<li>MSIP/MIP = <strong>M</strong>icro<strong>s</strong>oft 
+						<strong>I</strong>nformation
+						<strong>P</strong>rotection</li>
+						<li>MSIPC = <strong>M</strong>icro<strong>s</strong>oft 
+						<strong>I</strong>nformation
+						<strong>P</strong>rotection <strong>C</strong>lient.</li>
+					</ul>
+					</li>
+				</ul>
+				<p class="Header3"><a name="MIT_License">MIT
+				License</a></p>
+				<p>Copyright © Microsoft Corporation.</p>
+				<p>Permission is hereby granted, free of charge, to any person 
+				obtaining a copy of this software and associated documentation 
+				files (the "Software"), to deal in the Software without 
+				restriction, including without limitation the rights to use, 
+				copy, modify, merge, publish, distribute, sublicense, and/or 
+				sell copies of the Software, and to permit persons to whom the 
+				Software is furnished to do so, subject to the following 
+				conditions:</p>
+				<p>The above copyright notice and this permission notice shall be 
+				included in all
+				copies or substantial portions of the Software.</p>
+				<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+				EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
+				OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
+				NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
+				HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+				WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+				FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
+				OTHER DEALINGS IN THE SOFTWARE.&nbsp;</p>
+				<p><span class="Header3"><a name="Microsoft®_Privacy_Statement">Microsoft Privacy Statement</a></span></p>
+				<p>Your privacy is important to us.
+				<a class="Hyperlink" href="https://privacy.microsoft.com/en-US/privacystatement" target="_blank">This privacy statement</a> explains the personal data Microsoft 
+				processes, how Microsoft processes it, and for what purposes.</p>
+				<p>&nbsp;</p>
+				<p class="Header1"><a name="Requirements">Requirements</a></p>
+				<p>Before you can use the <span lang="EN-US">'Unified Labeling Support Tool'</span> make sure that your 
+				environment fulfils the following requierements. Please update 
+				your environment if necessary.</p>
+				<p>The <span lang="EN-US">'Unified Labeling Support Tool'</span> supports the following 
+					Apple macOS versions:</p>
+				<ul>
+					<li>Apple macOS 10.15 (Catalina) or higher.</li>
+				</ul>
+				<p>The <span lang="EN-US">'Unified Labeling Support Tool'</span> supports the following Microsoft Office 
+					versions:</p>
+				<ul>
+					<li>Microsoft 365 for Mac, Microsoft Office 2019 for Mac and Microsoft Office 2021 for 
+						Mac.</li>
+				</ul>
+				<p class="Header3"><a name="Internet_access">Internet access</a></p>
+				<p>The 'Unified Labeling Support Tool' uses additional sources 
+				and services from the Internet to make its functionality fully 
+				available.</p>
+				<p>Unexpected errors may occur, and some features may be 
+				limited, if there is no connection to the Internet.</p>
+				<p class="Header3"><a name="Microsoft_PowerShell">Microsoft 
+				PowerShell</a></p>
+				<p>Please follow the instructions for
+				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.1" target="_blank">
+				installing PowerShell on macOS</a> to install it using your 
+				preferred method. Nevertheless the
+				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.1#installation-via-direct-download" target="_blank">
+				installation via direct download</a> is recommended.</p>
+				<p><em>Note:</em></p>
+				<ul>
+					<li>Microsoft PowerShell must be installed with local 
+					administrative
+				<span lang="EN-US">privileges</span>. Please request assistance from your administrator 
+					if necessary.</li>
+					<li>Please refer to the<span>&nbsp;</span><a class="Hyperlink" href="https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md#known-issues" style="background-color: transparent; box-sizing: border-box; color: rgb(3, 102, 214); text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;;" target="_blank">known 
+					issues</a>.</li>
+					<li>It is not essential to install OpenSSL for Microsoft 
+					PowerShell to use the <span lang="EN-US">'Unified Labeling Support Tool'</span>.</li>
+				</ul>
+				<p>&nbsp;</p>
+				<p class="Header1"><a name="Installation">Installation</a></p>
+				<p>The <span lang="EN-US">'Unified Labeling Support Tool' </span>is available on
+				<a class="Hyperlink" href="https://www.powershellgallery.com" target="_blank">PowerShell Gallery</a> 
+				and the fastest and easiest way to install it<span lang="EN-US">
+				for a single user is to r</span>un the following 
+				command in PowerShell:</p>
+				<p><span class="ConsoleTextShadow">Install-Module -Name 
+				<span lang="EN-US">UnifiedLabelingSupportTool -Scope CurrentUser</span></span></p>
+				<p>If you want to install the <span lang="EN-US">
+				'Unified Labeling Support Tool' for all users, you </span>
+				<span style="color: rgb(0, 0, 0); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
+				must run the following command:</span></p>
+				<p><span class="ConsoleTextShadow">Install-Module -Name <span lang="EN-US">
+				UnifiedLabelingSupportTool</span> -Scope AllUsers</span></p>
+				<p><em>Note:</em></p>
+				<ul>
+					<li>If you do not have a required component installed on your 
+				computer, you will be prompted to do so. You may need to confirm 
+				the installation of PowerShell Gallery as a trusted repository.</li>
+				</ul>
+				<p class="Header4">Allow signed PowerShell scripts (optional)</p>
+				<p>If PowerShell script execution is restricted in your 
+				environment, you must bypass this restriction to run the 
+				<span lang="EN-US">'Unified Labeling Support Tool'</span>. To do this, run the "Set-ExecutionPolicy" command with 
+				the following parameters:</p>
+				<p><span class="ConsoleTextShadow">Set-ExecutionPolicy -Scope CurrentUser 
+				-ExecutionPolicy RemoteSigned -Force</span></p>
+				<p>The <span lang="EN-US">'Unified Labeling Support Tool'</span> is code-signed with a 
+				Microsoft certificate.</p>
+				<p>&nbsp;</p>
+				<p class="Header3"><a name="Check_installation">Check installation</a></p>
+				<p>To verify if the installation was successful, you can call the 
+				"Get-Module" cmdlet with the following parameter:</p>
+				<p><span class="ConsoleTextShadow">Get-Module -ListAvailable</span></p>
+				<p>If you find an entry like the following, the installation was 
+				successful:</p>
+				<p class="ConsoleListShadowTop"><span class="ConsoleTextShadow">PS 
+				/Users/&lt;username&gt;&gt;</span> 
+				Get-Module -ListAvailable</p>
+				<p class="ConsoleListShadow">&nbsp;</p>
+				<p class="ConsoleListShadow">&nbsp;&nbsp;&nbsp;&nbsp; Directory: 
+				/Users/&lt;username&gt;/.local/share/powershell/Modules</p>
+				<p class="ConsoleListShadow">&nbsp;</p>
+				<p class="ConsoleListShadow">ModuleType&nbsp;&nbsp; Version&nbsp;&nbsp; 
+				PreRelease&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PSEdition&nbsp;&nbsp;&nbsp; ExportedCommands</p>
+				<p class="ConsoleListShadow">----------&nbsp;&nbsp; -------&nbsp;&nbsp; ----------&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				---------&nbsp;&nbsp;&nbsp; ----------------</p>
+				<p class="ConsolteListShadowButton">Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				3.0.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp;Desk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				UnifiedLabelingSupportTool</p>
+				<p>&nbsp;</p>
+				<p class="Header1"><a name="Uninstall">Uninstall</a></p>
+				<p>In case you want to uninstall the 'Unified Labeling Support 
+				Tool', you need to run the following 
+				command:</p>
+				<p><span class="ConsoleTextShadow">Uninstall-Module 
+				-Name UnifiedLabelingSupportTool</span></p>
+				<p>With every start of the 'Unified Labeling Support Tool' it 
+				searches for previous versions and tries to uninstall them.</p>
+				<p><em>Note:</em></p>
+				<ul>
+					<li>Under certain circumstances, you may need to run the 
+					'Unified Labeling Support Tool' with administrative privileges to perform 
+					an uninstall. Please request assistance from your 
+					administrator if necessary.</li>
+				</ul>
+				<p>&nbsp;</p>
+				<p class="Header1ParagraphSpaceBefore">
+				<a name="User_experience">User experience</a></p>
+				<p>To start the "Unified Labeling Support Tool", simply type the 
+				following command in a PowerShell command window and press 
+				enter:</p>
+				<p><span class="ConsoleTextShadow">UnifiedLabelingSupportTool</span></p>
+				<p>When you start the 'Unified Labeling Support Tool', you'll see the following default 
+				menu:</p>
+				<p class="ConsoleListShadowTop">UnifiedLabelingSupportTool:</p>
+				<p class="ConsoleListShadow">&nbsp;</p>
+				<p class="ConsoleListShadow">&nbsp; [I] INFORMATION</p>
+				<p class="ConsoleListShadow">&nbsp;  [M] MIT LICENSE</p>
+				<p class="ConsoleListShadow">&nbsp; [H] HELP</p>
+				<p class="ConsoleListShadow">&nbsp; [R] RESET</p>
+				<p class="ConsoleListShadow">&nbsp; [P] RECORD PROBLEM</p>
+				<p class="ConsoleListShadow">&nbsp; [Z] COMPRESS LOGS</p>
+				<p class="ConsoleListShadow">&nbsp; [X] EXIT MENU</p>
+				<p class="ConsoleListShadow">&nbsp;</p>
+				<p class="ConsolteListShadowButton">Please select an option and press enter:</p>
+				<p>For better readability, it is recommended to change the 
+				Terminal/PowerShell window settings to the "Pro" profile.</p>
+				<p style="box-sizing: border-box; font-variant: normal; margin-left: 0px; margin-right: 0px; orphans: 2; text-indent: 0px; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;">You can also start the 'Unified Labeling Support Tool' within the command line. 
+				Use the following command line parameter to see a short summary 
+				of all available command line parameters:</p>
+				<p><span class="ConsoleTextShadow">UnifiedLabelingSupportTool -Information</span></p>
+				<p style="box-sizing: border-box; font-variant: normal; margin-left: 0px; margin-right: 0px; orphans: 2; text-indent: 0px; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;">To see a full list of all command line parameters with 
+				description, run the following command:</p>
+				<p><span class="ConsoleTextShadow">Get-Help 
+				UnifiedLabelingSupportTool 
+				-Detailed</span></p>
+				<p style="box-sizing: border-box; font-variant: normal; margin-left: 0px; margin-right: 0px; orphans: 2; text-indent: 0px; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;">To see the help for a single command line parameter, for example 
+				for "-CompressLogs", run the following command:</p>
+				<p style="box-sizing: border-box; font-variant: normal; margin-left: 0px; margin-right: 0px; orphans: 2; text-indent: 0px; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;">
+				<span class="ConsoleTextShadow">Get-Help 
+				UnifiedLabelingSupportTool 
+				-Parameter CompressLogs</span></p>
+				<p><em>Note:</em></p>
+				<ul>
+					<li>Parameters starting with "-Collect" and the 
+					parameter "-SkipUpdates" , are not available on Apple MacOS.</li>
+				</ul>
+				<p style="box-sizing: border-box; font-variant: normal; margin-left: 0px; margin-right: 0px; orphans: 2; text-indent: 0px; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;">&nbsp;</p>
+				<p style="box-sizing: border-box; font-variant: normal; margin-left: 0px; margin-right: 0px; orphans: 2; text-indent: 0px; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;" class="Header1">
+				<a name="Features">Features</a></p>
+				<p>'Unified Labeling Support Tool' provides the following features (menu entry 
+				/ command line parameter):<p class="Header3">
+				<a name="[I]_INFORMATION_/_-Information">[I] INFORMATION / 
+				-Information</a></p>
+				<p>This shows syntax, description and version information of the 
+				'Unified Labeling Support Tool'.</p>
+				<p class="Header3"><a name="[M]_MIT_LICENSE_/_-License">[M] MIT 
+				LICENSE / -License</a></p>
+				<p>This displays the MIT License.</p>
+				<p class="Header3"><a name="[G]_HELP_/_-Help">[G] HELP / -Help</a></p>
+				<p>This opens the help file (ULSupportTool-Mac.htm).</p>
+				<p class="Header3"><a name="[R]_RESET_/_-Reset_String">[R] RESET / -Reset &lt;String&gt;</a></p>
+				<p><strong>IMPORTANT: Before you proceed with this option, 
+				please close all open applications.</strong></p>
+				<p>This option removes all relevant policies, labels and 
+				settings.</p>
+				<p>Valid &lt;String&gt; arguments are: "Default", or "Silent":</p>
+				<p><strong>Default:</strong></p>
+				<p>This argument 
+				removes all relevant policies, labels and settings:</p>
+				<p><span class="ConsoleTextShadow">UnifiedLabelingSupportTool 
+				-Reset Default</span></p>
+				<p>The following file folders will be cleaned up by the reset:</p>
+				<p class="ConsoleListShadowTop">~/Library/Containers/com.microsoft.Word/Data/Library/Application 
+				Support/Microsoft/Office/CLP</p>
+				<p class="ConsoleListShadow">~/Library/Containers/com.microsoft.Excel/Data/Library/Application 
+				Support/Microsoft/Office/CLP</p>
+				<p class="ConsoleListShadow">~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application 
+				Support/Microsoft/Office/CLP</p>
+				<p class="ConsoleListShadow">~/Library/Containers/com.microsoft.Outlook/Data/Library/Application 
+				Support/Microsoft/Office/CLP</p>
+				<p class="ConsoleListShadow">~/Library/Containers/com.microsoft.Word/Data/Library/Logs</p>
+				<p class="ConsoleListShadow">~/Library/Containers/com.microsoft.Excel/Data/Library/Logs</p>
+				<p class="ConsoleListShadow">~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Logs</p>
+				<p class="ConsoleListShadow">~/Library/Containers/com.microsoft.Outlook/Data/Library/Logs</p>
+				<p class="ConsoleListShadow">~/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs</p>
+				<p class="ConsolteListShadowButton">~/Library/Group 
+				Containers/UBF8T346G9.Office/mip_policy/mip/logs</p>
+				<p><strong>Silent:</strong></p>
+				<p>This command line-parameter argument does the same as "-Reset 
+				Default", but does not print any output - unless an error occurs 
+				when attempting to reset:</p>
+				<p><span class="ConsoleTextShadow">UnifiedLabelingSupportTool 
+				-Reset Silent</span></p>
+				<p>If a silent reset triggers an error, you can use the 
+				additional parameter "-Verbose" to find out more about the cause 
+				of the error:</p>
+				<p><span class="ConsoleTextShadow">UnifiedLabelingSupportTool 
+				-Reset Silent -Verbose</span></p>
+				<p>You can also review the 
+				<a class="Hyperlink" href="#Script_log_file">Script.log</a> file 
+				for errors of silent reset.</p>
+				<p><span class="Header3">
+				<a name="[P]_RECORD_PROBLEM_/_-RecordProblem">[P] RECORD PROBLEM / -RecordProblem</a></span></p>
+				<p><strong>IMPORTANT: Before you proceed with this option, 
+				please close all open applications.</strong></p>
+				<p>This parameter asks you to reproduce the problem. While 
+				you’re doing so, the 'Unified Labeling Support Tool' collects 
+				and records data. Once you have reproduced the problem, all 
+				collected files will be stored into the default logs folder 
+				(~/Documents/UnifiedLabelingSupportTool). Every time you call 
+				this option, a new unique subfolder will be created in the 
+				logs-folder that reflects the date and time when it was created. 
+				While the files are being cached, you will see a progress bar 
+				“Collecting logs...".</p>
+				<p>You can then review the 
+				<a class="Hyperlink" href="#Log files and folders">log files</a> in the logs folder.</p>
+				<p class="Header3"><a name="[Z]_COMPRESS_LOGS_/_-CompressLogs">[Z] COMPRESS LOGS / -CompressLogs</a></p>
+				<p>This command line parameter should always be used at the very 
+				end of a scenario.</p>
+				<p>This parameter compresses all collected log files and folders 
+				into a .zip archive, and the corresponding file is saved to your 
+				desktop. In addition, the default logs folder (~/Documents/UnifiedLabelingSupportTool) is cleaned.</p>
+				<p>After this step you can send/upload the .zip file for the 
+				Microsoft support engineer.</p>
+				<p><span class="Header3"><a name="[X]_EXIT_/_-">[X] EXIT / -</a></span></p>
+				<p>This option will asks you whether you want to exit the menu after a confirmation prompt.</p>
+				<p class="Header3"><a name="-_/_-CheckForUpdate">- / -CheckForUpdate</a></p>
+				<p>This parameter checks if a new version is available for the 
+				'Unified Labeling Support Tool'.</p>
+				<p><em>Note:</em></p>
+				<ul>
+					<li>Under certain circumstances, you may need to run the 
+					'Unified Labeling Support Tool' with administrative privileges to perform 
+					an update. Please request assistance from your administrator 
+					if necessary.</li>
+				</ul>
+				<p class="Header3" style="border-bottom-color: rgb(234, 236, 239); box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 1.25em; font-style: normal; font-variant: normal; font-weight: 600; letter-spacing: normal; line-height: 1.25; margin: 0px 0px 16px; orphans: 2; padding-bottom: 0.3em; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; widows: 2; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">- / -Menu</p>
+				<p>This will start the 'Unified Labeling Support Tool' with the default menu.</p>
+				<p>&nbsp;</p>
+				<p class="Header1"><a name="Script_log_file">Script log file</a></p>
+				<p>The 'Unified Labeling Support Tool' creates the following log file. The log 
+				file gives an overview of the executed commands and provides a 
+				control mechanism to review the results.</p>
+				<p class="Header3">Script.log</p>
+				<p>This log file collects the actions that has been taken and 
+				lists the results. It also logs general environment information 
+				from the used client machine, like the Apple macOS edition or 
+				PowerShell version.</p>
+				<p>&nbsp;</p>
+				<p class="Header1"><a name="Log files and folders">Log files and folders</a></p>
+				<p>The 'Unified Labeling Support Tool' collects the following 
+				log files and folders.</p>
+				<p>Please note that not all log files are collected or 
+					recorded at all times. It depends on your environment which 
+					logs, or traces can be recorded.</p>
+				<ul>
+					<li class="Header4">Log folders</li>
+				</ul>
+				<p class="Logs-ConsoleListShadowTop">~/Library/Containers/com.microsoft.Word/Data/Library/Application 
+				Support/Microsoft/Office/CLP</p>
+				<p class="Logs-ConsoleListShadow">~/Library/Containers/com.microsoft.Excel/Data/Library/Application 
+				Support/Microsoft/Office/CLP</p>
+				<p class="Logs-ConsoleListShadow">~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application 
+				Support/Microsoft/Office/CLP</p>
+				<p class="Logs-ConsoleListShadow">~/Library/Containers/com.microsoft.Outlook/Data/Library/Application 
+				Support/Microsoft/Office/CLP</p>
+				<p class="Logs-ConsoleListShadow">~/Library/Containers/com.microsoft.Word/Data/Library/Logs</p>
+				<p class="Logs-ConsoleListShadow">~/Library/Containers/com.microsoft.Excel/Data/Library/Logs</p>
+				<p class="Logs-ConsoleListShadow">~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Logs</p>
+				<p class="Logs-ConsoleListShadow">~/Library/Containers/com.microsoft.Outlook/Data/Library/Logs</p>
+				<p class="Logs-ConsoleListShadow">~/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs</p>
+				<p class="Logs-ConsolteListShadowButton">~/Library/Group 
+				Containers/UBF8T346G9.Office/mip_policy/mip/logs</p>
+				<p class="auto-style4">For more information, please see the 
+				following documentation:
+				<a class="Hyperlink" href="https://social.technet.microsoft.com/wiki/contents/articles/32647.rmsmip-information-office-for-mac-logging-locations.aspx#Newest_Log_Locations" target="_blank">
+				Office for Mac Logging Locations</a>.</p>
+				<p>&nbsp;</p>
+				<p class="Header1"><a name="Support">Support</a></p>
+				<p>When creating the 'Unified Labeling Support Tool', great care was taken to 
+				ensure quality and functionality. Extensive tests were carried 
+				out before publication to intercept and handle any errors. 
+				However, there is no guarantee that an error will not occur in a 
+				wide variety of configurations and environments.</p>
+				<p>Should you ever encounter a problem with the 'Unified Labeling 
+				Support Tool', 
+				please visit the
+				<a class="Hyperlink" href="https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md" target="_blank">support page</a> on the project site.</p>
+				<p class="Header3"><a name="Microsoft_Support_Policy">Microsoft 
+				Support Policy</a></p>
+				<p>Under this policy, the 'Unified Labeling Support Tool' remains in support if 
+				the following criteria are met:</p>
+				<ul>
+					<li>You're using the
+					<a class="Hyperlink" href="https://aka.ms/UL_Support_Tool/Latest" target="_blank">lastet version</a> of the 'Unified Labeling Support Tool'.</li>
+					<li>You must be licensed with a product or service that uses
+					<a class="Hyperlink" href="https://www.microsoft.com/en-us/us-partner-blog/2018/11/05/microsoft-information-protection-and-unified-labeling/" target="_blank">Microsoft Information Protection and Unified Labeling</a>.</li>
+				</ul>
+				<p class="Header3"><a name="How_to_file_issues_and_get_help">How 
+				to file issues and get help</a></p>
+				<p>The 'Unified Labeling Support Tool' uses GitHub
+				<a class="Hyperlink" href="https://github.com/microsoft/UnifiedLabelingSupportTool/issues" target="_blank">Issues</a> to track problems and feature requests.</p>
+				<p>Please check for
+				<a class="Hyperlink" href="https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md#known-issues" target="_blank">known issues</a> before submitting new issues to avoid 
+				duplicates.</p>
+				<p>For new issues, 
+				file your bug or feature request as a 
+				<a class="Hyperlink" href="https://github.com/microsoft/UnifiedLabelingSupportTool/issues/new" target="_blank">new Issue</a>. Please describe 
+				the Issue as detailed as possible. A screenshot of the error 
+				and/or a step-by-step description of how to reproduce a problem 
+				would be very helpful for this.</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+
+
+            </div>
+        </div>
+<p>&nbsp;</p>
+
+<div class="HeaderBackground" style="height: 135px">
+	<br />
+        <div style="border-left: 1px solid lightgray; border-right: 0px solid lightgray; border-top: 0px solid lightgray; border-bottom: 0px solid lightgray; padding: 0px 20px; width:950px; margin:auto; background-color:#2b579a; height: 48px;">
+
+            <div class="PageSize" style="width: 900px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 12pt; height: 61px;">
+				
+				
+				<p>
+				UnifiedLabelingSupportTool is maintained by 				
+				<a href="mailto:claus.schiroky@microsoft.com?subject=UL_Support_Tool" style="border-style: none; border-color: currentColor; border-width: 0px; margin: 0px; padding: 0px; border-image: url('none') 100% 1 0 stretch; color: rgb(242, 242, 242); font-family: inherit; font-size-adjust: none; font-stretch: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; text-decoration: underline; text-shadow: none; transition-delay: 0s; transition-duration: 0.5s; transition-property: text-shadow; transition-timing-function: ease; vertical-align: baseline;" target="_blank">Claus Schiroky</a>,<span class="auto-style7"> Microsof</span>t C<span>ustomer 
+				Service &amp; Support EMEA.<br />
+				</span>
+				<span style='line-height:115%;
+  color:white;' class="auto-style7">Copyright Microsoft</span><span style='line-height:115%;
+  color:white;' class="auto-style10">® Corporation.</span></p>
+
+
+            </div>
+        </div>
+</div>
+
+</body>
+
+</html>

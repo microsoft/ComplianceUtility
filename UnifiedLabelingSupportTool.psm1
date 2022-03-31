@@ -10,7 +10,7 @@
 # Licensed under the MIT License
 
 <# Global variables #>
-$Global:strVersion = "3.0.2" <# Define version #>
+$Global:strVersion = "3.0.3" <# Define version #>
 $Global:strDefaultWindowTitle = $Host.UI.RawUI.WindowTitle <# Caching window title #>
 $Global:host.UI.RawUI.WindowTitle = "Unified Labeling Support Tool ($Global:strVersion)" <# Set window title #>
 $Global:MenuCollectExtended = $false <# Define variable for COLLECT menu handling #>
@@ -190,10 +190,10 @@ Function UnifiedLabelingSupportTool {
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         
         VERSION
-        3.0.2
+        3.0.3
         
         CREATE DATE
-        03/24/2022
+        03/31/2022
 
         AUTHOR
         Claus Schiroky
@@ -261,6 +261,7 @@ Function UnifiedLabelingSupportTool {
         [HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\DRM]
         [HKCU:\SOFTWARE\Microsoft\XPSViewer\Common\DRM]
         [HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity]
+        [HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Identity]
         [HKCU:\SOFTWARE\Microsoft\MSIP]
         [HKCU:\SOFTWARE\Microsoft\MSOIdentityCRL]
         [HKCR:\AllFilesystemObjects\shell\Microsoft.Azip.Inspect]
@@ -282,6 +283,7 @@ Function UnifiedLabelingSupportTool {
         The following file system folders are cleaned up as well:
 
         %LOCALAPPDATA%\Microsoft\Office\DLP\mip
+        %LOCALAPPDATA%\Microsoft\Office\CLP
         %TEMP%\Diagnostics
         %LOCALAPPDATA%\Microsoft\MSIP
         %LOCALAPPDATA%\Microsoft\MSIPC
@@ -1174,6 +1176,7 @@ Function fncReset ($strResetMethod) {
             fncDeleteItem "HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\DRM"
             fncDeleteItem "HKCU:\SOFTWARE\Microsoft\XPSViewer\Common\DRM"
             fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity"
+            fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Identity"
             fncDeleteItem "HKCU:\SOFTWARE\Microsoft\MSIP"
             fncDeleteItem "HKCU:\SOFTWARE\Microsoft\MSOIdentityCRL"
 
@@ -1194,6 +1197,7 @@ Function fncReset ($strResetMethod) {
 
             <# Clean client folders in file system #>
             fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Office\DLP\mip"
+            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Office\CLP"
             fncDeleteItem "$env:TEMP\Diagnostics"
             fncDeleteItem "$env:LOCALAPPDATA\Microsoft\MSIP"
             fncDeleteItem "$env:LOCALAPPDATA\Microsoft\MSIPC"
@@ -2121,7 +2125,7 @@ Function fncCollectLogging {
                 fncCopyItem $env:LOCALAPPDATA\Microsoft\Office\DLP\mip "$Global:strUniqueLogFolder\Office" "mip\*"
 
                 <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Office MIP logs" -strLogValue "\Office\mip"
+                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Office DLP MIP logs" -strLogValue "\Office\mip"
 
             }
 
@@ -2132,6 +2136,25 @@ Function fncCollectLogging {
 
         <# Verbose/Logging #>
         fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Office Diagnostics logs" -strLogValue "\Office\Diagnostics"
+
+        <# Export Office license #>
+        If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Office\Licenses\5) -Eq $true) {
+            
+            <# Check for Office Licenses path and create it, if it not exist #>
+            If ($(Test-Path -Path "$Global:strUniqueLogFolder\Office\Licenses") -Eq $false) {
+
+                <# Create Licenses log folder #>
+                New-Item -ItemType Directory -Force -Path "$Global:strUniqueLogFolder\Office\Licenses" | Out-Null
+
+            }
+
+            <# Export Office license to Office logs folder #>
+            fncCopyItem $env:LOCALAPPDATA\Microsoft\Office\Licenses\5\* "$Global:strUniqueLogFolder\Office\Licenses" "\Office\Licenses"
+
+            <# Verbose/Logging #>
+            fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Office license" -strLogValue "\Office\Licenses"
+                
+        }
 
         <# Copy office log files from temp folder to logs folder #>
         fncCopyItem $Global:strTempFolder"\office.log" "$Global:strUniqueLogFolder\Office\office.log" "office.log"
@@ -2181,7 +2204,7 @@ Function fncCollectLogging {
                     If (Get-Module -ListAvailable -Name AzureInformationProtection) {
 
                         <# Informative output #>
-                        Write-Output "Please authenticate with your user credentials to retrieve your AIP logs folders."
+                        Write-Output "Please authenticate with your user credentials to retrieve your AIP log folders."
 
                         <# Actions on PowerShell 7.1 (or higher) for compatibility mode #>
                         If ([Version]::new($PSVersionTable.PSVersion.Major, $PSVersionTable.PSVersion.Minor) -ge [Version]::new("7.1") -eq $true) {
@@ -2443,6 +2466,7 @@ Function fncCollectLogging {
                                 "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Office\Outlook\Addins",
                                 "HKCU:\SOFTWARE\Microsoft\MSIP",
                                 "HKCU:\Software\Microsoft\Office\16.0\Common\Identity",
+                                "HKCU:\Software\Microsoft\Office\15.0\Common\Identity",
                                 "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Internet",
                                 "HKCU:\SOFTWARE\Microsoft\Office\Word\Addins",
                                 "HKCU:\SOFTWARE\Microsoft\Office\Excel\Addins",
