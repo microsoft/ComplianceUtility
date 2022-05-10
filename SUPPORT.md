@@ -25,7 +25,7 @@ For new issues, file your bug or feature request as a new Issue. Please describe
 
     This applies only to a manual installation: If you downloaded the 'Unified Labeling Support Tool' from its [GitHub website](https://aka.ms/UnifiedLabelingSupportTool/Latest), it will be extended by an [Alternate Data Streams in NTFS](https://blogs.technet.microsoft.com/askcore/2013/03/24/alternate-data-streams-in-ntfs) (ADS). If the corresponding website in the ADS is not trusted in your environment, the PowerShell command "Set-ExecutionPolicy" has no effect.
 
-    **Resolution:** Either you right-click the downloaded script files and "Unblock" it, or you add the corresponding website to your trusted sites settings.**
+    **Resolution:** Either you right-click the downloaded script files and "Unblock" it, or you add the corresponding website to your trusted sites settings.
 
 * **Script does not start and returns an error**
 
