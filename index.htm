@@ -5,8 +5,8 @@
 
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta content="en-us" http-equiv="Content-Language" />
-<meta content="3.0.3" http-equiv="VERSION" />
-<meta content="03/31/2022" http-equiv="CREATEDATE" />
+<meta content="3.0.4" http-equiv="VERSION" />
+<meta content="07/07/2022" http-equiv="CREATEDATE" />
 <meta content="Claus Schiroky" http-equiv="AUTHOR" />
 <meta content="https://aka.ms/UnifiedLabelingSupportTool/Latest" http-equiv="SOURCE" />
 <meta content="Copyright (c) Microsoft Coporation." http-equiv="COPYRIGHT" />
@@ -261,7 +261,7 @@
 				
 				<p>
 				<span class="HeaderTitle">Unified Labeling Support Tool</span><br />
-				Version 3.0.3</p>
+				Version 3.0.4</p>
 
 
             </div>
@@ -608,7 +608,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				UnifiedLabelingSupportTool.psd1 and ULSupportTool-Win.htm) 
 				into this folder:</p>
 				<p><span class="ConsoleTextShadow">
-				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.0.3</span></p>
+				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.0.4</span></p>
 				<p>This path must be listed in the PSModulePath environment 
 					variable. For more information, please read how
 					<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable" rel="nofollow" target="_blank">to view the PSModulePath variable</a>.</p>
@@ -640,7 +640,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">----------&nbsp;&nbsp; -------&nbsp;&nbsp;&nbsp; ----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
 				----------------</p>
 				<p class="ConsolteListShadowButton">Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				3.0.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
+				3.0.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
 				{UnifiedLabelingSupportTool, ULSupportTool}</p>
 				<p>To verify that an installation was performed using PowerShell 
 				Gallery, you can run the following command:</p>
@@ -657,7 +657,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">-------&nbsp;&nbsp; 
 				----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				----------&nbsp;&nbsp;&nbsp;&nbsp; -----------</p>
-				<p class="ConsolteListShadowButton">3.0.3&nbsp;&nbsp;&nbsp;&nbsp; 
+				<p class="ConsolteListShadowButton">3.0.4&nbsp;&nbsp;&nbsp;&nbsp; 
 				UnifiedLabelingSupportTool&nbsp;&nbsp; PSGallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				Have you ever used the Sensitivity button in...</p>
 				<p>&nbsp;</p>
@@ -1275,10 +1275,6 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				be collected from the following folder:</p>
 				<p><span class="Logs-ConsoleTextShadow">
 				%TEMP%\Diagnostics</span></p>
-				<p class="Logs-Text">The Office license information is collected 
-				from the folder:</p>
-				<p><span class="Logs-ConsoleTextShadow">
-				%LOCALAPPDATA%\Microsoft\Office\Licenses\5</span></p>
 				<ul>
 					<li>
 					<p class="Header4">CertMachine.log and CertUser.log</p>
@@ -1320,7 +1316,8 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					<p class="Header4">Registry.log</p>
 					</li>
 				</ul>
-				<p class="Logs-Text">This file contains several regsitry keys related to the AIP configuration. The content were taken from these registry keys:</p>
+				<p class="Logs-Text">This file contains several regsitry keys related to the 
+				Office and AIP configuration. The content were taken from these registry keys:</p>
 				<p class="Logs-ConsoleListShadowTop">
 				[HKLM:\Software\Classes\MSIP.ExcelAddin]</p>
 				<p class="Logs-ConsoleListShadow">
@@ -1403,8 +1400,12 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				[HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security]</p>
 				<p class="Logs-ConsoleListShadow">
 				[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]</p>
-				<p class="Logs-ConsolteListShadowButton">
+				<p class="Logs-ConsoleListShadow">
 				[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security]</p>
+				<p class="Logs-ConsoleListShadow">
+				[HKCU:\Software\Microsoft\Office\16.0\Common\Licensing\CurrentSkuIdAggregationForApp]</p>
+				<p class="Logs-ConsolteListShadowButton">
+				[HKCU:\Software\Microsoft\Office\16.0\Common\Licensing\LastKnownC2RProductReleaseId]</p>
 				<ul>
 					<li>
 					<p class="Header4ParagraphSpaceBefore">Gpresult.htm</p>

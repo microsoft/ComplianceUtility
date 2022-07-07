@@ -10,7 +10,7 @@
 # Licensed under the MIT License
 
 <# Global variables #>
-$Global:strVersion = "3.0.3" <# Define version #>
+$Global:strVersion = "3.0.4" <# Define version #>
 $Global:strDefaultWindowTitle = $Host.UI.RawUI.WindowTitle <# Caching window title #>
 $Global:host.UI.RawUI.WindowTitle = "Unified Labeling Support Tool ($Global:strVersion)" <# Set window title #>
 $Global:MenuCollectExtended = $false <# Define variable for COLLECT menu handling #>
@@ -190,10 +190,10 @@ Function UnifiedLabelingSupportTool {
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         
         VERSION
-        3.0.3
+        3.0.4
         
         CREATE DATE
-        03/31/2022
+        07/07/2022
 
         AUTHOR
         Claus Schiroky
@@ -1091,7 +1091,7 @@ Function fncDeleteRegistrySetting ($strRegistryKey, $strRegistrySetting) {
 <# Reset Microsoft UL/AIP/MIP/etc. services for the current user #>
 Function fncReset ($strResetMethod) {
 
-    <# Action if function was not called with default #>
+    <# Action if function was not called with silent argument or if it was called from menu #>
     If ($strResetMethod -notmatch "Silent") {
 
         <# Console output #>
@@ -1103,7 +1103,7 @@ Function fncReset ($strResetMethod) {
         If ($Private:ReadHost -eq "N") {
 
             <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncReset" -strLogDescription "Reset" -strLogValue "Canceled"
+            fncLogging -strLogFunction "fncReset" -strLogDescription "Reset Default" -strLogValue "Canceled"
 
             <# Action if function was called from command line #>
             If ($Global:bolCommingFromMenu -eq $false) {
@@ -1136,15 +1136,17 @@ Function fncReset ($strResetMethod) {
         Write-Output "Resetting, please wait..."
 
     }
-    Else { <# Action if function was called with silent argument #>
+
+    <# Action if function was called with silent argument #>
+    If ($strResetMethod -match "Silent") {
 
         <# Verbose/Logging #>
         fncLogging -strLogFunction "fncReset" -strLogDescription "Reset Silent" -strLogValue "Initiated"
 
     }
 
-    <# Actions if "Yes" was selected #>
-    If ($Private:ReadHost -eq "Y") {
+    <# Actions if "Yes" was selected (by reset default) or function was called with silent argument #>
+    If ($Private:ReadHost -eq "Y" -or ($strResetMethod -match "Silent")) {
 
         <# Detect Windows and run actions to reset #>
         If ([System.Environment]::OSVersion.Platform -eq "Win32NT") {
@@ -1153,10 +1155,14 @@ Function fncReset ($strResetMethod) {
             If ($(Test-Path -Path "HKLM:\SOFTWARE\Microsoft\MSIPC\ServiceLocation") -Eq $true) {
 
                 <# Backup registry settings to a reg file #>
-                REG EXPORT "HKLM\SOFTWARE\Microsoft\MSIPC\ServiceLocation" $Private:PSScriptRoot\ServiceLocationBackup.reg /Y | Out-Null
+                REG EXPORT "HKLM\SOFTWARE\Microsoft\MSIPC\ServiceLocation" $Global:strUserLogPath\ServiceLocationBackup.reg /Y | Out-Null
 
-                <# Console output #>
-                Write-Output "Your ServiceLocation registry settings were stored to"$Private:PSScriptRoot\ServiceLocationBackup.reg
+                If ($strResetMethod -match "Default") {
+
+                    <# Console output #>
+                    Write-Output "Your ServiceLocation registry settings were stored to"$Global:strUserLogPath\ServiceLocationBackup.reg                    
+                    
+                }
 
                 <# Verbose/Logging #>
                 fncLogging -strLogFunction "fncReset" -strLogDescription "Export ServiceLocation backup" -strLogValue "ServiceLocationBackup.reg"
@@ -1285,7 +1291,7 @@ Function fncReset ($strResetMethod) {
 
         }
 
-        <# Action if function was not called silent from command line #>
+        <# Action if function was called with default argument from command line or menu #>
         If ($strResetMethod -notmatch "Silent") {
 
             <# Console output #>
@@ -1295,7 +1301,9 @@ Function fncReset ($strResetMethod) {
             fncLogging -strLogFunction "fncReset" -strLogDescription "Reset Default" -strLogValue "Proceeded"
 
         }
-        Else { <# Action if function was called with the silent argument #>
+
+        <# Action if function was called with silent argument from command line #>
+        If ($strResetMethod -match "Silent") {
 
             <# Verbose/Logging #>
             fncLogging -strLogFunction "fncReset" -strLogDescription "Reset Silent" -strLogValue "Proceeded"
@@ -2137,25 +2145,6 @@ Function fncCollectLogging {
         <# Verbose/Logging #>
         fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Office Diagnostics logs" -strLogValue "\Office\Diagnostics"
 
-        <# Export Office license #>
-        If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Office\Licenses\5) -Eq $true) {
-            
-            <# Check for Office Licenses path and create it, if it not exist #>
-            If ($(Test-Path -Path "$Global:strUniqueLogFolder\Office\Licenses") -Eq $false) {
-
-                <# Create Licenses log folder #>
-                New-Item -ItemType Directory -Force -Path "$Global:strUniqueLogFolder\Office\Licenses" | Out-Null
-
-            }
-
-            <# Export Office license to Office logs folder #>
-            fncCopyItem $env:LOCALAPPDATA\Microsoft\Office\Licenses\5\* "$Global:strUniqueLogFolder\Office\Licenses" "\Office\Licenses"
-
-            <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Office license" -strLogValue "\Office\Licenses"
-                
-        }
-
         <# Copy office log files from temp folder to logs folder #>
         fncCopyItem $Global:strTempFolder"\office.log" "$Global:strUniqueLogFolder\Office\office.log" "office.log"
 
@@ -2487,7 +2476,9 @@ Function fncCollectLogging {
                                 "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM",
                                 "HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security",
                                 "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security",
-                                "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security"
+                                "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security",
+                                "HKCU:\Software\Microsoft\Office\16.0\Common\Licensing\CurrentSkuIdAggregationForApp",
+                                "HKCU:\Software\Microsoft\Office\16.0\Common\Licensing\LastKnownC2RProductReleaseId"
 
         <# Loop though array and cache to a temp file #>
         ForEach ($_ in $Private:arrRegistryKeys) {
