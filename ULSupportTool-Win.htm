@@ -5,8 +5,8 @@
 
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta content="en-us" http-equiv="Content-Language" />
-<meta content="3.0.4" http-equiv="VERSION" />
-<meta content="07/07/2022" http-equiv="CREATEDATE" />
+<meta content="3.0.5" http-equiv="VERSION" />
+<meta content="03/08/2022" http-equiv="CREATEDATE" />
 <meta content="Claus Schiroky" http-equiv="AUTHOR" />
 <meta content="https://aka.ms/UnifiedLabelingSupportTool/Latest" http-equiv="SOURCE" />
 <meta content="Copyright (c) Microsoft Coporation." http-equiv="COPYRIGHT" />
@@ -244,6 +244,9 @@
 	letter-spacing: normal;
 	background-color: #FFFFFF;
 }
+.auto-style2 {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
 </style>
 
 <meta content="The 'Unified Labeling Support Tool' provides the functionality to reset all corresponding client services (UL, AIP, MIP, etc.). Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for failure analysis and problem solving." name="description" />
@@ -261,7 +264,7 @@
 				
 				<p>
 				<span class="HeaderTitle">Unified Labeling Support Tool</span><br />
-				Version 3.0.4</p>
+				Version 3.0.5</p>
 
 
             </div>
@@ -608,7 +611,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				UnifiedLabelingSupportTool.psd1 and ULSupportTool-Win.htm) 
 				into this folder:</p>
 				<p><span class="ConsoleTextShadow">
-				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.0.4</span></p>
+				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.0.5</span></p>
 				<p>This path must be listed in the PSModulePath environment 
 					variable. For more information, please read how
 					<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable" rel="nofollow" target="_blank">to view the PSModulePath variable</a>.</p>
@@ -640,7 +643,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">----------&nbsp;&nbsp; -------&nbsp;&nbsp;&nbsp; ----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
 				----------------</p>
 				<p class="ConsolteListShadowButton">Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				3.0.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
+				3.0.5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
 				{UnifiedLabelingSupportTool, ULSupportTool}</p>
 				<p>To verify that an installation was performed using PowerShell 
 				Gallery, you can run the following command:</p>
@@ -657,7 +660,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">-------&nbsp;&nbsp; 
 				----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				----------&nbsp;&nbsp;&nbsp;&nbsp; -----------</p>
-				<p class="ConsolteListShadowButton">3.0.4&nbsp;&nbsp;&nbsp;&nbsp; 
+				<p class="ConsolteListShadowButton">3.0.5&nbsp;&nbsp;&nbsp;&nbsp; 
 				UnifiedLabelingSupportTool&nbsp;&nbsp; PSGallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				Have you ever used the Sensitivity button in...</p>
 				<p>&nbsp;</p>
@@ -919,9 +922,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					'Unified Labeling Support Tool' in an administrative PowerShell window as a 
 					user with local administrative privileges.</li>
 				</ul>
-				<p>As a first step, this parameter cleans up existing MSIP/MSIPC 
-				log folders, then 
-				it activates the required logging, or tracing  
+				<p>As a first step, this parameter activates the required logging, or tracing  
 				mechanisms by implementing registry settings, and enabling some 
 				Windows event logs. This process will be reflected by a progress 
 				bar “Enable logging...".<br />
@@ -1275,6 +1276,18 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				be collected from the following folder:</p>
 				<p><span class="Logs-ConsoleTextShadow">
 				%TEMP%\Diagnostics</span></p>
+				<ul>
+					<li>
+					<p class="Header4">LabelsAndPolicies.zip</p>
+					</li>
+				</ul>
+				<p class="Logs-Text">This zip file is created by the option
+				<a class="Hyperlink" href="#[P]_RECORD_PROBLEM_/_-RecordProblem">
+				RECORD PROBLEM</a>.</p>
+				<p class="Logs-Text">The file contains the cached labels and 
+				policies xml files from the following folder:</p>
+				<p class="Logs-ConsoleListShadow">
+				%LOCALAPPDATA%\Microsoft\Office\CLP</p>
 				<ul>
 					<li>
 					<p class="Header4">CertMachine.log and CertUser.log</p>

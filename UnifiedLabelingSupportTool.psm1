@@ -10,7 +10,7 @@
 # Licensed under the MIT License
 
 <# Global variables #>
-$Global:strVersion = "3.0.4" <# Define version #>
+$Global:strVersion = "3.0.5" <# Define version #>
 $Global:strDefaultWindowTitle = $Host.UI.RawUI.WindowTitle <# Caching window title #>
 $Global:host.UI.RawUI.WindowTitle = "Unified Labeling Support Tool ($Global:strVersion)" <# Set window title #>
 $Global:MenuCollectExtended = $false <# Define variable for COLLECT menu handling #>
@@ -190,10 +190,10 @@ Function UnifiedLabelingSupportTool {
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         
         VERSION
-        3.0.4
+        3.0.5
         
         CREATE DATE
-        07/07/2022
+        08/03/2022
 
         AUTHOR
         Claus Schiroky
@@ -336,7 +336,7 @@ Function UnifiedLabelingSupportTool {
         - When you run PowerShell with user privileges, neither CAPI2 or AIP event logs, network trace, nor filter drivers are recorded.
         - If you want a complete record, you must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges.
         
-        As a first step, this parameter cleans up existing MSIP/MSIPC log folders, then it activates the required logging, tracing or debugging mechanisms by implementing registry settings, and enabling some Windows event logs. This process will be reflected by a progress bar “Enable logging...".
+        As a first step, this parameter activates the required logging, tracing or debugging mechanisms by implementing registry settings, and enabling some Windows event logs. This process will be reflected by a progress bar “Enable logging...".
         In the event that you accidentally close the PowerShell window while logging is enabled, the 'Unified Labeling Support Tool' disables logging the next time you start it.
 
         In a second step asks you to reproduce the problem. While you’re doing so, the 'Unified Labeling Support Tool' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (%temp%\UnifiedLabelingSupportTool). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created. While the files are being cached, you will see a progress bar “Collecting logs...".
@@ -493,7 +493,7 @@ Function UnifiedLabelingSupportTool {
 
     .EXAMPLE
         UnifiedLabelingSupportTool -RecordProblem -CompressLogs
-        This parameter cleans up existing MSIP/MSIPC log folders, then it removes all relevant policies, labels and settings, starts recording data, and compress all collected logs files to a .zip archive in the users desktop folder.
+        This parameter removes all relevant policies, labels and settings, starts recording data, and compress all collected logs files to a .zip archive in the users desktop folder.
 
     .EXAMPLE
         UnifiedLabelingSupportTool -Menu
@@ -1481,8 +1481,19 @@ Function fncCopyItem ($Private:objItem, $Private:strDestination, $Private:strFil
     }
     Catch [System.IO.IOException] { <# Action if file cannot be accessed, because it's locked/used by another process <#>
 
-        <# Verbose/Logging #>
-        fncLogging -strLogFunction "fncCopyItem" -strLogDescription "Item locked" -strLogValue "ERROR: "$Private:objItem
+        <# If item path contain MSIP, then individual Verbose/Logging #>
+        If ($Private:objItem -like "*MSIP*") {
+
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncCopyItem" -strLogDescription "Item locked" -strLogValue "ERROR: \MSIP"
+
+        }
+        Else {
+
+            <# Verbose/Logging #>
+            fncLogging -strLogFunction "fncCopyItem" -strLogDescription "Item locked" -strLogValue "ERROR: "$Private:objItem
+
+        }
 
         <# Release private variables #>
         $Private:objItem = $null
@@ -1561,10 +1572,6 @@ Function fncRecordProblem {
     
             <# Verbose/Logging #>
             fncLogging "fncRecordProblem" -strLogDescription "New log folder created" -strLogValue $Private:strUniqueFolderName
-
-            <# Clean MSIP/MSIPC client folders in file system #>
-            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\MSIP"
-            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\MSIPC"
 
             <# Call function to enable logging #>
             fncEnableLogging
@@ -2122,19 +2129,39 @@ Function fncCollectLogging {
 
             <# Create Office log folder #>
             New-Item -ItemType Directory -Force -Path "$Global:strUniqueLogFolder\Office" | Out-Null
-            
-            <# Check for Office MIP path, and create it only if no AIP client is installed; because with AIP client we collect already the mip folder with the AIPLogs.zip #>
-            If (-not (Get-Module -ListAvailable -Name AzureInformationProtection)) { <# Check for AIP client #>
+ 
+            <# Perform action only, if the CLP folder contain files (Note: Afer a RESET this folder is empty). #>
+            If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Office\CLP -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
 
-                <# Create Office MIP log folder #>
-                New-Item -ItemType Directory -Force -Path "$Global:strUniqueLogFolder\Office\mip" | Out-Null
-
-                <# Export Office MIP content to logs folder #>
-                fncCopyItem $env:LOCALAPPDATA\Microsoft\Office\DLP\mip "$Global:strUniqueLogFolder\Office" "mip\*"
+                <# Compress label and policy xml files into a zip file (overwrites) #>
+                Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\Office\CLP"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\LabelsAndPolicies" -Force -ErrorAction SilentlyContinue
 
                 <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Office DLP MIP logs" -strLogValue "\Office\mip"
+                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Office CLP" -strLogValue "\Office\LabelsAndPolicies.zip"
 
+            }
+
+            <# Check for Office MIP path, and create it only if no AIP client is installed; because with AIP client we collect already the mip folder with the AIPLogs.zip #>
+            If (-not (Get-Module -ListAvailable -Name AzureInformationProtection)) { <# Check for AIP client #>
+  
+                <# Check for Office MIP path #>
+                If ($(Test-Path -Path "$Global:strUniqueLogFolder\Office\DLP\mip") -Eq $true) {
+
+                    <# Perform action only, if the MIP folder contain files  #>
+                    If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Office\DLP\mip -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
+
+                        <# Create Office MIP log folder #>
+                        New-Item -ItemType Directory -Force -Path "$Global:strUniqueLogFolder\Office\mip" | Out-Null
+
+                        <# Export Office MIP content to logs folder #>
+                        fncCopyItem $env:LOCALAPPDATA\Microsoft\Office\DLP\mip "$Global:strUniqueLogFolder\Office" "mip\*"
+
+                        <# Verbose/Logging #>
+                        fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Office MIP logs" -strLogValue "\Office\mip"
+
+                    }
+                }
+   
             }
 
         }
