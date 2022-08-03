@@ -39,7 +39,7 @@ For new issues, file your bug or feature request as a new Issue. Please describe
 
 * **Installing PowerShellGet module cause an error**
 
-    This applies only to a manual installation: If you follow step 2. Install PowerShellGet-module from the [step-by-step installation](https://aka.ms/UnifiedLabelingSupportTool/#Step-by-step_installation), you may see the following error:
+    This applies only to a manual installation. You may see the following error:
 
     ```Text
     PackageManagement\Install-Package : No match was found for the specified search criteria and module name 'PowerShellGet'.
