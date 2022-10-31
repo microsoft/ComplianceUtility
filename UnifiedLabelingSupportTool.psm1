@@ -1,4 +1,4 @@
-﻿#Requires -Version 5.1
+﻿cher#Requires -Version 5.1
 
 <# ╔══════════════════════════════════════════════════════════════════════════════════════════╗
    ║ WARNING: DO NOT MODIFY OR DELETE ANY COMPONENT OF THE 'Unified Labeling Support Tool' OR ║
@@ -10,7 +10,7 @@
 # Licensed under the MIT License
 
 <# Global variables #>
-$Global:strVersion = "3.0.5" <# Define version #>
+$Global:strVersion = "3.0.6" <# Define version #>
 $Global:strDefaultWindowTitle = $Host.UI.RawUI.WindowTitle <# Caching window title #>
 $Global:host.UI.RawUI.WindowTitle = "Unified Labeling Support Tool ($Global:strVersion)" <# Set window title #>
 $Global:MenuCollectExtended = $false <# Define variable for COLLECT menu handling #>
@@ -31,7 +31,7 @@ Function fncInitialize{
         $Global:strOSVersion = (Get-CimInstance Win32_OperatingSystem).Caption
 
         <# Check for supported Windows versions #>
-        If ($Global:strOSVersion -like "*Windows 8.1*" -Or
+        If ($Global:strOSVersion -like "*Windows 8*" -Or
             $Global:strOSVersion -like "*Windows 10*" -Or
             $Global:strOSVersion -like "*Windows 11*" -Or
             $Global:strOSVersion -like "*2012*" -Or
@@ -77,7 +77,7 @@ Function fncInitialize{
         $Global:strOSVersion = $(sw_vers -productVersion) <# Define and set variable for macOS version #>
 
         <# Check for unsupported macOS version #>
-        If ($Global:strOSVersion -lt "10.15") {
+        If ($Global:strOSVersion -lt "16.67") {
 
             <# Clear global variables #>
             $Global:strOSVersion = $null
@@ -86,7 +86,7 @@ Function fncInitialize{
             fncLogging -strLogFunction "fncInitialize" -strLogDescription "Unsupported operating system" -strLogValue $true
 
             <# Console output #>
-            Write-Output (Write-Host "ATTENTION: The 'Unified Labeling Support Tool' does not support the operating system you're using.`nPlease ensure to use a supported operating system:`nApple macOS 10.15 (Catalina) or higher.`n" -ForegroundColor Red)
+            Write-Output (Write-Host "ATTENTION: The 'Unified Labeling Support Tool' does not support the operating system you're using.`nPlease ensure to use a supported operating system:`nApple macOS 16.67 (Big Sur) or higher.`n" -ForegroundColor Red)
 
             <# Set back window title to default #>
             $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
@@ -190,10 +190,10 @@ Function UnifiedLabelingSupportTool {
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         
         VERSION
-        3.0.5
+        3.0.6
         
         CREATE DATE
-        08/03/2022
+        31/10/2022
 
         AUTHOR
         Claus Schiroky
@@ -202,11 +202,6 @@ Function UnifiedLabelingSupportTool {
 
         HOMEPAGE
         https://aka.ms/UnifiedLabelingSupportTool
-
-        SPECIAL THANKS TO
-        Simone Götze-Lewicki
-        Customer Service & Support | EMEA Modern Work Team
-        Microsoft Deutschland GmbH
 
         PRIVACY STATEMENT
         https://privacy.microsoft.com/PrivacyStatement
@@ -399,7 +394,7 @@ Function UnifiedLabelingSupportTool {
         - This feature is not available on Apple macOS.
 
     .PARAMETER CollectLabelsAndPolicies
-        This parameter collects the labels and policy definitions from your Microsoft 365 compliance center. Those with encryption and those with content marking only.
+        This parameter collects the labels and policy definitions from your Microsoft Purview compliance portal. Those with encryption and those with content marking only.
 
         Results are written into log file LabelsAndPolicies.log in the subfolder "Collect" of the Logs folder.
 
@@ -407,7 +402,7 @@ Function UnifiedLabelingSupportTool {
 
         - You must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to continue with this option. Please contact your administrator if necessary.
         - You need to know your Microsoft 365 global administrator account information to proceed with this option, as you will be asked for your credentials.
-        - The Microsoft Exchange Online PowerShell V2 cmdlets are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
+        - The Microsoft Exchange Online PowerShell V3 cmdlets are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
         - This parameter uses the AIPService module. Please note that the AIPService module does not support PowerShell 7. Therefore, unexpected errors may occur as the AIPService module can only run in compatibility mode.
         - This feature is not available on Apple macOS.
 
@@ -477,7 +472,7 @@ Function UnifiedLabelingSupportTool {
 
     .EXAMPLE
         UnifiedLabelingSupportTool -CollectLabelsAndPolicies
-        This parameter collects the labels and policy definitions from your Microsoft 365 compliance center.
+        This parameter collects the labels and policy definitions from your Microsoft Purview compliance portal.
 
     .EXAMPLE
         UnifiedLabelingSupportTool -CollectEndpointURLs
@@ -963,7 +958,7 @@ Function fncInformation {
     If ($Global:bolCommingFromMenu -eq $true) {
     
         <# Console output #>
-        Write-Output "NAME:`nUnifiedLabelingSupportTool`n`nDESCRIPTION:`nThe 'Unified Labeling Support Tool' provides the functionality to reset all corresponding client services (UL, AIP, MIP, etc.). Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for failure analysis and problem solving.`n`nVERSION:`n$Global:strVersion`n`nAUTHOR:`nClaus Schiroky`nCustomer Service & Support - EMEA Modern Work Team`nMicrosoft Deutschland GmbH`n`nHOMEPAGE:`nhttps://aka.ms/UnifiedLabelingSupportTool`n`nSPECIAL THANKS TO:`nSimone Götze-Lewicki`nCustomer Service & Support | EMEA Modern Work Team`nMicrosoft Deutschland GmbH`n`nPRIVACY STATEMENT:`nhttps://privacy.microsoft.com/PrivacyStatement`n`nCOPYRIGHT:`nCopyright (c) Microsoft Corporation.`n"
+        Write-Output "NAME:`nUnifiedLabelingSupportTool`n`nDESCRIPTION:`nThe 'Unified Labeling Support Tool' provides the functionality to reset all corresponding client services (UL, AIP, MIP, etc.). Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for failure analysis and problem solving.`n`nVERSION:`n$Global:strVersion`n`nAUTHOR:`nClaus Schiroky`nCustomer Service & Support - EMEA Modern Work Team`nMicrosoft Deutschland GmbH`n`nHOMEPAGE:`nhttps://aka.ms/UnifiedLabelingSupportTool`n`nPRIVACY STATEMENT:`nhttps://privacy.microsoft.com/PrivacyStatement`n`nCOPYRIGHT:`nCopyright (c) Microsoft Corporation.`n"
 
     }
 
@@ -1481,11 +1476,11 @@ Function fncCopyItem ($Private:objItem, $Private:strDestination, $Private:strFil
     }
     Catch [System.IO.IOException] { <# Action if file cannot be accessed, because it's locked/used by another process <#>
 
-        <# If item path contain MSIP, then individual Verbose/Logging #>
-        If ($Private:objItem -like "*MSIP*") {
+        <# If item path contain MSIP, then individual Verbose/Logging. Happen by PowerShell Telemetry #>
+        If ($Private:objItem -like "*MSIP") {
 
-                <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncCopyItem" -strLogDescription "Item locked" -strLogValue "ERROR: \MSIP"
+            <# Verbose/Logging #>
+            fncLogging -strLogFunction "fncCopyItem" -strLogDescription "Item locked" -strLogValue "ERROR: \MSIP"
 
         }
         Else {
@@ -3404,13 +3399,13 @@ Function fncCollectLabelsAndPolicies {
                 If ([Version]::new($Private:strEOPPOnlineVersion.Major, $Private:strEOPPOnlineVersion.Minor, $Private:strEOPPOnlineVersion.Build) -gt [Version]::new($Private:strEOPLocalVersion.Major, $Private:strEOPLocalVersion.Minor, $Private:strEOPLocalVersion.Build) -eq $true) {
 
                     <# Console output #>
-                    Write-Output "Updating Exchange Online PowerShell V2 module..."
+                    Write-Output "Updating Exchange Online PowerShell module..."
 
                     <# Update AIPService PowerShell module #>
                     Update-Module -Verbose:$false -Name ExchangeOnlineManagement -Force -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
 
                     <# Verbose/Logging #>
-                    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module" -strLogValue "Updated"
+                    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell module" -strLogValue "Updated"
 
                 }
 
@@ -3422,7 +3417,7 @@ Function fncCollectLabelsAndPolicies {
             Else { <# Actions if we can't connect to PowerShell Gallery (no internet connection) #>
 
                 <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module update" -strLogValue "Failed"
+                fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell module update" -strLogValue "Failed"
 
             }
 
@@ -3437,17 +3432,17 @@ Function fncCollectLabelsAndPolicies {
         If (Find-Module -Name ExchangeOnlineManagement -Repository PSGallery -ErrorAction SilentlyContinue -WarningAction SilentlyContinue) {
 
             <# Console output #>
-            Write-Output "Installing Exchange Online PowerShell V2 module..."
+            Write-Output "Installing Exchange Online PowerShell V3 module..."
 
             <# Install ExchangeOnlineManagement PowerShell module #>
             Install-Module -Verbose:$false -Name ExchangeOnlineManagement -Scope CurrentUser -Repository PSGallery -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
 
             <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module" -strLogValue "Installed"
+            fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V3 module" -strLogValue "Installed"
 
             <# Console output #>
-            Write-Output "Exchange Online PowerShell V2 module installed."
-            Write-Output (Write-Host "ATTENTION: To use Exchange Online PowerShell V2 cmdlets, you must close this window and run a new instance of PowerShell for it to work.`nThe 'Unified Labeling Support Tool' is now terminated." -ForegroundColor Red)
+            Write-Output "Exchange Online PowerShell V3 module installed."
+            Write-Output (Write-Host "ATTENTION: To use Exchange Online PowerShell V3 cmdlets, you must close this window and run a new instance of PowerShell for it to work.`nThe 'Unified Labeling Support Tool' is now terminated." -ForegroundColor Red)
 
             <# Release global variable back to default (updates active) #>
             $Global:bolSkipRequiredUpdates = $false
@@ -3465,13 +3460,13 @@ Function fncCollectLabelsAndPolicies {
         Else { <# Actions if we can't connect to PowerShell Gallery (no internet connection) #>
 
             <# Console output #>
-            Write-Output (Write-Host "ATTENTION: Collecting labels and policies could not be performed.`nEither PowerShell Gallery cannot be reached or there is no connection to the Internet.`n`nYou must have Exchange Online PowerShell V2 module installed to proceed.`n`nPlease check the following website and install the latest version of the ExchangeOnlineManagement modul:`nhttps://www.powershellgallery.com/packages/ExchangeOnlineManagement`n" -ForegroundColor Red)
+            Write-Output (Write-Host "ATTENTION: Collecting labels and policies could not be performed.`nEither PowerShell Gallery cannot be reached or there is no connection to the Internet.`n`nYou must have Exchange Online PowerShell V3 module installed to proceed.`n`nPlease check the following website and install the latest version of the ExchangeOnlineManagement modul:`nhttps://www.powershellgallery.com/packages/ExchangeOnlineManagement`n" -ForegroundColor Red)
 
             <# Console output #>
             Write-Output (Write-Host "COLLECT LABELS AND POLICIES: Failed.`n" -ForegroundColor Red)
 
             <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module installation" -strLogValue "Failed"
+            fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V3 module installation" -strLogValue "Failed"
 
             <# Action if function was called from the menu #>
             If ($Global:bolCommingFromMenu -eq $true) {
@@ -3506,10 +3501,10 @@ Function fncCollectLabelsAndPolicies {
     }
 
     <# Verbose/Logging #>
-    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V2 module version" -strLogValue (Get-Module -Verbose:$false -ListAvailable -Name ExchangeOnlineManagement).Version
+    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V3 module version" -strLogValue (Get-Module -Verbose:$false -ListAvailable -Name ExchangeOnlineManagement).Version
 
     <# Console output #>
-    Write-Output "Connecting to Microsoft 365 compliance center..."
+    Write-Output "Connecting to Microsoft Purview compliance portal..."
 
     <# Remember default progress bar status: "Continue" #>
     $Private:strOriginalPreference = $Global:ProgressPreference 
@@ -3518,15 +3513,15 @@ Function fncCollectLabelsAndPolicies {
     <# Try to connect/logon to compliance center #>
     Try {
 
-        <# Connect/logon to Microsoft 365 compliance center #>
+        <# Connect/logon to Microsoft Purview compliance portal #>
         Connect-IPPSSession -Verbose:$false -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
 
     }
     Catch { <# Catch action for any error that occur on connect/logon #>
 
         <# Verbose/Logging #>
-        fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft 365 compliance center connected" -strLogValue $false 
-        fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft 365 compliance center" -strLogValue "Login failed"
+        fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft Purview compliance portal connected" -strLogValue $false 
+        fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft Purview compliance portal" -strLogValue "Login failed"
     
         <# Console output #>
         Write-Output (Write-Host "COLLECT LABELS AND POLICIES: Login failed. Please try again.`n" -ForegroundColor Red)
@@ -3562,10 +3557,10 @@ Function fncCollectLabelsAndPolicies {
     }
 
     <# Console output #> 
-    Write-Output "Microsoft 365 compliance center connected."
+    Write-Output "Microsoft Purview compliance portal connected."
 
     <# Verbose/Logging #>
-    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft 365 compliance center connected" -strLogValue $true
+    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft Purview compliance portal connected" -strLogValue $true
     
     <# Console output #> 
     Write-Output "Collecting labels and policies..."
@@ -3615,10 +3610,10 @@ Function fncCollectLabelsAndPolicies {
     $Global:ProgressPreference = $Private:strOriginalPreference
 
     <# Console output #>
-    Write-Output "Microsoft 365 compliance center disconnected."
+    Write-Output "Microsoft Purview compliance portal disconnected."
 
     <# Verbose/Logging #>
-    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft 365 compliance center disconnected" -strLogValue $true
+    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft Purview compliance portal disconnected" -strLogValue $true
     fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Export labels and policy" -strLogValue "LabelsAndPolicies.log"
     fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Collect labels and policies" -strLogValue "Proceeded"
 

@@ -5,8 +5,8 @@
 
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta content="en-us" http-equiv="Content-Language" />
-<meta content="3.0.5" http-equiv="VERSION" />
-<meta content="03/08/2022" http-equiv="CREATEDATE" />
+<meta content="3.0.6" http-equiv="VERSION" />
+<meta content="31/10/2022" http-equiv="CREATEDATE" />
 <meta content="Claus Schiroky" http-equiv="AUTHOR" />
 <meta content="https://aka.ms/UnifiedLabelingSupportTool/Latest" http-equiv="SOURCE" />
 <meta content="Copyright (c) Microsoft Coporation." http-equiv="COPYRIGHT" />
@@ -264,7 +264,7 @@
 				
 				<p>
 				<span class="HeaderTitle">Unified Labeling Support Tool</span><br />
-				Version 3.0.5</p>
+				Version 3.0.6</p>
 
 
             </div>
@@ -295,7 +295,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 						<li class="Hyperlink">
 						<a class="Hyperlink" href="#Internet_access_(required)">Internet access</a></li>
 						<li class="Hyperlink">
-						<a class="Hyperlink" href="#Exchange_Online_PowerShell_V2_module_(recommended)">Exchange Online PowerShell V2 module</a></li>
+						<a class="Hyperlink" href="#Exchange_Online_PowerShell_V3_module">Exchange Online PowerShell V3 module</a></li>
 						<li class="Hyperlink">
 						<a class="Hyperlink" href="#AIPService_module_(recommended)">AIPService module</a></li>
 						<li class="Hyperlink">
@@ -332,7 +332,21 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 						<a class="Hyperlink" href="#[P]_RECORD_PROBLEM_/_-RecordProblem">
 						RECORD PROBLEM</a></li>
 						<li class="Hyperlink">
-						<a class="Hyperlink" href="#[C]_COLLECT_/_-">COLLECT</a></li>
+						<a class="Hyperlink" href="#[C]_COLLECT_/_-">COLLECT</a><ul>
+							<li class="Hyperlink">
+							<a class="Hyperlink" href="#[A]_AIP_service_configuration_/_-CollectAIPServiceConfiguration">
+							AIP service configuration</a></li>
+							<li class="Hyperlink">
+							<a class="Hyperlink" href="#[T]_AIP_service_templates_/_-CollectAIPServiceTemplates" name="AIP_service_templates">
+							AIP service templates</a></li>
+							<li class="Hyperlink">
+							<a class="Hyperlink" href="#[U]_Endpoint_URLs_/_-CollectEndpointURLs" name="Endpoint_URLs">
+							Endpoint URLs</a></li>
+							<li class="Hyperlink">
+							<a class="Hyperlink" href="#[L]_Labels_and_policies_/_-CollectLabelsAndPolicies" name="Labels_and_policies">
+							Labels and policies</a></li>
+						</ul>
+						</li>
 						<li class="Hyperlink">
 						<a class="Hyperlink" href="#[Z]_COMPRESS_LOGS_/_-CompressLogs">
 						COMPRESS LOGS</a></li>
@@ -364,8 +378,8 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<a class="Hyperlink" href="https://aka.ms/UnifiedLabelingSupportTool/Latest">UnifiedLabelingSupportTool</a> PowerShell script module.</p>
 				<p>
 				If you want to use the 'Unified Labeling Support Tool' on 
-				Apple macOS, you can find the corresponding help file 
-				(ULSupportTool-Mac.htm) at the link above.</p>
+				Apple macOS, you can find the corresponding help file here:
+				<a class="Hyperlink" href="https://github.com/microsoft/UnifiedLabelingSupportTool/releases/download/3.0.6/ULSupportTool-Win.htm">ULSupportTool-Mac.htm</a>.</p>
 				<p>
 				Have you ever used the Sensitivity button in a
 				<span lang="EN-US">
@@ -481,11 +495,10 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					<a class="Hyperlink" href="https://devblogs.microsoft.com/powershell/announcing-powershell-7-1" target="_blank">PowerShell 
 				7.1</a> (or higher) on the following operating systems:</p>
 				<ul>
-					<li>Microsoft Windows 8.1, 
-						Windows 10, Windows 11, 
+					<li>Microsoft Windows 8.1, Windows 10, Windows 11, 
 						Windows Server 2012, Windows Server 2012 R2, Windows 
 						Server 2016, Windows Server 2019, Windows Server 2022 
-						and Apple macOS 10.15 (Catalina) or higher.</li>
+						and Apple macOS 16.67 (Big Sur) or higher.</li>
 				</ul>
 				<p>The <span lang="EN-US">'Unified Labeling Support Tool'</span> supports the following Microsoft Office 
 					versions:</p>
@@ -502,9 +515,9 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p>Unexpected errors may occur, and some features may be 
 				limited, if there is no connection to the Internet.</p>
 				<p class="Header3">
-				<a name="Exchange_Online_PowerShell_V2_module_(recommended)">Exchange Online PowerShell V2 module</a></p>
+				<a name="Exchange_Online_PowerShell_V3_module">Exchange Online PowerShell V3 module</a></p>
 				<p>The Microsoft
-				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/exchange/exchange-online/exchange-online-powershell-v2/exchange-online-powershell-v2" target="_blank">Exchange Online PowerShell V2 
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps" target="_blank">Exchange Online PowerShell V3 
 				module</a> is required to 
 				proceed the option
 				<a class="Hyperlink" href="#[L]_Labels_and_policies_/_-CollectLabelsAndPolicies">
@@ -611,7 +624,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				UnifiedLabelingSupportTool.psd1 and ULSupportTool-Win.htm) 
 				into this folder:</p>
 				<p><span class="ConsoleTextShadow">
-				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.0.5</span></p>
+				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.0.6</span></p>
 				<p>This path must be listed in the PSModulePath environment 
 					variable. For more information, please read how
 					<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable" rel="nofollow" target="_blank">to view the PSModulePath variable</a>.</p>
@@ -643,7 +656,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">----------&nbsp;&nbsp; -------&nbsp;&nbsp;&nbsp; ----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
 				----------------</p>
 				<p class="ConsolteListShadowButton">Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				3.0.5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
+				3.0.6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
 				{UnifiedLabelingSupportTool, ULSupportTool}</p>
 				<p>To verify that an installation was performed using PowerShell 
 				Gallery, you can run the following command:</p>
@@ -660,7 +673,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">-------&nbsp;&nbsp; 
 				----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				----------&nbsp;&nbsp;&nbsp;&nbsp; -----------</p>
-				<p class="ConsolteListShadowButton">3.0.5&nbsp;&nbsp;&nbsp;&nbsp; 
+				<p class="ConsolteListShadowButton">3.0.6&nbsp;&nbsp;&nbsp;&nbsp; 
 				UnifiedLabelingSupportTool&nbsp;&nbsp; PSGallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				Have you ever used the Sensitivity button in...</p>
 				<p>&nbsp;</p>
@@ -986,8 +999,12 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				</ul>
 				<p class="Header3">
 				<a name="[A]_AIP_service_configuration_/_-CollectAIPServiceConfiguration">[A] AIP service configuration / -CollectAIPServiceConfiguration</a></p>
-				<p>This parameter collects AIP service configuration information 
-				of your tenant.</p>
+				<p>This parameter collects your AIP service configuration 
+				information, e.g.
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/azure/information-protection/configure-super-users" target="_blank">
+				SuperUsers</a> or
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/module/aipservice/set-aipserviceonboardingcontrolpolicy?view=azureipps" target="_blank">
+				OnboardingControlPolicy</a>, etc.</p>
 				<p>Results are written into the log file
 				<a class="Hyperlink" href="#AIPServiceConfiguration.log">AIPServiceConfiguration.log</a> 
 				in the subfolder "Collect" of the Logs folder.</p>
@@ -1058,9 +1075,8 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p>This parameter collects the labels and policy definitions 
 				(with detailled label actions and policy rules) 
 				from your 
-				<span lang="EN-US">
-				<a class="Hyperlink" href="https://www.microsoft.com/en-us/microsoft-365" target="_blank">
-				Microsoft 365</a></span> compliance center. Those with 
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide" target="_blank">
+				Microsoft Purview compliance portal</a>. Those with 
 				encryption and those with content marking only.</p>
 				<p>Results are written into log file
 				<a class="Hyperlink" href="#LabelsAndPolicies.log">LabelsAndPolicies.log</a> 
@@ -1068,8 +1084,8 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p><em>Note:</em></p>
 				<ul>
 					<li>The Microsoft
-					<a class="Hyperlink" href="https://www.powershellgallery.com/packages/ExchangeOnlineManagement" target="_blank">
-					Exchange Online PowerShell V2 cmdlets</a> are required to 
+					<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps" target="_blank">
+					Exchange Online PowerShell V3 cmdlets</a> are required to 
 					proceed this option. If you do not have this module 
 					installed, 'Unified Labeling Support Tool' will try to install it from 
 					PowerShell Gallery.</li>
