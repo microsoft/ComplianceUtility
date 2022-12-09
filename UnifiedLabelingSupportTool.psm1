@@ -1,4 +1,4 @@
-﻿cher#Requires -Version 5.1
+﻿#Requires -Version 5.1
 
 <# ╔══════════════════════════════════════════════════════════════════════════════════════════╗
    ║ WARNING: DO NOT MODIFY OR DELETE ANY COMPONENT OF THE 'Unified Labeling Support Tool' OR ║
@@ -10,7 +10,7 @@
 # Licensed under the MIT License
 
 <# Global variables #>
-$Global:strVersion = "3.0.6" <# Define version #>
+$Global:strVersion = "3.0.7" <# Define version #>
 $Global:strDefaultWindowTitle = $Host.UI.RawUI.WindowTitle <# Caching window title #>
 $Global:host.UI.RawUI.WindowTitle = "Unified Labeling Support Tool ($Global:strVersion)" <# Set window title #>
 $Global:MenuCollectExtended = $false <# Define variable for COLLECT menu handling #>
@@ -77,7 +77,7 @@ Function fncInitialize{
         $Global:strOSVersion = $(sw_vers -productVersion) <# Define and set variable for macOS version #>
 
         <# Check for unsupported macOS version #>
-        If ($Global:strOSVersion -lt "16.67") {
+        If ($Global:strOSVersion -lt "11.7") {
 
             <# Clear global variables #>
             $Global:strOSVersion = $null
@@ -86,7 +86,7 @@ Function fncInitialize{
             fncLogging -strLogFunction "fncInitialize" -strLogDescription "Unsupported operating system" -strLogValue $true
 
             <# Console output #>
-            Write-Output (Write-Host "ATTENTION: The 'Unified Labeling Support Tool' does not support the operating system you're using.`nPlease ensure to use a supported operating system:`nApple macOS 16.67 (Big Sur) or higher.`n" -ForegroundColor Red)
+            Write-Output (Write-Host "ATTENTION: The 'Unified Labeling Support Tool' does not support the operating system you're using.`nPlease ensure to use a supported operating system:`nApple macOS 11.7 (Big Sur) or higher.`n" -ForegroundColor Red)
 
             <# Set back window title to default #>
             $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
@@ -169,16 +169,6 @@ Function UnifiedLabelingSupportTool {
 
         https://aka.ms/UnifiedLabelingSupportTool
 
-        Note:
-
-        - Please only run 'Unified Labeling Support Tool' if you have been prompted to do so by a Microsoft support engineer.
-        - Do not modify any component of the 'Unified Labeling Support Tool' in any kind, as this will result in incorrect information in the analysis of your environment.
-        - Nomenclature: 
-            UL = Unified Labeling.
-            AIP = Azure Information Protection.
-            MSIP/MIP = Microsoft Information Protection.
-            MSIPC = Microsoft Information Protection Client.
-
         MIT LICENSE
         
         Copyright (c) Microsoft Corporation.
@@ -190,10 +180,10 @@ Function UnifiedLabelingSupportTool {
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         
         VERSION
-        3.0.6
+        3.0.7
         
         CREATE DATE
-        31/10/2022
+        09/12/2022
 
         AUTHOR
         Claus Schiroky
@@ -1616,6 +1606,24 @@ Function fncRecordProblem {
             <# Verbose/Logging #>
             fncLogging "fncRecordProblem" -strLogDescription "New log folder created" -strLogValue $Private:strUniqueFolderName
 
+            <# Enable Office verbose ULS logging #>
+            Try {
+                
+                <# Set application preference to enable Office verbose ULS logging #>
+                defaults write com.microsoft.office msoridEnableLogging -integer 1
+                defaults write com.microsoft.office msoridDefaultMinimumSeverity -integer 200
+
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncRecordProblem" -strLogDescription "Office verbose ULS logging" -strLogValue "Enabled"
+
+            }
+            Catch { 
+        
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncRecordProblem" -strLogDescription "Office verbose ULS logging" -strLogValue "Enable Failed"
+        
+            }
+
             <# Console output #>
             Write-Output (Write-Host "IMPORTANT: Now reproduce the problem, but leave this window open." -ForegroundColor Red)
             Read-Host "After reproducing the problem, close all the applications you were using, return here and press enter to complete the recording."
@@ -1625,6 +1633,24 @@ Function fncRecordProblem {
 
             <# Call function to collect log files #>
             fncCollectLogging
+
+            <# Disable Office verbose ULS logging #>
+            Try {
+                
+                <# Set application preference to disable Office verbose ULS logging #>
+                defaults delete com.microsoft.office msoridEnableLogging
+                defaults delete com.microsoft.office msoridDefaultMinimumSeverity
+
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncRecordProblem" -strLogDescription "Office verbose ULS logging" -strLogValue "Disabled"
+
+            }
+            Catch { 
+        
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncRecordProblem" -strLogDescription "Office verbose ULS logging" -strLogValue "Disable Failed"
+        
+            }
 
         }
 
@@ -2183,8 +2209,8 @@ Function fncCollectLogging {
         fncDeleteItem "$Global:strTempFolder\$([System.Environment]::MachineName)*.log"
         fncDeleteItem "$Global:strTempFolder\Office.log"
 
-        <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: AIP/MSIP/MSIPC/MIP logs..." -PercentComplete (100/25 * 9)
+        # Progress bar update #>
+        Write-Progress -Activity " Collecting logs: AIP/MSIP/MSIPC/Office Diagnostics logs folders..." -PercentComplete (100/25 * 9)
 
         <# Export MIP/MSIP/MSIPC folders (and more) to logs folder #>
         If (Get-Module -ListAvailable -Name AzureInformationProtection) { <# Check for AIP client and collecting folder content #>
@@ -2205,11 +2231,40 @@ Function fncCollectLogging {
                 <# Try to export AIP log folders with authentication #>
                 Try {
 
-                    <# Export AIP log folders with existing authentication #>
-                    Export-AIPLogs -FileName "$Global:strUniqueLogFolder\AIPLogs.zip" | Out-Null
-            
+                    <# Checking, if the AIP add-in is enabled #>
+                    If ((Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\office\16.0\common\security\labels" -Name useofficeforlabelling -ErrorAction SilentlyContinue).UseOfficeForLabelling -eq 0 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels" -Name useofficeforlabelling -ErrorAction SilentlyContinue).UseOfficeForLabelling -eq 0 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security\Lables" -Name useofficeforlabelling -ErrorAction SilentlyContinue).UseOfficeForLabelling -eq 0 -and
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\office\16.0\common\security\labels" -Name aipexception -ErrorAction SilentlyContinue).AIPException -eq 1 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels" -Name aipexception -ErrorAction SilentlyContinue).AIPException -eq 1 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security\Lable" -Name aipexception -ErrorAction SilentlyContinue).AIPException -eq 1 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Word\Resiliency\AddinList" -Name "MSIP.WordAddin" -ErrorAction SilentlyContinue).MSIP.WordAddin -eq 1 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Word\Resiliency\AddinList" -Name "MSIP.ExcelAddin" -ErrorAction SilentlyContinue).MSIP.WordAddin -eq 1 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Word\Resiliency\AddinList" -Name "MSIP.PowerPointAddin" -ErrorAction SilentlyContinue).MSIP.WordAddin -eq 1 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Word\Resiliency\AddinList" -Name "MSIP.OutlookAddin" -ErrorAction SilentlyContinue).MSIP.WordAddin -eq 1 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Word\Resiliency\AddinList" -Name "MSIP.WordAddin" -ErrorAction SilentlyContinue).MSIP.WordAddin -eq 1 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Word\Resiliency\AddinList" -Name "MSIP.ExcelAddin" -ErrorAction SilentlyContinue).MSIP.WordAddin -eq 1 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Word\Resiliency\AddinList" -Name "MSIP.PowerPointAddin" -ErrorAction SilentlyContinue).MSIP.WordAddin -eq 1 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Word\Resiliency\AddinList" -Name "MSIP.OutlookAddin" -ErrorAction SilentlyContinue).MSIP.WordAddin -eq 1 -or                        
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Microsoft\Office\16.0\Word\Resiliency\AddinList" -Name "MSIP.WordAddin" -ErrorAction SilentlyContinue).MSIP.WordAddin -eq 1 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Microsoft\Office\16.0\Word\Resiliency\AddinList" -Name "MSIP.ExcelAddin" -ErrorAction SilentlyContinue).MSIP.WordAddin -eq 1 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Microsoft\Office\16.0\Word\Resiliency\AddinList" -Name "MSIP.PowerPointAddin" -ErrorAction SilentlyContinue).MSIP.WordAddin -eq 1 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Microsoft\Office\16.0\Word\Resiliency\AddinList" -Name "MSIP.OutlookAddin" -ErrorAction SilentlyContinue).MSIP.WordAddin -eq 1 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Microsoft\Office\Word\Addins\MSIP.WordAddin" -Name "LoadBehavior" -ErrorAction SilentlyContinue).LoadBehavior -eq 3 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Microsoft\Office\Word\Addins\MSIP.ExcelAddin" -Name "LoadBehavior" -ErrorAction SilentlyContinue).LoadBehavior -eq 3 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Microsoft\Office\Word\Addins\MSIP.PowerPointAddin" -Name "LoadBehavior" -ErrorAction SilentlyContinue).LoadBehavior -eq 3 -or
+                        (Get-ItemProperty "HKCU:\SOFTWARE\Microsoft\Office\Word\Addins\MSIP.OutlookAddin" -Name "LoadBehavior" -ErrorAction SilentlyContinue).LoadBehavior -eq 3) {
+
+                        <# Export AIP log folders with cached authentication #>
+                        Export-AIPLogs -FileName "$Global:strUniqueLogFolder\AIPLogs.zip" | Out-Null
+
+                        <# Verbose/Logging #>
+                        fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export AIP Log folders" -strLogValue $true
+
+                    }
+           
                 }
-                Catch { <# Actions with no authentication #>
+                Catch { <# Export AIP log folders without cached authentication #>
                     
                     <# Check for AzureInformationProtection module #>
                     If (Get-Module -ListAvailable -Name AzureInformationProtection) {
@@ -2227,7 +2282,7 @@ Function fncCollectLogging {
                             Import-Module -Name AzureInformationProtection -UseWindowsPowerShell -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Out-Null
 
                             <# Verbose/Logging #>
-                            fncLogging -strLogFunction "fncReset" -strLogDescription "AzureInformationProtection compatiblity mode" -strLogValue $true
+                            fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "AzureInformationProtection compatiblity mode" -strLogValue $true
 
                         }
 
@@ -2237,8 +2292,11 @@ Function fncCollectLogging {
                         <# Authenticate for accessing logs #>
                         Set-AIPAuthentication
 
-                        <# Export AIP log folders #>
+                        <# Export AIP log folders with existing authentication #>
                         Export-AIPLogs -FileName "$Global:strUniqueLogFolder\AIPLogs.zip" | Out-Null
+
+                        <# Verbose/Logging #>
+                        fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export AIP Log folders" -strLogValue $true
 
                         <# Clear authentication #>
                         Clear-AIPAuthentication -ErrorAction SilentlyContinue | Out-Null
@@ -2246,21 +2304,18 @@ Function fncCollectLogging {
                         <# Verbose/Logging #>
                         fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "AIPAuthentication" -strLogValue "Cleared"
 
-                    }                
-            
-                }
+                    } 
+
+                }                    
 
                 <# Set back progress bar to previous setting #>
                 $Global:ProgressPreference = $Private:strOriginalPreference    
-
-                <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export AIP Log folders" -strLogValue $true
 
             }
 
         }
         Else {<# Action without any AIP client #>
-
+            
             <# Logging: If no AIP client is installed #>
             fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "AIP client installed" -strLogValue $false
 
