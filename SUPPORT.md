@@ -21,6 +21,43 @@ For new issues, file your bug or feature request as a new Issue. Please describe
 
 ## Known issues
 
+* **Collecting labels and policies raise PowerShell error "not recognized as the name of a cmdlet"**
+
+    When you try to collect [Labels and policies](https://microsoft.github.io/UnifiedLabelingSupportTool/#[L]_Labels_and_policies_/_-CollectLabelsAndPolicies), you might see the following errors:
+    
+    ```Text
+    Get-Label : The term 'Get-Label' is not recognized as the name of a cmdlet, function, script file, or operable program.
+    Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+    At line:1 char:1
+    + Get-Label
+    + ~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Get-Label:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+    ```
+    
+    ```Text
+    Get-LabelPolicy : The term 'Get-LabelPolicy' is not recognized as the name of a cmdlet, function, script file, or operable program.
+    Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+    At line:1 char:1
+    + Get-LabelPolicy
+    + ~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Get-LabelPolicy:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+    ```    
+
+    This is due to the fact that permissions have expanded through roles in the Purview Compliance Portal.
+    
+    Additional information: [Global Administrator](https://learn.microsoft.com/en-us/azure/active-directory/roles/permissions-reference#global-administrator), 
+    [Permissions in the Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center-permissions?view=o365-worldwide)    
+    
+    **Resolution:** You must add the appropriate administrator (usually the global administrator) to the [Information Protection](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/scc-permissions?view=o365-worldwide#role-groups-in-microsoft-defender-for-office-365-and-microsoft-purview-compliance) roles group in the [Microsoft Purview Compliance Center](https://compliance.microsoft.com/compliancecenterpermissions).
+
+
+
+
+
+
+
 * **Set-ExecutionPolicy has no effect**
 
     This applies only to a manual installation: If you downloaded the 'Unified Labeling Support Tool' from its [GitHub website](https://aka.ms/UnifiedLabelingSupportTool/Latest), it will be extended by an [Alternate Data Streams in NTFS](https://blogs.technet.microsoft.com/askcore/2013/03/24/alternate-data-streams-in-ntfs) (ADS). If the corresponding website in the ADS is not trusted in your environment, the PowerShell command "Set-ExecutionPolicy" has no effect.
