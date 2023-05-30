@@ -96,7 +96,7 @@ For new issues, file your bug or feature request as a new Issue. Please describe
     PS C:\> Register-PSRepository -Default
     ```
 
-* **"powershell-7.1.4-osx-x64.pkg" can't be opened because Apple cannot check it for malicious software** 
+* **"powershell-7.3.4-osx-x64.pkg" can't be opened because Apple cannot check it for malicious software** 
 
     This applies only on Apple macOS: If you double-click the file the above message is displayed (the version may differ). It happens due to your Security & Privacy preferences.
 
