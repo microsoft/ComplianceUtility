@@ -1,16 +1,10 @@
 ﻿#Requires -Version 5.1
 
-<# ╔══════════════════════════════════════════════════════════════════════════════════════════╗
-   ║ WARNING: DO NOT MODIFY OR DELETE ANY COMPONENT OF THE 'Unified Labeling Support Tool' OR ║
-   ║ THE RESULTING TRACE FILES, AS THIS WILL RESULT IN INCORRECT INFORMATION WHEN ANALYZING   ║
-   ║ YOUR ENVIRONMENT.                                                                        ║
-   ╚══════════════════════════════════════════════════════════════════════════════════════════╝ #>
-
 # Copyright (c) Microsoft Corporation
 # Licensed under the MIT License
 
 <# Global variables #>
-$Global:strVersion = "3.0.7" <# Define version #>
+$Global:strVersion = "3.0.9" <# Define version #>
 $Global:strDefaultWindowTitle = $Host.UI.RawUI.WindowTitle <# Caching window title #>
 $Global:host.UI.RawUI.WindowTitle = "Unified Labeling Support Tool ($Global:strVersion)" <# Set window title #>
 $Global:MenuCollectExtended = $false <# Define variable for COLLECT menu handling #>
@@ -31,8 +25,7 @@ Function fncInitialize{
         $Global:strOSVersion = (Get-CimInstance Win32_OperatingSystem).Caption
 
         <# Check for supported Windows versions #>
-        If ($Global:strOSVersion -like "*Windows 8*" -Or
-            $Global:strOSVersion -like "*Windows 10*" -Or
+        If ($Global:strOSVersion -like "*Windows 10*" -Or
             $Global:strOSVersion -like "*Windows 11*" -Or
             $Global:strOSVersion -like "*2012*" -Or
             $Global:strOSVersion -like "*Server 2016*" -Or
@@ -54,7 +47,7 @@ Function fncInitialize{
             fncLogging -strLogFunction "fncInitialize" -strLogDescription "Unsupported operating system" -strLogValue $true
 
             <# Console output #>
-            Write-Output (Write-Host "ATTENTION: The 'Unified Labeling Support Tool' does not support the operating system you're using.`nPlease ensure to use one of the following supported operating systems:`nMicrosoft Windows 8.1, Windows 10, Windows 11, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 and Windows Server 2022.`n" -ForegroundColor Red)
+            Write-Output (Write-Host "ATTENTION: The 'Unified Labeling Support Tool' does not support the operating system you're using.`nPlease ensure to use one of the following supported operating systems:`nMicrosoft Windows 10, Windows 11, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 and Windows Server 2022.`n" -ForegroundColor Red)
 
             <# Set back window title to default #>
             $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
@@ -159,10 +152,10 @@ Function UnifiedLabelingSupportTool {
 
     <#
     .SYNOPSIS
-        The 'Unified Labeling Support Tool' provides the functionality to reset all corresponding client services (UL, AIP, MIP, etc.). Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for failure analysis and problem solving.
+        The 'Unified Labeling Support Tool' provides the functionality to reset all corresponding Information Protection client settings. Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for error analysis and troubleshooting.
 
     .DESCRIPTION
-        Have you ever used the Sensitivity button in a Microsoft 365 App? If so, you've either used the Azure Information Protection client or Office's built-in labeling solution. In case something doesn't work as expected or you don't see any labeling at all, the 'Unified Labeling Support Tool' will help you.
+        Have you ever used the Sensitivity button in a Microsoft 365 App? If so, you've either used the Azure Information Protection client software (AIP add-in) or Office's built-in labeling solution (native client). In case something doesn't work as expected or you don't see any labeling at all, the ’Unified Labeling Support Tool’ will help you.
 
     .NOTES
         Please find more information on this website about how to use the 'Unified Labeling Support Tool':
@@ -180,10 +173,10 @@ Function UnifiedLabelingSupportTool {
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         
         VERSION
-        3.0.7
+        3.0.9
         
         CREATE DATE
-        09/12/2022
+        21/06/2023
 
         AUTHOR
         Claus Schiroky
@@ -213,17 +206,10 @@ Function UnifiedLabelingSupportTool {
         IMPORTANT: Before you proceed with this option, please close all open applications.
         This option removes all relevant policies, labels and settings.
 
-        Before, the 'Unified Labeling Support Tool' creates a backup copy of existing custom configurations from the following registry key:
-        
-        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation]
-        
-        The name of the backup file is ServiceLocationBackup.reg.
-
         Note:
 
         - Reset with the default argument will not reset all settings, but only user-specific settings if you run PowerShell with user privileges. This is sufficient in most cases to reset Microsoft 365 Apps, while a complete reset is useful for all other applications.
         - If you want a complete reset, you must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges.
-        - When an Office 2013 installation is detected, modern authentication (ADAL) is automatically enabled as a precaution.
         
         Valid <String> arguments are: "Default", or "Silent":
 
@@ -238,14 +224,10 @@ Function UnifiedLabelingSupportTool {
         [HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\MSIPC]
         [HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\AIPMigration]
         [HKCU:\SOFTWARE\Classes\Microsoft.IPViewerChildMenu]
-        [HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\DRM]
         [HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\DRM]
-        [HKCU:\SOFTWARE\Policies\Microsoft\Office\15.0\Common\DRM]
         [HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM]
-        [HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\15.0\Common\DRM]
         [HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\DRM]
         [HKCU:\SOFTWARE\Microsoft\XPSViewer\Common\DRM]
-        [HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity]
         [HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Identity]
         [HKCU:\SOFTWARE\Microsoft\MSIP]
         [HKCU:\SOFTWARE\Microsoft\MSOIdentityCRL]
@@ -254,12 +236,10 @@ Function UnifiedLabelingSupportTool {
 
         The DRMEncryptProperty and OpenXMLEncryptProperty registry settings are purged of the following keys:
 
-        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\15.0\Common\Security]
         [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Common\Security]
-        [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\15.0\Common\Security]
         [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]
 
-        The UseOfficeForLabelling (Use the Sensitivity feature in Office to apply and view sensitivity labels) registry setting is purged of the following keys:
+        The UseOfficeForLabelling (Use the Sensitivity feature in Office to apply and view sensitivity labels) and AIPException (Use the Azure Information Protection add-in for sensitivity labeling) registry setting is purged of the following keys:
 
         [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels]
         [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security\Labels]
@@ -346,10 +326,10 @@ Function UnifiedLabelingSupportTool {
         - Please note that the AIPService module does not support PowerShell 7. Therefore, unexpected errors may occur as the AIPService module can only run in compatibility mode.
         - This feature is not available on Apple macOS.
 
-    .PARAMETER CollectAIPServiceTemplates
-        This parameter collects AIP service templates of your tenant.
+    .PARAMETER CollectProtectionTemplates
+        This parameter collects protection templates of your tenant.
 
-        Results are written into the log file AIPServiceTemplates.log in the subfolder "Collect" of the Logs folder, and an export of each service template (.xml) into the subfolder "AIPServiceTemplates".
+        Results are written into the log file ProtectionTemplates.log in the subfolder "Collect" of the Logs folder, and an export of each protection template (.xml) into the subfolder "ProtectionTemplates".
 
         Note:
 
@@ -413,8 +393,6 @@ Function UnifiedLabelingSupportTool {
 
         This parameter compresses all collected log files and folders into a .zip archive, and the corresponding file is saved to your desktop. In addition, the default logs folder (for Windows: '%temp%\UnifiedLabelingSupportTool' and '~/Documents/UnifiedLabelingSupportTool' on Apple macOS) is cleaned.
 
-        After this step you can send/upload the .zip file for the Microsoft support engineer.
-
     .PARAMETER Menu
         This will start the 'Unified Labeling Support Tool' with the default menu.
 
@@ -457,8 +435,8 @@ Function UnifiedLabelingSupportTool {
         This parameter collects AIP service configuration information of your tenant.
 
     .EXAMPLE
-        UnifiedLabelingSupportTool -CollectAIPServiceTemplates
-        This parameter collects AIP service templates of your tenant.
+        UnifiedLabelingSupportTool -CollectProtectionTemplates
+        This parameter collects protection templates of your tenant.
 
     .EXAMPLE
         UnifiedLabelingSupportTool -CollectLabelsAndPolicies
@@ -531,10 +509,10 @@ Function UnifiedLabelingSupportTool {
         [Parameter(ParameterSetName = "Reset and logging")]
         [switch]$CollectAIPServiceConfiguration,
 
-        <# Parameter definition for CollectAIPServiceTemplates #>
+        <# Parameter definition for CollectProtectionTemplates #>
         [Alias("t")]
         [Parameter(ParameterSetName = "Reset and logging")]
-        [switch]$CollectAIPServiceTemplates,
+        [switch]$CollectProtectionTemplates,
 
         <# Parameter definition for CollectLabelsAndPolicies #>
         [Alias("l")]
@@ -671,17 +649,17 @@ Function UnifiedLabelingSupportTool {
 
     }
 
-    <# Action if the parameter '-CollectAIPServiceTemplates' has been selected #>
-    If ($PSBoundParameters.ContainsKey("CollectAIPServiceTemplates")) {
+    <# Action if the parameter '-CollectProtectionTemplates' has been selected #>
+    If ($PSBoundParameters.ContainsKey("CollectProtectionTemplates")) {
 
         <# Verbose/Logging #>
-        fncLogging -strLogFunction "UnifiedLabelingSupportTool" -strLogDescription "Parameter CollectAIPServiceTemplates" -strLogValue "Triggered"
+        fncLogging -strLogFunction "UnifiedLabelingSupportTool" -strLogDescription "Parameter CollectProtectionTemplates" -strLogValue "Triggered"
 
         <# Consider feature on Windows #>
         If ([System.Environment]::OSVersion.Platform -eq "Win32NT") {
 
-            <# Call function to collect AIP Service Templates #>
-            fncCollectAIPServiceTemplates
+            <# Call function to collect Protection Templates #>
+            fncCollectProtectionTemplates
 
         }
         Else {
@@ -948,7 +926,7 @@ Function fncInformation {
     If ($Global:bolCommingFromMenu -eq $true) {
     
         <# Console output #>
-        Write-Output "NAME:`nUnifiedLabelingSupportTool`n`nDESCRIPTION:`nThe 'Unified Labeling Support Tool' provides the functionality to reset all corresponding client services (UL, AIP, MIP, etc.). Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for failure analysis and problem solving.`n`nVERSION:`n$Global:strVersion`n`nAUTHOR:`nClaus Schiroky`nCustomer Service & Support - EMEA Modern Work Team`nMicrosoft Deutschland GmbH`n`nHOMEPAGE:`nhttps://aka.ms/UnifiedLabelingSupportTool`n`nPRIVACY STATEMENT:`nhttps://privacy.microsoft.com/PrivacyStatement`n`nCOPYRIGHT:`nCopyright (c) Microsoft Corporation.`n"
+        Write-Output "NAME:`nUnifiedLabelingSupportTool`n`nDESCRIPTION:`nThe 'Unified Labeling Support Tool' provides the functionality to reset all corresponding Information Protection client settings. Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for error analysis and troubleshooting.`n`nVERSION:`n$Global:strVersion`n`nAUTHOR:`nClaus Schiroky`nCustomer Service & Support - EMEA Modern Work Team`nMicrosoft Deutschland GmbH`n`nHOMEPAGE:`nhttps://aka.ms/UnifiedLabelingSupportTool`n`nPRIVACY STATEMENT:`nhttps://privacy.microsoft.com/PrivacyStatement`n`nCOPYRIGHT:`nCopyright (c) Microsoft Corporation.`n"
 
     }
 
@@ -1136,37 +1114,15 @@ Function fncReset ($strResetMethod) {
         <# Detect Windows and run actions to reset #>
         If ([System.Environment]::OSVersion.Platform -eq "Win32NT") {
 
-            <# If "registry overrides" exist, create a backup copy #>
-            If ($(Test-Path -Path "HKLM:\SOFTWARE\Microsoft\MSIPC\ServiceLocation") -Eq $true) {
-
-                <# Backup registry settings to a reg file #>
-                REG EXPORT "HKLM\SOFTWARE\Microsoft\MSIPC\ServiceLocation" $Global:strUserLogPath\ServiceLocationBackup.reg /Y | Out-Null
-
-                If ($strResetMethod -match "Default") {
-
-                    <# Console output #>
-                    Write-Output "Your ServiceLocation registry settings were stored to"$Global:strUserLogPath\ServiceLocationBackup.reg                    
-                    
-                }
-
-                <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncReset" -strLogDescription "Export ServiceLocation backup" -strLogValue "ServiceLocationBackup.reg"
-
-            }
-
             <# Clean user registry keys #>
             fncDeleteItem "HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\MSIPC"
             fncDeleteItem "HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\AIPMigration"
             fncDeleteItem "HKCU:\SOFTWARE\Classes\Microsoft.IPViewerChildMenu"
             fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Cloud\Office"
-            fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\DRM"
             fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\DRM"
-            fncDeleteItem "HKCU:\SOFTWARE\Policies\Microsoft\Office\15.0\Common\DRM"
             fncDeleteItem "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM"
-            fncDeleteItem "HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\15.0\Common\DRM"
             fncDeleteItem "HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\DRM"
             fncDeleteItem "HKCU:\SOFTWARE\Microsoft\XPSViewer\Common\DRM"
-            fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity"
             fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Identity"
             fncDeleteItem "HKCU:\SOFTWARE\Microsoft\MSIP"
             fncDeleteItem "HKCU:\SOFTWARE\Microsoft\MSOIdentityCRL"
@@ -1175,11 +1131,12 @@ Function fncReset ($strResetMethod) {
             fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels" -strRegistrySetting "UseOfficeForLabelling"
             fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security\Labels" -strRegistrySetting "UseOfficeForLabelling"
             fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security\Lables" -strRegistrySetting "UseOfficeForLabelling"
+            fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels" -strRegistrySetting "AIPException"
+            fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security\Labels" -strRegistrySetting "AIPException "
+            fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security\Lables" -strRegistrySetting "AIPException"
             fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security" -strRegistrySetting "OpenXMLEncryptProperty"
             fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security" -strRegistrySetting "OpenXMLEncryptProperty"
-            fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Office\15.0\Common\Security" -strRegistrySetting "DRMEncryptProperty"
             fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security" -strRegistrySetting "DRMEncryptProperty"
-            fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Security" -strRegistrySetting "DRMEncryptProperty"
             fncDeleteRegistrySetting -strRegistryKey "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security" -strRegistrySetting "DRMEncryptProperty"
 
             <# Clean client classes registry keys #>
@@ -1203,26 +1160,6 @@ Function fncReset ($strResetMethod) {
                 fncDeleteItem "HKLM:\SOFTWARE\Microsoft\MSDRM"
                 fncDeleteItem "HKLM:\SOFTWARE\Wow6432Node\Microsoft\MSDRM"
                 fncDeleteItem "HKLM:\SOFTWARE\WOW6432Node\Microsoft\MSIP"
-
-            }
-
-            <# Check for Office 2013, and enable modern authentication if installed #>
-            If ($(fncCheckForOffice2013) -Eq $true) { 
-
-                <# Check for Office 2013 registry key #>
-                If ($(Test-Path -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0") -Eq $true) {
-            
-                    <# Create registry key (overwrite) #>
-                    New-Item -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity" -ErrorAction SilentlyContinue | Out-Null
-            
-                    <# Implement registry settings to enable modern authentication for Office 2013 #>
-                    New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity" -Name "EnableADAL" -Value 1 -PropertyType DWord -ErrorAction SilentlyContinue | Out-Null
-                    New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity" -Name "Version" -Value 1 -PropertyType DWord -ErrorAction SilentlyContinue | Out-Null
-            
-                    <# Verbose/Logging #>
-                    fncLogging -strLogFunction "fncReset" -strLogDescription "ADAL for Office 2013" -strLogValue "Enabled"
-
-                }
 
             }
 
@@ -1321,48 +1258,6 @@ Function fncReset ($strResetMethod) {
             <# Call show menu function #>
             fncShowMenu    
  
-        }
-
-    }
-
-}
-
-<# Check, if Office 2013 is installed; used to enable ADAL at reset #>
-Function fncCheckForOffice2013 {
-
-    <# Loop through uninstall registry key to find any Office application #>
-    Get-ChildItem -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall" -Name | ForEach-Object {
-
-        <# Check for Office applications/GUIDs #>
-        If ($_.ToString() -like "*0000000FF1CE}") {
-
-            <# Check for major version "15" = Office 2013 #>
-            If (Get-ItemProperty $_.PSPath | Where-Object {$_.VersionMajor -eq "15"}) {
-                
-
-                <# Return "true", if an Office 2013 applictation was found #>
-                Return $true
-
-                <# Set back window title to default #>
-                $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle                
-
-                <# Leaving ForEach loop #>
-                Break
-
-            }
-            Else {
-
-                <# Return "false", if no Office 2013 applictation was found #>
-                Return $false
-
-                <# Set back window title to default #>
-                $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
-                
-                <# Leaving loop #>
-                Break
-
-            }
-
         }
 
     }
@@ -1781,19 +1676,11 @@ Function fncEnableLogging {
     <# Progress bar update #>
     Write-Progress -Activity " Enable logging: Office logging..." -PercentComplete (100/8 * 3)
 
-    <# Enable Office logging for 2013 (15.0), 2016 (16.0) #>
+    <# Enable Office logging for 2016 (16.0) #>
     If ($(Test-Path -Path "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Logging") -Eq $false) {
 
         <# Create registry key, if does not exist #>
         New-Item -Path "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Logging" -Force | Out-Null
-
-    }
-
-    <# Check for registry key "Logging" (2013) #>
-    If ($(Test-Path -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Logging") -Eq $false) {
-
-        <# Create registry key, if does not exist #>
-        New-Item -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Logging" -Force | Out-Null
 
     }
 
@@ -1805,18 +1692,8 @@ Function fncEnableLogging {
 
     }
 
-    <# Check for registry key "Logging" (2013 x64) #>
-    If ($(Test-Path -Path "HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\15.0\Common\Logging") -Eq $false) {
-
-        <# Create logging registry key, if it does not exist #>
-        New-Item -Path "HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\15.0\Common\Logging" -Force | Out-Null
-
-    }
-
-    <# Implement registry settings to enable logging for the different Office versions #>
+    <# Implement registry settings to enable logging for Office #>
     New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Logging" -Name "EnableLogging" -Value 1 -PropertyType DWord -Force | Out-Null
-    New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Logging" -Name "EnableLogging" -Value 1 -PropertyType DWord -Force | Out-Null
-    New-ItemProperty -Path "HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\15.0\Common\Logging" -Name "EnableLogging" -Value 1 -PropertyType DWord -Force | Out-Null
     New-ItemProperty -Path "HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\Logging" -Name "EnableLogging" -Value 1 -PropertyType DWord -Force | Out-Null
 
     <# Verbose/Logging #>
@@ -1825,7 +1702,7 @@ Function fncEnableLogging {
     <# Progress bar update #>
     Write-Progress -Activity " Enable logging: Office TCOTrace..." -PercentComplete (100/8 * 4)
 
-    <# Enable Office TCOTrace logging for Office 2013 (15.0), 2016 (16.0) #>
+    <# Enable Office TCOTrace logging for Office 2016 (16.0) #>
     If ($(Test-Path -Path "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Debug") -Eq $false) { <# Check for registry key "Debug" (2016) #>
 
         <# Create registry key if it does not exist #>
@@ -1833,15 +1710,6 @@ Function fncEnableLogging {
 
     }
     New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Debug" -Name "TCOTrace" -Value 1 -PropertyType DWord -Force | Out-Null
-
-    <# Check for registry key "Debug" (2013) #>
-    If ($(Test-Path -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Debug") -Eq $false) { <# Check for registry key "Debug" (2013) #>
-
-        <# Create registry key if it does not exist #>
-        New-Item -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Debug" -Force | Out-Null
-
-    }
-    New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Debug" -Name "TCOTrace" -Value 1 -PropertyType DWord -Force | Out-Null
 
     <# Verbose/Logging #>
     fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "Office TCOTrace" -strLogValue "Enabled"
@@ -1987,10 +1855,8 @@ Function fncDisableLogging {
     <# Progress bar update #>
     Write-Progress -Activity " Disable logging: Office logging..." -PercentComplete (100/6 * 3)
 
-    <# Disable Office logging for  2013 (15.0), 2016 (16.0) #>
+    <# Disable Office logging for  2016 (16.0) #>
     fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Logging"
-    fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Logging"
-    fncDeleteItem "HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\15.0\Common\Logging"
     fncDeleteItem "HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\Logging"
 
     <# Verbose/Logging #>
@@ -1999,9 +1865,8 @@ Function fncDisableLogging {
     <# Progress bar update #>
     Write-Progress -Activity " Disable logging: Office TCOTrace..." -PercentComplete (100/6 * 4)
 
-    <# Disable Office TCOTrace logging for Office 2013 (15.0), 2016 (16.0) #>
+    <# Disable Office TCOTrace logging for Office 2016 (16.0) #>
     fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Debug"
-    fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Debug"
 
     <# Verbose/Logging #>
     fncLogging -strLogFunction "fncDisableLogging" -strLogDescription "Office TCOTrace" -strLogValue "Disabled"
@@ -2199,7 +2064,7 @@ Function fncCollectLogging {
         <# Verbose/Logging #>
         fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Office log" -strLogValue "office.log"
 
-        <# Copy Office logging files for 2013 (15.0), 2016 (16.0) to logs folder #>
+        <# Copy Office logging files for 2016 (16.0) to logs folder #>
         fncCopyItem "$Global:strTempFolder\$([System.Environment]::MachineName)*.log" "$Global:strUniqueLogFolder\Office" "Office\$([System.Environment]::MachineName)*.log"
 
         <# Verbose/Logging #>
@@ -2532,7 +2397,6 @@ Function fncCollectLogging {
                                 "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Office\Outlook\Addins",
                                 "HKCU:\SOFTWARE\Microsoft\MSIP",
                                 "HKCU:\Software\Microsoft\Office\16.0\Common\Identity",
-                                "HKCU:\Software\Microsoft\Office\15.0\Common\Identity",
                                 "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Internet",
                                 "HKCU:\SOFTWARE\Microsoft\Office\Word\Addins",
                                 "HKCU:\SOFTWARE\Microsoft\Office\Excel\Addins",
@@ -2541,7 +2405,6 @@ Function fncCollectLogging {
                                 "HKCU:\SOFTWARE\Microsoft\Office\16.0\Word\Resiliency",
                                 "HKCU:\SOFTWARE\Microsoft\Office\16.0\Excel\Resiliency",
                                 "HKCU:\SOFTWARE\Microsoft\Office\16.0\PowerPoint\Resiliency",
-                                "HKCU:\SOFTWARE\Microsoft\Office\15.0\Outlook\Resiliency",
                                 "HKCU:\SOFTWARE\Microsoft\Office\16.0\Outlook\Resiliency",
                                 "HKCU:\SOFTWARE\Classes\Local Settings\SOFTWARE\Microsoft\MSIPC",
                                 "HKCR:\MSIP.ExcelAddin",
@@ -2549,7 +2412,6 @@ Function fncCollectLogging {
                                 "HKCR:\MSIP.PowerPointAddin",
                                 "HKCR:\MSIP.OutlookAddin",
                                 "HKCR:\Local Settings\SOFTWARE\Microsoft\MSIPC",
-                                "HKCU:\SOFTWARE\Policies\Microsoft\Office\15.0\Common\DRM",
                                 "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM",
                                 "HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security",
                                 "HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security",
@@ -3064,8 +2926,8 @@ Function fncCollectAIPServiceConfiguration {
         Write-Output (Write-Host ("FciEnabledForConnectorAuthorization       : $Private:FciEnabledForConnectorAuthorization") -ForegroundColor Yellow) <# Console output #> 
         $Private:FciEnabledForConnectorAuthorization = $null <# Releasing variable #>
 
-        <# AIP service templates details log file #>
-        Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("AIP service templates                     : AipServiceTemplates.log")
+        <# Protection templates details log file #>
+        Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("Protection templates                      : ProtectionTemplates.log")
             
         <# AipServiceDocumentTrackingFeature #>
         $Private:AipServiceDocumentTrackingFeature = Get-AipServiceDocumentTrackingFeature <# Filling private variable #>
@@ -3166,17 +3028,17 @@ Function fncCollectAIPServiceConfiguration {
 
 }
 
-<#  Collect AIP service templates #>
-Function fncCollectAIPServiceTemplates {
+<#  Collect Protection templates #>
+Function fncCollectProtectionTemplates {
 
     <# Console output #>
-    Write-Output "COLLECT AIP SERVICE TEMPLATES:"
+    Write-Output "COLLECT PROTECTION TEMPLATES:"
 
     <# Check if not running as administrator #>
     If ($Global:bolRunningPrivileged -eq $false) {
 
         <# Console output #>
-        Write-Output (Write-Host "ATTENTION: You must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to continue with this option.`nCOLLECT AIP SERVICE TEMPLATES: Failed.`n" -ForegroundColor Red)
+        Write-Output (Write-Host "ATTENTION: You must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to continue with this option.`nCOLLECT PROTECTION TEMPLATES: Failed.`n" -ForegroundColor Red)
 
         <# Action if function was called from command line #>
         If ($Global:bolCommingFromMenu -eq $false) {
@@ -3212,7 +3074,7 @@ Function fncCollectAIPServiceTemplates {
     Write-Output "Initializing, please wait..."
 
     <# Verbose/Logging #>
-    fncLogging -strLogFunction "fncCollectAIPServiceTemplates" -strLogDescription "Collect AIP service templates" -strLogValue "Initiated"
+    fncLogging -strLogFunction "fncCollecProtectionTemplates" -strLogDescription "Collect protection templates" -strLogValue "Initiated"
 
     <# Action if -SkipUpdates was called from command line #>
     If ($Global:bolSkipRequiredUpdates -eq $false) {
@@ -3235,7 +3097,7 @@ Function fncCollectAIPServiceTemplates {
         Import-Module -Name AIPService -UseWindowsPowerShell -Verbose:$false -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Out-Null
 
         <# Verbose/Logging #>
-        fncLogging -strLogFunction "fncCollectAIPServiceTemplates" -strLogDescription "AIPService compatiblity mode" -strLogValue $true
+        fncLogging -strLogFunction "fncCollectProtectionTemplates" -strLogDescription "AIPService compatiblity mode" -strLogValue $true
 
     }
 
@@ -3246,17 +3108,17 @@ Function fncCollectAIPServiceTemplates {
         Write-Output "AIPService connected."
 
         <# Verbose/Logging #>
-        fncLogging -strLogFunction "fncCollectAIPServiceTemplates" -strLogDescription "AIPService connected" -strLogValue $true
+        fncLogging -strLogFunction "fncCollectProtectionTemplates" -strLogDescription "AIPService connected" -strLogValue $true
 
     }
     Else{ <# Action if AIPService connection failed #>
 
         <# Verbose/Logging #>
-        fncLogging -strLogFunction "fncCollectAIPServiceTemplates" -strLogDescription "AIPService connected" -strLogValue $false 
-        fncLogging -strLogFunction "fncCollectAIPServiceTemplates" -strLogDescription "Collect AIP service templates" -strLogValue "Login failed"
+        fncLogging -strLogFunction "fncCollectProtectionTemplates" -strLogDescription "AIPService connected" -strLogValue $false 
+        fncLogging -strLogFunction "fncCollectProtectionTemplates" -strLogDescription "Collect protection templates" -strLogValue "Login failed"
     
         <# Console output #>
-        Write-Output (Write-Host "COLLECT AIP SERVICE TEMPLATES: Login failed. Please try again.`n" -ForegroundColor Red)
+        Write-Output (Write-Host "COLLECT PROTECTION TEMPLATES: Login failed. Please try again.`n" -ForegroundColor Red)
 
         <# Action if function was called from command line #>
         If ($Global:bolCommingFromMenu -eq $false) {
@@ -3296,47 +3158,47 @@ Function fncCollectAIPServiceTemplates {
     }
 
     <# Check for existing log file and create it, if it not exist #>
-    If ($(Test-Path $Global:strUserLogPath"\Collect\AIPServiceTemplates.log") -Eq $false) {
+    If ($(Test-Path $Global:strUserLogPath"\Collect\ProtectionTemplates.log") -Eq $false) {
 
         <# Create AIPService logging file #>
-        Out-File -FilePath $Global:strUserLogPath"\Collect\AIPServiceTemplates.log" -Encoding UTF8 -Append -Force
+        Out-File -FilePath $Global:strUserLogPath"\Collect\ProtectionTemplates.log" -Encoding UTF8 -Append -Force
 
     }
 
     <# Console output #> 
-    Write-Output "Collecting AIP service templates..."
+    Write-Output "Collecting protection templates..."
     
     <# Check for existing log file and extend it, if it exist #>
-    If ($(Test-Path $Global:strUserLogPath"\Collect\AIPServiceTemplates.log") -Eq $true) { <# Exporting AIP service templates and output result: #>
+    If ($(Test-Path $Global:strUserLogPath"\Collect\ProtectionTemplates.log") -Eq $true) { <# Exporting protection templates and output result: #>
 
-        <# Collect AIP service templates #>
+        <# Collect protection templates #>
         $Private:Timestamp = (Get-Date -Verbose:$false -UFormat "%y%m%d-%H%M%S") <# Filling private variable with date/time #>
-        ("Date/Timestamp               : " + $Private:Timestamp) | Out-File $Global:strUserLogPath"\Collect\AIPServiceTemplates.log" -Encoding UTF8 -Append <# Extend log file with date/time #>
+        ("Date/Timestamp               : " + $Private:Timestamp) | Out-File $Global:strUserLogPath"\Collect\ProtectionTemplates.log" -Encoding UTF8 -Append <# Extend log file with date/time #>
             
         <# Release date/time variable #>
         $Private:Timestamp = $null 
 
         <# Add template details #>
-        Get-AipServiceConfiguration | Select-Object -ExpandProperty Templates | Out-File $Global:strUserLogPath"\Collect\AIPServiceTemplates.log" -Encoding UTF8 -Append <# Extending log file with template summary #>
-        Get-AIPServicetemplate | Format-List * | Out-File $Global:strUserLogPath"\Collect\AIPServiceTemplates.log" -Encoding UTF8 -Append <# Extending log file with template details #>
+        Get-AipServiceConfiguration | Select-Object -ExpandProperty Templates | Out-File $Global:strUserLogPath"\Collect\ProtectionTemplates.log" -Encoding UTF8 -Append <# Extending log file with template summary #>
+        Get-AIPServicetemplate | Format-List * | Out-File $Global:strUserLogPath"\Collect\ProtectionTemplates.log" -Encoding UTF8 -Append <# Extending log file with template details #>
 
     }
     
-    <# Check if "Collect\Service Templates" folder exist and create it, if not #>
-    If ($(Test-Path -Path $Global:strUserLogPath"\Collect\AIPServiceTemplates") -Eq $false) {
+    <# Check if "Collect\ProtectionTemplates" folder exist and create it, if not #>
+    If ($(Test-Path -Path $Global:strUserLogPath"\Collect\ProtectionTemplates") -Eq $false) {
 
-        New-Item -ItemType Directory -Force -Path $Global:strUserLogPath"\Collect\AIPServiceTemplates" | Out-Null <# Define Service Templates path #>
+        New-Item -ItemType Directory -Force -Path $Global:strUserLogPath"\Collect\ProtectionTemplates" | Out-Null <# Define Service Templates path #>
 
     }
 
-    <# Detect Service Template IDs for backup #>
-    ForEach ($Private:ServiceTemplate in (Get-AIPServicetemplate).TemplateID) {
+    <# Detect Protection Template IDs for backup #>
+    ForEach ($Private:ProtectionTemplate in (Get-AIPServicetemplate).TemplateID) {
 
         <# Backup Service Template to XML #>
-        Export-AipServiceTemplate -Path $Global:strUserLogPath"\Collect\AIPServiceTemplates\$Private:ServiceTemplate.xml" -TemplateId $Private:ServiceTemplate -Force
+        Export-AipServiceTemplate -Path $Global:strUserLogPath"\Collect\ProtectionTemplates\$Private:ProtectionTemplate.xml" -TemplateId $Private:ProtectionTemplate -Force
 
         <# Verbose/Logging #>
-        fncLogging -strLogFunction "fncCollectAIPServiceTemplates" -strLogDescription "Service Template exported" -strLogValue "$Private:ServiceTemplate.xml"
+        fncLogging -strLogFunction "fncCollectProtectionTemplates" -strLogDescription "Protection template exported" -strLogValue "$Private:ProtectionTemplate.xml"
 
     } 
 
@@ -3347,14 +3209,14 @@ Function fncCollectAIPServiceTemplates {
     Write-Output "AIPService disconnected.`n"
 
     <# Verbose/Logging #>
-    fncLogging -strLogFunction "fncCollectAIPServiceTemplates" -strLogDescription "AIPService disconnected" -strLogValue $true
-    fncLogging -strLogFunction "fncCollectAIPServiceTemplates" -strLogDescription "Export AIP Templates" -strLogValue "AIPServiceTemplates.log"
-    fncLogging -strLogFunction "fncCollectAIPServiceTemplates" -strLogDescription "Collect AIP service templates" -strLogValue "Proceeded"
+    fncLogging -strLogFunction "fncCollectProtectionTemplates" -strLogDescription "AIPService disconnected" -strLogValue $true
+    fncLogging -strLogFunction "fncCollectProtectionTemplates" -strLogDescription "Export protection templates" -strLogValue "ProtectionTemplates.log"
+    fncLogging -strLogFunction "fncCollectProtectionTemplates" -strLogDescription "Collect protection templates" -strLogValue "Proceeded"
 
     <# Console output #> 
-    Write-Output "AIP service templates: $Global:strUserLogPath\Collect\AIPServiceTemplates"    
-    Write-Output "Log file: $Global:strUserLogPath\Collect\AIPServiceTemplates.log"
-    Write-Output (Write-Host "COLLECT AIP SERVICE TEMPLATES: Proceeded.`n" -ForegroundColor Green)
+    Write-Output "Protection templates: $Global:strUserLogPath\Collect\ProtectionTemplates"    
+    Write-Output "Log file: $Global:strUserLogPath\Collect\ProtectionTemplates.log"
+    Write-Output (Write-Host "COLLECT PROTECTION TEMPLATES: Proceeded.`n" -ForegroundColor Green)
 
     <# Action if function was called from command line #>
     If ($Global:bolCommingFromMenu -eq $false) {
@@ -3616,7 +3478,7 @@ Function fncCollectLabelsAndPolicies {
 
     <# Verbose/Logging #>
     fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft Purview compliance portal connected" -strLogValue $true
-    
+
     <# Console output #> 
     Write-Output "Collecting labels and policies..."
 
@@ -3640,19 +3502,19 @@ Function fncCollectLabelsAndPolicies {
 
         <# Collecting data #>
         Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "CURRENT POLICY:`n"
-        (Get-LabelPolicy).Name | Format-Table -AutoSize | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force | Format-List
+        (Get-LabelPolicy -WarningAction SilentlyContinue).Name | Format-Table -AutoSize | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force | Format-List
 
         Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "`nALL LABELS:"
         Get-Label | Format-Table -AutoSize | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
 
         Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "ALL LABELS WITH DETAILS:"
-        Get-Label -IncludeDetailedLabelActions $true | Format-List * | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
+        Get-Label -IncludeDetailedLabelActions | Format-List * | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
 
         Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "LABEL POLICIES:"
-        Get-LabelPolicy | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
+        Get-LabelPolicy -WarningAction SilentlyContinue | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
 
         Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "LABEL POLICY RULES:"
-        $Private:PolicyRules = Foreach ($AP in Get-LabelPolicy) {Get-LabelPolicyRule -Policy $AP.ExchangeObjectId.guid}
+        $Private:PolicyRules = Foreach ($AP in Get-LabelPolicy -WarningAction SilentlyContinue) {Get-LabelPolicyRule -Policy $AP.ExchangeObjectId.guid}
         $Private:PolicyRules | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
         $Private:PolicyRules = $null
 
@@ -4261,7 +4123,7 @@ Function fncShowMenu {
         Write-Output (Write-Host "  [C] COLLECT" -ForegroundColor Yellow)
         If (@($Global:MenuCollectExtended) -Match $true) {
             Write-Output (Write-Host "   ├──[A] AIP service configuration" -ForegroundColor Yellow)
-            Write-Output (Write-Host "   ├──[T] AIP service templates" -ForegroundColor Yellow)
+            Write-Output (Write-Host "   ├──[T] Protection templates" -ForegroundColor Yellow)
             Write-Output (Write-Host "   ├──[U] Endpoint URLs" -ForegroundColor Yellow)
             Write-Output (Write-Host "   └──[L] Labels and policies" -ForegroundColor Yellow)
         }
@@ -4382,17 +4244,17 @@ Function fncShowMenu {
 
         }
 
-        <# Actions for AIP service templates menu selected #>
+        <# Actions for Protection templates menu selected #>
         If ($Private:intMenuSelection -Eq "T") {
         
             <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncShowMenu" -strLogDescription "[T] AIP service templates" -strLogValue "Selected"
+            fncLogging -strLogFunction "fncShowMenu" -strLogDescription "[T] Protection templates" -strLogValue "Selected"
             
             <# Clear console #>
             Clear-Host
             
-            <# Call function to collect AIP service templates #>
-            fncCollectAIPServiceTemplates
+            <# Call function to collect Protection templates #>
+            fncCollectProtectionTemplates
             
             <# Call pause function #>
             fncPause

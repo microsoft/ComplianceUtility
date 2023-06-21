@@ -5,8 +5,8 @@
 
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta content="en-us" http-equiv="Content-Language" />
-<meta content="3.0.7" http-equiv="VERSION" />
-<meta content="09/12/2022" http-equiv="CREATEDATE" />
+<meta content="3.0.9" http-equiv="VERSION" />
+<meta content="21/06/2023" http-equiv="CREATEDATE" />
 <meta content="Claus Schiroky" http-equiv="AUTHOR" />
 <meta content="https://aka.ms/UnifiedLabelingSupportTool/Latest" http-equiv="SOURCE" />
 <meta content="Copyright (c) Microsoft Coporation." http-equiv="COPYRIGHT" />
@@ -247,6 +247,11 @@
 .auto-style2 {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
+.auto-style3 {
+	font-size: 12pt;
+	letter-spacing: normal;
+	background-color: #FFFFFF;
+}
 </style>
 
 <meta content="The 'Unified Labeling Support Tool' provides the functionality to reset all corresponding client services (UL, AIP, MIP, etc.). Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for failure analysis and problem solving." name="description" />
@@ -264,7 +269,7 @@
 				
 				<p>
 				<span class="HeaderTitle">Unified Labeling Support Tool</span><br />
-				Version 3.0.7</p>
+				Version 3.0.9</p>
 
 
             </div>
@@ -295,7 +300,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 						<li class="Hyperlink">
 						<a class="Hyperlink" href="#Internet_access_(required)">Internet access</a></li>
 						<li class="Hyperlink">
-						<a class="Hyperlink" href="#Exchange_Online_PowerShell_V3_module">Exchange Online PowerShell V3 module</a></li>
+						<a class="Hyperlink" href="#Exchange_Online_PowerShell_module">Exchange Online PowerShell module</a></li>
 						<li class="Hyperlink">
 						<a class="Hyperlink" href="#AIPService_module_(recommended)">AIPService module</a></li>
 						<li class="Hyperlink">
@@ -337,8 +342,8 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 							<a class="Hyperlink" href="#[A]_AIP_service_configuration_/_-CollectAIPServiceConfiguration">
 							AIP service configuration</a></li>
 							<li class="Hyperlink">
-							<a class="Hyperlink" href="#[T]_AIP_service_templates_/_-CollectAIPServiceTemplates" name="AIP_service_templates">
-							AIP service templates</a></li>
+							<a class="Hyperlink" href="#[T]_Protection_templates_/_-CollectProtectionTemplates">
+							Protection templates</a></li>
 							<li class="Hyperlink">
 							<a class="Hyperlink" href="#[U]_Endpoint_URLs_/_-CollectEndpointURLs" name="Endpoint_URLs">
 							Endpoint URLs</a></li>
@@ -379,7 +384,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p>
 				If you want to use the 'Unified Labeling Support Tool' on 
 				Apple macOS, you can find the corresponding help file here:
-				<a class="Hyperlink" href="https://github.com/microsoft/UnifiedLabelingSupportTool/releases/download/3.0.7/ULSupportTool-Mac.htm">ULSupportTool-Mac.htm</a>.</p>
+				<a class="Hyperlink" href="https://github.com/microsoft/UnifiedLabelingSupportTool/releases/download/3.0.8/ULSupportTool-Mac.htm">ULSupportTool-Mac.htm</a>.</p>
 				<p>
 				Have you ever used the Sensitivity button in a
 				<span lang="EN-US">
@@ -397,10 +402,10 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<span lang="EN-US" style="mso-ansi-language:EN-US">The
 				<span lang="EN-US">
 				'Unified Labeling Support Tool'</span> provides the functionality to reset all 
-				corresponding client services (UL, AIP, MIP, etc.). Its main 
+				corresponding Information Protection client services. Its main 
 				purpose is to delete the currently downloaded sensitivity label 
 				policies and thus reset all settings, and it can also be used to 
-				collect data for failure analysis and problem solving.<o:p></o:p></span></p>
+				collect data for error analysis and troubleshooting.<o:p></o:p></span></p>
 				<p>
 				<span lang="EN-US">
 				With the 'Unified Labeling Support Tool', you can run the most common options 
@@ -468,24 +473,25 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				environment fulfils the following requierements. Please update 
 				your environment if necessary.</p>
 				<p>The <span lang="EN-US">'Unified Labeling Support Tool'</span> supports Windows
-					<a class="Hyperlink" href="https://docs.microsoft.com/en-us/skypeforbusiness/set-up-your-computer-for-windows-powershell/download-and-install-windows-powershell-5-1" target="_blank">PowerShell 5.1</a> 
+					<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-5.1" target="_blank">PowerShell 5.1</a> 
 					(recommended) 
 				and Microsoft
-					<a class="Hyperlink" href="https://devblogs.microsoft.com/powershell/announcing-powershell-7-1" target="_blank">PowerShell 
-				7.1</a> (or higher) on the following operating systems:</p>
+					<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2" target="_blank">PowerShell 
+				7.2</a> (or higher) on the following operating systems:</p>
 				<ul>
-					<li>Microsoft Windows 8.1, Windows 10, Windows 11, 
+					<li>Microsoft Windows 10, Windows 11, 
 						Windows Server 2012, Windows Server 2012 R2, Windows 
 						Server 2016, Windows Server 2019, Windows Server 2022 
-						and Apple macOS Big Sur (11.7 or higher).</li>
+						and Apple macOS (<a class="Hyperlink" href="https://support.microsoft.com/en-us/office/upgrade-macos-to-continue-receiving-microsoft-365-and-office-for-mac-updates-16b8414f-08ec-4b24-8c91-10a918f649f8" target="_blank">three 
+					most recent major versions</a>).</li>
 				</ul>
-				<p>The <span lang="EN-US">'Unified Labeling Support Tool'</span> supports the following Microsoft Office 
-					versions:</p>
+				<p>The <span lang="EN-US">'Unified Labeling Support Tool'</span> supports the following Microsoft 
+				365/Office versions:</p>
 				<ul>
-					<li>Microsoft Office 2013, 
-						Microsoft Office 2016, Microsoft Office 2019, Microsoft 
+					<li>Microsoft Office 2016, Microsoft Office 2019, Microsoft 
 						Office 2021, Microsoft 
-						365 Apps and Microsoft 365 for Mac (16.67 or higher).</li>
+						365 Apps and Microsoft 365 for Mac (<a class="Hyperlink" href="https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac" target="_blank">most 
+					recently released version</a>).</li>
 				</ul>
 				<p class="Header3"><a name="Internet_access_(required)">Internet access</a></p>
 				<p>The <span lang="EN-US">
@@ -494,10 +500,9 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p>Unexpected errors may occur, and some features may be 
 				limited, if there is no connection to the Internet.</p>
 				<p class="Header3">
-				<a name="Exchange_Online_PowerShell_V3_module">Exchange Online PowerShell V3 module</a></p>
+				<a name="Exchange_Online_PowerShell_module">Exchange Online PowerShell module</a></p>
 				<p>The Microsoft
-				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps" target="_blank">Exchange Online PowerShell V3 
-				module</a> is required to 
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#updates-for-the-exo-v3-module" target="_blank">Exchange Online PowerShell module</a> is required to 
 				proceed the option
 				<a class="Hyperlink" href="#[L]_Labels_and_policies_/_-CollectLabelsAndPolicies">
 				Labels and policies</a> from the<strong> </strong>menu<strong>
@@ -513,8 +518,8 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				AIPService module</a> is required to 
 				proceed the options
 				<a class="Hyperlink" href="#[A]_AIP_service_configuration_/_-CollectAIPServiceConfiguration">AIP service configuration</a>,
-				<a class="Hyperlink" href="#[T]_AIP_service_templates_/_-CollectAIPServiceTemplates">AIP 
-				service templates</a>, 
+				<a class="Hyperlink" href="#[T]_Protection_templates_/_-CollectProtectionTemplates">
+				Protection templates</a>, 
 				and
 				<a class="Hyperlink" href="#[U]_Endpoint_URLs_/_-CollectEndpointURLs">Endpoint URLs</a> from the
 				<a class="Hyperlink" href="#[C]_COLLECT_/_-">COLLECT</a> menu 
@@ -548,19 +553,18 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="Header3"><a name="Microsoft_PowerShell">Microsoft 
 				PowerShell</a> (optional)</p>
 				<p>Please follow the instructions for
-				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.1" target="_blank">
-				installing PowerShell on Windows</a> to install it using your 
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3" target="_blank">installing PowerShell on Windows</a> to install it using your 
 				preferred method if you want to use the <span lang="EN-US">
-				'Unified Labeling Support Tool' </span>on PowerShell 7.1 (or 
+				'Unified Labeling Support Tool' </span>on Microsoft PowerShell 7.2 (or 
 				higher).</p>
 				<p>&nbsp;</p>
 				<p class="Header1">
 				<a name="Installation">Installation</a></p>
-				<p><span class="auto-style1">The 'Unified Labeling Support Tool' 
+				<p>The 'Unified Labeling Support Tool' 
 				is available on
 				<a class="Hyperlink" href="https://www.powershellgallery.com" target="_blank">PowerShell Gallery</a> 
 				and the fastest and easiest way to install it with user 
-				privileges is to run the following command in PowerShell:</span></p>
+				privileges is to run the following command in PowerShell:</p>
 				<p><span class="ConsoleTextShadow">Install-Module -Name <span lang="EN-US">
 				UnifiedLabelingSupportTool</span> -Scope CurrentUser</span></p>
 				<p>If you have local administrative privileges, you can run the 
@@ -603,7 +607,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				UnifiedLabelingSupportTool.psd1 and ULSupportTool-Win.htm) 
 				into this folder:</p>
 				<p><span class="ConsoleTextShadow">
-				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.0.7</span></p>
+				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.0.9</span></p>
 				<p>This path must be listed in the PSModulePath environment 
 					variable. For more information, please read how
 					<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable" rel="nofollow" target="_blank">to view the PSModulePath variable</a>.</p>
@@ -635,7 +639,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">----------&nbsp;&nbsp; -------&nbsp;&nbsp;&nbsp; ----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
 				----------------</p>
 				<p class="ConsolteListShadowButton">Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				3.0.7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
+				3.0.9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
 				{UnifiedLabelingSupportTool, ULSupportTool}</p>
 				<p>To verify that an installation was performed using PowerShell 
 				Gallery, you can run the following command:</p>
@@ -652,7 +656,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">-------&nbsp;&nbsp; 
 				----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				----------&nbsp;&nbsp;&nbsp;&nbsp; -----------</p>
-				<p class="ConsolteListShadowButton">3.0.7&nbsp;&nbsp;&nbsp;&nbsp; 
+				<p class="ConsolteListShadowButton">3.0.9&nbsp;&nbsp;&nbsp;&nbsp; 
 				UnifiedLabelingSupportTool&nbsp;&nbsp; PSGallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				Have you ever used the Sensitivity button in...</p>
 				<p>&nbsp;</p>
@@ -770,11 +774,6 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				please close all open applications.</strong></p>
 				<p>This option removes all relevant policies, labels and 
 				settings.</p>
-				<p>Before, the 'Unified Labeling Support Tool' creates a backup copy of 
-				existing custom configurations from the following registry key:</p>
-				<p class="ConsoleListShadow">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation]</p>
-				<p>The name of the backup file is 
-				<a class="Hyperlink" href="#ServiceLocationBackup.reg">ServiceLocationBackup.reg</a>.</p>
 				<p><em>Note:</em></p>
 				<ul>
 					<li>Reset with the default argument will not reset all settings, but only user-specific 
@@ -787,9 +786,6 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					<li>If you want a complete reset, you must run the 
 					'Unified Labeling Support Tool' in an administrative PowerShell window as a 
 					user with local administrative privileges.</li>
-					<li>When an Office 2013 installation is detected,
-					<a class="Hyperlink" href="https://docs.microsoft.com/en-us/office365/admin/security-and-compliance/enable-modern-authentication?redirectSourcePath=%252farticle%252f7dc1c01a-090f-4971-9677-f1b192d6c910&amp;view=o365-worldwide" rel="nofollow" target="_blank">modern authentication (ADAL)</a> is automatically enabled as 
-					a precaution.</li>
 				</ul>
 				<p>Valid &lt;String&gt; arguments are: "Default", or "Silent":</p>
 				<p><strong>Default:</strong></p>
@@ -807,21 +803,13 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">
 				[HKCU:\SOFTWARE\Microsoft\Cloud\Office]</p>
 				<p class="ConsoleListShadow">
-				[HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\DRM]</p>
-				<p class="ConsoleListShadow">
 				[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\DRM]</p>
 				<p class="ConsoleListShadow">
-				[HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\15.0\Common\DRM]</p>
-				<p class="ConsoleListShadow">
 				[HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\DRM]</p>
-				<p class="ConsoleListShadow">
-				[HKCU:\SOFTWARE\Policies\Microsoft\Office\15.0\Common\DRM]</p>
 				<p class="ConsoleListShadow">
 				[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM]</p>
 				<p class="ConsoleListShadow">
 				[HKCU:\SOFTWARE\Microsoft\XPSViewer\Common\DRM]</p>
-				<p class="ConsoleListShadow">
-				[HKCU:\SOFTWARE\Microsoft\Office\15.0\Common\Identity]</p>
 				<p class="ConsoleListShadow">
 				[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Identity]</p>
 				<p class="ConsoleListShadow">[HKCU:\SOFTWARE\Microsoft\MSIP]</p>
@@ -838,17 +826,16 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				OpenXMLEncryptProperty</a> registry settings are purged of the 
 				following keys:</p>
 				<p class="ConsoleListShadowTop">
-				[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\15.0\Common\Security]</p>
-				<p class="ConsoleListShadow">
 				[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Common\Security]</p>
-				<p class="ConsoleListShadow">
-				[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\15.0\Common\Security]</p>
 				<p class="ConsolteListShadowButton">
 				[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]</p>
 				<p>The
 				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#office-built-in-labeling-client-and-other-labeling-solutions" target="_blank">
 				UseOfficeForLabelling</a> (Use the Sensitivity feature in Office 
-				to apply and view sensitivity labels) registry setting is purged of the 
+				to apply and view sensitivity labels) and
+				<a class="Hyperlink" href="https://microsoft.github.io/ComplianceCxE/playbooks/AIP2MIP/AIPException/#configuring-sensitivity-labeling-client-in-m365-apps" target="_blank">
+				AIPException</a> (Use the Azure Information Protection add-in 
+				for sensitivity labeling) registry setting is purged of the 
 				following keys:</p>
 				<p class="ConsoleListShadowTop">
 				[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels]</p>
@@ -945,7 +932,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
    			 &nbsp;&nbsp; ├──[A] AIP service configuration</p>
 				<p class="ConsoleListShadow">
 
-   			 &nbsp;&nbsp; ├──[T] AIP service templates</p>
+   			 &nbsp;&nbsp; ├──[T] Protection templates</p>
 				<p class="ConsoleListShadow">
 
    			 &nbsp;&nbsp; ├──[U] Endpoint URLs</p>
@@ -994,15 +981,17 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					3. AIPService module</a>.</li>
 				</ul>
 				<p class="Header3">
-				<a name="[T]_AIP_service_templates_/_-CollectAIPServiceTemplates">[T] AIP 
-				service templates / -CollectAIPServiceTemplates</a></p>
-				<p>This parameter collects AIP service templates of your 
+				<a name="[T]_Protection_templates_/_-CollectProtectionTemplates">[T] 
+				Protection templates / -CollectProtectionTemplates</a></p>
+				<p>This parameter collects 
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#protection-templates-and-sensitivity-labels" target="_blank">
+				protection templates</a> of your 
 				tenant.</p>
 				<p>Results are written into the log file
-				<a class="Hyperlink" href="#AIPServiceTemplates.log">AIPServiceTemplates.log</a> 
+				<a class="Hyperlink" href="#ProtectionTemplates">ProtectionTemplates.log</a> 
 				in the subfolder "Collect" of the Logs folder, and an export of 
-				each service template (<a class="Hyperlink" href="#AIPServiceTemplates.log">.xml</a>) into the subfolder 
-				"AIPServiceTemplates".</p>
+				each protection template (<a class="Hyperlink" href="#AIPServiceTemplates.log">.xml</a>) into the subfolder 
+				"ProtectionTemplates".</p>
 				<p><em>Note:</em></p>
 				<ul>
 					<li>Please refer to the note in point
@@ -1078,9 +1067,6 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				desktop. In addition, the default logs folder 
 				(%temp%\UnifiedLabelingSupportTool) is cleaned.</p>
 				<p>
-				After this step you can send/upload the .zip file for the 
-				Microsoft support engineer.</p>
-				<p>
 				<span class="Header3"><a name="[X]_EXIT_/_-">[X] EXIT / -</a></span></p>
 				<p>This option will asks you whether you want to exit the menu after a confirmation prompt.</p>
 				<p class="Header3"><a name="-_/_-CheckForUpdate">- / -CheckForUpdate</a></p>
@@ -1137,21 +1123,6 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				Support Tool' with 
 				user privileges:</p>
 				<ul>
-					<li><a class="Header4" name="ServiceLocationBackup.reg">ServiceLocationBackup.reg</a><br />
-					<br />
-					This file is created by the
-				<a class="Hyperlink" href="#[R]_RESET_/_-Reset_String">RESET</a> 
-					option. It's a backup copy of existing custom 
-					configurations.<br />
-					<br />
-					<em>Note:</em><br />
-&nbsp;<ul>
-						<li>If you have had custom configurations in use, you 
-						must restore/import the backup copy yourself.<br />
-						<br />
-						</li>
-					</ul>
-					</li>
 					<li>
 					<p class="Header4">Tasklist.log</p>
 					</li>
@@ -1260,7 +1231,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="Logs-Text">An Office log file collected from the users 
 				temp folder. For example:</p>
 				<p><span class="Logs-ConsoleTextShadow">
-				%TEMP%\MACHINENAME-20210209-133005.log</span></p>
+				%TEMP%\MACHINENAME-20230209-133005.log</span></p>
 				<p class="Logs-Text">The log file name reflects the compuer 
 				name, and date and time when the log was created.</p>
 				<p class="Logs-Text">For more information, please see the following documentation:
@@ -1369,8 +1340,6 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="Logs-ConsoleListShadow">
 				[HKCU:\Software\Microsoft\Office\16.0\Common\Security]</p>
 				<p class="Logs-ConsoleListShadow">
-				[HKCU:\Software\Microsoft\Office\15.0\Common\Identity]</p>
-				<p class="Logs-ConsoleListShadow">
 				[HKCU:\Software\Microsoft\Office\16.0\Common\Identity]</p>
 				<p class="Logs-ConsoleListShadow">
 				[HKCU:\Software\Microsoft\Office\16.0\Common\Internet]</p>
@@ -1389,8 +1358,6 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="Logs-ConsoleListShadow">
 				[HKCU:\Software\Microsoft\Office\16.0\PowerPoint\Resiliency]</p>
 				<p class="Logs-ConsoleListShadow">
-				[HKCU:\Software\Microsoft\Office\15.0\Outlook\Resiliency]</p>
-				<p class="Logs-ConsoleListShadow">
 				[HKCU:\Software\Microsoft\Office\16.0\Outlook\Resiliency]</p>
 				<p class="Logs-ConsoleListShadow">[HKCU:\Software\Classes\Local 
 				Settings\Software\Microsoft\MSIPC]</p>
@@ -1400,8 +1367,6 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="Logs-ConsoleListShadow">[HKCR:\MSIP.OutlookAddin]</p>
 				<p class="Logs-ConsoleListShadow">[HKCR:\Local 
 				Settings\Software\Microsoft\MSIPC]</p>
-				<p class="Logs-ConsoleListShadow">
-				[HKCU:\SOFTWARE\Policies\Microsoft\Office\15.0\Common\DRM]</p>
 				<p class="Logs-ConsoleListShadow">
 				[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM]</p>
 				<p class="Logs-ConsoleListShadow">
@@ -1498,17 +1463,17 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<ul>
 					<li>
 					<p class="Header4">
-					<a class="Header4" name="AIPServiceTemplates.log">AIPServiceTemplates.log</a> 
+					<a class="Header4" name="ProtectionTemplates">ProtectionTemplates.log</a> 
 					and .xml files</p>
 					</li>
 				</ul>
 				<p class="Logs-Text">These files are only collected if you selected
-				<a class="Hyperlink" href="#[T]_AIP_service_templates_/_-CollectAIPServiceTemplates">AIP 
-				service templates</a>.</p>
-				<p class="Logs-Text">The AIPServiceTemplates.log file contains 
-				the Azure Information Protection service template details.
-				Additionally, an export of each service template is saved in the 
-				"AIPServiceTemplates" subfolder with the service template ID as 
+				<a class="Hyperlink" href="#[T]_Protection_templates_/_-CollectProtectionTemplates">
+				Protection templates</a>.</p>
+				<p class="Logs-Text">The ProtectionTemplates.log file contains 
+				the Azure Information Protection template details.
+				Additionally, an export of each protection template is saved in the 
+				"ProtectionTemplates" subfolder with the protection template ID as 
 				the file name and the .xml file extension.</p>
 				<p class="Logs-Text">For more information, please see 
 				the following documentation:

@@ -5,8 +5,8 @@
 
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta content="en-us" http-equiv="Content-Language" />
-<meta content="3.0.7" http-equiv="VERSION" />
-<meta content="16/02/2023" http-equiv="CREATEDATE" />
+<meta content="3.0.9" http-equiv="VERSION" />
+<meta content="21/06/2023" http-equiv="CREATEDATE" />
 <meta content="Claus Schiroky" http-equiv="AUTHOR" />
 <meta content="https://aka.ms/UnifiedLabelingSupportTool/Latest" http-equiv="SOURCE" />
 <meta content="Copyright (c) Microsoft Coporation." http-equiv="COPYRIGHT" />
@@ -262,7 +262,7 @@
 				
 				<p>
 				<span class="HeaderTitle">Unified Labeling Support Tool</span><br />
-				Version 3.0.7</p>
+				Version 3.0.9</p>
 
 
             </div>
@@ -341,17 +341,24 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<a class="Hyperlink" href="https://aka.ms/UnifiedLabelingSupportTool/Latest" target="_blank">UnifiedLabelingSupportTool</a> PowerShell script module.</p>
 				<p>Have you ever used the Sensitivity button in a
 				<span lang="EN-US">
-				<a class="Hyperlink" href="https://www.microsoft.com/en-us/microsoft-365" target="_blank">Microsoft 365</a></span> App? If so, you've used the
-				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide" target="_blank">Office's built-in labeling solution</a>. In case something 
+				<a class="Hyperlink" href="https://www.microsoft.com/en-us/microsoft-365" target="_blank">
+				Microsoft 365</a></span> App? If so, you've either used the
+				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client" target="_blank">
+				Azure Information Protection client </a>or
+				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide" target="_blank">
+				Office's built-in labeling solution</a>. In case something 
 				doesn't work as expected or you don't see any labeling at all, 
 				the 
-				<span lang="EN-US">'Unified Labeling Support Tool' </span>will help you.</p>
-				<p><span lang="EN-US">The
-				'Unified Labeling Support Tool' provides the functionality to reset all 
-				corresponding client services (UL, AIP, MIP, etc.). Its main 
+				<span lang="EN-US">
+				'Unified Labeling Support Tool' </span>will help you.</p>
+				<p>
+				<span lang="EN-US" style="mso-ansi-language:EN-US">The
+				<span lang="EN-US">
+				'Unified Labeling Support Tool'</span> provides the functionality to reset all 
+				corresponding Information Protection client services. Its main 
 				purpose is to delete the currently downloaded sensitivity label 
 				policies and thus reset all settings, and it can also be used to 
-				collect data for failure analysis and problem solving.<o:p></o:p></span></p>
+				collect data for error analysis and troubleshooting.<o:p></o:p></span></p>
 				<p class="Header3"><a name="MIT_License">MIT
 				License</a></p>
 				<p>Copyright © Microsoft Corporation.</p>
@@ -383,15 +390,16 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p>Before you can use the <span lang="EN-US">'Unified Labeling Support Tool'</span> make sure that your 
 				environment fulfils the following requierements. Please update 
 				your environment if necessary.</p>
-				<p>The <span lang="EN-US">'Unified Labeling Support Tool'</span> supports the following 
-					Apple macOS versions:</p>
+				<p>The <span lang="EN-US">'Unified Labeling Support Tool'</span> supports:</p>
 				<ul>
-					<li>Apple macOS Big Sur (11.7) or higher.</li>
+					<li>Apple macOS (<a class="Hyperlink" href="https://support.microsoft.com/en-us/office/upgrade-macos-to-continue-receiving-microsoft-365-and-office-for-mac-updates-16b8414f-08ec-4b24-8c91-10a918f649f8" target="_blank">three 
+					most recent major versions</a>).</li>
 				</ul>
 				<p>The <span lang="EN-US">'Unified Labeling Support Tool'</span> supports the following Microsoft Office 
 					versions:</p>
 				<ul>
-					<li>Microsoft 365 for Mac (16.67) or higher, Microsoft Office 2019 for Mac and Microsoft Office 2021 for 
+					<li>Microsoft 365 for Mac (<a class="Hyperlink" href="https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac" target="_blank">most 
+					recently released version</a>), Microsoft Office 2019 for Mac and Microsoft Office 2021 for 
 						Mac .</li>
 				</ul>
 				<p class="Header3"><a name="Internet_access">Internet access</a></p>
@@ -403,11 +411,9 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="Header3"><a name="Microsoft_PowerShell">Microsoft 
 				PowerShell</a></p>
 				<p>Please follow the instructions for
-				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.1" target="_blank">
-				installing PowerShell on macOS</a> to install it using your 
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3" target="_blank">installing PowerShell on macOS</a> to install it using your 
 				preferred method. Nevertheless the
-				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.1#installation-via-direct-download" target="_blank">
-				installation via direct download</a> is recommended.</p>
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3&amp;viewFallbackFrom=powershell-7.1#installation-via-direct-download" target="_blank">installation via direct download</a> is recommended.</p>
 				<p><em>Note:</em></p>
 				<ul>
 					<li>Microsoft PowerShell must be installed with local 
@@ -416,8 +422,6 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					if necessary.</li>
 					<li>Please refer to the<span>&nbsp;</span><a class="Hyperlink" href="https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md#known-issues" style="background-color: transparent; box-sizing: border-box; color: rgb(3, 102, 214); text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;;" target="_blank">known 
 					issues</a>.</li>
-					<li>It is not essential to install OpenSSL for Microsoft 
-					PowerShell to use the <span lang="EN-US">'Unified Labeling Support Tool'</span>.</li>
 				</ul>
 				<p>&nbsp;</p>
 				<p class="Header1"><a name="Installation">Installation</a></p>
@@ -468,7 +472,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">----------&nbsp;&nbsp; -------&nbsp;&nbsp; ----------&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				---------&nbsp;&nbsp;&nbsp; ----------------</p>
 				<p class="ConsolteListShadowButton">Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				3.0.7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp;Desk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				3.0.9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp;Desk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				UnifiedLabelingSupportTool</p>
 				<p>&nbsp;</p>
 				<p class="Header1"><a name="Uninstall">Uninstall</a></p>
