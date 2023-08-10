@@ -52,25 +52,6 @@ For new issues, file your bug or feature request as a new Issue. Please describe
     
     **Resolution:** You must add the appropriate administrator (usually the global administrator) to the [Information Protection](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/scc-permissions?view=o365-worldwide#role-groups-in-microsoft-defender-for-office-365-and-microsoft-purview-compliance) roles group in the [Microsoft Purview Compliance Center](https://compliance.microsoft.com/compliancecenterpermissions).
 
-* **Collecting labels and policies show error "Cannot validate argument on parameter 'ComputerName'."**
-
-    When you try to collect [Labels and policies](https://microsoft.github.io/UnifiedLabelingSupportTool/#[L]_Labels_and_policies_/_-CollectLabelsAndPolicies), the following error occurs:
-    
-    ```Text
-    Remove-PSSession : Cannot validate argument on parameter 'ComputerName'. The argument is null or empty. Provide an
-    argument that is not null or empty, and then try the command again.
-    At C:\Users\Administrator\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.0.9\UnifiedLabelingSupportTo
-    ol.psm1:3524 char:36
-    +     Remove-PSSession -ComputerName (Get-PSSession).ComputerName
-    +                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        + CategoryInfo          : InvalidData: (:) [Remove-PSSession], ParameterBindingValidationException
-        + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.RemovePSSessionCommand
-    ```    
-
-    The reason for this is a paramerter that has become obsolete when closing the connection to Exchange Online. This change took place after the release of the last version. It does not affect the execution of the 'Unified Labeling Support Tool'.
-    
-    **Resolution:** No action is required. The error can be ignored. The problem will be solved in the next release.
-
 * **Set-ExecutionPolicy has no effect**
 
     This applies only to a manual installation: If you downloaded the 'Unified Labeling Support Tool' from its [GitHub website](https://aka.ms/UnifiedLabelingSupportTool/Latest), it will be extended by an [Alternate Data Streams in NTFS](https://blogs.technet.microsoft.com/askcore/2013/03/24/alternate-data-streams-in-ntfs) (ADS). If the corresponding website in the ADS is not trusted in your environment, the PowerShell command "Set-ExecutionPolicy" has no effect.
