@@ -1,10 +1,10 @@
-﻿#Requires -Version 5.1
+﻿.#Requires -Version 5.1
 
 # Copyright (c) Microsoft Corporation
 # Licensed under the MIT License
 
 <# Global variables #>
-$Global:strVersion = "3.0.9" <# Define version #>
+$Global:strVersion = "3.1.0" <# Define version #>
 $Global:strDefaultWindowTitle = $Host.UI.RawUI.WindowTitle <# Caching window title #>
 $Global:host.UI.RawUI.WindowTitle = "Unified Labeling Support Tool ($Global:strVersion)" <# Set window title #>
 $Global:MenuCollectExtended = $false <# Define variable for COLLECT menu handling #>
@@ -27,7 +27,6 @@ Function fncInitialize{
         <# Check for supported Windows versions #>
         If ($Global:strOSVersion -like "*Windows 10*" -Or
             $Global:strOSVersion -like "*Windows 11*" -Or
-            $Global:strOSVersion -like "*2012*" -Or
             $Global:strOSVersion -like "*Server 2016*" -Or
             $Global:strOSVersion -like "*Server 2019*" -Or
             $Global:strOSVersion -like "*Server 2022*"){
@@ -47,7 +46,7 @@ Function fncInitialize{
             fncLogging -strLogFunction "fncInitialize" -strLogDescription "Unsupported operating system" -strLogValue $true
 
             <# Console output #>
-            Write-Output (Write-Host "ATTENTION: The 'Unified Labeling Support Tool' does not support the operating system you're using.`nPlease ensure to use one of the following supported operating systems:`nMicrosoft Windows 10, Windows 11, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 and Windows Server 2022.`n" -ForegroundColor Red)
+            Write-ColoredOutput Red "ATTENTION: The 'Unified Labeling Support Tool' does not support the operating system you're using.`nPlease ensure to use one of the following supported operating systems:`nMicrosoft Windows 10, Windows 11, Windows Server 2016, Windows Server 2019 and Windows Server 2022.`n"
 
             <# Set back window title to default #>
             $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
@@ -70,7 +69,7 @@ Function fncInitialize{
         $Global:strOSVersion = $(sw_vers -productVersion) <# Define and set variable for macOS version #>
 
         <# Check for unsupported macOS version #>
-        If ($Global:strOSVersion -lt "11.7") {
+        If ($Global:strOSVersion -lt "12.5") {
 
             <# Clear global variables #>
             $Global:strOSVersion = $null
@@ -79,7 +78,7 @@ Function fncInitialize{
             fncLogging -strLogFunction "fncInitialize" -strLogDescription "Unsupported operating system" -strLogValue $true
 
             <# Console output #>
-            Write-Output (Write-Host "ATTENTION: The 'Unified Labeling Support Tool' does not support the operating system you're using.`nPlease ensure to use a supported operating system:`nApple macOS 11.7 (Big Sur) or higher.`n" -ForegroundColor Red)
+            Write-ColoredOutput Red "ATTENTION: The 'Unified Labeling Support Tool' does not support the operating system you're using.`nPlease ensure to use a supported operating system:`nApple macOS 12.5 (Monterey) or higher.`n"
 
             <# Set back window title to default #>
             $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
@@ -135,7 +134,7 @@ Function fncInitialize{
         fncLogging -strLogFunction "fncInitialize" -strLogDescription "Unsupported PowerShell version" -strLogValue $true
 
         <# Console output #>
-        Write-Output (Write-Host "ATTENTION: The version of PowerShell that is required by the 'Unified Labeling Support Tool' does not match the currently running version of PowerShell $($PSVersionTable.PSVersion).`n" -ForegroundColor Red)
+        Write-ColoredOutput Red "ATTENTION: The version of PowerShell that is required by the 'Unified Labeling Support Tool' does not match the currently running version of PowerShell $($PSVersionTable.PSVersion).`n"
 
         <# Set back window title to default #>
         $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
@@ -173,15 +172,20 @@ Function UnifiedLabelingSupportTool {
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         
         VERSION
-        3.0.9
+        3.1.0
         
         CREATE DATE
-        21/06/2023
+        10/22/2023
 
         AUTHOR
         Claus Schiroky
         Customer Service & Support | EMEA Modern Work Team
         Microsoft Deutschland GmbH
+
+        SPECIAL THANKS TO
+        Steve Light
+        CTS Management & Security Division
+        Microsoft Corp.
 
         HOMEPAGE
         https://aka.ms/UnifiedLabelingSupportTool
@@ -247,6 +251,10 @@ Function UnifiedLabelingSupportTool {
 
         The following file system folders are cleaned up as well:
 
+        %LOCALAPPDATA%\Microsoft\Word\MIPSDK\mip
+        %LOCALAPPDATA%\Microsoft\Excel\MIPSDK\mip
+        %LOCALAPPDATA%\Microsoft\PowerPoint\MIPSDK\mip
+        %LOCALAPPDATA%\Microsoft\Outlook\MIPSDK\mip
         %LOCALAPPDATA%\Microsoft\Office\DLP\mip
         %LOCALAPPDATA%\Microsoft\Office\CLP
         %TEMP%\Diagnostics
@@ -376,16 +384,6 @@ Function UnifiedLabelingSupportTool {
         - This parameter uses the AIPService module. Please note that the AIPService module does not support PowerShell 7. Therefore, unexpected errors may occur as the AIPService module can only run in compatibility mode.
         - This feature is not available on Apple macOS.
 
-    .PARAMETER CheckForUpdate
-        This parameter checks if a new version of the 'Unified Labeling Support Tool' is available.
-
-        If you run the 'Unified Labeling Support Tool' on Windows with administrative privileges, it automatically performs each new update.
-
-        Note:
-
-        - Under certain circumstances, you may need to run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to perform an update.
-        - If the 'Unified Labeling Support Tool' was not installed via PowerShell Gallery, any older version must first be removed before an update or installation can be performed.
-
     .PARAMETER CompressLogs
         This command line parameter should always be used at the very end of a scenario.
 
@@ -449,10 +447,6 @@ Function UnifiedLabelingSupportTool {
     .EXAMPLE
         UnifiedLabelingSupportTool -CompressLogs
         This parameter compress all collected logs files into a .zip archive, and the corresponding path and file name is displayed.
-
-    .EXAMPLE
-        UnifiedLabelingSupportTool -CheckForUpdate
-        This parameter checks if a new version is available for the 'Unified Labeling Support Tool'.
 
     .EXAMPLE
         UnifiedLabelingSupportTool -RecordProblem -CompressLogs
@@ -528,10 +522,6 @@ Function UnifiedLabelingSupportTool {
         [Parameter(ParameterSetName = "Menu")]
         [Parameter(ParameterSetName = "Reset and logging")]
         [switch]$SkipUpdates,
-
-        <# Parameter definition for CheckForUpdate #>
-        [Parameter(ParameterSetName = "Update")]
-        [switch]$CheckForUpdate,
 
         <# Parameter definition for CompressLogs, with preset. #>
         [Alias("z")]
@@ -715,17 +705,6 @@ Function UnifiedLabelingSupportTool {
 
     }
 
-    <# Action if the parameter '-CheckForUpdate' has been selected #>
-    If ($PSBoundParameters.ContainsKey("CheckForUpdate")) {
-
-        <# Verbose/Logging #>
-        fncLogging -strLogFunction "UnifiedLabelingSupportTool" -strLogDescription "Parameter CheckForUpdate" -strLogValue "Triggered"
-
-        <# Call CheckForUpdate function #>
-        fncCheckForUpdate
-
-    }
-
     <# Action if the parameter '-CompressLogs' has been selected #>
     If ($PSBoundParameters.ContainsKey("CompressLogs")) {
 
@@ -753,140 +732,6 @@ Function UnifiedLabelingSupportTool {
         fncLogging -strLogFunction "UnifiedLabelingSupportTool" -strLogDescription "Menu" -strLogValue "Proceeded"
 
     }
-
-}
-
-<# Check for latest version of the script module #>
-Function fncCheckForUpdate { 
-
-    <# Verbose/Logging #>
-    fncLogging -strLogFunction "fncCheckForUpdate" -strLogDescription "Update" -strLogValue "Initiated"
-
-    <# Console output #>
-    Write-Output "CHECK FOR UPDATE:`n"
-    Write-Output "Searching for new version..."
-
-    <# Define default message for outdated version #>
-    $Private:strOutdatedVersionMessage = "ATTENTION: You're using an outdated version of the 'Unified Labeling Support Tool'.`nPlease update your environment by running the following command:`n`nPS C:\> Update-Module -Name UnifiedLabelingSupportTool -Force`n`nNote:`n`n- Under certain circumstances, you may need to run the 'Unified Labeling Support Tool' as user with local administrative privileges to perform an update.`n- If the 'Unified Labeling Support Tool' was not installed via PowerShell Gallery, any older version must first be removed before an update or installation can be performed."
-    
-    <# Validate connection to PowerShell Gallery #>
-    If (Find-Module -Name UnifiedLabelingSupportTool -Repository PSGallery -ErrorAction SilentlyContinue -WarningAction SilentlyContinue) { <# Actions, if PowerShell Gallery can be reached #>
-
-        <# Filling variable with online version information #>
-        [Version]$Private:strOnlineVersion = (Find-Module -Name UnifiedLabelingSupportTool -Repository PSGallery).Version
-
-        # Comparing local version vs. latest (online) version #>
-        If ([Version]::new($Private:strOnlineVersion.Major, $Private:strOnlineVersion.Minor, $Private:strOnlineVersion.Build) -gt [Version]::new($Global:strVersion.Major, $Global:strVersion.Minor, $Global:strVersion.Build) -eq $true) {
-
-            <# Detect Windows #>
-            If ([System.Environment]::OSVersion.Platform -eq "Win32NT") {
-
-                <# Action, if running as administrator #>
-                If (([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) -eq $true) {
-
-                    <# Update module only if the existing version was installed by PowerShell Gallery #>
-                    If ((Get-InstalledModule -Name UnifiedLabelingSupportTool -ErrorAction SilentlyContinue -WarningAction SilentlyContinue) -eq $true) {
-
-                        <# Console output #>
-                        Write-Output "A new version of the 'Unified Labeling Support Tool' is available."
-                        Write-Output "Updating, please wait..."
-
-                        <# Updating 'Unified Labeling Support Tool' #>
-                        Update-Module -Name UnifiedLabelingSupportTool -Force
-
-                        <# Internet availalbe: Console output #>
-                        Write-Output (Write-Host "ATTENTION: A new version of the 'Unified Labeling Support Tool' has been installed.`nThe 'Unified Labeling Support Tool' is now terminated.`nPlease restart with a new PowerShell session/window." -ForegroundColor Red)
-
-                        <# Verbose/Logging #>
-                        fncLogging -strLogFunction "fncCheckForUpdate" -strLogDescription "Script module version" -strLogValue "Updated"
-
-                    }
-                    Else { <# Action, if module was not installed via PowerShell Gallery #>
-
-                        <# Console output #>
-                        Write-Output (Write-Host $Private:strOutdatedVersionMessage -ForegroundColor Red)
-
-                        <# Verbose/Logging #>
-                        fncLogging -strLogFunction "fncCheckForUpdate" -strLogDescription "Script module version" -strLogValue "Outdated"
-
-                    }
-
-                }
-                Else { <# Actions, if running without administrative privileges #>
-
-                    <# Console output #>
-                    Write-Output (Write-Host $Private:strOutdatedVersionMessage -ForegroundColor Red)
-
-                    <# Verbose/Logging #>
-                    fncLogging -strLogFunction "fncCheckForUpdate" -strLogDescription "Script module version" -strLogValue "Outdated"
-
-                }
-
-            }
-
-            <# Detect macOS #>
-            If ($IsMacOS -eq $true) {
-                    
-                <# Console output #>
-                Write-Output (Write-Host "ATTENTION: A new version of the 'Unified Labeling Support Tool' is available.`nPlease update your environment by running the following command:`n`nPS /Users/<username>> Update-Module -Name UnifiedLabelingSupportTool -Force`n`nNote:`n`n- Under certain circumstances, you may need to run the 'Unified Labeling Support Tool' as user with local administrative privileges to perform an update. Please request assistance from your administrator if necessary." -ForegroundColor Red)    
-
-                <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncCheckForUpdate" -strLogDescription "Script module version" -strLogValue "Outdated"
-
-            }
-
-            <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncCheckForUpdate" -strLogDescription "Update" -strLogValue "Proceeded"
-            fncLogging -strLogFunction "fncCheckForUpdate" -strLogDescription "Exit script module" -strLogValue $true
-
-            <# Releasing private variable #>
-            [Version]$Private:strOnlineVersion = $null
-
-            <# Set back window title to default #>
-            $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
-
-            <# Console output #>
-            Write-Output (Write-Host "CHECK FOR UPDATE: Proceeded.`n" -ForegroundColor Green)
-
-            <# Exit function #>
-            Break
-
-        }
-        Else {
-
-            <# Console output #>
-            Write-Output "You're using the latest version of the 'Unified Labeling Support Tool'."
-
-            <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncCheckForUpdate" -strLogDescription "Script module version" -strLogValue "Latest"
-
-            <# Console output #>
-            Write-Output (Write-Host "CHECK FOR UPDATE: Proceeded.`n" -ForegroundColor Green)
-
-        }
-
-    }
-    Else { <# Actions, if PowerShell Gallery can not be reached (no internet connection) #>
-
-        <# Console output #>
-        Write-Output (Write-Host "ATTENTION: Check for update could not be performed.`nEither the website cannot be reached or there is no connection to the Internet.`n`nYou are using version: $Global:strVersion.`n`nPlease check on the following website if you are using the latest version of the 'Unified Labeling Support Tool', and update if necessary:`nhttps://aka.ms/UnifiedLabelingSupportTool/Latest" -ForegroundColor Red)
-
-        <# Verbose/Logging #>
-        fncLogging -strLogFunction "fncCheckForUpdate" -strLogDescription "Update" -strLogValue "No internet connection"
-
-        <# Console output #>
-        Write-Output (Write-Host "CHECK FOR UPDATE: Proceeded.`n" -ForegroundColor Green)
-
-        <# Exit function #>
-        Break
-
-    }
-
-    <# Verbose/Logging #>
-    fncLogging -strLogFunction "fncCheckForUpdate" -strLogDescription "Update" -strLogValue "Proceeded"
-
-    <# Releasing private variables #>
-    [Version]$Private:strOnlineVersion = $null
 
 }
 
@@ -926,7 +771,7 @@ Function fncInformation {
     If ($Global:bolCommingFromMenu -eq $true) {
     
         <# Console output #>
-        Write-Output "NAME:`nUnifiedLabelingSupportTool`n`nDESCRIPTION:`nThe 'Unified Labeling Support Tool' provides the functionality to reset all corresponding Information Protection client settings. Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for error analysis and troubleshooting.`n`nVERSION:`n$Global:strVersion`n`nAUTHOR:`nClaus Schiroky`nCustomer Service & Support - EMEA Modern Work Team`nMicrosoft Deutschland GmbH`n`nHOMEPAGE:`nhttps://aka.ms/UnifiedLabelingSupportTool`n`nPRIVACY STATEMENT:`nhttps://privacy.microsoft.com/PrivacyStatement`n`nCOPYRIGHT:`nCopyright (c) Microsoft Corporation.`n"
+        Write-Output "NAME:`nUnifiedLabelingSupportTool`n`nDESCRIPTION:`nThe 'Unified Labeling Support Tool' provides the functionality to reset all corresponding Information Protection client settings. Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for error analysis and troubleshooting.`n`nVERSION:`n$Global:strVersion`n`nAUTHOR:`nClaus Schiroky`nCustomer Service & Support - EMEA Modern Work Team`nMicrosoft Deutschland GmbH`n`nSPECIAL THANKS TO`nSteve Light`nCTS Management & Security Division`nMicrosoft Corp.`n`nHOMEPAGE:`nhttps://aka.ms/UnifiedLabelingSupportTool`n`nPRIVACY STATEMENT:`nhttps://privacy.microsoft.com/PrivacyStatement`n`nCOPYRIGHT:`nCopyright (c) Microsoft Corporation.`n"
 
     }
 
@@ -939,7 +784,7 @@ Function fncLicense {
     fncLogging -strLogFunction "fncLicense" -strLogDescription "License" -strLogValue "Called"
 
     <# Console output #>
-    Write-Output (Write-Host "MIT License`n`nCopyright (c) Microsoft Corporation.`n`nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the `"Software`"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:`n`nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.`n`nTHE SOFTWARE IS PROVIDED `"AS IS`", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`n")
+    Write-Output "MIT License`n`nCopyright (c) Microsoft Corporation.`n`nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the `"Software`"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:`n`nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.`n`nTHE SOFTWARE IS PROVIDED `"AS IS`", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`n"
 
 }
 
@@ -976,7 +821,7 @@ Function fncHelp {
             Else { <# Action if web site is unavailable or if there's no internet connection #>
 
                 <# Console output #>
-                Write-Output (Write-Host "ATTENTION: The help file (ULSupportTool-Win.htm) could not be found.`nEither the website cannot be reached or there is no internet connection.`n`nNote:`n`n- If you’re working in an environment that does not have internet access, you must download the file manually, before proceeding the 'Unified Labeling Support Tool'.`n- You must place the file to the location where you have stored the 'Unified Labeling Support Tool' files.`n- Please download the file from the following hyperlink (from a machine where you have internet access):`n  https://aka.ms/UnifiedLabelingSupportTool/Latest`n" -ForegroundColor Red)
+                Write-ColoredOutput Red "ATTENTION: The help file (ULSupportTool-Win.htm) could not be found.`nEither the website cannot be reached or there is no internet connection.`n`nNote:`n`n- If you’re working in an environment that does not have internet access, you must download the file manually, before proceeding the 'Unified Labeling Support Tool'.`n- You must place the file to the location where you have stored the 'Unified Labeling Support Tool' files.`n- Please download the file from the following hyperlink (from a machine where you have internet access):`n  https://aka.ms/UnifiedLabelingSupportTool/Latest`n"
 
                 <# Verbose/Logging #>
                 fncLogging -strLogFunction "fncHelp" -strLogDescription "Help" -strLogValue "No internet connection"
@@ -1002,7 +847,7 @@ Function fncHelp {
         Else { <# Action if the help file cannot be found #>
 
             <# Console output #>
-            Write-Output (Write-Host "ATTENTION: The help file (ULSupportTool-Mac.htm) could not be found.`n`nNote:`n`n- You must place the file to the location where you have installed the 'Unified Labeling Support Tool'.`n- Please download the file from the following location or reinstall:`n  https://aka.ms/UnifiedLabelingSupportTool/Latest`n" -ForegroundColor Red)
+            Write-ColoredOutput Red "ATTENTION: The help file (ULSupportTool-Mac.htm) could not be found.`n`nNote:`n`n- You must place the file to the location where you have installed the 'Unified Labeling Support Tool'.`n- Please download the file from the following location or reinstall:`n  https://aka.ms/UnifiedLabelingSupportTool/Latest`n"
 
             <# Verbose/Logging #>
             fncLogging -strLogFunction "fncHelp" -strLogDescription "Help" -strLogValue "Not found"
@@ -1010,6 +855,26 @@ Function fncHelp {
         }
 
     }
+
+}
+
+<# Function to set text output in color #>
+Function Write-ColoredOutput($Private:ForegroundColor) {
+    
+    <# Defining variables #>
+    $Private:TextColor = $Global:host.UI.RawUI.ForegroundColor <# Backup current text color #>
+    $Global:host.UI.RawUI.ForegroundColor = $Private:ForegroundColor <# Define text color #>
+
+    <# Console output #>
+    If ($Private:args) {
+        Write-Output $Private:args
+    }
+    Else {
+        $Private:input | Write-Output
+    }
+
+    <# Set back previous color text #>
+    $Global:host.UI.RawUI.ForegroundColor = $Private:TextColor
 
 }
 
@@ -1059,7 +924,7 @@ Function fncReset ($strResetMethod) {
 
         <# Console output #>
         Write-Output "RESET:"
-        Write-Output (Write-Host "ATTENTION: Before you proceed with this option, please close all open applications." -ForegroundColor Red)
+        Write-ColoredOutput Red "ATTENTION: Before you proceed with this option, please close all open applications."
         $Private:ReadHost = Read-Host "Only if the above is true, please press [Y]es to continue, or [N]o to cancel"
 
         <# Actions if "No" (cancel) was selected #>
@@ -1144,6 +1009,10 @@ Function fncReset ($strResetMethod) {
             fncDeleteItem "HKCR:\AllFilesystemObjects\shell\Microsoft.Azip.RightClick"
 
             <# Clean client folders in file system #>
+            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Word\MIPSDK\mip"
+            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Excel\MIPSDK\mip"
+            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\PowerPoint\MIPSDK\mip"
+            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Outlook\MIPSDK\mip"
             fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Office\DLP\mip"
             fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Office\CLP"
             fncDeleteItem "$env:TEMP\Diagnostics"
@@ -1217,7 +1086,7 @@ Function fncReset ($strResetMethod) {
         If ($strResetMethod -notmatch "Silent") {
 
             <# Console output #>
-            Write-Output (Write-Host "RESET: Proceeded.`n" -ForegroundColor Green)
+            Write-ColoredOutput Green "RESET: Proceeded.`n"
 
             <# Verbose/Logging #>
             fncLogging -strLogFunction "fncReset" -strLogDescription "Reset Default" -strLogValue "Proceeded"
@@ -1296,7 +1165,7 @@ Function fncDeleteItem ($Private:objItem) {
         Catch [System.IO.IOException] { <# Actions if files or folders cannot be accessed, because they are locked/used by another process <#>
 
             <# Console output #>
-            Write-Output (Write-Host "WARNING: Some items or folders are still used by another process.`nIMPORTANT: Please close all applications, restart the PowerShell session (or restart machine) and try again." -ForegroundColor Red)
+            Write-ColoredOutput Red "WARNING: Some items or folders are still used by another process.`nIMPORTANT: Please close all applications, restart the PowerShell session (or restart machine) and try again."
 
             <# Verbose/Logging #>
             fncLogging -strLogFunction "fncDeleteItem" -strLogDescription "Item locked" -strLogValue $Private:objItem
@@ -1309,7 +1178,7 @@ Function fncDeleteItem ($Private:objItem) {
             If ($Global:bolCommingFromMenu -eq $false) {
 
                 <# Console output #>
-                Write-Output (Write-Host "RESET: Failed.`n" -ForegroundColor Red)
+                Write-ColoredOutput Red "RESET: Failed.`n"
 
                 <# Set back window title to default #>
                 $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
@@ -1322,7 +1191,7 @@ Function fncDeleteItem ($Private:objItem) {
             If ($Global:bolCommingFromMenu -eq $true) {
 
                 <# Console output #>
-                Write-Output (Write-Host "RESET: Failed.`n" -ForegroundColor Red)
+                Write-ColoredOutput Red "RESET: Failed.`n"
 
                 <# Console output with pause #>
                 fncPause
@@ -1420,7 +1289,7 @@ Function fncRecordProblem {
 
     <# Console output #>
     Write-Output "RECORD PROBLEM:"
-    Write-Output (Write-Host "ATTENTION: Before you proceed with this option, please close all open applications." -ForegroundColor Red)
+    Write-ColoredOutput Red "ATTENTION: Before you proceed with this option, please close all open applications."
     $Private:ReadHost = Read-Host "Only if the above is true, please press [Y]es to continue, or [N]o to cancel"
 
     <# Verbose/Logging #>
@@ -1436,7 +1305,7 @@ Function fncRecordProblem {
             If ($Global:bolRunningPrivileged -eq $false) {
 
                 <# Verbose/Logging #>
-                Write-Output (Write-Host "ATTENTION: Please note that neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded.`nIf you want a complete record, you must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges." -ForegroundColor Red)
+                Write-ColoredOutput Red "ATTENTION: Please note that neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded.`nIf you want a complete record, you must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges."
 
             }
         
@@ -1471,7 +1340,7 @@ Function fncRecordProblem {
             }
 
             <# Console output #>
-            Write-Output (Write-Host "IMPORTANT: Now reproduce the problem, but leave this window open." -ForegroundColor Red)
+            Write-ColoredOutput Red "IMPORTANT: Now reproduce the problem, but leave this window open."
             Read-Host "After reproducing the problem, close all the applications you were using, return here and press enter to complete the recording."
 
             <# Console output #>
@@ -1520,7 +1389,7 @@ Function fncRecordProblem {
             }
 
             <# Console output #>
-            Write-Output (Write-Host "IMPORTANT: Now reproduce the problem, but leave this window open." -ForegroundColor Red)
+            Write-ColoredOutput Red "IMPORTANT: Now reproduce the problem, but leave this window open."
             Read-Host "After reproducing the problem, close all the applications you were using, return here and press enter to complete the recording."
 
             <# Console output #>
@@ -1554,7 +1423,7 @@ Function fncRecordProblem {
 
         <# Console output #>
         Write-Output "Log files: $Global:strUniqueLogFolder"
-        Write-Output (Write-Host "RECORD PROBLEM: Proceeded.`n" -ForegroundColor Green)
+        Write-ColoredOutput Green "RECORD PROBLEM: Proceeded.`n"
 
         <# Release variable #>
         $Global:strUniqueLogFolder = $null
@@ -1760,6 +1629,50 @@ Function fncEnableLogging {
         fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "Office DLP/MIP log folder" -strLogValue "Cleared"
 
     }
+
+    <# Check if Word MIPSDK log folder exist #>
+    If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Word\MIPSDK\mip) -Eq $true) {
+
+        <# Clean Word MIPSDK log folder content #>
+        Remove-Item -Path "$env:LOCALAPPDATA\Microsoft\Word\MIPSDK\mip" -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
+        
+        <# Verbose/Logging #>
+        fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "Word MIPSDK log folder" -strLogValue "Cleared"
+
+    }
+
+    <# Check if Excel MIPSDK log folder exist #>
+    If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Excel\MIPSDK\mip) -Eq $true) {
+
+        <# Clean Word MIPSDK log folder content #>
+        Remove-Item -Path "$env:LOCALAPPDATA\Microsoft\Excel\MIPSDK\mip" -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
+            
+        <# Verbose/Logging #>
+        fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "Excel MIPSDK log folder" -strLogValue "Cleared"
+    
+    }
+
+    <# Check if PowerPoint MIPSDK log folder exist #>
+    If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\PowerPoint\MIPSDK\mip) -Eq $true) {
+
+        <# Clean Word MIPSDK log folder content #>
+        Remove-Item -Path "$env:LOCALAPPDATA\Microsoft\PowerPoint\MIPSDK\mip" -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
+            
+        <# Verbose/Logging #>
+        fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "PowerPoint MIPSDK log folder" -strLogValue "Cleared"
+    
+    }
+
+    <# Check if Outlook MIPSDK log folder exist #>
+    If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Outlook\MIPSDK\mip) -Eq $true) {
+
+        <# Clean Word MIPSDK log folder content #>
+        Remove-Item -Path "$env:LOCALAPPDATA\Microsoft\Outlook\MIPSDK\mip" -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
+            
+        <# Verbose/Logging #>
+        fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "Outlook MIPSDK log folder" -strLogValue "Cleared"
+    
+    }    
 
     <# If foler exist #>
     If ($(Test-Path -Path $env:TEMP\Diagnostics) -Eq $true) {
@@ -2049,8 +1962,72 @@ Function fncCollectLogging {
                 }
    
             }
+    
+        }
+
+        <# Check for Word MIPSDK log path, and collect .json files #>
+        If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Word\MIPSDK\mip) -Eq $true) {
+
+            <# Collect Word MIPSDK log folder only, if the folder contains files (Note: Afer a RESET this folder is empty). #>
+            If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Word\MIPSDK\mip -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
+
+                <# Compress Word MIPSDK\mip content to .zip file (overwrites) #>
+                Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\Word\MIPSDK\mip"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\MIPSDK-Word.zip" -Force -ErrorAction SilentlyContinue
+
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Word MIPSDK logs" -strLogValue "\Office\MIPDSK-Word.zip"
+
+            }
 
         }
+
+        <# Check for Excel MIPSDK log path, and collect .json files #>
+        If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Excel\MIPSDK\mip) -Eq $true) {
+
+            <# Collect Excel MIPSDK log folder only, if the folder contains files (Note: Afer a RESET this folder is empty). #>
+            If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Excel\MIPSDK\mip -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
+
+                <# Compress Excel MIPSDK\mip content to .zip file (overwrites) #>
+                Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\Excel\MIPSDK\mip"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\MIPSDK-Excel.zip" -Force -ErrorAction SilentlyContinue
+
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Excel MIPSDK logs" -strLogValue "\Office\MIPDSK-Excel.zip"
+
+            }
+
+        }
+        
+        <# Check for PowerPoint MIPSDK log path, and collect .json files #>
+        If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\PowerPoint\MIPSDK\mip) -Eq $true) {
+
+            <# Collect PowerPoint MIPSDK log folder only, if the folder contains files (Note: Afer a RESET this folder is empty). #>
+            If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\PowerPoint\MIPSDK\mip -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
+
+                <# Compress PowerPoint MIPSDK\mip content to .zip file (overwrites) #>
+                Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\PowerPoint\MIPSDK\mip"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\MIPSDK-PowerPoint.zip" -Force -ErrorAction SilentlyContinue
+
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export PowerPoint MIPSDK logs" -strLogValue "\Office\MIPDSK-PowerPoint.zip"
+
+            }
+
+        }
+
+        <# Check for Outlook MIPSDK log path, and collect .json files #>
+        If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Outlook\MIPSDK\mip) -Eq $true) {
+
+            <# Collect Outlook MIPSDK log folder only, if the folder contains files (Note: Afer a RESET this folder is empty). #>
+            If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Outlook\MIPSDK\mip -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
+
+                <# Compress Outlook MIPSDK\mip content to .zip file (overwrites) #>
+                Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\Outlook\MIPSDK\mip"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\MIPSDK-Outlook.zip" -Force -ErrorAction SilentlyContinue
+
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Outlook MIPSDK logs" -strLogValue "\Office\MIPDSK-Outlook.zip"
+
+            }
+
+        }         
 
         <# Copy Office Diagnostics folder from temp folder to Office logs folder #>
         fncCopyItem $env:TEMP\Diagnostics "$Global:strUniqueLogFolder\Office" "Diagnostics\*"
@@ -2474,33 +2451,6 @@ Function fncCollectLogging {
 
 }
 
-<# Function to remove previous versions of this tool #>
-Function fncRemovePreviousVersions {
-
-    <# Try to find and remove previous versions of this tool #>
-    Try {
-
-        <# Check for previous versions of the RMS_Support_Tool and uninstalling it #>
-        If (Get-Module -ListAvailable -Name RMS_Support_Tool) {
-        
-            <# Unstall RMS_Support_Tool #>
-            Uninstall-Module -Verbose:$false -Name RMS_Support_Tool | Out-Null 
-        
-            <# Verbose/Logging #>
-            fncLogging -strLogFunction "fncRemovePreviousVersions" -strLogDescription "RMS_Support_Tool" -strLogValue "Removed"
-        
-        }
-
-    }
-    Catch { 
-
-        <# Verbose/Logging #>
-        fncLogging -strLogFunction "fncRemovePreviousVersions" -strLogDescription "RMS_Support_Tool remove" -strLogValue "Omitted"
-
-    }
-
-}
-
 <# Check and update needed modules for PowerShellGallery.com #>
 Function fncUpdateRequiredModules {
 
@@ -2619,7 +2569,7 @@ Function fncUpdateRequiredModules {
             Write-Output "AIPService module installed."
 
             <# Console output #>
-            Write-Output (Write-Host "ATTENTION: To use AIPService cmdlets, you must close this window and run a new instance of PowerShell for it to work.`nThe 'Unified Labeling Support Tool' is now terminated." -ForegroundColor Red)
+            Write-ColoredOutput Red "ATTENTION: To use AIPService cmdlets, you must close this window and run a new instance of PowerShell for it to work.`nThe 'Unified Labeling Support Tool' is now terminated."
 
             <# Call pause function #>
             fncPause
@@ -2655,7 +2605,7 @@ Function fncCollectAIPServiceConfiguration {
     If ($Global:bolRunningPrivileged -eq $false) {
 
         <# Console output #>
-        Write-Output (Write-Host "ATTENTION: You must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to continue with this option.`nCOLLECT AIP SERVICE CONFIGURATION: Failed.`n" -ForegroundColor Red)
+        Write-ColoredOutput Red "ATTENTION: You must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to continue with this option.`nCOLLECT AIP SERVICE CONFIGURATION: Failed.`n"
 
         <# Action if function was called from command line #>
         If ($Global:bolCommingFromMenu -eq $false) {
@@ -2735,7 +2685,7 @@ Function fncCollectAIPServiceConfiguration {
         fncLogging -strLogFunction "fncCollectAIPServiceConfiguration" -strLogDescription "Collect AIP service configuration" -strLogValue "Login failed"
     
         <# Console output #>
-        Write-Output (Write-Host "COLLECT AIP SERVICE CONFIGURATION: Login failed. Please try again.`n" -ForegroundColor Red)
+        Write-ColoredOutput Red "COLLECT AIP SERVICE CONFIGURATION: Login failed. Please try again.`n"
 
         <# Action if function was called from command line #>
         If ($Global:bolCommingFromMenu -eq $false) {
@@ -2791,139 +2741,139 @@ Function fncCollectAIPServiceConfiguration {
         <# Timestamp #>
         $Private:Timestamp = (Get-Date -Verbose:$false -UFormat "%y%m%d-%H%M%S") <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("Date/Timestamp                            : " + $Private:Timestamp) <# Extend log file #>
-        Write-Output (Write-Host ("Date/Timestamp                            : $Private:Timestamp") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "Date/Timestamp                            : $Private:Timestamp" <# Console output #>
         $Private:Timestamp = $null <# Releasing variable #>
             
         <# AIPService Module version #>
         $Private:AIPServiceModule = (Get-Module -Verbose:$false -ListAvailable -Name AIPService).Version <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("Module version                            : $Private:AIPServiceModule") <# Extend log file #>
-        Write-Output (Write-Host ("Module version                            : $Private:AIPServiceModule") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "Module version                            : $Private:AIPServiceModule" <# Console output #>
         $Private:AIPServiceModule = $null <# Releasing variable #>
 
         <# BPOSId #>
         $Private:BPOSId = (Get-AipServiceConfiguration).BPOSId <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("BPOSId                                    : $Private:BPOSId") <# Extend log file #>
-        Write-Output (Write-Host ("BPOSId                                    : $Private:BPOSId") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "BPOSId                                    : $Private:BPOSId" <# Console output #>
         $Private:BPOSId = $null <# Releasing variable #>
 
         <# RightsManagementServiceId #>
         $Private:RightsManagementServiceId = (Get-AipServiceConfiguration).RightsManagementServiceId <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("RightsManagementServiceId                 : $Private:RightsManagementServiceId") <# Extend log file #>
-        Write-Output (Write-Host ("RightsManagementServiceId                 : $Private:RightsManagementServiceId") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "RightsManagementServiceId                 : $Private:RightsManagementServiceId" <# Console output #>
         $Private:RightsManagementServiceId = $null <# Releasing variable #>
 
         <# LicensingIntranetDistributionPointUrl #>
         $Private:LicensingIntranetDistributionPointUrl = ($Private:AIPServiceModule).LicensingIntranetDistributionPointUrl <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("LicensingIntranetDistributionPointUrl     : $Private:LicensingIntranetDistributionPointUrl") <# Extend log file #>
-        Write-Output (Write-Host ("LicensingIntranetDistributionPointUrl     : $Private:LicensingIntranetDistributionPointUrl") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "LicensingIntranetDistributionPointUrl     : $Private:LicensingIntranetDistributionPointUrl" <# Console output #>
         $Private:LicensingIntranetDistributionPointUrl = $null <# Releasing variable #>
 
         <# LicensingExtranetDistributionPointUrl #>
         $Private:LicensingExtranetDistributionPointUrl = (Get-AipServiceConfiguration).LicensingExtranetDistributionPointUrl <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("LicensingExtranetDistributionPointUrl     : $Private:LicensingExtranetDistributionPointUrl") <# Extend log file #>
-        Write-Output (Write-Host ("LicensingExtranetDistributionPointUrl     : $Private:LicensingExtranetDistributionPointUrl") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "LicensingExtranetDistributionPointUrl     : $Private:LicensingExtranetDistributionPointUrl" <# Console output #>
         $Private:LicensingExtranetDistributionPointUrl = $null <# Releasing variable #>
 
         <# CertificationIntranetDistributionPointUrl #>
         $Private:CertificationIntranetDistributionPointUrl = (Get-AipServiceConfiguration).CertificationIntranetDistributionPointUrl <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("CertificationIntranetDistributionPointUrl : $Private:CertificationIntranetDistributionPointUrl") <# Extend log file #>
-        Write-Output (Write-Host ("CertificationIntranetDistributionPointUrl : $Private:CertificationIntranetDistributionPointUrl") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "CertificationIntranetDistributionPointUrl : $Private:CertificationIntranetDistributionPointUrl" <# Console output #>
         $Private:CertificationIntranetDistributionPointUrl = $null <# Releasing variable #>
 
         <# CertificationExtranetDistributionPointUrl #>
         $Private:CertificationExtranetDistributionPointUrl = (Get-AipServiceConfiguration).CertificationExtranetDistributionPointUrl <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("CertificationExtranetDistributionPointUrl : $Private:CertificationExtranetDistributionPointUrl") <# Extend log file #>
-        Write-Output (Write-Host ("CertificationExtranetDistributionPointUrl : $Private:CertificationExtranetDistributionPointUrl") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "CertificationExtranetDistributionPointUrl : $Private:CertificationExtranetDistributionPointUrl" <# Console output #>
         $Private:CertificationExtranetDistributionPointUrl = $null <# Releasing variable #>
 
         <# AdminConnectionUrl #>
         $Private:AdminConnectionUrl = (Get-AipServiceConfiguration).AdminConnectionUrl <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("AdminConnectionUrl                        : $Private:AdminConnectionUrl") <# Extend log file #>
-        Write-Output (Write-Host ("AdminConnectionUrl                        : $Private:AdminConnectionUrl") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "AdminConnectionUrl                        : $Private:AdminConnectionUrl" <# Console output #>
         $Private:AdminConnectionUrl = $null <# Releasing variable #>
 
         <# AdminV2ConnectionUrl #>
         $Private:AdminV2ConnectionUrl = (Get-AipServiceConfiguration).AdminV2ConnectionUrl <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("AdminV2ConnectionUrl                      : $Private:AdminV2ConnectionUrl") <# Extend log file #>
-        Write-Output (Write-Host ("AdminV2ConnectionUrl                      : $Private:AdminV2ConnectionUrl") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "AdminV2ConnectionUrl                      : $Private:AdminV2ConnectionUrl" <# Console output #> 
         $Private:AdminV2ConnectionUrl = $null <# Releasing variable #>
 
         <# OnPremiseDomainName #>
         $Private:OnPremiseDomainName = (Get-AipServiceConfiguration).OnPremiseDomainName <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("OnPremiseDomainName                       : $Private:OnPremiseDomainName") <# Extend log file #>
-        Write-Output (Write-Host ("OnPremiseDomainName                       : $Private:OnPremiseDomainName") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "OnPremiseDomainName                       : $Private:OnPremiseDomainName" <# Console output #>
         $Private:OnPremiseDomainName = $null <# Releasing variable #>
 
         <# Keys #>
         $Private:Keys = (Get-AipServiceConfiguration).Keys <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("Keys                                      : $Private:Keys") <# Extend log file #>
-        Write-Output (Write-Host ("Keys                                      : $Private:Keys") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "Keys                                      : $Private:Keys" <# Console output #>
         $Private:Keys = $null <# Releasing variable #>
 
         <# CurrentLicensorCertificateGuid #>
         $Private:CurrentLicensorCertificateGuid = (Get-AipServiceConfiguration).CurrentLicensorCertificateGuid <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("CurrentLicensorCertificateGuid            : $Private:CurrentLicensorCertificateGuid") <# Extend log file #>
-        Write-Output (Write-Host ("CurrentLicensorCertificateGuid            : $Private:CurrentLicensorCertificateGuid") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "CurrentLicensorCertificateGuid            : $Private:CurrentLicensorCertificateGuid" <# Console output #>
         $Private:CurrentLicensorCertificateGuid = $null <# Releasing variable #>
 
         <# Templates #>
         $Private:Templates = (Get-AipServiceConfiguration).Templates <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("Template IDs                              : $Private:Templates") <# Extend log file #>
-        Write-Output (Write-Host ("Template IDs                              : $Private:Templates") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "Template IDs                              : $Private:Templates" <# Console output #>
         $Private:Templates = $null <# Releasing variable #>
 
         <# FunctionalState #>
         $Private:FunctionalState = (Get-AipServiceConfiguration).FunctionalState <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("FunctionalState                           : $Private:FunctionalState") <# Extend log file #>
-        Write-Output (Write-Host ("FunctionalState                           : $Private:FunctionalState") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "FunctionalState                           : $Private:FunctionalState" <# Console output #>
         $Private:FunctionalState = $null <# Releasing variable #>
 
         <# SuperUsersEnabled #>
         $Private:SuperUsersEnabled = (Get-AipServiceConfiguration).SuperUsersEnabled <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("SuperUsersEnabled                         : $Private:SuperUsersEnabled") <# Extend log file #>
-        Write-Output (Write-Host ("SuperUsersEnabled                         : $Private:SuperUsersEnabled") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "SuperUsersEnabled                         : $Private:SuperUsersEnabled" <# Console output #>
         $Private:SuperUsersEnabled = $null <# Releasing variable #>
 
         <# SuperUsers #>
         $Private:SuperUsers = (Get-AipServiceConfiguration).SuperUsers <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("SuperUsers                                : $Private:SuperUsers") <# Extend log file #>
-        Write-Output (Write-Host ("SuperUsers                                : $Private:SuperUsers") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "SuperUsers                                : $Private:SuperUsers" <# Console output #>
         $Private:SuperUsers = $null <# Releasing variable #>
 
         <# AdminRoleMembers #>
         $Private:AdminRoleMembers = (Get-AipServiceConfiguration).AdminRoleMembers <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("AdminRoleMembers                          : $Private:AdminRoleMembers") <# Extend log file #>
-        Write-Output (Write-Host ("AdminRoleMembers                          : $Private:AdminRoleMembers") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "AdminRoleMembers                          : $Private:AdminRoleMembers" <# Console output #>
         $Private:AdminRoleMembers = $null <# Releasing variable #>
 
         <# KeyRolloverCount #>
         $Private:KeyRolloverCount = (Get-AipServiceConfiguration).KeyRolloverCount <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("KeyRolloverCount                          : $Private:KeyRolloverCount") <# Extend log file #>
-        Write-Output (Write-Host ("KeyRolloverCount                          : $Private:KeyRolloverCount") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "KeyRolloverCount                          : $Private:KeyRolloverCount" <# Console output #>
         $Private:KeyRolloverCount = $null <# Releasing variable #>
 
         <# ProvisioningDate #>
         $Private:ProvisioningDate = (Get-AipServiceConfiguration).ProvisioningDate <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("ProvisioningDate                          : $Private:ProvisioningDate") <# Extend log file #>
-        Write-Output (Write-Host ("ProvisioningDate                          : $Private:ProvisioningDate") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "ProvisioningDate                          : $Private:ProvisioningDate" <# Console output #>
         $Private:ProvisioningDate = $null <# Releasing variable #>
 
         <# IPCv3ServiceFunctionalState #>
         $Private:IPCv3ServiceFunctionalState = (Get-AipServiceConfiguration).IPCv3ServiceFunctionalState <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("IPCv3ServiceFunctionalState               : $Private:IPCv3ServiceFunctionalState") <# Extend log file #>
-        Write-Output (Write-Host ("IPCv3ServiceFunctionalState               : $Private:IPCv3ServiceFunctionalState") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "IPCv3ServiceFunctionalState               : $Private:IPCv3ServiceFunctionalState" <# Console output #>
         $Private:IPCv3ServiceFunctionalState = $null <# Releasing variable #>
 
         <# DevicePlatformState #>
         $Private:DevicePlatformState = (Get-AipServiceConfiguration).DevicePlatformState <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("DevicePlatformState                       : $Private:DevicePlatformState") <# Extend log file #>
-        Write-Output (Write-Host ("DevicePlatformState                       : $Private:DevicePlatformState") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "DevicePlatformState                       : $Private:DevicePlatformState" <# Console output #> 
         $Private:DevicePlatformState = $null <# Releasing variable #>
 
         <# FciEnabledForConnectorAuthorization #>
         $Private:FciEnabledForConnectorAuthorization = (Get-AipServiceConfiguration).FciEnabledForConnectorAuthorization <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("FciEnabledForConnectorAuthorization       : $Private:FciEnabledForConnectorAuthorization") <# Extend log file #>
-        Write-Output (Write-Host ("FciEnabledForConnectorAuthorization       : $Private:FciEnabledForConnectorAuthorization") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "FciEnabledForConnectorAuthorization       : $Private:FciEnabledForConnectorAuthorization" <# Console output #>
         $Private:FciEnabledForConnectorAuthorization = $null <# Releasing variable #>
 
         <# Protection templates details log file #>
@@ -2932,13 +2882,13 @@ Function fncCollectAIPServiceConfiguration {
         <# AipServiceDocumentTrackingFeature #>
         $Private:AipServiceDocumentTrackingFeature = Get-AipServiceDocumentTrackingFeature <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("AipServiceDocumentTrackingFeature         : $Private:AipServiceDocumentTrackingFeature") <# Extend log file #>
-        Write-Output (Write-Host ("AipServiceDocumentTrackingFeature         : $Private:AipServiceDocumentTrackingFeature") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "AipServiceDocumentTrackingFeature         : $Private:AipServiceDocumentTrackingFeature" <# Console output #>
         $Private:AipServiceDocumentTrackingFeature = $null <# Releasing variable #>
 
         <# AipServiceOnboardingControlPolicy #>
         $Private:AipServiceOnboardingControlPolicy = ("{[UseRmsUserLicense, " + $(Get-AipServiceOnboardingControlPolicy).UseRmsUserLicense +"], [SecurityGroupObjectId, " + $(Get-AipServiceOnboardingControlPolicy).SecurityGroupObjectId + "], [Scope, " + $(Get-AipServiceOnboardingControlPolicy).Scope + "]}") <# Filling private variable #>
         Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("AipServiceOnboardingControlPolicy         : $Private:AipServiceOnboardingControlPolicy") <# Extend log file #>
-        Write-Output (Write-Host ("AipServiceOnboardingControlPolicy         : $Private:AipServiceOnboardingControlPolicy") -ForegroundColor Yellow) <# Console output #> 
+        Write-ColoredOutput Yellow "AipServiceOnboardingControlPolicy         : $Private:AipServiceOnboardingControlPolicy" <# Console output #>
         $Private:AipServiceOnboardingControlPolicy = $null <# Releasing variable #>
 
         <# AipServiceDoNotTrackUserGroup #>
@@ -2948,13 +2898,13 @@ Function fncCollectAIPServiceConfiguration {
         If ($Private:AipServiceDoNotTrackUserGroup) {
 
             Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("AipServiceDoNotTrackUserGroup             : $Private:AipServiceDoNotTrackUserGroup") <# Extend log file #>
-            Write-Output (Write-Host ("AipServiceDoNotTrackUserGroup             : $Private:AipServiceDoNotTrackUserGroup") -ForegroundColor Yellow) <# Console output #> 
+            Write-ColoredOutput Yellow "AipServiceDoNotTrackUserGroup             : $Private:AipServiceDoNotTrackUserGroup" <# Console output #>
 
         }
         Else { <# Actions if variable value is empty #>
             
             Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("AipServiceDoNotTrackUserGroup             :") <# Extend log file #>
-            Write-Output (Write-Host ("AipServiceDoNotTrackUserGroup             :") -ForegroundColor Yellow) <# Console output #> 
+            Write-ColoredOutput Yellow "AipServiceDoNotTrackUserGroup             :" <# Console output #>
 
         }
             
@@ -2968,13 +2918,13 @@ Function fncCollectAIPServiceConfiguration {
         If ($Private:AipServiceRoleBasedAdministrator) {
 
             Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("AipServiceRoleBasedAdministrator          : $Private:AipServiceRoleBasedAdministrator") <# Extend log file #>
-            Write-Output (Write-Host ("AipServiceRoleBasedAdministrator          : $Private:AipServiceRoleBasedAdministrator") -ForegroundColor Yellow) <# Console output #> 
+            Write-ColoredOutput Yellow "AipServiceRoleBasedAdministrator          : $Private:AipServiceRoleBasedAdministrator" <# Console output #>
 
         }
         Else { <# Actions if variable value is empty #>
             
             Add-Content -Path $Global:strUserLogPath"\Collect\AIPServiceConfiguration.log" -Value ("AipServiceRoleBasedAdministrator          :") <# Extend log file #>
-            Write-Output (Write-Host ("AipServiceRoleBasedAdministrator          :") -ForegroundColor Yellow) <# Console output #> 
+            Write-ColoredOutput Yellow "AipServiceRoleBasedAdministrator          :" <# Console output #>
 
         }
             
@@ -2996,7 +2946,7 @@ Function fncCollectAIPServiceConfiguration {
 
     <# Console output #> 
     Write-Output "Log file: $Global:strUserLogPath\Collect\AIPServiceConfiguration.log"
-    Write-Output (Write-Host "COLLECT AIP SERVICE CONFIGURATION: Proceeded.`n" -ForegroundColor Green)
+    Write-ColoredOutput Green "COLLECT AIP SERVICE CONFIGURATION: Proceeded.`n"
 
     <# Action if function was called from command line #>
     If ($Global:bolCommingFromMenu -eq $false) {
@@ -3038,7 +2988,7 @@ Function fncCollectProtectionTemplates {
     If ($Global:bolRunningPrivileged -eq $false) {
 
         <# Console output #>
-        Write-Output (Write-Host "ATTENTION: You must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to continue with this option.`nCOLLECT PROTECTION TEMPLATES: Failed.`n" -ForegroundColor Red)
+        Write-ColoredOutput Red "ATTENTION: You must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to continue with this option.`nCOLLECT PROTECTION TEMPLATES: Failed.`n"
 
         <# Action if function was called from command line #>
         If ($Global:bolCommingFromMenu -eq $false) {
@@ -3118,7 +3068,7 @@ Function fncCollectProtectionTemplates {
         fncLogging -strLogFunction "fncCollectProtectionTemplates" -strLogDescription "Collect protection templates" -strLogValue "Login failed"
     
         <# Console output #>
-        Write-Output (Write-Host "COLLECT PROTECTION TEMPLATES: Login failed. Please try again.`n" -ForegroundColor Red)
+        Write-ColoredOutput Red "COLLECT PROTECTION TEMPLATES: Login failed. Please try again.`n"
 
         <# Action if function was called from command line #>
         If ($Global:bolCommingFromMenu -eq $false) {
@@ -3216,7 +3166,7 @@ Function fncCollectProtectionTemplates {
     <# Console output #> 
     Write-Output "Protection templates: $Global:strUserLogPath\Collect\ProtectionTemplates"    
     Write-Output "Log file: $Global:strUserLogPath\Collect\ProtectionTemplates.log"
-    Write-Output (Write-Host "COLLECT PROTECTION TEMPLATES: Proceeded.`n" -ForegroundColor Green)
+    Write-ColoredOutput Green "COLLECT PROTECTION TEMPLATES: Proceeded.`n"
 
     <# Action if function was called from command line #>
     If ($Global:bolCommingFromMenu -eq $false) {
@@ -3258,7 +3208,7 @@ Function fncCollectLabelsAndPolicies {
     If ($Global:bolRunningPrivileged -eq $false) {
 
         <# Console output #>
-        Write-Output (Write-Host "ATTENTION: You must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to continue with this option.`nCOLLECT LABELS AND POLICIES: Failed.`n" -ForegroundColor Red)
+        Write-ColoredOutput Red "ATTENTION: You must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to continue with this option.`nCOLLECT LABELS AND POLICIES: Failed.`n"
 
         <# Action if function was called from command line #>
         If ($Global:bolCommingFromMenu -eq $false) {
@@ -3359,7 +3309,7 @@ Function fncCollectLabelsAndPolicies {
 
             <# Console output #>
             Write-Output "Exchange Online PowerShell V3 module installed."
-            Write-Output (Write-Host "ATTENTION: To use Exchange Online PowerShell V3 cmdlets, you must close this window and run a new instance of PowerShell for it to work.`nThe 'Unified Labeling Support Tool' is now terminated." -ForegroundColor Red)
+            Write-ColoredOutput Red "ATTENTION: To use Exchange Online PowerShell V3 cmdlets, you must close this window and run a new instance of PowerShell for it to work.`nThe 'Unified Labeling Support Tool' is now terminated."
 
             <# Release global variable back to default (updates active) #>
             $Global:bolSkipRequiredUpdates = $false
@@ -3377,10 +3327,10 @@ Function fncCollectLabelsAndPolicies {
         Else { <# Actions if we can't connect to PowerShell Gallery (no internet connection) #>
 
             <# Console output #>
-            Write-Output (Write-Host "ATTENTION: Collecting labels and policies could not be performed.`nEither PowerShell Gallery cannot be reached or there is no connection to the Internet.`n`nYou must have Exchange Online PowerShell V3 module installed to proceed.`n`nPlease check the following website and install the latest version of the ExchangeOnlineManagement modul:`nhttps://www.powershellgallery.com/packages/ExchangeOnlineManagement`n" -ForegroundColor Red)
+            Write-ColoredOutput Red "ATTENTION: Collecting labels and policies could not be performed.`nEither PowerShell Gallery cannot be reached or there is no connection to the Internet.`n`nYou must have Exchange Online PowerShell V3 module installed to proceed.`n`nPlease check the following website and install the latest version of the ExchangeOnlineManagement modul:`nhttps://www.powershellgallery.com/packages/ExchangeOnlineManagement`n"
 
             <# Console output #>
-            Write-Output (Write-Host "COLLECT LABELS AND POLICIES: Failed.`n" -ForegroundColor Red)
+            Write-ColoredOutput Red "COLLECT LABELS AND POLICIES: Failed.`n"
 
             <# Verbose/Logging #>
             fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Exchange Online PowerShell V3 module installation" -strLogValue "Failed"
@@ -3441,7 +3391,7 @@ Function fncCollectLabelsAndPolicies {
         fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft Purview compliance portal" -strLogValue "Login failed"
     
         <# Console output #>
-        Write-Output (Write-Host "COLLECT LABELS AND POLICIES: Login failed. Please try again.`n" -ForegroundColor Red)
+        Write-ColoredOutput Red "COLLECT LABELS AND POLICIES: Login failed. Please try again.`n"
 
         <# Action if function was called from the menu #>
         If ($Global:bolCommingFromMenu -eq $true) {
@@ -3519,9 +3469,9 @@ Function fncCollectLabelsAndPolicies {
         $Private:PolicyRules = $null
 
     }
-
-    <# Disconnect from Exchange Online Protection (EOP) #>
-    Remove-PSSession -ComputerName (Get-PSSession).ComputerName
+#########
+    <# Disconnect Exchange Online #>
+    Disconnect-ExchangeOnline -Confirm:$false
 
     <# Set back progress bar to previous default #>
     $Global:ProgressPreference = $Private:strOriginalPreference
@@ -3536,7 +3486,7 @@ Function fncCollectLabelsAndPolicies {
 
     <# Console output #> 
     Write-Output "`nLog file: $Global:strUserLogPath\Collect\LabelsAndPolicies.log"
-    Write-Output (Write-Host "COLLECT LABELS AND POLICIES: Proceeded.`n" -ForegroundColor Green)
+    Write-ColoredOutput Red "COLLECT LABELS AND POLICIES: Proceeded.`n"
 
     <# Action if function was called from the menu #>
     If ($Global:bolCommingFromMenu -eq $true) {
@@ -3627,7 +3577,7 @@ Function fncCollectEndpointURLs {
                 $Private:strTenantId = $Private:strMainKey.Remove(36)
 
                 <# Console output #> 
-                Write-Output (Write-Host "-------------------------------------------------`nTenant Id:  $Private:strTenantId`n-------------------------------------------------`n" -ForegroundColor Magenta)
+                Write-ColoredOutput Magenta "-------------------------------------------------`nTenant Id:  $Private:strTenantId`n-------------------------------------------------`n"
 
                 <# Create Tenant Id as first log entry #>
                 Add-Content -Path $Global:strUserLogPath"\Collect\EndpointURLs.log" -Value "-----------------------------------------------`nTenant Id: $Private:strTenantId`n-----------------------------------------------"
@@ -3683,7 +3633,7 @@ Function fncCollectEndpointURLs {
                     $Private:strTenantId = $Private:strMainKey.Remove(36)
 
                     <# Console output #> 
-                    Write-Output (Write-Host "------------------------------------------------`nTenant Id:  $Private:strTenantId`n------------------------------------------------`n" -ForegroundColor Magenta)
+                    Write-ColoredOutput Magenta "------------------------------------------------`nTenant Id:  $Private:strTenantId`n------------------------------------------------`n"
 
                     <# Create Tenant Id as first log entry #>
                     Add-Content -Path $Global:strUserLogPath"\Collect\EndpointURLs.log" -Value "------------------------------------------------`nTenant Id: $Private:strTenantId`n------------------------------------------------"
@@ -3769,7 +3719,7 @@ Function fncCollectEndpointURLs {
                 fncLogging -strLogFunction "fncCollectEndpointURLs" -strLogDescription "Collect enpoint URLs" -strLogValue "Login failed"
             
                 <# Console output #>
-                Write-Output (Write-Host "COLLECT ENDPOINT URLs: Login failed. Please try again.`n" -ForegroundColor Red)
+                Write-ColoredOutput Red "COLLECT ENDPOINT URLs: Login failed. Please try again.`n"
 
                 <# Action if function was called from command line #>
                 If ($Global:bolCommingFromMenu -eq $false) {
@@ -3808,7 +3758,7 @@ Function fncCollectEndpointURLs {
             $Private:strTenantId = (Get-AipServiceConfiguration).RightsManagementServiceId
 
             <# Console output #> 
-            Write-Output (Write-Host "------------------------------------------------`nTenant Id:  $Private:strTenantId`n------------------------------------------------`n" -ForegroundColor Magenta)
+            Write-ColoredOutput Magenta "------------------------------------------------`nTenant Id:  $Private:strTenantId`n------------------------------------------------`n"
 
             <# Define and fill variables with URLs #>
             $Private:MyLicensingIntranetDistributionPointUrl = (Get-AipServiceConfiguration).LicensingIntranetDistributionPointUrl.ToString()
@@ -3859,18 +3809,18 @@ Function fncCollectEndpointURLs {
         Else { <# Actions if running with user privileges #>
 
             <# Console output #>
-            Write-Output (Write-Host "ATTENTION: You must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to continue with this option." -ForegroundColor Red)
+            Write-ColoredOutput Red "ATTENTION: You must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to continue with this option."
     
             <# Verbose/Logging on PowerShell 5.1 #>
             If ([Version]::new($PSVersionTable.PSVersion.Major, $PSVersionTable.PSVersion.Minor) -eq [Version]::new("5.1")) {
                 
                 <# Console output #>
-                Write-Output (Write-Host "Alternatively, you can start (bootstrap) any Microsoft 365 App and try again." -ForegroundColor Red)
+                Write-ColoredOutput Red "Alternatively, you can start (bootstrap) any Microsoft 365 App and try again."
                 
             }    
             
              <# Console output #>
-             Write-Output (Write-Host "COLLECT ENDPOINT URLs: Failed.`n" -ForegroundColor Red)
+             Write-ColoredOutput Red "COLLECT ENDPOINT URLs: Failed.`n"
 
             <# Action if function was called from command line #>
             If ($Global:bolCommingFromMenu -eq $false) {
@@ -3906,7 +3856,7 @@ Function fncCollectEndpointURLs {
 
     <# Console output #>
     Write-Output "Log file: $Global:strUserLogPath\Collect\EndpointURLs.log"
-    Write-Output (Write-Host "COLLECT ENDPOINT URLs: Proceeded.`n" -ForegroundColor Green)
+    Write-ColoredOutput Green "COLLECT ENDPOINT URLs: Proceeded.`n"
     
     <# Release private variables #>
     $Private:MyLicensingIntranetDistributionPointUrl = $null
@@ -3957,9 +3907,9 @@ Function fncVerifyIssuer ($strCertURL, $strEndpointName, $strLogPath) {
         $Private:MyWebCert = $Private:MyWebCert.Issuer
 
         <# Console output #> 
-        Write-Output (Write-Host "Endpoint: $strEndpointName" -ForegroundColor Yellow)
-        Write-Output (Write-Host "URL:      https://$strCertURL" -ForegroundColor Yellow)
-        Write-Output (Write-Host "Issuer:   $Private:MyWebCert`n" -ForegroundColor Yellow)
+        Write-ColoredOutput Yellow "Endpoint: $strEndpointName"
+        Write-ColoredOutput Yellow "URL:      https://$strCertURL"
+        Write-ColoredOutput Yellow "Issuer:   $Private:MyWebCert`n"
 
         <# Check for existing EndpointURLs.log file and extend it, if it exist #>
         If ($(Test-Path $Global:strUserLogPath"\Collect\EndpointURLs.log") -Eq $true) {
@@ -4041,7 +3991,7 @@ Function fncCompressLogs {
 
     <# Console output #> 
     Write-Output "Zip file: $Private:DesktopPath\$Private:strZipFile"
-    Write-Output (Write-Host "COMPRESS LOGS: Proceeded.`n" -ForegroundColor Green)
+    Write-ColoredOutput Green "COMPRESS LOGS: Proceeded.`n"
 
     <# Clean Logs folders if .zip archive is on the desktop #>
     If ($(Test-Path -Path $Private:DesktopPath\$Private:strZipFile) -Eq $true) { <# Actions, if file exist on desktop #>
@@ -4086,7 +4036,7 @@ Function fncPause {
     Else { <# Actions if running in PowerShell command window #>
 
         <# Console output #> 
-        Write-Output (Write-Host $Private:strPauseMessage -ForegroundColor Yellow)
+        Write-ColoredOutput Yellow $Private:strPauseMessage
         $Private:strValue = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
     }
@@ -4114,22 +4064,22 @@ Function fncShowMenu {
 
     <# Menu output #>
     Write-Output "UnifiedLabelingSupportTool:`n"
-    Write-Output (Write-Host "  [I] INFORMATION" -ForegroundColor Green)
-    Write-Output (Write-Host "  [M] MIT LICENSE" -ForegroundColor Green)
-    Write-Output (Write-Host "  [H] HELP" -ForegroundColor Green)
-    Write-Output (Write-Host "  [R] RESET" -ForegroundColor Yellow)
-    Write-Output (Write-Host "  [P] RECORD PROBLEM" -ForegroundColor Yellow)
+    Write-ColoredOutput Green "  [I] INFORMATION"
+    Write-ColoredOutput Green "  [M] MIT LICENSE"
+    Write-ColoredOutput Green "  [H] HELP"
+    Write-ColoredOutput Yellow "  [R] RESET"
+    Write-ColoredOutput Yellow "  [P] RECORD PROBLEM"
     If ([System.Environment]::OSVersion.Platform -eq "Win32NT") { <# Detect Windows/hide unsupported features on macOS #>
-        Write-Output (Write-Host "  [C] COLLECT" -ForegroundColor Yellow)
+        Write-ColoredOutput Yellow "  [C] COLLECT"
         If (@($Global:MenuCollectExtended) -Match $true) {
-            Write-Output (Write-Host "   ├──[A] AIP service configuration" -ForegroundColor Yellow)
-            Write-Output (Write-Host "   ├──[T] Protection templates" -ForegroundColor Yellow)
-            Write-Output (Write-Host "   ├──[U] Endpoint URLs" -ForegroundColor Yellow)
-            Write-Output (Write-Host "   └──[L] Labels and policies" -ForegroundColor Yellow)
+            Write-ColoredOutput Yellow "   ├──[A] AIP service configuration"
+            Write-ColoredOutput Yellow "   ├──[T] Protection templates"
+            Write-ColoredOutput Yellow "   ├──[U] Endpoint URLs"
+            Write-ColoredOutput Yellow "   └──[L] Labels and policies"
         }
     }
-    Write-Output (Write-Host "  [Z] COMPRESS LOGS" -ForegroundColor Yellow)
-    Write-Output (Write-Host "  [X] EXIT`n" -ForegroundColor Green)
+    Write-ColoredOutput Yellow "  [Z] COMPRESS LOGS"
+    Write-ColoredOutput Green "  [X] EXIT`n"
 
     <# Define menu selection variable #>
     $Private:intMenuSelection = Read-Host "Please select an option and press enter"
@@ -4350,9 +4300,6 @@ fncInitialize
 
 <# Check whether logging was left enabled #>
 fncValidateForActivatedLogging
-
-<# Check and remove previous versions #>
-fncRemovePreviousVersions
 
 <# Export functions for script module manifest #>
 Export-ModuleMember -Alias "ULSupportTool" -Function UnifiedLabelingSupportTool

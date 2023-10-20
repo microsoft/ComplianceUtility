@@ -5,8 +5,8 @@
 
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta content="en-us" http-equiv="Content-Language" />
-<meta content="3.0.9" http-equiv="VERSION" />
-<meta content="21/06/2023" http-equiv="CREATEDATE" />
+<meta content="3.1.0" http-equiv="VERSION" />
+<meta content="10/20/2023" http-equiv="CREATEDATE" />
 <meta content="Claus Schiroky" http-equiv="AUTHOR" />
 <meta content="https://aka.ms/UnifiedLabelingSupportTool/Latest" http-equiv="SOURCE" />
 <meta content="Copyright (c) Microsoft Coporation." http-equiv="COPYRIGHT" />
@@ -239,17 +239,16 @@
 	background-color: #f4f4f4;
 	margin-left: 40px;
 }
-.auto-style1 {
-	font-size: 16px;
-	letter-spacing: normal;
-	background-color: #FFFFFF;
-}
 .auto-style2 {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 .auto-style3 {
 	font-size: 12pt;
 	letter-spacing: normal;
+	background-color: #FFFFFF;
+}
+.auto-style4 {
+	font-size: 16px;
 	background-color: #FFFFFF;
 }
 </style>
@@ -269,7 +268,7 @@
 				
 				<p>
 				<span class="HeaderTitle">Unified Labeling Support Tool</span><br />
-				Version 3.0.9</p>
+				Version 3.1.0</p>
 
 
             </div>
@@ -480,7 +479,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				7.2</a> (or higher) on the following operating systems:</p>
 				<ul>
 					<li>Microsoft Windows 10, Windows 11, 
-						Windows Server 2012, Windows Server 2012 R2, Windows 
+						Windows 
 						Server 2016, Windows Server 2019, Windows Server 2022 
 						and Apple macOS (<a class="Hyperlink" href="https://support.microsoft.com/en-us/office/upgrade-macos-to-continue-receiving-microsoft-365-and-office-for-mac-updates-16b8414f-08ec-4b24-8c91-10a918f649f8" target="_blank">three 
 					most recent major versions</a>).</li>
@@ -582,7 +581,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				</ul>
 				<p class="Header4"><a name="Allow_signed_PowerShell_scripts">Allow signed PowerShell scripts</a></p>
 				<p>If PowerShell script execution is restricted in your 
-				environment, you must bypass this restriction to run the 
+				environment, you need to bypass this restriction to run the 
 				<span lang="EN-US">
 				'Unified Labeling Support Tool'</span>. To do this, run the "Set-ExecutionPolicy" command with 
 				the following parameters:</p>
@@ -601,16 +600,17 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p>If you’re using the 'Unified Labeling Support Tool' in an 
 				environment that does not have internet access, you need to 
 				proceed with the manual installation.</p>
-				<p>To install the 'Unified Labeling Support Tool' manually, you must create the 
+				<p>To install the 'Unified Labeling Support Tool' manually, you 
+				need to create the 
 				following folder, and copy/paste all the 'Unified Labeling 
 				Support Tool' files (UnifiedLabelingSupportTool.psm1, 
 				UnifiedLabelingSupportTool.psd1 and ULSupportTool-Win.htm) 
 				into this folder:</p>
 				<p><span class="ConsoleTextShadow">
-				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.0.9</span></p>
-				<p>This path must be listed in the PSModulePath environment 
-					variable. For more information, please read how
-					<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable" rel="nofollow" target="_blank">to view the PSModulePath variable</a>.</p>
+				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.1.0</span></p>
+				<p>This path need to be listed in the 
+				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable" target="_blank">PSModulePath environment 
+					variable</a>.</p>
 				<p>To verify if the installation was successful, please 
 					review the <a href="#Check_installation" class="Hyperlink">check installation</a> 
 					section.</p>
@@ -639,7 +639,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">----------&nbsp;&nbsp; -------&nbsp;&nbsp;&nbsp; ----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
 				----------------</p>
 				<p class="ConsolteListShadowButton">Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				3.0.9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
+				3.1.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
 				{UnifiedLabelingSupportTool, ULSupportTool}</p>
 				<p>To verify that an installation was performed using PowerShell 
 				Gallery, you can run the following command:</p>
@@ -656,21 +656,18 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">-------&nbsp;&nbsp; 
 				----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				----------&nbsp;&nbsp;&nbsp;&nbsp; -----------</p>
-				<p class="ConsolteListShadowButton">3.0.9&nbsp;&nbsp;&nbsp;&nbsp; 
+				<p class="ConsolteListShadowButton">3.1.0&nbsp;&nbsp;&nbsp;&nbsp; 
 				UnifiedLabelingSupportTool&nbsp;&nbsp; PSGallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				Have you ever used the Sensitivity button in...</p>
 				<p>&nbsp;</p>
 				<p class="Header1"><a name="Uninstall">Uninstall</a></p>
-				<p>In case you want to uninstall the 'Unified Labeling Support 
-				Tool', and it 
-				was installed via PowerShell Gallery, you must run the following 
-				command:</p>
+				<p>If you want to uninstall the 'Unified Labeling Support Tool', 
+				and it was installed via the PowerShell Gallery, you need to run 
+				the following command:</p>
 				<p><span class="ConsoleTextShadow">Uninstall-Module 
 				-Name UnifiedLabelingSupportTool</span></p>
-				<p>With every start of the 'Unified Labeling Support Tool' it 
-				searches for previous versions and tries to uninstall them.</p>
-				<p>If the 'Unified Labeling Support Tool' was installed manually, you must also 
-				remove it manually by deleting its installation folder.</p>
+				<p>If the 'Unified Labeling Support Tool' was installed manually, you 
+				also need to remove it manually by deleting its installation folder.</p>
 				<p><em>Note:</em></p>
 				<ul>
 					<li>Under certain circumstances, you may need to run the 
@@ -724,7 +721,8 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 
    			 Please select an option and press enter:</p>
 				<p>For the most sub-items of the 
-				<a class="Hyperlink" href="#[C]_COLLECT_/_-">COLLECT</a> menu, you must run the 
+				<a class="Hyperlink" href="#[C]_COLLECT_/_-">COLLECT</a> menu, you 
+				need to run the 
 				'Unified Labeling Support Tool' as a user with local administrative privileges. For option
 				<a class="Hyperlink" href="#[R]_RESET_/_-Reset_String">RESET</a>,
 				<a class="Hyperlink" href="#[P]_RECORD_PROBLEM_/_-RecordProblem">
@@ -732,8 +730,8 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<a class="Hyperlink" href="#[U]_Endpoint_URLs_/_-AnalyzeEndpointURLs">
 				Endpoint URLs</a> of the
 				<a class="Hyperlink" href="#[C]_COLLECT_/_-">COLLECT</a> menu, 
-				you may run as user with local <span class="auto-style1">
-				administrative </span>privileges. Please contact your administrator if necessary.</p>
+				you may run as user with local administrative<span class="auto-style4">
+				</span>privileges. Please contact your administrator if necessary.</p>
 				<p style="box-sizing: border-box; font-variant: normal; margin-left: 0px; margin-right: 0px; orphans: 2; text-indent: 0px; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;">
 				You can also start the 'Unified Labeling Support Tool' within the command line. 
 				Use the following command line parameter to see a short summary 
@@ -783,7 +781,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<a class="Hyperlink" href="https://www.microsoft.com/en-us/microsoft-365" target="_blank">
 				Microsoft 365</a> Apps, while a complete reset 
 				is useful for all other applications.</span></li>
-					<li>If you want a complete reset, you must run the 
+					<li>If you want a complete reset, you need to run the 
 					'Unified Labeling Support Tool' in an administrative PowerShell window as a 
 					user with local administrative privileges.</li>
 				</ul>
@@ -845,7 +843,14 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Common\Security\Lables]</p>
 				<p>The following file system folders are cleaned up as well:</p>
 				<p class="ConsoleListShadowTop">
-				%LOCALAPPDATA%\Microsoft\Office\DLP\mip</p>
+				%LOCALAPPDATA%\Microsoft\Word\MIPSDK\mip</p>
+				<p class="ConsoleListShadow">
+				%LOCALAPPDATA%\Microsoft\Excel\MIPSDK\mip</p>
+				<p class="ConsoleListShadow">
+				%LOCALAPPDATA%\Microsoft\PowerPoint\MIPSDK\mip</p>
+				<p class="ConsoleListShadow">
+				%LOCALAPPDATA%\Microsoft\Outlook\MIPSDK\mip</p>
+				<p class="ConsoleListShadow">%LOCALAPPDATA%\Microsoft\Office\DLP\mip</p>
 				<p class="ConsoleListShadow">%LOCALAPPDATA%\Microsoft\Office\CLP</p>
 				<p class="ConsoleListShadow">%TEMP%\Diagnostics</p>
 				<p class="ConsoleListShadow">%LOCALAPPDATA%\Microsoft\MSIP</p>
@@ -892,15 +897,6 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<a name="[P]_RECORD_PROBLEM_/_-RecordProblem">[P] RECORD PROBLEM / -RecordProblem</a></span></p>
 				<p><strong>IMPORTANT: Before you proceed with this option, 
 				please close all open applications.</strong></p>
-				<p><em>Note:</em></p>
-				<ul>
-					<li>When you run PowerShell with user privileges, 
-					neither CAPI2 or AIP event logs, network trace, nor filter 
-					drivers are recorded.</li>
-					<li>If you want a complete record, you must run the 
-					'Unified Labeling Support Tool' in an administrative PowerShell window as a 
-					user with local administrative privileges.</li>
-				</ul>
 				<p>As a first step, this parameter activates the required logging, or tracing  
 				mechanisms by implementing registry settings, and enabling some 
 				Windows event logs. This process will be reflected by a progress 
@@ -921,6 +917,14 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				will be reflected by a progress bar “Disable logging...".</p>
 				<p>You can then review the 
 				<a class="Hyperlink" href="#Log files and folders">log files</a> in the logs folder.</p>
+				<p><em>Note:</em></p>
+				<ul>
+					<li>Please note that neither CAPI2 or AIP event logs, 
+					network trace nor filter drivers are recorded if the 
+					"Unified Labeling Support Tool" is not run in an 
+					administrative PowerShell window as a user with local 
+					administrative privileges.</li>
+				</ul>
 				<p class="Header3"><a name="[C]_COLLECT_/_-">[C] COLLECT / -</a></p>
 				<p>If you select this option, a submenu will be expanded, and 
 				you can collapse it by selecting option [C] COLLECT again:</p>
@@ -944,7 +948,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
    			    &nbsp;</p>
 				<p><em>Note:</em></p>
 				<ul>
-					<li>You must run the 'Unified Labeling Support Tool' in an administrative 
+					<li>You need to run the 'Unified Labeling Support Tool' in an administrative 
 					PowerShell window as a user with local administrative 
 					privileges to proceed with any option from this submenu. 
 					Please contact your administrator if necessary.</li>
@@ -954,7 +958,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				Microsoft 365</a></span> global administrator 
 					account information to proceed, as you will 
 					be asked for your credentials.</li>
-					<li>You must run the 'Unified Labeling Support Tool' as user with local 
+					<li>You need to run the 'Unified Labeling Support Tool' as user with local 
 					administrative privileges to continue with option 
 					<a class="Hyperlink" href="#[U]_Endpoint_URLs_/_-CollectEndpointURLs">Endpoint URLs</a>, if the corresponding 
 				<span lang="EN-US">
@@ -1069,22 +1073,6 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p>
 				<span class="Header3"><a name="[X]_EXIT_/_-">[X] EXIT / -</a></span></p>
 				<p>This option will asks you whether you want to exit the menu after a confirmation prompt.</p>
-				<p class="Header3"><a name="-_/_-CheckForUpdate">- / -CheckForUpdate</a></p>
-				<p>This parameter checks if a new version of the 'Unified 
-				Labeling Support Tool' is available.</p>
-				<p>If you run the 'Unified Labeling Support Tool' with 
-				administrative privileges, it automatically performs each new 
-				update.</p>
-				<p><em>Note:</em></p>
-				<ul>
-					<li>Under certain circumstances, you may need to run the 
-					'Unified Labeling Support Tool' with administrative privileges to perform 
-					an update. Please request assistance from your administrator 
-					if necessary.</li>
-					<li>If the 'Unified Labeling Support Tool' was not installed via PowerShell 
-					Gallery, any older version must first be 
-					removed before an update or installation can be performed.</li>
-				</ul>
 				<p class="Header3">- / -SkipUpdates</p>
 				<p><strong>IMPORTANT: Use this parameter only if you are sure 
 				that all PowerShell modules are up to date.</strong></p>
@@ -1163,7 +1151,8 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				documentation:
 				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/dotnet/framework/network-programming/automatic-proxy-detection" target="_blank">
 				Automatic Proxy Detection</a>, and
-				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/internet-explorer/ie11-deploy-guide/auto-proxy-configuration-settings-for-ie11" target="_blank">Auto proxy configuration settings for Internet Explorer 11</a>.</p>
+				<a class="Hyperlink" href="https://support.microsoft.com/en-us/windows/use-a-proxy-server-in-windows-03096c53-0554-4ffe-b6ab-8b1deee8dae1" target="_blank">
+				Use a proxy server in Windows</a>.</p>
 				<ul>
 					<li>
 					<p class="Header4">ProblemSteps.zip</p>
@@ -1242,6 +1231,24 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				be collected from the following folder:</p>
 				<p><span class="Logs-ConsoleTextShadow">
 				%TEMP%\Diagnostics</span></p>
+				<ul>
+					<li>
+					<p class="Header4">MIPSDK-Word.zip, MIPSDK-Excel.zip, 
+					MIPSDK-PowerPoint.zip, and MIPSDK-Outlook.zip</p>
+					</li>
+				</ul>
+				<p class="Logs-Text">A respective .zip file contains the 
+				contents of the corresponding MIPSDK log folder collected at the 
+				following locations:</p>
+				<p class="Logs-ConsoleListShadowTop">
+				%LOCALAPPDATA%\Microsoft\Word\MIPSDK\mip</p>
+				<p class="Logs-ConsoleListShadow">
+				%LOCALAPPDATA%\Microsoft\Excel\MIPSDK\mip</p>
+				<p class="Logs-ConsoleListShadow">
+				%LOCALAPPDATA%\Microsoft\PowerPoint\MIPSDK\mip</p>
+				<p class="Logs-ConsolteListShadowButton">
+				%LOCALAPPDATA%\Microsoft\Outlook\MIPSDK\mip</p>
+				<p class="Logs-Text">Each .zip file contains multiple .json files.</p>
 				<ul>
 					<li>
 					<p class="Header4">LabelsAndPolicies.zip</p>
