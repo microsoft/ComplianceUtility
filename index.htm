@@ -5,8 +5,8 @@
 
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta content="en-us" http-equiv="Content-Language" />
-<meta content="3.1.0" http-equiv="VERSION" />
-<meta content="10/20/2023" http-equiv="CREATEDATE" />
+<meta content="3.1.1" http-equiv="VERSION" />
+<meta content="12/05/2023" http-equiv="CREATEDATE" />
 <meta content="Claus Schiroky" http-equiv="AUTHOR" />
 <meta content="https://aka.ms/UnifiedLabelingSupportTool/Latest" http-equiv="SOURCE" />
 <meta content="Copyright (c) Microsoft Coporation." http-equiv="COPYRIGHT" />
@@ -268,7 +268,7 @@
 				
 				<p>
 				<span class="HeaderTitle">Unified Labeling Support Tool</span><br />
-				Version 3.1.0</p>
+				Version 3.1.1</p>
 
 
             </div>
@@ -349,6 +349,9 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 							<li class="Hyperlink">
 							<a class="Hyperlink" href="#[L]_Labels_and_policies_/_-CollectLabelsAndPolicies" name="Labels_and_policies">
 							Labels and policies</a></li>
+							<li class="Hyperlink">
+							<a class="Hyperlink" href="#[D]_DLP_rules_and_policies_/_-CollectDLPRulesAndPolicies" name="DLP_rules_and_policies">
+							DLP rules and policies</a></li>
 						</ul>
 						</li>
 						<li class="Hyperlink">
@@ -479,7 +482,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				7.2</a> (or higher) on the following operating systems:</p>
 				<ul>
 					<li>Microsoft Windows 10, Windows 11, 
-						Windows 
+						Windows Server 2012/R2, Windows 
 						Server 2016, Windows Server 2019, Windows Server 2022 
 						and Apple macOS (<a class="Hyperlink" href="https://support.microsoft.com/en-us/office/upgrade-macos-to-continue-receiving-microsoft-365-and-office-for-mac-updates-16b8414f-08ec-4b24-8c91-10a918f649f8" target="_blank">three 
 					most recent major versions</a>).</li>
@@ -501,14 +504,15 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="Header3">
 				<a name="Exchange_Online_PowerShell_module">Exchange Online PowerShell module</a></p>
 				<p>The Microsoft
-				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#updates-for-the-exo-v3-module" target="_blank">Exchange Online PowerShell module</a> is required to 
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#release-notes" target="_blank">Exchange Online PowerShell module</a> is required to 
 				proceed the option
 				<a class="Hyperlink" href="#[L]_Labels_and_policies_/_-CollectLabelsAndPolicies">
 				Labels and policies</a> from the<strong> </strong>menu<strong>
 				</strong><a class="Hyperlink" href="#[C]_COLLECT_/_-">COLLECT</a>.</p>
 				<p>If you do not have this module installed, the 
 				<span lang="EN-US">
-				'Unified Labeling Support Tool'</span> will try to install it from
+				'Unified Labeling Support Tool'</span> will try to install the 
+				current version from
 				<a class="Hyperlink" href="https://www.powershellgallery.com/packages/ExchangeOnlineManagement" target="_blank">
 				PowerShell Gallery</a>.</p>
 				<p class="Header3"><a name="AIPService_module_(recommended)">AIPService module</a></p>
@@ -525,7 +529,8 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				entry.</p>
 				<p>If you do not have this module installed, the 
 				<span lang="EN-US">
-				'Unified Labeling Support Tool' </span>will try to install it from
+				'Unified Labeling Support Tool' </span>will try to install the 
+				current version from
 				<a class="Hyperlink" href="https://www.powershellgallery.com/packages/ExchangeOnlineManagement" target="_blank">
 				PowerShell Gallery</a>.</p>
 				<p><em>Note:</em></p>
@@ -607,7 +612,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				UnifiedLabelingSupportTool.psd1 and ULSupportTool-Win.htm) 
 				into this folder:</p>
 				<p><span class="ConsoleTextShadow">
-				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.1.0</span></p>
+				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.1.1</span></p>
 				<p>This path need to be listed in the 
 				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable" target="_blank">PSModulePath environment 
 					variable</a>.</p>
@@ -639,7 +644,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">----------&nbsp;&nbsp; -------&nbsp;&nbsp;&nbsp; ----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
 				----------------</p>
 				<p class="ConsolteListShadowButton">Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				3.1.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
+				3.1.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
 				{UnifiedLabelingSupportTool, ULSupportTool}</p>
 				<p>To verify that an installation was performed using PowerShell 
 				Gallery, you can run the following command:</p>
@@ -656,7 +661,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">-------&nbsp;&nbsp; 
 				----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				----------&nbsp;&nbsp;&nbsp;&nbsp; -----------</p>
-				<p class="ConsolteListShadowButton">3.1.0&nbsp;&nbsp;&nbsp;&nbsp; 
+				<p class="ConsolteListShadowButton">3.1.1&nbsp;&nbsp;&nbsp;&nbsp; 
 				UnifiedLabelingSupportTool&nbsp;&nbsp; PSGallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				Have you ever used the Sensitivity button in...</p>
 				<p>&nbsp;</p>
@@ -942,7 +947,10 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
    			 &nbsp;&nbsp; ├──[U] Endpoint URLs</p>
 				<p class="ConsoleListShadow">
 
-   			 &nbsp;&nbsp; └──[L] Labels and policies</p>
+   			 &nbsp;&nbsp; ├──[L] Labels and policies</p>
+				<p class="ConsoleListShadow">
+
+   			 &nbsp;&nbsp; └──[D] DLP rules and policies</p>
 				<p class="ConsoleListShadow">
 
    			    &nbsp;</p>
@@ -1052,6 +1060,24 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				encryption and those with content marking only.</p>
 				<p>Results are written into log file
 				<a class="Hyperlink" href="#LabelsAndPolicies.log">LabelsAndPolicies.log</a> 
+				in the subfolder "Collect" of the Logs folder, and you can also 
+				have a CLP subfolder with the Office CLP policy.</p>
+				<p><em>Note:</em></p>
+				<ul>
+					<li>The Microsoft
+					<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps" target="_blank">
+					Exchange Online PowerShell V3 cmdlets</a> are required to 
+					proceed this option. If you do not have this module 
+					installed, 'Unified Labeling Support Tool' will try to install it from 
+					PowerShell Gallery.</li>
+				</ul>
+				<p class="Header3">
+				<a name="[D]_DLP_rules_and_policies_/_-CollectDLPRulesAndPolicies">
+				[D] DLP rules and policies / -CollectDLPRulesAndPolicies</a></p>
+				<p>This parameter collects DLP rules and policies from the 				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide" target="_blank">
+				Microsoft Purview compliance portal</a>.</p>
+				<p>Results are written into log file
+				<a class="Hyperlink" href="#LabelsAndPolicies.log">DLPRulesAndPolicies.log</a> 
 				in the subfolder "Collect" of the Logs folder.</p>
 				<p><em>Note:</em></p>
 				<ul>
@@ -1496,7 +1522,10 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="Logs-Text">This file is created by the
 				collect option
 				<a class="Hyperlink" href="#[L]_Labels_and_policies_/_-CollectLabelsAndPolicies">
-				Labels and policies</a>.</p>
+				Labels and policies</a>. If you have not initiated a
+				<a class="Hyperlink" href="#[R]_RESET_/_-Reset_String">RESET</a> 
+				before collecting logs, you can also have a CLP subfolder with 
+				the Office CLP policy folder.</p>
 				<p class="Logs-Text">For more information, please see the following documentation:
 				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps" target="_blank">
 				Get-Label</a> and
@@ -1504,7 +1533,22 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				Get-LabelPolicy</a>.</p>
 				<ul>
 					<li>
-					<p class="Header4"><a name="EndpointURLs.log">EndpointURLs.log</a></p>
+					<p class="Header4"><a name="DLPRulesAndPolicies.log">
+					DLPRulesAndPolicies.log</a></p>
+					</li>
+				</ul>
+				<p class="Logs-Text">This file is created by the
+				collect option
+				<a class="Hyperlink" href="#[D]_DLP_rules_and_policies_/_-CollectDLPRulesAndPolicies">
+				DLP rules and policies</a>.</p>
+				<p class="Logs-Text">For more information, please see the following documentation:
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpcompliancepolicy?view=exchange-ps" target="_blank">
+				Get-DlpCompliancePolicy</a> and
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpcompliancerule?view=exchange-ps" target="_blank">
+				Get-DlpComplianceRule</a>.</p>
+				<ul>
+					<li>
+					<p class="Header4"><a name="EndpointURLs.log">EndpointURLs.log/a></p>
 					</li>
 				</ul>
 				<p class="Logs-Text">This file contains information for endpoint 
