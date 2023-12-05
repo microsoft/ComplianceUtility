@@ -1,10 +1,10 @@
-﻿.#Requires -Version 5.1
+﻿#Requires -Version 5.1
 
 # Copyright (c) Microsoft Corporation
 # Licensed under the MIT License
 
 <# Global variables #>
-$Global:strVersion = "3.1.0" <# Define version #>
+$Global:strVersion = "3.1.1" <# Define version #>
 $Global:strDefaultWindowTitle = $Host.UI.RawUI.WindowTitle <# Caching window title #>
 $Global:host.UI.RawUI.WindowTitle = "Unified Labeling Support Tool ($Global:strVersion)" <# Set window title #>
 $Global:MenuCollectExtended = $false <# Define variable for COLLECT menu handling #>
@@ -27,6 +27,7 @@ Function fncInitialize{
         <# Check for supported Windows versions #>
         If ($Global:strOSVersion -like "*Windows 10*" -Or
             $Global:strOSVersion -like "*Windows 11*" -Or
+            $Global:strOSVersion -like "*2012*" -Or
             $Global:strOSVersion -like "*Server 2016*" -Or
             $Global:strOSVersion -like "*Server 2019*" -Or
             $Global:strOSVersion -like "*Server 2022*"){
@@ -46,7 +47,7 @@ Function fncInitialize{
             fncLogging -strLogFunction "fncInitialize" -strLogDescription "Unsupported operating system" -strLogValue $true
 
             <# Console output #>
-            Write-ColoredOutput Red "ATTENTION: The 'Unified Labeling Support Tool' does not support the operating system you're using.`nPlease ensure to use one of the following supported operating systems:`nMicrosoft Windows 10, Windows 11, Windows Server 2016, Windows Server 2019 and Windows Server 2022.`n"
+            Write-ColoredOutput Red "ATTENTION: The 'Unified Labeling Support Tool' does not support the operating system you're using.`nPlease ensure to use one of the following supported operating systems:`nMicrosoft Windows 10, Windows 11, Windows Server 2012/R2, Windows Server 2016, Windows Server 2019 and Windows Server 2022.`n"
 
             <# Set back window title to default #>
             $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
@@ -172,20 +173,15 @@ Function UnifiedLabelingSupportTool {
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         
         VERSION
-        3.1.0
+        3.1.1
         
         CREATE DATE
-        10/22/2023
+        12/05/2023
 
         AUTHOR
         Claus Schiroky
         Customer Service & Support | EMEA Modern Work Team
         Microsoft Deutschland GmbH
-
-        SPECIAL THANKS TO
-        Steve Light
-        CTS Management & Security Division
-        Microsoft Corp.
 
         HOMEPAGE
         https://aka.ms/UnifiedLabelingSupportTool
@@ -374,7 +370,7 @@ Function UnifiedLabelingSupportTool {
     .PARAMETER CollectLabelsAndPolicies
         This parameter collects the labels and policy definitions from your Microsoft Purview compliance portal. Those with encryption and those with content marking only.
 
-        Results are written into log file LabelsAndPolicies.log in the subfolder "Collect" of the Logs folder.
+        Results are written into log file LabelsAndPolicies.log in the subfolder "Collect" of the Logs folder, and you can also have a CLP subfolder with the Office CLP policy.
 
         Note:
 
@@ -382,6 +378,18 @@ Function UnifiedLabelingSupportTool {
         - You need to know your Microsoft 365 global administrator account information to proceed with this option, as you will be asked for your credentials.
         - The Microsoft Exchange Online PowerShell V3 cmdlets are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
         - This parameter uses the AIPService module. Please note that the AIPService module does not support PowerShell 7. Therefore, unexpected errors may occur as the AIPService module can only run in compatibility mode.
+        - This feature is not available on Apple macOS.
+
+    .PARAMETER CollectDLPRulesAndPolicies
+        This parameter collects DLP rules and policies from your Microsoft Purview compliance portal.
+
+        Results are written into log file DLPRulesAndPolicies.log in the subfolder "Collect" of the Logs folder.
+
+        Note:
+
+        - You must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to continue with this option. Please contact your administrator if necessary.
+        - You need to know your Microsoft 365 global administrator account information to proceed with this option, as you will be asked for your credentials.
+        - The Microsoft Exchange Online PowerShell V3 cmdlets are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
         - This feature is not available on Apple macOS.
 
     .PARAMETER CompressLogs
@@ -438,11 +446,15 @@ Function UnifiedLabelingSupportTool {
 
     .EXAMPLE
         UnifiedLabelingSupportTool -CollectLabelsAndPolicies
-        This parameter collects the labels and policy definitions from your Microsoft Purview compliance portal.
+        This parameter collects the labels and policy definitions from the Microsoft Purview compliance portal.
 
     .EXAMPLE
         UnifiedLabelingSupportTool -CollectEndpointURLs
         This parameter collects important enpoint URLs, and the results are written into a log file.
+
+    .EXAMPLE
+        UnifiedLabelingSupportTool -CollectDLPRulesAndPolicies
+        This parameter collects DLP rules and policies from the Microsoft Purview compliance portal.
         
     .EXAMPLE
         UnifiedLabelingSupportTool -CompressLogs
@@ -517,6 +529,11 @@ Function UnifiedLabelingSupportTool {
         [Alias("u")]
         [Parameter(ParameterSetName = "Reset and logging")]
         [switch]$CollectEndpointURLs,
+
+        <# Parameter definition for CollectDLPPoliciesAndRules #>
+        [Alias("d")]
+        [Parameter(ParameterSetName = "Reset and logging")]
+        [switch]$CollectDLPRulesAndPolicies,        
 
         <# Parameter definition for required update checks #>
         [Parameter(ParameterSetName = "Menu")]
@@ -705,6 +722,28 @@ Function UnifiedLabelingSupportTool {
 
     }
 
+    <# Action if the parameter '-CollectDLPRulesAndPolicies' has been selected #>
+    If ($PSBoundParameters.ContainsKey("CollectDLPRulesAndPolicies")) {
+
+        <# Verbose/Logging #>
+        fncLogging -strLogFunction "UnifiedLabelingSupportTool" -strLogDescription "Parameter CollectDLPRulesAndPolicies" -strLogValue "Triggered"
+
+        <# Consider feature on Windows #>
+        If ([System.Environment]::OSVersion.Platform -eq "Win32NT") {
+
+            <# Call Collect CollectDLPRulesAndPolicies function #>
+            fncCollectDLPRulesAndPolicies
+
+        }
+        Else {
+
+            <# Not supported message on macOS #>
+            Write-Output $Private:strNotAvailableOnMac
+
+        }
+
+    }
+
     <# Action if the parameter '-CompressLogs' has been selected #>
     If ($PSBoundParameters.ContainsKey("CompressLogs")) {
 
@@ -771,7 +810,7 @@ Function fncInformation {
     If ($Global:bolCommingFromMenu -eq $true) {
     
         <# Console output #>
-        Write-Output "NAME:`nUnifiedLabelingSupportTool`n`nDESCRIPTION:`nThe 'Unified Labeling Support Tool' provides the functionality to reset all corresponding Information Protection client settings. Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for error analysis and troubleshooting.`n`nVERSION:`n$Global:strVersion`n`nAUTHOR:`nClaus Schiroky`nCustomer Service & Support - EMEA Modern Work Team`nMicrosoft Deutschland GmbH`n`nSPECIAL THANKS TO`nSteve Light`nCTS Management & Security Division`nMicrosoft Corp.`n`nHOMEPAGE:`nhttps://aka.ms/UnifiedLabelingSupportTool`n`nPRIVACY STATEMENT:`nhttps://privacy.microsoft.com/PrivacyStatement`n`nCOPYRIGHT:`nCopyright (c) Microsoft Corporation.`n"
+        Write-Output "NAME:`nUnifiedLabelingSupportTool`n`nDESCRIPTION:`nThe 'Unified Labeling Support Tool' provides the functionality to reset all corresponding Information Protection client settings. Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for error analysis and troubleshooting.`n`nVERSION:`n$Global:strVersion`n`nAUTHOR:`nClaus Schiroky`nCustomer Service & Support - EMEA Modern Work Team`nMicrosoft Deutschland GmbH`n`nHOMEPAGE:`nhttps://aka.ms/UnifiedLabelingSupportTool`n`nPRIVACY STATEMENT:`nhttps://privacy.microsoft.com/PrivacyStatement`n`nCOPYRIGHT:`nCopyright (c) Microsoft Corporation.`n"
 
     }
 
@@ -821,7 +860,7 @@ Function fncHelp {
             Else { <# Action if web site is unavailable or if there's no internet connection #>
 
                 <# Console output #>
-                Write-ColoredOutput Red "ATTENTION: The help file (ULSupportTool-Win.htm) could not be found.`nEither the website cannot be reached or there is no internet connection.`n`nNote:`n`n- If you’re working in an environment that does not have internet access, you must download the file manually, before proceeding the 'Unified Labeling Support Tool'.`n- You must place the file to the location where you have stored the 'Unified Labeling Support Tool' files.`n- Please download the file from the following hyperlink (from a machine where you have internet access):`n  https://aka.ms/UnifiedLabelingSupportTool/Latest`n"
+                Write-ColoredOutput Red "ATTENTION: The help file (ULSupportTool-Win.htm) could not be found.`nEither the website cannot be reached or there is no internet connection.`n`nNote:`n`n- If you're working in an environment that does not have internet access, you must download the file manually, before proceeding the 'Unified Labeling Support Tool'.`n- You must place the file to the location where you have stored the 'Unified Labeling Support Tool' files.`n- Please download the file from the following hyperlink (from a machine where you have internet access):`n  https://aka.ms/UnifiedLabelingSupportTool/Latest`n"
 
                 <# Verbose/Logging #>
                 fncLogging -strLogFunction "fncHelp" -strLogDescription "Help" -strLogValue "No internet connection"
@@ -1965,69 +2004,32 @@ Function fncCollectLogging {
     
         }
 
-        <# Check for Word MIPSDK log path, and collect .json files #>
-        If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Word\MIPSDK\mip) -Eq $true) {
+        <# Define array for MIP SDK apps #>
+        $Private:arrMIPSDKApps = "Word", "Excel", "PowerPoint", "Outlook"
 
-            <# Collect Word MIPSDK log folder only, if the folder contains files (Note: Afer a RESET this folder is empty). #>
-            If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Word\MIPSDK\mip -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
+        <# Loop though array and collect MIPSDK logs #>
+        ForEach ($_ in $Private:arrMIPSDKApps) {
 
-                <# Compress Word MIPSDK\mip content to .zip file (overwrites) #>
-                Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\Word\MIPSDK\mip"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\MIPSDK-Word.zip" -Force -ErrorAction SilentlyContinue
+            <# Check for each App MIPSDK log path, and collect .json files #>
+            If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\$_\MIPSDK\mip) -Eq $true) {
 
-                <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Word MIPSDK logs" -strLogValue "\Office\MIPDSK-Word.zip"
-
+                <# Collect MIPSDK log folder only, if the folder contains files (Note: Afer a RESET this folder is empty). #>
+                If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\$_\MIPSDK\mip -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
+    
+                    <# Compress MIPSDK\mip content to .zip file (overwrites) #>
+                    Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\$_\MIPSDK\mip"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\MIPSDK-$_.zip" -Force -ErrorAction SilentlyContinue
+    
+                    <# Verbose/Logging #>
+                    fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export $_ MIPSDK logs" -strLogValue "\Office\MIPDSK-$_.zip"
+    
+                }
+    
             }
 
         }
 
-        <# Check for Excel MIPSDK log path, and collect .json files #>
-        If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Excel\MIPSDK\mip) -Eq $true) {
-
-            <# Collect Excel MIPSDK log folder only, if the folder contains files (Note: Afer a RESET this folder is empty). #>
-            If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Excel\MIPSDK\mip -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
-
-                <# Compress Excel MIPSDK\mip content to .zip file (overwrites) #>
-                Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\Excel\MIPSDK\mip"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\MIPSDK-Excel.zip" -Force -ErrorAction SilentlyContinue
-
-                <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Excel MIPSDK logs" -strLogValue "\Office\MIPDSK-Excel.zip"
-
-            }
-
-        }
-        
-        <# Check for PowerPoint MIPSDK log path, and collect .json files #>
-        If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\PowerPoint\MIPSDK\mip) -Eq $true) {
-
-            <# Collect PowerPoint MIPSDK log folder only, if the folder contains files (Note: Afer a RESET this folder is empty). #>
-            If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\PowerPoint\MIPSDK\mip -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
-
-                <# Compress PowerPoint MIPSDK\mip content to .zip file (overwrites) #>
-                Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\PowerPoint\MIPSDK\mip"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\MIPSDK-PowerPoint.zip" -Force -ErrorAction SilentlyContinue
-
-                <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export PowerPoint MIPSDK logs" -strLogValue "\Office\MIPDSK-PowerPoint.zip"
-
-            }
-
-        }
-
-        <# Check for Outlook MIPSDK log path, and collect .json files #>
-        If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Outlook\MIPSDK\mip) -Eq $true) {
-
-            <# Collect Outlook MIPSDK log folder only, if the folder contains files (Note: Afer a RESET this folder is empty). #>
-            If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Outlook\MIPSDK\mip -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
-
-                <# Compress Outlook MIPSDK\mip content to .zip file (overwrites) #>
-                Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\Outlook\MIPSDK\mip"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\MIPSDK-Outlook.zip" -Force -ErrorAction SilentlyContinue
-
-                <# Verbose/Logging #>
-                fncLogging -strLogFunction "fncCollectLogging" -strLogDescription "Export Outlook MIPSDK logs" -strLogValue "\Office\MIPDSK-Outlook.zip"
-
-            }
-
-        }         
+        <# Releasing priate MIP SDK apps array #>
+        $Private:arrMIPSDKApps = $null
 
         <# Copy Office Diagnostics folder from temp folder to Office logs folder #>
         fncCopyItem $env:TEMP\Diagnostics "$Global:strUniqueLogFolder\Office" "Diagnostics\*"
@@ -2472,7 +2474,7 @@ Function fncUpdateRequiredModules {
     $Private:strOriginalPreference = $Global:ProgressPreference 
     $Global:ProgressPreference = "SilentlyContinue" <# Hiding progress bar #>
 
-    <# Validate connection to PowerShell Gallery by Find-Module on PowerShell 5.1. Not available on PowerShell 7.1 #>
+    <# Validate connection to PowerShell Gallery by Find-Module on PowerShell 5.1. Not available on PowerShell 7.1 (or higher) #>
     If ([Version]::new($PSVersionTable.PSVersion.Major, $PSVersionTable.PSVersion.Minor) -eq [Version]::new("5.1")) {
 
         <# Actions if PowerShell Gallery can be reached #>
@@ -3201,7 +3203,7 @@ Function fncCollectProtectionTemplates {
 <# Collect labels and policies #>
 Function fncCollectLabelsAndPolicies {
 
-    <# Console output #>
+     <# Console output #>
     Write-Output "COLLECT LABELS AND POLICIES:"
 
     <# Check if not running as administrator #>
@@ -3455,38 +3457,74 @@ Function fncCollectLabelsAndPolicies {
         (Get-LabelPolicy -WarningAction SilentlyContinue).Name | Format-Table -AutoSize | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force | Format-List
 
         Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "`nALL LABELS:"
-        Get-Label | Format-Table -AutoSize | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
+        Get-Label -WarningAction SilentlyContinue | Format-Table -AutoSize | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
 
         Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "ALL LABELS WITH DETAILS:"
-        Get-Label -IncludeDetailedLabelActions | Format-List * | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
+        Get-Label -WarningAction SilentlyContinue -IncludeDetailedLabelActions | Format-List * | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
 
         Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "LABEL POLICIES:"
         Get-LabelPolicy -WarningAction SilentlyContinue | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
 
         Add-Content -Path $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Value "LABEL POLICY RULES:"
-        $Private:PolicyRules = Foreach ($AP in Get-LabelPolicy -WarningAction SilentlyContinue) {Get-LabelPolicyRule -Policy $AP.ExchangeObjectId.guid}
+        $Private:PolicyRules = Foreach ($AP in Get-LabelPolicy -WarningAction SilentlyContinue) {Get-LabelPolicyRule -WarningAction SilentlyContinue -Policy $AP.ExchangeObjectId.guid}
         $Private:PolicyRules | Out-File $Global:strUserLogPath"\Collect\LabelsAndPolicies.log" -Encoding UTF8 -Append -Force
         $Private:PolicyRules = $null
 
     }
-#########
-    <# Disconnect Exchange Online #>
-    Disconnect-ExchangeOnline -Confirm:$false
+
+    <# Verbose/Logging #>
+    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Export labels and policy" -strLogValue "LabelsAndPolicies.log"
+
+    <# Check if Office CLP folder exist #>
+    If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Office\CLP) -Eq $true) {
+
+        <# Perform action only, if the CLP folder contain files (Note: Afer a RESET this folder is empty). #>
+        If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Office\CLP -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
+
+            <# Copy CLP Office policy folder content #>
+            fncCopyItem $env:LOCALAPPDATA\Microsoft\Office\CLP $Global:strUserLogPath"\Collect" "CLP\*"
+
+            <# Private variable for unique logging/output with CLP #>
+            $Private:CLPPolicy = $true
+
+            <# Verbose/Logging #>
+            fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Export Office CLP policy folder" -strLogValue "\CLP"
+
+        }
+    
+    }
 
     <# Set back progress bar to previous default #>
     $Global:ProgressPreference = $Private:strOriginalPreference
 
-    <# Console output #>
-    Write-Output "Microsoft Purview compliance portal disconnected."
+    <# Verbose logging based on existence of CLP folder #>
+    If ($Private:CLPPolicy -Eq $true) {
+        
+        <# Console output #> 
+        Write-Output "`nLog file: $Global:strUserLogPath\Collect\LabelsAndPolicies.log"
+        Write-Output "Office CLP policy folder: $Global:strUserLogPath\Collect\CLP"
+
+    }
+    Else {
+
+        <# Console output #> 
+        Write-Output "`nLog file: $Global:strUserLogPath\Collect\LabelsAndPolicies.log"
+
+    }
+
+    <# Release private variable #>
+    $Private:CLPPolicy = $null
+
+    <# Disconnect Exchange Online #>
+    Disconnect-ExchangeOnline -Confirm:$false
 
     <# Verbose/Logging #>
     fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Microsoft Purview compliance portal disconnected" -strLogValue $true
-    fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Export labels and policy" -strLogValue "LabelsAndPolicies.log"
     fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Collect labels and policies" -strLogValue "Proceeded"
 
     <# Console output #> 
-    Write-Output "`nLog file: $Global:strUserLogPath\Collect\LabelsAndPolicies.log"
-    Write-ColoredOutput Red "COLLECT LABELS AND POLICIES: Proceeded.`n"
+    Write-Output "Microsoft Purview compliance portal disconnected."
+    Write-ColoredOutput Green "COLLECT LABELS AND POLICIES: Proceeded.`n"
 
     <# Action if function was called from the menu #>
     If ($Global:bolCommingFromMenu -eq $true) {
@@ -3944,6 +3982,319 @@ Function fncVerifyIssuer ($strCertURL, $strEndpointName, $strLogPath) {
 
 }
 
+Function fncCollectDLPRulesAndPolicies {
+
+    <# Console output #>
+    Write-Output "COLLECT DLP RULES AND POLICIES:"
+
+    <# Check if not running as administrator #>
+    If ($Global:bolRunningPrivileged -eq $false) {
+
+        <# Console output #>
+        Write-ColoredOutput Red "ATTENTION: You must run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to continue with this option.`nCOLLECT DLP RULES AND POLICIES: Failed.`n"
+
+        <# Action if function was called from command line #>
+        If ($Global:bolCommingFromMenu -eq $false) {
+
+            <# Set back window title to default #>
+            $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
+
+            <# Release global variable back to default (updates active) #>
+            $Global:bolSkipRequiredUpdates = $false
+
+            <# Exit function #>
+            Break
+
+        }
+
+        <# Action if function was called from the menu #>
+        If ($Global:bolCommingFromMenu -eq $true) {
+
+            <# Call pause function #>
+            fncPause
+
+            <# Clear console #>
+            Clear-Host
+
+            <# Call show menu function #>
+            fncShowMenu    
+
+        }
+
+    }
+
+    <# Console output #>
+    Write-Output "Initializing, please wait..."
+
+    <# Verbose/Logging #>
+    fncLogging -strLogFunction "fncCollectDLPRulesAndPolicies" -strLogDescription "Collect DLP rules and policies" -strLogValue "Initiated"
+
+    <# Action if -SkipUpdates was called from command line #>
+    If ($Global:bolSkipRequiredUpdates -eq $false) {
+
+        <# Call function to check and update needed modules #>
+        fncUpdateRequiredModules
+
+        <# Actions if ExchangeOnlineManagement module is installed #>
+        If (Get-Module -ListAvailable -Name "ExchangeOnlineManagement") {
+
+            <# Update ExchangeOnlineManagement, if we can connect to PowerShell Gallery #>
+            If (Find-Module -Name ExchangeOnlineManagement -Repository PSGallery -ErrorAction SilentlyContinue -WarningAction SilentlyContinue) {
+
+                <# Fill variables with version information #>
+                [Version]$Private:strEOPOnlineVersion = (Find-Module -Name ExchangeOnlineManagement -Repository PSGallery).Version
+                [Version]$Private:strEOPLocalVersion = (Get-Module -ListAvailable -Name "AIPService").Version | Select-Object -First 1
+
+                <# Compare local version vs. online version #>
+                If ([Version]::new($Private:strEOPPOnlineVersion.Major, $Private:strEOPPOnlineVersion.Minor, $Private:strEOPPOnlineVersion.Build) -gt [Version]::new($Private:strEOPLocalVersion.Major, $Private:strEOPLocalVersion.Minor, $Private:strEOPLocalVersion.Build) -eq $true) {
+
+                    <# Console output #>
+                    Write-Output "Updating Exchange Online PowerShell module..."
+
+                    <# Update AIPService PowerShell module #>
+                    Update-Module -Verbose:$false -Name ExchangeOnlineManagement -Force -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
+
+                    <# Verbose/Logging #>
+                    fncLogging -strLogFunction "fncCollectDLPRulesAndPolicies" -strLogDescription "Exchange Online PowerShell module" -strLogValue "Updated"
+
+                }
+
+                <# Release private variables #>
+                [Version]$Private:strEOPOnlineVersion = $null
+                [Version]$Private:strEOPLocalVersion = $null
+
+            }
+            Else { <# Actions if we can't connect to PowerShell Gallery (no internet connection) #>
+
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncCollectDLPRulesAndPolicies" -strLogDescription "Exchange Online PowerShell module update" -strLogValue "Failed"
+
+            }
+
+        }
+
+    }
+
+    <# Actions if ExchangeOnlineManagement module isn't installed #>
+    If (-Not (Get-Module -ListAvailable -Name "ExchangeOnlineManagement")) {
+
+        <# Install ExchangeOnlineManagement if we can connect to PowerShell Gallery #>
+        If (Find-Module -Name ExchangeOnlineManagement -Repository PSGallery -ErrorAction SilentlyContinue -WarningAction SilentlyContinue) {
+
+            <# Console output #>
+            Write-Output "Installing Exchange Online PowerShell V3 module..."
+
+            <# Install ExchangeOnlineManagement PowerShell module #>
+            Install-Module -Verbose:$false -Name ExchangeOnlineManagement -Scope CurrentUser -Repository PSGallery -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
+
+            <# Verbose/Logging #>
+            fncLogging -strLogFunction "fncCollectDLPRulesAndPolicies" -strLogDescription "Exchange Online PowerShell V3 module" -strLogValue "Installed"
+
+            <# Console output #>
+            Write-Output "Exchange Online PowerShell V3 module installed."
+            Write-ColoredOutput Red "ATTENTION: To use Exchange Online PowerShell V3 cmdlets, you must close this window and run a new instance of PowerShell for it to work.`nThe 'Unified Labeling Support Tool' is now terminated."
+
+            <# Release global variable back to default (updates active) #>
+            $Global:bolSkipRequiredUpdates = $false
+
+            <# Call pause function #>
+            fncPause
+    
+            <# Set back window title to default #>
+            $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
+
+            <# Interrupting, because of module not loaded into PowerShell instance #>
+            Break
+
+        }
+        Else { <# Actions if we can't connect to PowerShell Gallery (no internet connection) #>
+
+            <# Console output #>
+            Write-ColoredOutput Red "ATTENTION: Collecting DLP rules and policies could not be performed.`nEither PowerShell Gallery cannot be reached or there is no connection to the Internet.`n`nYou must have Exchange Online PowerShell V3 module installed to proceed.`n`nPlease check the following website and install the latest version of the ExchangeOnlineManagement modul:`nhttps://www.powershellgallery.com/packages/ExchangeOnlineManagement`n"
+
+            <# Console output #>
+            Write-ColoredOutput Red "COLLECT DLP RULES AND POLICIES: Failed.`n"
+
+            <# Verbose/Logging #>
+            fncLogging -strLogFunction "fncCollectDLPRulesAndPolicies" -strLogDescription "Exchange Online PowerShell V3 module installation" -strLogValue "Failed"
+
+            <# Action if function was called from the menu #>
+            If ($Global:bolCommingFromMenu -eq $true) {
+
+                <# Call pause function #>
+                fncPause
+    
+                <# Clear console #>
+                Clear-Host
+
+                <# Call show menu function #>
+                fncShowMenu
+
+            }
+
+            <# Action if function was called from command line #>
+            If ($Global:bolCommingFromMenu -eq $false) {
+   
+                <# Release global variable back to default (updates active) #>
+                $Global:bolSkipRequiredUpdates = $false
+
+                <# Set back window title to default #>
+                $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
+
+                <# Interrupt, because of missing internet connection #>
+                Break
+
+            }
+
+        }
+
+    }
+
+    <# Verbose/Logging #>
+    fncLogging -strLogFunction "fncCollectDLPRulesAndPolicies" -strLogDescription "Exchange Online PowerShell V3 module version" -strLogValue (Get-Module -Verbose:$false -ListAvailable -Name ExchangeOnlineManagement).Version
+
+    <# Console output #>
+    Write-Output "Connecting to Microsoft Purview compliance portal..."
+
+    <# Remember default progress bar status: "Continue" #>
+    $Private:strOriginalPreference = $Global:ProgressPreference 
+    $Global:ProgressPreference = "SilentlyContinue" <# Hiding progress bar #>
+
+    <# Try to connect/logon to compliance center #>
+    Try {
+
+        <# Connect/logon to Microsoft Purview compliance portal #>
+        Connect-IPPSSession -Verbose:$false -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
+
+    }
+    Catch { <# Catch action for any error that occur on connect/logon #>
+
+        <# Verbose/Logging #>
+        fncLogging -strLogFunction "fncCollectDLPRulesAndPolicies" -strLogDescription "Microsoft Purview compliance portal connected" -strLogValue $false 
+        fncLogging -strLogFunction "fncCollectDLPRulesAndPolicies" -strLogDescription "Microsoft Purview compliance portal" -strLogValue "Login failed"
+    
+        <# Console output #>
+        Write-ColoredOutput Red "COLLECT DLP RULES AND POLICIES: Login failed. Please try again.`n"
+
+        <# Action if function was called from the menu #>
+        If ($Global:bolCommingFromMenu -eq $true) {
+
+            <# Call pause function #>
+            fncPause
+    
+            <# Clear console #>
+            Clear-Host
+
+            <# Call show menu function #>
+            fncShowMenu
+
+        }
+
+        <# Action if function was called from command line #>
+        If ($Global:bolCommingFromMenu -eq $false) {
+
+            <# Release global variable back to default (updates active) #>
+            $Global:bolSkipRequiredUpdates = $false           
+
+            <# Set back window title to default #>
+            $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
+
+            <# Interrupt, because of missing internet connection #>
+            Break
+
+        }
+
+    }
+
+    <# Console output #> 
+    Write-Output "Microsoft Purview compliance portal connected."
+
+    <# Verbose/Logging #>
+    fncLogging -strLogFunction "fncCollectDLPRulesAndPolicies" -strLogDescription "Microsoft Purview compliance portal connected" -strLogValue $true
+
+    <# Console output #> 
+    Write-Output "Collecting DLP rules and policies..."
+
+    <# Check if "Collect"-folder exist and create it, if not #>
+    If ($(Test-Path -Path $Global:strUserLogPath"\Collect") -Eq $false) {
+
+        New-Item -ItemType Directory -Force -Path $Global:strUserLogPath"\Collect" | Out-Null <# Define Collect path #>
+
+    }
+
+    <# Check for existing DLPRulesAndPolicies.log file and create it, if it not exist #>
+    If ($(Test-Path $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log") -Eq $false) {
+
+        <# Create DLPRulesAndPolicies.log logging file #>
+        Out-File -FilePath $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Encoding UTF8 -Append -Force
+
+    }
+
+    <# Check for existing DLPRulesAndPolicies.log file and extend it, if it exist #>
+    If ($(Test-Path $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log") -Eq $true) {
+
+        <# Collecting DLP policies #>
+        Add-Content -Path $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Value "DLP POLICIES:`n"
+        Get-DlpCompliancePolicy -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Format-Table -AutoSize | Out-File $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Encoding UTF8 -Append -Force
+
+        <# Collecting DLP rules #>
+        Add-Content -Path $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Value "DLP RULES:`n"
+        Get-DlpComplianceRule -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Select-Object -Property * -ExcludeProperty SerializationData | Format-List | Out-File $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Encoding UTF8 -Append -Force
+
+        <# Collecting DLP distribution status #>
+        Add-Content -Path $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Value "DLP DISTRIBUTION STATUS:`n"
+        Get-DlpCompliancePolicy | ForEach-Object {Get-DLPcompliancePolicy -Identity $_.Identity -distributiondetail} | Format-List Name,GUID,Distr* | Out-File $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Encoding UTF8 -Append -Force
+
+    }
+
+    <# Disconnect Exchange Online #>
+    Disconnect-ExchangeOnline -Confirm:$false
+
+    <# Set back progress bar to previous default #>
+    $Global:ProgressPreference = $Private:strOriginalPreference
+
+    <# Console output #>
+    Write-Output "Microsoft Purview compliance portal disconnected."
+
+    <# Verbose/Logging #>
+    fncLogging -strLogFunction "fncCollectDLPRulesAndPolicies" -strLogDescription "Microsoft Purview compliance portal disconnected" -strLogValue $true
+    fncLogging -strLogFunction "fncCollectDLPRulesAndPolicies" -strLogDescription "Export DLP rules and policy" -strLogValue "DLPRulesAndPolicies.log"
+    fncLogging -strLogFunction "fncCollectDLPRulesAndPolicies" -strLogDescription "Collect DLP rules and policies" -strLogValue "Proceeded"
+
+    <# Console output #> 
+    Write-Output "`nLog file: $Global:strUserLogPath\Collect\DLPRulesAndPolicies.log"
+    Write-ColoredOutput Green "COLLECT DLP RULES AND POLICIES: Proceeded.`n"
+
+    <# Action if function was called from the menu #>
+    If ($Global:bolCommingFromMenu -eq $true) {
+
+        <# Call pause function #>
+        fncPause
+    
+        <# Clear console #>
+        Clear-Host
+
+        <# Call show menu function #>
+        fncShowMenu
+
+    }
+
+    <# Action if function was called from command line #>
+    If ($Global:bolCommingFromMenu -eq $false) {
+
+        <# Release global variable back to default (updates active) #>
+        $Global:bolSkipRequiredUpdates = $false        
+
+        <# Set back window title to default #>
+        $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
+
+        <# Interrupt, because of missing internet connection #>
+        Break
+
+    }
+    
+}
+
 <# Compress all log files into a .zip archive #>
 Function fncCompressLogs {
 
@@ -4075,7 +4426,8 @@ Function fncShowMenu {
             Write-ColoredOutput Yellow "   ├──[A] AIP service configuration"
             Write-ColoredOutput Yellow "   ├──[T] Protection templates"
             Write-ColoredOutput Yellow "   ├──[U] Endpoint URLs"
-            Write-ColoredOutput Yellow "   └──[L] Labels and policies"
+            Write-ColoredOutput Yellow "   ├──[L] Labels and policies"
+            Write-ColoredOutput Yellow "   └──[D] DLP rules and policies"
         }
     }
     Write-ColoredOutput Yellow "  [Z] COMPRESS LOGS"
@@ -4239,6 +4591,23 @@ Function fncShowMenu {
             
             <# Call CollectEndpointURLs function #>
             fncCollectEndpointURLs
+            
+            <# Call pause function #>
+            fncPause
+            
+        }
+
+        <# Actions for DLP rules and policies menu selected #>
+        If ($Private:intMenuSelection -Eq "D") {
+        
+            <# Verbose/Logging #>
+            fncLogging -strLogFunction "fncShowMenu" -strLogDescription "[D] DLP rules and policies" -strLogValue "Selected"
+            
+            <# Clear console #>
+            Clear-Host
+            
+            <# Call CollectDLPRulesAndPolicies function #>
+            fncCollectDLPRulesAndPolicies
             
             <# Call pause function #>
             fncPause
