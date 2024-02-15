@@ -5,8 +5,8 @@
 
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta content="en-us" http-equiv="Content-Language" />
-<meta content="3.1.1" http-equiv="VERSION" />
-<meta content="12/05/2023" http-equiv="CREATEDATE" />
+<meta content="3.1.2" http-equiv="VERSION" />
+<meta content="02/15/2024" http-equiv="CREATEDATE" />
 <meta content="Claus Schiroky" http-equiv="AUTHOR" />
 <meta content="https://aka.ms/UnifiedLabelingSupportTool/Latest" http-equiv="SOURCE" />
 <meta content="Copyright (c) Microsoft Coporation." http-equiv="COPYRIGHT" />
@@ -262,7 +262,7 @@
 				
 				<p>
 				<span class="HeaderTitle">Unified Labeling Support Tool</span><br />
-				Version 3.1.1</p>
+				Version 3.1.2</p>
 
 
             </div>
@@ -294,6 +294,9 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 						Access</a></li>
 						<li class="Hyperlink">
 						<a class="Hyperlink" href="#Microsoft_PowerShell">Microsoft PowerShell</a></li>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#Microsoft_Graph_PowerShell_modules_(optional)">
+						Microsoft Graph PowerShell modules</a></li>
 					</ul>
 					</li>
 					<li class="Hyperlink">
@@ -316,6 +319,13 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 						<a class="Hyperlink" href="#[R]_RESET_/_-Reset_String">RESET</a></li>
 						<li class="Hyperlink">
 						<a class="Hyperlink" href="#[P]_RECORD_PROBLEM_/_-RecordProblem">RECORD PROBLEM</a></li>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#[C]_COLLECT_/_-">COLLECT</a><ul>
+							<li>
+							<a class="Hyperlink" href="#[S]_User_license_details">User license details
+							</a> </li>
+						</ul>
+						</li>
 						<li class="Hyperlink">
 						<a class="Hyperlink" href="#[Z]_COMPRESS_LOGS_/_-CompressLogs">COMPRESS LOGS</a></li>
 						<li class="Hyperlink">
@@ -342,11 +352,9 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p>Have you ever used the Sensitivity button in a
 				<span lang="EN-US">
 				<a class="Hyperlink" href="https://www.microsoft.com/en-us/microsoft-365" target="_blank">
-				Microsoft 365</a></span> App? If so, you've either used the
-				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client" target="_blank">
-				Azure Information Protection client </a>or
+				Microsoft 365</a></span> App? If so, you've used the
 				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide" target="_blank">
-				Office's built-in labeling solution</a>. In case something 
+				Office's built-in labeling experience</a>. In case something 
 				doesn't work as expected or you don't see any labeling at all, 
 				the 
 				<span lang="EN-US">
@@ -423,6 +431,22 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					<li>Please refer to the<span>&nbsp;</span><a class="Hyperlink" href="https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md#known-issues" style="background-color: transparent; box-sizing: border-box; color: rgb(3, 102, 214); text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;;" target="_blank">known 
 					issues</a>.</li>
 				</ul>
+				<p class="Header3">
+				<a name="Microsoft_Graph_PowerShell_modules_(optional)">Microsoft Graph PowerShell modules (optional)</a></p>
+				<p>The 
+				<a class="Hyperlink" href="https://www.powershellgallery.com/packages/Microsoft.Graph" target="_blank">Microsoft 
+				Graph PowerShell modules</a> are required to 
+				proceed the option
+				<a class="Hyperlink" href="#[S]_User_license_details">User 
+				license details</a> from the
+				<a class="Hyperlink" href="#[C]_COLLECT_/_-">COLLECT</a> menu 
+				entry.</p>
+				<p>If you do not have this module installed, the 
+				<span lang="EN-US">
+				'Unified Labeling Support Tool' </span>will try to install the 
+				current version from
+				<a class="Hyperlink" href="https://www.powershellgallery.com/packages/ExchangeOnlineManagement" target="_blank">
+				PowerShell Gallery</a>.</p>
 				<p>&nbsp;</p>
 				<p class="Header1"><a name="Installation">Installation</a></p>
 				<p>The <span lang="EN-US">'Unified Labeling Support Tool' </span>is available on
@@ -472,7 +496,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">----------&nbsp;&nbsp; -------&nbsp;&nbsp; ----------&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				---------&nbsp;&nbsp;&nbsp; ----------------</p>
 				<p class="ConsolteListShadowButton">Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				3.1.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp;Desk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				3.1.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp;Desk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				UnifiedLabelingSupportTool</p>
 				<p>&nbsp;</p>
 				<p class="Header1"><a name="Uninstall">Uninstall</a></p>
@@ -504,6 +528,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">&nbsp; [H] HELP</p>
 				<p class="ConsoleListShadow">&nbsp; [R] RESET</p>
 				<p class="ConsoleListShadow">&nbsp; [P] RECORD PROBLEM</p>
+				<p class="ConsoleListShadow">&nbsp; [C] COLLECT</p>
 				<p class="ConsoleListShadow">&nbsp; [Z] COMPRESS LOGS</p>
 				<p class="ConsoleListShadow">&nbsp; [X] EXIT MENU</p>
 				<p class="ConsoleListShadow">&nbsp;</p>
@@ -600,6 +625,39 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				“Collecting logs...".</p>
 				<p>You can then review the 
 				<a class="Hyperlink" href="#Log files and folders">log files</a> in the logs folder.</p>
+				<p class="Header3"><a name="[C]_COLLECT_/_-">[C] COLLECT / -</a></p>
+				<p>If you select this option, a submenu will be expanded, and 
+				you can collapse it by selecting option [C] COLLECT again:</p>
+				<p class="ConsoleListShadowTop">
+
+   &nbsp; [C] COLLECT</p>
+				<p class="ConsolteListShadowButton">
+
+   			 &nbsp;&nbsp; └──[S] User license details</p>
+				<p><a class="Header3" name="[S]_User_license_details">[S] User 
+				license details</a></p>
+				<p>This parameter collects the user license details by
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/graph/overview" target="_blank">
+				Microsoft Graph</a>.<br />
+				<br />
+				Results are written into log file
+				<a class="Hyperlink" href="#UserLicenseDetails.log">
+				UserLicenseDetails.log</a> in the subfolder "Collect" of the 
+				Logs folder.</p>
+				<p><em>Note:</em></p>
+				<ul>
+					<li>The 
+					<a class="Hyperlink" href="https://www.powershellgallery.com/packages/Microsoft.Graph" target="_blank">Microsoft 
+					Graph PowerShell cmdlets</a> are required to 
+					proceed this option. If you do not have this module 
+					installed, 'Unified Labeling Support Tool' will try to install it from 
+					PowerShell Gallery.</li>
+					<li>You must log in with the corresponding
+					<span lang="EN-US">
+					<a class="Hyperlink" href="https://www.microsoft.com/en-us/microsoft-365" target="_blank">Microsoft 365</a></span> 
+					user account for which you want to check the license 
+					details.</li>
+				</ul>
 				<p class="Header3"><a name="[Z]_COMPRESS_LOGS_/_-CompressLogs">[Z] COMPRESS LOGS / -CompressLogs</a></p>
 				<p>This command line parameter should always be used at the very 
 				end of a scenario.</p>
@@ -651,7 +709,23 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				following documentation:
 				<a class="Hyperlink" href="https://social.technet.microsoft.com/wiki/contents/articles/32647.rmsmip-information-office-for-mac-logging-locations.aspx#Newest_Log_Locations" target="_blank">
 				Office for Mac Logging Locations</a>.</p>
-				<p>&nbsp;</p>
+				<ul>
+					<li>
+					<p class="Header4"><a name="UserLicenseDetails.log">
+					UserLicenseDetails.log</a></p>
+					</li>
+				</ul>
+				<p class="Logs-Text">This parameter collects the 
+				<a class="Hyperlink" href="#[S]_User_license_details">user license 
+				details</a> by 
+				<a class="Hyperlink" href="https://www.powershellgallery.com/packages/Microsoft.Graph" target="_blank">Microsoft Graph</a>.</p>
+				<p class="Logs-Text">For more information, please see the following documentation:<br />
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/get-mguserlicensedetail" target="_blank">
+				Get-MgUserLicenseDetail</a>,
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.identity.directorymanagement/get-mgsubscribedsku" target="_blank">
+				Get-MgSubscribedSku</a> and 
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/entra/identity/users/licensing-service-plan-reference" target="_blank">Product names and service plan 
+				identifiers for licensing</a>.</p>
 				<p class="Header1"><a name="Support">Support</a></p>
 				<p>When creating the 'Unified Labeling Support Tool', great care was taken to 
 				ensure quality and functionality. Extensive tests were carried 

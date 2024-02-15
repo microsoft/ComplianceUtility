@@ -5,8 +5,8 @@
 
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta content="en-us" http-equiv="Content-Language" />
-<meta content="3.1.1" http-equiv="VERSION" />
-<meta content="12/05/2023" http-equiv="CREATEDATE" />
+<meta content="3.1.2" http-equiv="VERSION" />
+<meta content="02/15/2024" http-equiv="CREATEDATE" />
 <meta content="Claus Schiroky" http-equiv="AUTHOR" />
 <meta content="https://aka.ms/UnifiedLabelingSupportTool/Latest" http-equiv="SOURCE" />
 <meta content="Copyright (c) Microsoft Coporation." http-equiv="COPYRIGHT" />
@@ -251,6 +251,23 @@
 	font-size: 16px;
 	background-color: #FFFFFF;
 }
+h1
+	{margin:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Segoe UI",sans-serif;
+	font-weight:normal;
+}
+.auto-style5 {
+	color: #0366D6;
+}
+.auto-style6 {
+	text-decoration: none;
+}
+.ImportantNote {
+	background-color: #EBDAFB;
+	padding: 8px;
+}
 </style>
 
 <meta content="The 'Unified Labeling Support Tool' provides the functionality to reset all corresponding client services (UL, AIP, MIP, etc.). Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for failure analysis and problem solving." name="description" />
@@ -268,7 +285,7 @@
 				
 				<p>
 				<span class="HeaderTitle">Unified Labeling Support Tool</span><br />
-				Version 3.1.1</p>
+				Version 3.1.2</p>
 
 
             </div>
@@ -304,6 +321,9 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 						<a class="Hyperlink" href="#AIPService_module_(recommended)">AIPService module</a></li>
 						<li class="Hyperlink">
 						<a class="Hyperlink" href="#Microsoft®_Azure_Information_Protection_cmdlets_(optional)">Microsoft Azure Information Protection cmdlets</a></li>
+						<li class="Hyperlink">
+						<a class="Hyperlink" href="#Microsoft_Graph_PowerShell_modules_(optional)">
+						Microsoft Graph PowerShell modules</a></li>
 						<li class="Hyperlink">
 						<a class="Hyperlink" href="#Microsoft_PowerShell">
 						Microsoft PowerShell</a></li>
@@ -352,6 +372,9 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 							<li class="Hyperlink">
 							<a class="Hyperlink" href="#[D]_DLP_rules_and_policies_/_-CollectDLPRulesAndPolicies" name="DLP_rules_and_policies">
 							DLP rules and policies</a></li>
+							<li>
+							<a class="Hyperlink" href="#[S]_User_license_details">User license details
+							</a> </li>
 						</ul>
 						</li>
 						<li class="Hyperlink">
@@ -395,14 +418,30 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client" target="_blank">
 				Azure Information Protection client </a>or
 				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide" target="_blank">
-				Office's built-in labeling solution</a>. In case something 
+				Office's built-in labeling experience</a>. In case something 
 				doesn't work as expected or you don't see any labeling at all, 
 				the 
 				<span lang="EN-US">
 				'Unified Labeling Support Tool' </span>will help you.</p>
+				<p class="ImportantNote">
+				<strong>Note</strong><br />
+				<br />
+				The Azure Information Protection (AIP) Unified Labeling add-in 
+				for Office will be retired on April 11th, 2024.<br />
+				<br />
+				<strong>What you need to do to prepare:</strong><br />
+				<br />
+				For detailed migration steps, refer to our playbook: 				<a class="Hyperlink" href="https://microsoft.github.io/ComplianceCxE/playbooks/AIP2MIPPlaybook/" target="_blank">
+				From bolt-on to built-in – Migrate from Azure Information 
+				Protection Add-in</a>.<br />
+				<br />
+				For the announcement and FAQs of the retirement, refer to our 
+				blog: 				<a class="Hyperlink" href="https://techcommunity.microsoft.com/t5/security-compliance-and-identity/retirement-notification-for-the-azure-information-protection/ba-p/3791908" target="_blank">
+				Retirement notification for the Azure Information Protection 
+				Unified Labeling add-in for Office</a>..</p>
 				<p class="MsoNormal">
 				<span lang="EN-US" style="mso-ansi-language:EN-US">The
-				<span lang="EN-US">
+				span lang="EN-US">
 				'Unified Labeling Support Tool'</span> provides the functionality to reset all 
 				corresponding Information Protection client services. Its main 
 				purpose is to delete the currently downloaded sensitivity label 
@@ -554,6 +593,21 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					errors may occur because Azure Information Protection 
 					cmdlets run in compatibility mode.</li>
 				</ul>
+				<p class="Header3">
+				<a name="Microsoft_Graph_PowerShell_modules_(optional)">Microsoft Graph PowerShell modules (optional)</a></p>
+				<p>The 
+				<a class="Hyperlink" href="https://www.powershellgallery.com/packages/Microsoft.Graph" target="_blank">Microsoft 
+				Graph PowerShell modules</a> are required to 
+				proceed the option
+				<a class="Hyperlink" href="#[S]_User_license_details">User 
+				license details</a> from the
+				<a class="Hyperlink" href="#[C]_COLLECT_/_-">COLLECT</a> menu.</p>
+				<p>If you do not have this module installed, the 
+				<span lang="EN-US">
+				'Unified Labeling Support Tool' </span>will try to install the 
+				current version from
+				<a class="Hyperlink" href="https://www.powershellgallery.com/packages/ExchangeOnlineManagement" target="_blank">
+				PowerShell Gallery</a>.</p>
 				<p class="Header3"><a name="Microsoft_PowerShell">Microsoft 
 				PowerShell</a> (optional)</p>
 				<p>Please follow the instructions for
@@ -612,7 +666,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				UnifiedLabelingSupportTool.psd1 and ULSupportTool-Win.htm) 
 				into this folder:</p>
 				<p><span class="ConsoleTextShadow">
-				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.1.1</span></p>
+				%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.1.2</span></p>
 				<p>This path need to be listed in the 
 				<a class="Hyperlink" href="https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable" target="_blank">PSModulePath environment 
 					variable</a>.</p>
@@ -644,7 +698,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">----------&nbsp;&nbsp; -------&nbsp;&nbsp;&nbsp; ----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
 				----------------</p>
 				<p class="ConsolteListShadowButton">Script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				3.1.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
+				3.1.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnifiedLabelingSupportTool&nbsp;&nbsp;&nbsp; 
 				{UnifiedLabelingSupportTool, ULSupportTool}</p>
 				<p>To verify that an installation was performed using PowerShell 
 				Gallery, you can run the following command:</p>
@@ -661,7 +715,7 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="ConsoleListShadow">-------&nbsp;&nbsp; 
 				----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				----------&nbsp;&nbsp;&nbsp;&nbsp; -----------</p>
-				<p class="ConsolteListShadowButton">3.1.1&nbsp;&nbsp;&nbsp;&nbsp; 
+				<p class="ConsolteListShadowButton">3.1.2&nbsp;&nbsp;&nbsp;&nbsp; 
 				UnifiedLabelingSupportTool&nbsp;&nbsp; PSGallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				Have you ever used the Sensitivity button in...</p>
 				<p>&nbsp;</p>
@@ -950,13 +1004,18 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
    			 &nbsp;&nbsp; ├──[L] Labels and policies</p>
 				<p class="ConsoleListShadow">
 
-   			 &nbsp;&nbsp; └──[D] DLP rules and policies</p>
+   			 &nbsp;&nbsp; ├──[D] DLP rules and policies</p>
+				<p class="ConsoleListShadow">
+
+   			 &nbsp;&nbsp; └──[S] User license details</p>
 				<p class="ConsoleListShadow">
 
    			    &nbsp;</p>
 				<p><em>Note:</em></p>
 				<ul>
-					<li>You need to run the 'Unified Labeling Support Tool' in an administrative 
+					<li>With an exception of the
+					<a class="Hyperlink" href="#[S]_User_license_details">User 
+					license details</a> entry, you need to run the 'Unified Labeling Support Tool' in an administrative 
 					PowerShell window as a user with local administrative 
 					privileges to proceed with any option from this submenu. 
 					Please contact your administrator if necessary.</li>
@@ -973,7 +1032,9 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<a class="Hyperlink" href="https://www.microsoft.com/en-us/microsoft-365" target="_blank">
 				Microsoft 365</a></span> App is not bootstraped. Please 
 					contact your administrator if necessary.</li>
-					<li>The COLLECT entry and its features are not available on Apple macOS.</li>
+					<li>With an exception of the
+					<a class="Hyperlink" href="#[S]_User_license_details">User 
+					license details</a> entry, all other menu entries and its features are not available on Apple macOS.</li>
 				</ul>
 				<p class="Header3">
 				<a name="[A]_AIP_service_configuration_/_-CollectAIPServiceConfiguration">[A] AIP service configuration / -CollectAIPServiceConfiguration</a></p>
@@ -1074,7 +1135,9 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				<p class="Header3">
 				<a name="[D]_DLP_rules_and_policies_/_-CollectDLPRulesAndPolicies">
 				[D] DLP rules and policies / -CollectDLPRulesAndPolicies</a></p>
-				<p>This parameter collects DLP rules and policies from the 				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide" target="_blank">
+				<p>This parameter collects DLP rules and policies, sensitive 
+				information type details, rule packages, keyword dictionaries 
+				and exact data match schemas from the 				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide" target="_blank">
 				Microsoft Purview compliance portal</a>.</p>
 				<p>Results are written into log file
 				<a class="Hyperlink" href="#LabelsAndPolicies.log">DLPRulesAndPolicies.log</a> 
@@ -1087,6 +1150,31 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					proceed this option. If you do not have this module 
 					installed, 'Unified Labeling Support Tool' will try to install it from 
 					PowerShell Gallery.</li>
+				</ul>
+				<p class="Header3"><a name="[S]_User_license_details">[S] User 
+				license details</a></p>
+				<p>This parameter collects the user license details by
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/graph/overview" target="_blank">
+				Microsoft Graph</a>.<br />
+				<br />
+				Results are written into log file
+				<a class="Hyperlink" href="#UserLicenseDetails.log">
+				UserLicenseDetails.log</a> in the subfolder "Collect" of the 
+				Logs folder.</p>
+				<p><em>Note:</em></p>
+				<ul>
+					<li>The 
+					<a class="Hyperlink" href="https://www.powershellgallery.com/packages/Microsoft.Graph" target="_blank">Microsoft 
+					Graph PowerShell cmdlets</a> are required to 
+					proceed this option. If you do not have this module 
+					installed, 'Unified Labeling Support Tool' will try to install it from 
+					PowerShell Gallery.</li>
+					<li>You must log in with the corresponding
+					<span lang="EN-US">
+					<a class="Hyperlink" href="https://www.microsoft.com/en-us/microsoft-365" target="_blank">Microsoft 365</a></span> 
+					user account for which you want to check the license 
+					details.</li>
+					<li>This feature is available on Apple macOS. </li>
 				</ul>
 				<p class="Header3"><a name="[Z]_COMPRESS_LOGS_/_-CompressLogs">[Z] COMPRESS LOGS / -CompressLogs</a></p>
 				<p>This command line parameter should always be used at the very 
@@ -1543,12 +1631,23 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 				DLP rules and policies</a>.</p>
 				<p class="Logs-Text">For more information, please see the following documentation:
 				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpcompliancepolicy?view=exchange-ps" target="_blank">
-				Get-DlpCompliancePolicy</a> and
+				Get-DlpCompliancePolicy</a>,
 				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpcompliancerule?view=exchange-ps" target="_blank">
-				Get-DlpComplianceRule</a>.</p>
+				Get-DlpComplianceRule</a>,
+				<span lang="EN-US" style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US">
+				<span class="Hyperlink">
+				<a class="auto-style6" href="https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpsensitiveinformationtype" target="_blank">
+				<span class="auto-style5">Get-DlpSensitiveInformationType</span></a></span><o:p>, </o:p>
+				<a class="auto-style6" href="https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpsensitiveinformationtyperulepackage" target="_blank">
+				<span class="auto-style5">Get-DlpSensitiveInformationTypeRulePackage</span></a><o:p>, </o:p>
+				<a class="auto-style6" href="https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpkeyworddictionary" target="_blank">
+				<span class="auto-style5">Get-DlpKeywordDictionary</span></a><o:p>, and </o:p>
+				<span class="Hyperlink">
+				<a class="auto-style6" href="https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpedmschema">
+				<span class="auto-style5">Get-DlpEdmSchema</span></a></span><o:p>.</o:p></span></p>
 				<ul>
 					<li>
-					<p class="Header4"><a name="EndpointURLs.log">EndpointURLs.log/a></p>
+					<p class="Header4"><a name="EndpointURLs.log">EndpointURLs.log</a></p>
 					</li>
 				</ul>
 				<p class="Logs-Text">This file contains information for endpoint 
@@ -1569,6 +1668,23 @@ width="197" height="41" alt="Microsoft" longdesc="Microsoft" style="float: right
 					</ul>
 					</li>
 				</ul>
+				<ul>
+					<li>
+					<p class="Header4"><a name="UserLicenseDetails.log">
+					UserLicenseDetails.log</a></p>
+					</li>
+				</ul>
+				<p class="Logs-Text">This parameter collects the 
+				<a class="Hyperlink" href="#[S]_User_license_details">user license 
+				details</a> by 
+				<a class="Hyperlink" href="https://www.powershellgallery.com/packages/Microsoft.Graph" target="_blank">Microsoft Graph</a>.</p>
+				<p class="Logs-Text">For more information, please see the following documentation:<br />
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/get-mguserlicensedetail" target="_blank">
+				Get-MgUserLicenseDetail</a>,
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.identity.directorymanagement/get-mgsubscribedsku" target="_blank">
+				Get-MgSubscribedSku</a> and 
+				<a class="Hyperlink" href="https://learn.microsoft.com/en-us/entra/identity/users/licensing-service-plan-reference" target="_blank">Product names and service plan 
+				identifiers for licensing</a>.</p>
 				<p class="Header1"><a name="Support">Support</a></p>
 				<p>When creating the 'Unified Labeling Support Tool', great care was taken to 
 				ensure quality and functionality. Extensive tests were carried 

@@ -4,7 +4,7 @@
 # Licensed under the MIT License
 
 <# Global variables #>
-$Global:strVersion = "3.1.1" <# Define version #>
+$Global:strVersion = "3.1.2" <# Define version #>
 $Global:strDefaultWindowTitle = $Host.UI.RawUI.WindowTitle <# Caching window title #>
 $Global:host.UI.RawUI.WindowTitle = "Unified Labeling Support Tool ($Global:strVersion)" <# Set window title #>
 $Global:MenuCollectExtended = $false <# Define variable for COLLECT menu handling #>
@@ -173,10 +173,10 @@ Function UnifiedLabelingSupportTool {
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         
         VERSION
-        3.1.1
+        3.1.2
         
         CREATE DATE
-        12/05/2023
+        02/15/2024
 
         AUTHOR
         Claus Schiroky
@@ -392,6 +392,17 @@ Function UnifiedLabelingSupportTool {
         - The Microsoft Exchange Online PowerShell V3 cmdlets are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
         - This feature is not available on Apple macOS.
 
+    .PARAMETER CollectUserLicenseDetails
+        This parameter collects the user license details by Microsoft Graph.
+
+        Results are written into log file UserLicenseDetails.log in the subfolder "Collect" of the Logs folder.
+
+        Note:
+
+        - The Microsoft Graph PowerShell cmdlets are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
+        - You must log in with the corresponding Microsoft 365 user account for which you want to check the license details.
+        - This feature is available on Apple macOS.        
+
     .PARAMETER CompressLogs
         This command line parameter should always be used at the very end of a scenario.
 
@@ -455,6 +466,10 @@ Function UnifiedLabelingSupportTool {
     .EXAMPLE
         UnifiedLabelingSupportTool -CollectDLPRulesAndPolicies
         This parameter collects DLP rules and policies from the Microsoft Purview compliance portal.
+
+    .EXAMPLE
+        UnifiedLabelingSupportTool -CollectUserLicenseDetails
+        This parameter collects the user license details by Microsoft Graph.
         
     .EXAMPLE
         UnifiedLabelingSupportTool -CompressLogs
@@ -4243,7 +4258,23 @@ Function fncCollectDLPRulesAndPolicies {
 
         <# Collecting DLP distribution status #>
         Add-Content -Path $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Value "DLP DISTRIBUTION STATUS:`n"
-        Get-DlpCompliancePolicy | ForEach-Object {Get-DLPcompliancePolicy -Identity $_.Identity -distributiondetail} | Format-List Name,GUID,Distr* | Out-File $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Encoding UTF8 -Append -Force
+        Get-DlpCompliancePolicy | ForEach-Object {Get-DLPcompliancePolicy -Identity $_.Identity -DistributionDetail} | Format-List Name,GUID,Distr* | Out-File $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Encoding UTF8 -Append -Force
+
+        <# Collecting DLP sensitive information types #>
+        Add-Content -Path $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Value "DLP SENSITIVE INFORMATION TYPES:`n"
+        Get-DlpSensitiveInformationType | Select-Object -Property * | Format-List | Out-File $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Encoding UTF8 -Append -Force
+
+        <# Collecting DLP sensitive information type rules #>
+        Add-Content -Path $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Value "DLP SENSITIVE INFORMATION TYPE RULES:`n"
+        Get-DlpSensitiveInformationTypeRulePackage | Select-Object -Property * | Format-List | Out-File $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Encoding UTF8 -Append -Force
+
+        <# Collecting DLP keyword dictionary #>
+        Add-Content -Path $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Value "DLP KEYWORD DICTIONARIES:`n"
+        Get-DlpKeywordDictionary | Select-Object -Property * | Format-List | Out-File $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Encoding UTF8 -Append -Force
+
+        <# Collecting DLP Exact Data Match (EDM) schemas #>
+        Add-Content -Path $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Value "DLP EXACT DATA MATCH SCHEMAS:`n"
+        Get-DlpEdmSchema | Select-Object -Property * | Format-List | Out-File $Global:strUserLogPath"\Collect\DLPRulesAndPolicies.log" -Encoding UTF8 -Append -Force
 
     }
 
@@ -4293,6 +4324,286 @@ Function fncCollectDLPRulesAndPolicies {
 
     }
     
+}
+
+Function fncCollectUserLiceneseDetails {
+
+    <# Console output #>
+    Write-Output "COLLECT USER LICENSE DETAILS:"
+
+    <# Console output #>
+    Write-Output "Initializing, please wait..."
+
+    <# Verbose/Logging #>
+    fncLogging -strLogFunction "fncCollectUserLiceneseDetails" -strLogDescription "Collect user license details" -strLogValue "Initiated"
+
+    <# Action if -SkipUpdates was called from command line #>
+    If ($Global:bolSkipRequiredUpdates -eq $false) {
+
+        <# Actions if Microsoft Graph module is installed #>
+        If (Get-Module -ListAvailable -Name "Microsoft.Graph") {
+
+            <# Update Microsoft Graph, if we can connect to PowerShell Gallery #>
+            If (Find-Module -Name Microsoft.Graph -Repository PSGallery -ErrorAction SilentlyContinue -WarningAction SilentlyContinue) {
+
+                <# Fill variables with version information #>
+                [Version]$Private:strGraphOnlineVersion = (Find-Module -Name Microsoft.Graph -Repository PSGallery).Version
+                [Version]$Private:strGraphLocalVersion = (Get-Module -ListAvailable -Name "Microsoft.Graph").Version | Select-Object -First 1
+
+                <# Compare local version vs. online version #>
+                If ([Version]::new($Private:strGraphOnlineVersion.Major, $Private:strGraphOnlineVersion.Minor, $Private:strGraphOnlineVersion.Build) -gt [Version]::new($Private:strGraphLocalVersion.Major, $Private:strGraphLocalVersion.Minor, $Private:strGraphLocalVersion.Build) -eq $true) {
+
+                    <# Console output #>
+                    Write-Output "Updating Microsoft Graph PowerShell modules..."
+
+                    <# Update Microsoft Graph PowerShell module #>
+                    Update-Module -Verbose:$false -Name Microsoft.Graph -Force -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
+
+                    <# Verbose/Logging #>
+                    fncLogging -strLogFunction "fncCollectUserLiceneseDetails" -strLogDescription "Microsoft Graph PowerShell module" -strLogValue "Updated"
+
+                }
+
+                <# Release private variables #>
+                [Version]$Private:strGraphOnlineVersion = $null
+                [Version]$Private:strGraphLocalVersion = $null
+
+            }
+            Else { <# Actions if we can't connect to PowerShell Gallery (no internet connection) #>
+
+                <# Verbose/Logging #>
+                fncLogging -strLogFunction "fncCollectUserLiceneseDetails" -strLogDescription "Microsoft Graph PowerShell modules update" -strLogValue "Failed"
+
+            }
+
+        }
+
+    }
+
+    <# Actions if Microsof Graph module isn't installed #>
+    If (-Not (Get-Module -ListAvailable -Name "Microsoft.Graph")) {
+
+        <# Install Microsoft Graph if we can connect to PowerShell Gallery #>
+        If (Find-Module -Name Microsoft.Graph -Repository PSGallery -ErrorAction SilentlyContinue -WarningAction SilentlyContinue) {
+
+            <# Console output #>
+            Write-Output "Installing Microsoft Graph PowerShell modules..."
+
+            <# Install Microsoft Graph PowerShell module #>
+            Install-Module -Verbose:$false -Name Microsoft.Graph -Scope CurrentUser -Repository PSGallery -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
+
+            <# Verbose/Logging #>
+            fncLogging -strLogFunction "fncCollectUserLiceneseDetails" -strLogDescription "Microsoft Graph PowerShell module" -strLogValue "Installed"
+
+            <# Console output #>
+            Write-Output "Microsoft Graph PowerShell modules installed."
+            Write-ColoredOutput Red "ATTENTION: To use Microsoft Graph PowerShell cmdlets, you must close this window and run a new instance of PowerShell for it to work.`nThe 'Unified Labeling Support Tool' is now terminated."
+
+            <# Release global variable back to default (updates active) #>
+            $Global:bolSkipRequiredUpdates = $false
+
+            <# Call pause function #>
+            fncPause
+    
+            <# Set back window title to default #>
+            $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
+
+            <# Interrupting, because of module not loaded into PowerShell instance #>
+            Break
+
+        }
+        Else { <# Actions if we can't connect to PowerShell Gallery (no internet connection) #>
+
+            <# Console output #>
+            Write-ColoredOutput Red "ATTENTION: Collecting user license details could not be performed.`nEither PowerShell Gallery cannot be reached or there is no connection to the Internet.`n`nYou must have Microsoft Graph PowerShell modules installed to proceed.`n`nPlease check the following website and install the latest version of the Microsoft Graph modul:`nhttps://www.powershellgallery.com/packages/Microsoft.Graph`n"
+
+            <# Console output #>
+            Write-ColoredOutput Red "COLLECT USER LICENSE DETAILS: Failed.`n"
+
+            <# Verbose/Logging #>
+            fncLogging -strLogFunction "fncCollectUserLiceneseDetails" -strLogDescription "Microsoft Graph PowerShell module installation" -strLogValue "Failed"
+
+            <# Action if function was called from the menu #>
+            If ($Global:bolCommingFromMenu -eq $true) {
+
+                <# Call pause function #>
+                fncPause
+    
+                <# Clear console #>
+                Clear-Host
+
+                <# Call show menu function #>
+                fncShowMenu
+
+            }
+
+            <# Action if function was called from command line #>
+            If ($Global:bolCommingFromMenu -eq $false) {
+   
+                <# Release global variable back to default (updates active) #>
+                $Global:bolSkipRequiredUpdates = $false
+
+                <# Set back window title to default #>
+                $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
+
+                <# Interrupt, because of missing internet connection #>
+                Break
+
+            }
+
+        }
+
+    }
+
+    <# Verbose/Logging #>
+    fncLogging -strLogFunction "fncCollectUserLiceneseDetails" -strLogDescription "Microsoft Graph PowerShell module version" -strLogValue (Get-Module -Verbose:$false -ListAvailable -Name Microsoft.Graph).Version
+
+    <# Console output #>
+    Write-Output "Connecting to Microsoft Graph..."
+    
+    <# Remember default progress bar status: "Continue" #>
+    $Private:strOriginalPreference = $Global:ProgressPreference 
+    $Global:ProgressPreference = "SilentlyContinue" <# Hiding progress bar #>
+
+    <# Try to connect/logon to compliance center #>
+    Try {
+
+        <# Connect/logon to Microsoft Graph #>
+        Connect-Graph -Verbose:$false -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
+
+    }
+    Catch { <# Catch action for any error that occur on connect/logon #>
+
+        <# Verbose/Logging #>
+        fncLogging -strLogFunction "fncCollectUserLiceneseDetails" -strLogDescription "Microsoft Graph connected" -strLogValue $false 
+        fncLogging -strLogFunction "fncCollectUserLiceneseDetails" -strLogDescription "Microsoft Graph" -strLogValue "Login failed"
+    
+        <# Console output #>
+        Write-ColoredOutput Red "COLLECT USER LICENSE DETAILS: Login failed. Please try again.`n"
+
+        <# Action if function was called from the menu #>
+        If ($Global:bolCommingFromMenu -eq $true) {
+
+            <# Call pause function #>
+            fncPause
+    
+            <# Clear console #>
+            Clear-Host
+
+            <# Call show menu function #>
+            fncShowMenu
+
+        }
+
+        <# Action if function was called from command line #>
+        If ($Global:bolCommingFromMenu -eq $false) {
+
+            <# Release global variable back to default (updates active) #>
+            $Global:bolSkipRequiredUpdates = $false           
+
+            <# Set back window title to default #>
+            $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
+
+            <# Interrupt, because of missing internet connection #>
+            Break
+
+        }
+
+    }
+
+    <# Console output #> 
+    Write-Output "Microsoft Graph connected."
+
+    <# Verbose/Logging #>
+    fncLogging -strLogFunction "fncCollectUserLiceneseDetails" -strLogDescription "Microsoft Graph connected" -strLogValue $true
+
+    <# Console output #> 
+    Write-Output "Collecting user license details..."
+
+    <# Check if "Collect"-folder exist and create it, if not #>
+    If ($(Test-Path -Path $Global:strUserLogPath"\Collect") -Eq $false) {
+
+        New-Item -ItemType Directory -Force -Path $Global:strUserLogPath"\Collect" | Out-Null <# Define Collect path #>
+
+    }
+
+    <# Check for existing UserLicenseDetails.log file and create it, if it not exist #>
+    If ($(Test-Path $Global:strUserLogPath"\Collect\UserLicenseDetails.log") -Eq $false) {
+
+        <# Create DLPRulesAndPolicies.log logging file #>
+        Out-File -FilePath $Global:strUserLogPath"\Collect\UserLicenseDetails.log" -Encoding UTF8 -Append -Force
+
+    }
+
+    <# Check for existing UserLicenseDetails.log file and extend it #>
+    If ($(Test-Path $Global:strUserLogPath"\Collect\UserLicenseDetails.log") -Eq $true) {
+
+        <# Defining private variable; getting UPN from connected session #>
+        $Private:strGraphAccountUPN = Get-MgContext | Select-Object -ExpandProperty Account
+
+        <# Log UPN into log file as seperator #>
+        Add-Content -Path $Global:strUserLogPath"\Collect\UserLicenseDetails.log" -Value "ACCOUNT: $Private:strGraphAccountUPN`n"
+
+        <# Collecting user license details #>
+        Get-MgUserLicenseDetail -UserId $Private:strGraphAccountUPN -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Format-Table -AutoSize | Out-File $Global:strUserLogPath"\Collect\UserLicenseDetails.log" -Encoding UTF8 -Append -Force
+
+        <# Collecting user service plan details #>
+        (Get-MgUserLicenseDetail -UserId $Private:strGraphAccountUPN -ErrorAction SilentlyContinue -WarningAction SilentlyContinue).ServicePlans | Out-File $Global:strUserLogPath"\Collect\UserLicenseDetails.log" -Encoding UTF8 -Append -Force
+
+        <# Collecting subscribed Skus - if required authorization/rule exist #>
+        Get-MgSubscribedSku -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Format-List | Out-File $Global:strUserLogPath"\Collect\UserLicenseDetails.log" -Encoding UTF8 -Append -Force
+
+        <# Releasing private variable #>
+        $Private:strGraphAccountUPN = $null
+
+    }
+
+    <# Disconnect Microsoft Graph #>
+    Disconnect-Graph -Verbose:$false -WarningAction SilentlyContinue -ErrorAction SilentlyContinue | Out-Null
+
+    <# Set back progress bar to previous default #>
+    $Global:ProgressPreference = $Private:strOriginalPreference
+
+    <# Console output #>
+    Write-Output "Microsoft Graph disconnected."
+
+    <# Verbose/Logging #>
+    fncLogging -strLogFunction "fncCollectUserLiceneseDetails" -strLogDescription "Microsoft Graph disconnected" -strLogValue $true
+    fncLogging -strLogFunction "fncCollectUserLiceneseDetails" -strLogDescription "Export user license details" -strLogValue "UserLicenseDetails.log"
+    fncLogging -strLogFunction "fncCollectUserLiceneseDetails" -strLogDescription "Collect user license details" -strLogValue "Proceeded"
+
+    <# Console output #> 
+    Write-Output "`nLog file: $Global:strUserLogPath\Collect\UserLicenseDetails.log"
+    Write-ColoredOutput Green "COLLECT USER LICENSE DETAILS: Proceeded.`n"
+
+    <# Action if function was called from the menu #>
+    If ($Global:bolCommingFromMenu -eq $true) {
+
+        <# Call pause function #>
+        fncPause
+    
+        <# Clear console #>
+        Clear-Host
+
+        <# Call show menu function #>
+        fncShowMenu
+
+    }
+
+    <# Action if function was called from command line #>
+    If ($Global:bolCommingFromMenu -eq $false) {
+
+        <# Release global variable back to default (updates active) #>
+        $Global:bolSkipRequiredUpdates = $false        
+
+        <# Set back window title to default #>
+        $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
+
+        <# Interrupt, because of missing internet connection #>
+        Break
+
+    }
+
 }
 
 <# Compress all log files into a .zip archive #>
@@ -4420,15 +4731,23 @@ Function fncShowMenu {
     Write-ColoredOutput Green "  [H] HELP"
     Write-ColoredOutput Yellow "  [R] RESET"
     Write-ColoredOutput Yellow "  [P] RECORD PROBLEM"
-    If ([System.Environment]::OSVersion.Platform -eq "Win32NT") { <# Detect Windows/hide unsupported features on macOS #>
+    If ([System.Environment]::OSVersion.Platform -eq "Win32NT") { <# Detect Windows and show Windows supported features #>
         Write-ColoredOutput Yellow "  [C] COLLECT"
         If (@($Global:MenuCollectExtended) -Match $true) {
             Write-ColoredOutput Yellow "   ├──[A] AIP service configuration"
             Write-ColoredOutput Yellow "   ├──[T] Protection templates"
             Write-ColoredOutput Yellow "   ├──[U] Endpoint URLs"
             Write-ColoredOutput Yellow "   ├──[L] Labels and policies"
-            Write-ColoredOutput Yellow "   └──[D] DLP rules and policies"
+            Write-ColoredOutput Yellow "   ├──[D] DLP rules and policies"
+            Write-ColoredOutput Yellow "   └──[S] User license details"
         }
+    }
+    If ($IsMacOS -eq $true) { <# Detect macOS and show macOS supported features #>
+        Write-ColoredOutput Yellow "  [C] COLLECT"
+        If (@($Global:MenuCollectExtended) -Match $true) {
+            Write-ColoredOutput Yellow "   └──[S] User license details"
+        }
+
     }
     Write-ColoredOutput Yellow "  [Z] COMPRESS LOGS"
     Write-ColoredOutput Green "  [X] EXIT`n"
@@ -4517,17 +4836,28 @@ Function fncShowMenu {
 
     }
 
-    <# Detect Windows/disable unsupported menus for macOS #>
+#############
+    <# Actions for collect menu selected #>
+    If ($Private:intMenuSelection -Eq "C") {
+        
+        <# Show/Hide menu extenstion  #>
+        If (@($Global:MenuCollectExtended) -Match $true) {$Global:MenuCollectExtended = $false}
+        Else {$Global:MenuCollectExtended = $true}
+
+    }
+
+
+    <# Detect Windows and enable Windows supported features #>
     If ([System.Environment]::OSVersion.Platform -eq "Win32NT") {
 
         <# Actions for collect menu selected #>
-        If ($Private:intMenuSelection -Eq "C") {
+        #If ($Private:intMenuSelection -Eq "C") {
         
             <# Show/Hide menu extenstion  #>
-            If (@($Global:MenuCollectExtended) -Match $true) {$Global:MenuCollectExtended = $false}
-            Else {$Global:MenuCollectExtended = $true}
+        #    If (@($Global:MenuCollectExtended) -Match $true) {$Global:MenuCollectExtended = $false}
+        #    Else {$Global:MenuCollectExtended = $true}
 
-        }
+        #}
 
         <# Actions for AIP service configuration menu selected #>
         If ($Private:intMenuSelection -Eq "A") {
@@ -4614,6 +4944,23 @@ Function fncShowMenu {
             
         }
 
+    }
+
+    <# Actions for User license details menu selected #>
+    If ($Private:intMenuSelection -Eq "S") {
+        
+        <# Verbose/Logging #>
+        fncLogging -strLogFunction "fncShowMenu" -strLogDescription "[S] User license details" -strLogValue "Selected"
+            
+        <# Clear console #>
+        Clear-Host
+
+        <# Call CollectUserLiceneseDetails function #>
+        fncCollectUserLiceneseDetails
+            
+        <# Call pause function #>
+        fncPause
+            
     }
 
     <# Actions for compress logs menu selected #>
