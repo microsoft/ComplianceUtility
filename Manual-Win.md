@@ -299,7 +299,112 @@ This option removes all relevant policies, labels and settings.
 
 Valid <String> arguments are: "Default", or "Silent":
 
+**Default:**
 
+When you run PowerShell with user privileges, this argument removes all relevant policies, labels and settings:
 
+```
+UnifiedLabelingSupportTool -Reset Default
+```
 
+With the above command the following registry keys are cleaned up:
+
+```
+[HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\MSIPC]
+[HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\AIPMigration]
+[HKCU:\SOFTWARE\Classes\Microsoft.IPViewerChildMenu]
+[HKCU:\SOFTWARE\Microsoft\Cloud\Office]
+[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\DRM]
+[HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\DRM]
+[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM]
+[HKCU:\SOFTWARE\Microsoft\XPSViewer\Common\DRM]
+[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Identity]
+[HKCU:\SOFTWARE\Microsoft\MSIP]
+[HKCU:\SOFTWARE\Microsoft\MSOIdentityCRL]
+[HKCR:\AllFilesystemObjects\shell\Microsoft.Azip.Inspect]
+[HKCR:\AllFilesystemObjects\shell\Microsoft.Azip.RightClick]
+```
+
+The [DRMEncryptProperty](https://docs.microsoft.com/en-us/deployoffice/security/protect-sensitive-messages-and-documents-by-using-irm-in-office#office-2016-irm-registry-key-options) and [OpenXMLEncryptProperty](https://admx.help/?Category=Office2013&Policy=office15.Office.Microsoft.Policies.Windows::L_Protectdocumentmetadataforpasswordprotected) registry settings are purged of the following keys:
+
+```
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Common\Security]
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]
+```
+
+The [UseOfficeForLabelling](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#office-built-in-labeling-client-and-other-labeling-solutions) (Use the Sensitivity feature in Office to apply and view sensitivity labels) and [AIPException](https://microsoft.github.io/ComplianceCxE/playbooks/AIP2MIP/AIPException/#configuring-sensitivity-labeling-client-in-m365-apps) (Use the Azure Information Protection add-in for sensitivity labeling) registry setting is purged of the following keys:
+
+```
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels]
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security\Labels]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Common\Security\Lables]
+```
+
+The following file system folders are cleaned up as well:
+
+```
+%LOCALAPPDATA%\Microsoft\Word\MIPSDK\mip
+%LOCALAPPDATA%\Microsoft\Excel\MIPSDK\mip
+%LOCALAPPDATA%\Microsoft\PowerPoint\MIPSDK\mip
+%LOCALAPPDATA%\Microsoft\Outlook\MIPSDK\mip
+%LOCALAPPDATA%\Microsoft\Office\DLP\mip
+%LOCALAPPDATA%\Microsoft\Office\CLP
+%TEMP%\Diagnostics
+%LOCALAPPDATA%\Microsoft\MSIP
+%LOCALAPPDATA%\Microsoft\MSIPC
+%LOCALAPPDATA%\Microsoft\DRM
+```
+
+The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps) cmdlet is used to reset user settings, if an [Azure Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) installation is found.
+
+*Note:*
+
+* Please note that the Microsoft Azure Information Protection cmdlets do not support PowerShell 7. Therefore, unexpected errors may occur because Azure Information Protection cmdlets run in compatibility mode.
+
+When you run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges, the following registry keys are cleaned up in addition:
+
+```
+[HKLM:\SOFTWARE\Wow6432Node\Microsoft\MSIPC]
+[HKLM:\SOFTWARE\Microsoft\MSIPC]
+[HKLM:\SOFTWARE\Microsoft\MSDRM]
+[HKLM:\SOFTWARE\Wow6432Node\Microsoft\MSDRM]
+[HKLM:\SOFTWARE\WOW6432Node\Microsoft\MSIP]
+```
+
+**Silent:**
+
+This command line parameter argument does the same as "-Reset Default", but does not print any output - unless an error occurs when attempting to reset:
+
+```
+UnifiedLabelingSupportTool -Reset Silent
+```
+
+If a silent reset triggers an error, you can use the additional parameter "-Verbose" to find out more about the cause of the error:
+
+```
+UnifiedLabelingSupportTool -Reset Silent -Verbose
+```
+
+You can also review the [Script.log](#script-log-file) file for errors of silent reset.
+
+### [P] RECORD PROBLEM / -RecordProblem <a name="record-problem"></a>
+
+**IMPORTANT: Before you proceed with this option, please close all open applications.**
+
+As a first step, this parameter activates the required logging, or tracing mechanisms by implementing registry settings, and enabling some Windows event logs. This process will be reflected by a progress bar “Enable logging...".
+In the event that you accidentally close the PowerShell window while logging is enabled, the 'Unified Labeling Support Tool' disables logging the next time you start it.
+
+In a second step asks you to reproduce the problem. While you’re doing so, the 'Unified Labeling Support Tool' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (%temp%\UnifiedLabelingSupportTool). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created. While the files are being cached, you will see a progress bar “Collecting logs...".
+
+In the last step, the 'Unified Labeling Support Tool' resets all activated log and trace settings to their defaults. This process will be reflected by a progress bar “Disable logging...".
+
+You can then review the [log files](#log-files) in the logs folder.
+
+*Note:*
+
+* Please note that neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the "Unified Labeling Support Tool" is not run in an administrative PowerShell window as a user with local administrative privileges.
+
+### [C] COLLECT / - <a name="collect"></a>
+
+If you select this option, a submenu will be expanded, and you can collapse it by selecting option [C] COLLECT again:
 
