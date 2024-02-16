@@ -278,7 +278,28 @@ Get-Help UnifiedLabelingSupportTool -Parameter CompressLogs
 
 This shows syntax, description and version information of the 'Unified Labeling Support Tool'.
 
-### [M] MIT LICENSE / -License <a name="mit-license"></a>
+### [M] MIT LICENSE / -License
 
 This displays the MIT License.
+
+### [G] HELP / -Help <a name="help-win"></a>
+
+This opens the online manual.
+
+### [R] RESET / -Reset <String> <a name="reset"></a>
+
+**IMPORTANT: Before you proceed with this option, please close all open applications.**
+
+This option removes all relevant policies, labels and settings.
+
+*Note:*
+
+* Reset with the default argument will not reset all settings, but only user-specific settings if you run PowerShell with user privileges. This is sufficient in most cases to reset [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) Apps, while a complete reset is useful for all other applications.
+* If you want a complete reset, you need to run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges.
+* 
+Valid <String> arguments are: "Default", or "Silent":
+
+
+
+
 
