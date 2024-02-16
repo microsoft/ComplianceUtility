@@ -144,7 +144,7 @@ Install-Module -Name UnifiedLabelingSupportTool
 
 If you do not have a required component installed on your computer, you will be prompted to do so. You may need to confirm the installation of NuGet Provider and PowerShell Gallery as a trusted repository, and you may also need to confirm the installation of [PowerShellGet](https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-5.1).
 
-### Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
+#### Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
 
 If PowerShell script execution is restricted in your environment, you need to bypass this restriction to run the 'Unified Labeling Support Tool'. To do this, run the "Set-ExecutionPolicy" command with the following parameters:
 
@@ -158,7 +158,7 @@ The 'Unified Labeling Support Tool' is code-signed with a Microsoft certificate.
 
 Please refer to the [known issues](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md#known-issues).
 
-## Manual Installation <a name="manual-installaltion"></a>
+### Manual Installation <a name="manual-installaltion"></a>
 
 If you’re using the 'Unified Labeling Support Tool' in an environment that does not have internet access, you need to proceed with the manual installation.
 
@@ -174,3 +174,49 @@ To verify if the installation was successful, please review the [check installat
 
 Please also consider point [Allow signed PowerShell scripts](#allow-signed-powershell-scripts).
 Please refer to the known issues.
+
+### Check installation <a name="check-installation"></a>
+
+To verify if the installation was successful, you can call the "Get-Module" cmdlet with the following parameter:
+
+```
+Get-Module -ListAvailable
+```
+
+If you find an entry like the following, the installation was successful:
+
+```
+PS C:\> Get-Module -ListAvailable
+
+    Directory: C:\Users\<UserName>\Documents\WindowsPowerShell\Modules
+
+ModuleType   Version    Name                          ExportedCommands
+----------   -------    ----                          ----------------
+Script       3.1.2      UnifiedLabelingSupportTool    {UnifiedLabelingSupportTool, ULSupportTool}
+```
+
+To verify that an installation was performed using PowerShell Gallery, you can run the following command:
+
+```
+Get-InstalledModule -Name UnifiedLabelingSupportTool
+```
+
+If you find an entry like the following, the installation was performed by PowerShell Gallery:
+
+```
+PS C:\> Get-InstalledModule -Name UnifiedLabelingSupportTool
+
+Version   Name                         Repository     Description
+-------   ----                         ----------     -----------
+3.1.2     UnifiedLabelingSupportTool   PSGallery      Have you ever used the Sensitivity button in...
+```
+
+
+
+
+
+
+
+
+
+
