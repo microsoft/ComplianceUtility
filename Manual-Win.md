@@ -9,10 +9,14 @@ THIS IS IN DEVELOPMENT
 * [Requirements](#requirements)
    * [Internet access](#internet-access)
    * [Exchange Online PowerShell module](#exchange-online-module)
-   * AIPService module
-   * Microsoft Azure Information Protection cmdlets
-   * Microsoft Graph PowerShell modules
-   * Microsoft PowerShell
+   * [AIPService module](#aipservice-module)
+   * [Microsoft Azure Information Protection cmdlets](#aip-cmdlets)
+   * [Microsoft Graph PowerShell modules](#graph-modules)
+   * [Microsoft PowerShell](#ms-powershell)
+* [Installation](#installation)
+   * [Manual installation](#manual-installaltion)
+   * [Check installation](#check-installation)
+  
 
 ## Introduction <a name="introduction"></a>
 
@@ -74,11 +78,41 @@ The Microsoft [Exchange Online PowerShell module](https://learn.microsoft.com/en
 
 If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
 
+### AIPService module <a name="aipservice-module"></a>
 
+The Microsoft AIPService module is required to proceed the options [AIP service configuration](https://microsoft.github.io/UnifiedLabelingSupportTool/#[A]_AIP_service_configuration_/_-CollectAIPServiceConfiguration), [Protection templates](https://microsoft.github.io/UnifiedLabelingSupportTool/#[T]_Protection_templates_/_-CollectProtectionTemplates), and [Endpoint URLs](#endpoint-urls) from the [COLLECT](#collect) menu entry.
 
+If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
 
+*Note:*
 
+Please note that the AIPService module does not support PowerShell 7. Therefore, unexpected errors may occur because the AIPService module run in compatibility mode.
 
+### Microsoft Azure Information Protection cmdlets (optional) <a name="aip-cmdlets"></a>
+
+The Microsoft Azure Information Protection cmdlets are installed with the [Azure Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018). Please ensure to have the latest version of the "AzureInformationProtection" cmdlets installed by checking its [client version release history](https://docs.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history).
+
+*Note:*
+
+Please note that the Azure Information Protection cmdlets do not support PowerShell 7. Therefore, unexpected errors may occur because Azure Information Protection cmdlets run in compatibility mode.
+
+### Microsoft Graph PowerShell modules (optional) <a name="graph-modules"></a>
+
+The Microsoft [Graph PowerShell modules](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed the option [User license details](#user-licens-details) from the [COLLECT](#collect) menu.
+
+If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
+
+### Microsoft PowerShell (optional) <a name="ms-powershell"></a>
+
+Please follow the instructions for [installing PowerShell on Windows](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3) to install it using your preferred method if you want to use the 'Unified Labeling Support Tool' on Microsoft PowerShell 7.2 (or higher).
+
+# Installation <a name="installation"></a>
+
+The 'Unified Labeling Support Tool' is available on [PowerShell Gallery](https://www.powershellgallery.com/) and the fastest and easiest way to install it with user privileges is to run the following command in PowerShell:
+
+```
+Install-Module -Name UnifiedLabelingSupportTool -Scope CurrentUser
+```
 
 
 
