@@ -3,8 +3,8 @@ THIS IS FOR TESTING
 
 # Unified Labeling Support Tool
 
-* [Introduction](https://github.com/microsoft/UnifiedLabelingSupportTool/edit/main/Manual-Win.md#introduction)
-   * [MIT License](https://github.com/microsoft/UnifiedLabelingSupportTool/edit/main/Manual-Win.md#MIT-License)
+* [Introduction](#Introduction)
+   * [MIT License](#MIT-License)
    * Microsoft Privacy Statement
 * Requirements
    * Internet access
@@ -15,12 +15,7 @@ THIS IS FOR TESTING
    * Microsoft PowerShell
 
 
-
-
-
-
-
-## Introduction
+## Introduction <a name="Introduction"></a>
 
 This information gives you background and usage information for the [UnifiedLabelingSupportTool](https://aka.ms/UnifiedLabelingSupportTool/Latest) PowerShell script module.
 
@@ -42,7 +37,7 @@ RESET, RECORD PROBLEM, and COLLECT Endpoint URLs.
 
 However, if you run the 'Unified Labeling Support Tool' with local administrative privileges, you will get some more collected logs (RECORD PROBLEM) and a complete RESET of all settings, instead of just user-specific settings being reset. By the way: The latter option is sufficient in most cases to reset Microsoft 365 Apps, while a complete reset is usually useful for all other applications.
 
-## MIT-License
+## MIT License <a name="MIT-License"></a>
 
 Copyright © Microsoft Corporation.
 
