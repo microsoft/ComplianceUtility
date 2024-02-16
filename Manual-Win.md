@@ -4,8 +4,8 @@ THIS IS FOR TESTING
 # Unified Labeling Support Tool
 
 * [Introduction](#Introduction)
-   * [MIT License](#MIT-License)
-   * Microsoft Privacy Statement
+   * [MIT License]([#MIT-License](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/Manual-Win.md#mit-license-))
+   * [Microsoft Privacy Statement](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/Manual-Win.md#microsoft-privacy-statement)
 * Requirements
    * Internet access
    * Exchange Online PowerShell module
