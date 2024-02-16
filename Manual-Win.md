@@ -4,8 +4,8 @@ THIS IS FOR TESTING
 # Unified Labeling Support Tool
 
 * [Introduction](#Introduction)
-   * [MIT License](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/Manual-Win.md#mit-license-)
-   * [Microsoft Privacy Statement](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/Manual-Win.md#microsoft-privacy-statement)
+   * [MIT License](#mit-license)
+   * [Microsoft Privacy Statement](#microsoft-privacy-statement)
 * Requirements
    * Internet access
    * Exchange Online PowerShell module
@@ -15,7 +15,7 @@ THIS IS FOR TESTING
    * Microsoft PowerShell
 
 
-## Introduction <a name="Introduction"></a>
+## Introduction <a name="introduction"></a>
 
 This information gives you background and usage information for the [UnifiedLabelingSupportTool](https://aka.ms/UnifiedLabelingSupportTool/Latest) PowerShell script module.
 
@@ -37,7 +37,7 @@ RESET, RECORD PROBLEM, and COLLECT Endpoint URLs.
 
 However, if you run the 'Unified Labeling Support Tool' with local administrative privileges, you will get some more collected logs (RECORD PROBLEM) and a complete RESET of all settings, instead of just user-specific settings being reset. By the way: The latter option is sufficient in most cases to reset Microsoft 365 Apps, while a complete reset is usually useful for all other applications.
 
-## MIT License
+## MIT License <a name="mit-license"></a>
 
 Copyright © Microsoft Corporation.
 
@@ -47,6 +47,6 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 
-## Microsoft Privacy Statement
+## Microsoft Privacy Statement <a name="microsoft-privacy-statement"></a>
 
 Your privacy is important to us. [This privacy statement](https://privacy.microsoft.com/en-US/privacystatement) explains the personal data Microsoft processes, how Microsoft processes it, and for what purposes.
