@@ -144,7 +144,7 @@ Install-Module -Name UnifiedLabelingSupportTool
 
 If you do not have a required component installed on your computer, you will be prompted to do so. You may need to confirm the installation of NuGet Provider and PowerShell Gallery as a trusted repository, and you may also need to confirm the installation of [PowerShellGet](https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-5.1).
 
-### Allow signed PowerShell scripts <a name="allow-powershell"></a>
+### Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
 
 If PowerShell script execution is restricted in your environment, you need to bypass this restriction to run the 'Unified Labeling Support Tool'. To do this, run the "Set-ExecutionPolicy" command with the following parameters:
 
@@ -172,5 +172,5 @@ To verify if the installation was successful, please review the [check installat
 
 *Note:*
 
-Please also consider point [Allow signed PowerShell scripts](#allow-powershell).
+Please also consider point [Allow signed PowerShell scripts](#allow-signed-powershell-scripts).
 Please refer to the known issues.
