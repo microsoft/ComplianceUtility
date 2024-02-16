@@ -28,8 +28,8 @@ THIS IS IN DEVELOPMENT
      * [Protection templates](#protection-templates)
      * [Endpoint URLs](#endpoint-urls)
      * [Labels and polcies](#labels-and-policies)
-     * [DLP rules and policies](#dlp-rules-and policies)
-     * [User license details](#user-license-details]
+     * [DLP rules and policies](#dlp-rules-and-policies)
+     * [User license details](#user-license-details)
    * [COMPRESS LOGS](#compress-logs)
    * [EXIT](#exit)
 * [Script log file](#script-log-file)
