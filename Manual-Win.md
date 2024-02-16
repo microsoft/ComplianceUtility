@@ -3,7 +3,7 @@ THIS IS IN DEVELOPMENT
 
 # Unified Labeling Support Tool
 
-* [Introduction](#Introduction)
+* [Introduction](#introduction)
    * [MIT License](#mit-license)
    * [Microsoft Privacy Statement](#microsoft-privacy-statement)
 * [Requirements](#requirements)
@@ -16,8 +16,28 @@ THIS IS IN DEVELOPMENT
 * [Installation](#installation)
    * [Manual installation](#manual-installaltion)
    * [Check installation](#check-installation)
-  
-
+* [Uninstall](#uninstall)
+* [User experience](#experience)
+* [Features](#features)
+   * [INFORMATION](#information)
+   * [HELP](#help-win)
+   * [RESET](#reset)
+   * [RECORD PROBLEM](#record-problem)
+   * [COLLECT](#collect)
+     * [AIP service configuration](#aip-service-config)
+     * [Protection templates](#protection-templates)
+     * [Endpoint URLs](#endpoint-urls)
+     * [Labels and polcies](#labels-and-policies)
+     * [DLP rules and policies](#dlp-rules-and policies)
+     * [User license details](#user-license-details]
+   * [COMPRESS LOGS](#compress-logs)
+   * [EXIT](#exit)
+* [Script log file](#script-log-file)
+* [Log files and folders](#log-files)
+* [Support](#support)
+  * [Microsoft Support Policy](#support-policy)
+  * [How to file issues and get help](#get-help)
+ 
 ## Introduction <a name="introduction"></a>
 
 This information gives you background and usage information for the [UnifiedLabelingSupportTool](https://aka.ms/UnifiedLabelingSupportTool/Latest) PowerShell script module.
@@ -54,7 +74,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Your privacy is important to us. [This privacy statement](https://privacy.microsoft.com/en-US/privacystatement) explains the personal data Microsoft processes, how Microsoft processes it, and for what purposes.
 
-## Requirements <a name="requrements"></a>
+## Requirements <a name="requirements"></a>
 
 Before you can use the 'Unified Labeling Support Tool' make sure that your environment fulfils the following requierements. Please update your environment if necessary.
 
@@ -113,6 +133,31 @@ The 'Unified Labeling Support Tool' is available on [PowerShell Gallery](https:/
 ```
 Install-Module -Name UnifiedLabelingSupportTool -Scope CurrentUser
 ```
+
+If you have local administrative privileges, you can run the following command instead:
+
+```
+Install-Module -Name UnifiedLabelingSupportTool
+```
+
+*Note:*
+
+If you do not have a required component installed on your computer, you will be prompted to do so. You may need to confirm the installation of NuGet Provider and PowerShell Gallery as a trusted repository, and you may also need to confirm the installation of [PowerShellGet](https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-5.1).
+
+**Allow signed PowerShell scripts**
+
+If PowerShell script execution is restricted in your environment, you need to bypass this restriction to run the 'Unified Labeling Support Tool'. To do this, run the "Set-ExecutionPolicy" command with the following parameters:
+
+```
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
+```
+
+The 'Unified Labeling Support Tool' is code-signed with a Microsoft certificate.
+
+*Note:*
+
+Please refer to the [known issues](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md#known-issues).
+
 
 
 
