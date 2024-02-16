@@ -270,4 +270,15 @@ To see the help for a single command line parameter, for example for "-CompressL
 Get-Help UnifiedLabelingSupportTool -Parameter CompressLogs
 ```
 
+# Features <a name="features"></a>
+
+'Unified Labeling Support Tool' provides the following features (menu entry / command line parameter):
+
+### [I] INFORMATION / -Information <a name="information"></a>
+
+This shows syntax, description and version information of the 'Unified Labeling Support Tool'.
+
+### [M] MIT LICENSE / -License <a name="mit-license"></a>
+
+This displays the MIT License.
 
