@@ -4,7 +4,7 @@ THIS IS FOR TESTING
 # Unified Labeling Support Tool
 
 * [Introduction](https://github.com/microsoft/UnifiedLabelingSupportTool/edit/main/Manual-Win.md#introduction)
-   * [MIT License](https://github.com/microsoft/UnifiedLabelingSupportTool/edit/main/Manual-Win.md#MITLicense)
+   * [MIT License](https://github.com/microsoft/UnifiedLabelingSupportTool/edit/main/Manual-Win.md#MIT-License)
    * Microsoft Privacy Statement
 * Requirements
    * Internet access
