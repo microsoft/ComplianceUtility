@@ -106,7 +106,7 @@ If you do not have this module installed, the 'Unified Labeling Support Tool' wi
 
 *Note:*
 
-Please note that the AIPService module does not support PowerShell 7. Therefore, unexpected errors may occur because the AIPService module run in compatibility mode.
+* Please note that the AIPService module does not support PowerShell 7. Therefore, unexpected errors may occur because the AIPService module run in compatibility mode.
 
 ### Microsoft Azure Information Protection cmdlets (optional) <a name="aip-cmdlets"></a>
 
@@ -114,7 +114,7 @@ The Microsoft Azure Information Protection cmdlets are installed with the [Azure
 
 *Note:*
 
-Please note that the Azure Information Protection cmdlets do not support PowerShell 7. Therefore, unexpected errors may occur because Azure Information Protection cmdlets run in compatibility mode.
+* Please note that the Azure Information Protection cmdlets do not support PowerShell 7. Therefore, unexpected errors may occur because Azure Information Protection cmdlets run in compatibility mode.
 
 ### Microsoft Graph PowerShell modules (optional) <a name="graph-modules"></a>
 
@@ -142,7 +142,7 @@ Install-Module -Name UnifiedLabelingSupportTool
 
 *Note:*
 
-If you do not have a required component installed on your computer, you will be prompted to do so. You may need to confirm the installation of NuGet Provider and PowerShell Gallery as a trusted repository, and you may also need to confirm the installation of [PowerShellGet](https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-5.1).
+* If you do not have a required component installed on your computer, you will be prompted to do so. You may need to confirm the installation of NuGet Provider and PowerShell Gallery as a trusted repository, and you may also need to confirm the installation of [PowerShellGet](https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-5.1).
 
 #### Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
 
@@ -156,7 +156,7 @@ The 'Unified Labeling Support Tool' is code-signed with a Microsoft certificate.
 
 *Note:*
 
-Please refer to the [known issues](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md#known-issues).
+* Please refer to the [known issues](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md#known-issues).
 
 ### Manual Installation <a name="manual-installaltion"></a>
 
@@ -172,8 +172,8 @@ To verify if the installation was successful, please review the [check installat
 
 *Note:*
 
-Please also consider point [Allow signed PowerShell scripts](#allow-signed-powershell-scripts).
-Please refer to the known issues.
+* Please also consider point [Allow signed PowerShell scripts](#allow-signed-powershell-scripts).
+* Please refer to the [known issues](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md#known-issues).
 
 ### Check installation <a name="check-installation"></a>
 
@@ -211,12 +211,63 @@ Version   Name                         Repository     Description
 3.1.2     UnifiedLabelingSupportTool   PSGallery      Have you ever used the Sensitivity button in...
 ```
 
+# Uninstall <a name="uninstall"></a>
 
+If you want to uninstall the 'Unified Labeling Support Tool', and it was installed via the PowerShell Gallery, you need to run the following command:
 
+```
+Uninstall-Module -Name UnifiedLabelingSupportTool
+```
 
+If the 'Unified Labeling Support Tool' was installed manually, you also need to remove it manually by deleting its installation folder.
 
+*Note:*
 
+* Under certain circumstances, you may need to run the 'Unified Labeling Support Tool' with administrative privileges to perform an uninstall. Please request assistance from your administrator if necessary.
 
+# User experience <a name="experience"></a>
 
+To start the 'Unified Labeling Support Tool', simply type the following command in a PowerShell command window and press enter:
+
+```
+UnifiedLabelingSupportTool
+```
+
+When you start the 'Unified Labeling Support Tool', you'll see the following menu:
+
+```
+UnifiedLabelingSupportTool:
+
+  [I] INFORMATION
+  [M] MIT LICENSE
+  [H] HELP
+  [R] RESET
+  [P] RECORD PROBLEM
+  [C] COLLECT
+  [Z] COMPRESS LOGS
+  [X] EXIT MENU
+ 
+Please select an option and press enter:
+```
+
+For the most sub-items of the [COLLECT](#collect) menu, you need to run the 'Unified Labeling Support Tool' as a user with local administrative privileges. For option [RESET](#reset), [RECORD PROBLEM](#record-problem), and for sub-item [Endpoint URLs](#endpoint-urls) of the [COLLECT](#collect) menu, you may run as user with local administrative privileges. Please contact your administrator if necessary.
+
+You can also start the 'Unified Labeling Support Tool' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
+
+```
+UnifiedLabelingSupportTool -Information
+```
+
+To see a full list of all command line parameters with description, run the following command:
+
+```
+Get-Help UnifiedLabelingSupportTool -Detailed
+```
+
+To see the help for a single command line parameter, for example for "-CompressLogs", run the following command:
+
+```
+Get-Help UnifiedLabelingSupportTool -Parameter CompressLogs
+```
 
 
