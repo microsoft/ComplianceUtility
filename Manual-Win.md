@@ -6,9 +6,9 @@ THIS IS IN DEVELOPMENT
 * [Introduction](#Introduction)
    * [MIT License](#mit-license)
    * [Microsoft Privacy Statement](#microsoft-privacy-statement)
-* Requirements
-   * Internet access
-   * Exchange Online PowerShell module
+* [Requirements](#requirements)
+   * [Internet access](#internet-access)
+   * [Exchange Online PowerShell module](#exchange-online-module)
    * AIPService module
    * Microsoft Azure Information Protection cmdlets
    * Microsoft Graph PowerShell modules
@@ -49,3 +49,36 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ## Microsoft Privacy Statement <a name="microsoft-privacy-statement"></a>
 
 Your privacy is important to us. [This privacy statement](https://privacy.microsoft.com/en-US/privacystatement) explains the personal data Microsoft processes, how Microsoft processes it, and for what purposes.
+
+## Requirements <a name="requrements"></a>
+
+Before you can use the 'Unified Labeling Support Tool' make sure that your environment fulfils the following requierements. Please update your environment if necessary.
+
+The 'Unified Labeling Support Tool' supports [Windows PowerShell 5.1](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-5.1) (recommended) and Microsoft [PowerShell 7.2](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2) (or higher) on the following operating systems:
+
+   * Microsoft Windows 10, Windows 11, Windows Server 2012/R2, Windows Server 2016, Windows Server 2019, Windows Server 2022 and Apple macOS ([three most recent major versions](https://support.microsoft.com/en-us/office/upgrade-macos-to-continue-receiving-microsoft-365-and-office-for-mac-updates-16b8414f-08ec-4b24-8c91-10a918f649f8)).
+
+The 'Unified Labeling Support Tool' supports the following Microsoft 365/Office versions:
+
+   * Microsoft Office 2016, Microsoft Office 2019, Microsoft Office 2021, Microsoft 365 Apps and Microsoft 365 for Mac ([most recently released version](https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac)).
+
+### Internet access <a name="internet-access"></a>
+
+The 'Unified Labeling Support Tool' uses additional sources and services from the Internet to make its functionality fully available.
+
+Unexpected errors may occur, and some features may be limited, if there is no connection to the Internet.
+
+### Exchange Online PowerShell module <a name="exchange-online-module"></a>
+
+The Microsoft [Exchange Online PowerShell module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#release-notes) is required to proceed the option [Labels and policies](#labels-and-policies) from the menu [COLLECT](#collect).
+
+If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
+
+
+
+
+
+
+
+
+
