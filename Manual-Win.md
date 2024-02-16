@@ -42,7 +42,7 @@ RESET, RECORD PROBLEM, and COLLECT Endpoint URLs.
 
 However, if you run the 'Unified Labeling Support Tool' with local administrative privileges, you will get some more collected logs (RECORD PROBLEM) and a complete RESET of all settings, instead of just user-specific settings being reset. By the way: The latter option is sufficient in most cases to reset Microsoft 365 Apps, while a complete reset is usually useful for all other applications.
 
-## MIT License
+## MIT-License
 
 Copyright © Microsoft Corporation.
 
