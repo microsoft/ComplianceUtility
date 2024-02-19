@@ -882,7 +882,7 @@ Log files and folders collected via the sub-entries of the [COLLECT](#collect) m
 
 </li>
 
-This file is only collected if you selected [AIP service configuration](https://microsoft.github.io/UnifiedLabelingSupportTool/#[A]_AIP_service_configuration_/_-CollectAIPServiceConfiguration). The file contains the Azure Information Protection service configuration of your tenant.<br>
+This file is only collected if you selected [AIP service configuration](#aip-service-config). The file contains the Azure Information Protection service configuration of your tenant.<br>
 
 For more information, please see the following documentation: [Get-AipServiceConfiguration](https://docs.microsoft.com/de-de/powershell/module/aipservice/get-aipserviceconfiguration).
 
@@ -892,7 +892,7 @@ For more information, please see the following documentation: [Get-AipServiceCon
 
 </li>
 
-These files are only collected if you selected [Protection templates](https://microsoft.github.io/UnifiedLabelingSupportTool/#[T]_Protection_templates_/_-CollectProtectionTemplates).<br>
+These files are only collected if you selected [Protection templates](#protection-templates).<br>
 
 The ProtectionTemplates.log file contains the Azure Information Protection template details. Additionally, an export of each protection template is saved in the "ProtectionTemplates" subfolder with the protection template ID as the file name and the .xml file extension.<br>
 
@@ -914,7 +914,7 @@ For more information, please see the following documentation: [Get-Label](https:
 
 </li>
 
-This file is created by the collect option DLP rules and policies.<br>
+This file is created by the collect option [DLP rules and policies}(#dlp-rules-and-policies).<br>
 
 For more information, please see the following documentation: [Get-DlpCompliancePolicy](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpcompliancepolicy?view=exchange-ps), [Get-DlpComplianceRule](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpcompliancerule?view=exchange-ps), [Get-DlpSensitiveInformationType](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpsensitiveinformationtype), [Get-DlpSensitiveInformationTypeRulePackage](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpsensitiveinformationtyperulepackage), [Get-DlpKeywordDictionary](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpkeyworddictionary), and [Get-DlpEdmSchema](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpedmschema).
 
