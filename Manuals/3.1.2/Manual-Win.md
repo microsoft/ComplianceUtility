@@ -444,7 +444,7 @@ Results are written into the log file [AIPServiceConfiguration.log](#aip-service
 
 This parameter collects [protection templates](https://learn.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#protection-templates-and-sensitivity-labels) of your tenant.
 
-Results are written into the log file [ProtectionTemplates.log](#protection-templates-log) in the subfolder "Collect" of the Logs folder, and an export of each protection template ([.xml](https://microsoft.github.io/UnifiedLabelingSupportTool/#AIPServiceTemplates.log)) into the subfolder "ProtectionTemplates".
+Results are written into the log file [ProtectionTemplates.log](#protection-templates-log) in the subfolder "Collect" of the Logs folder, and an export of each protection template (.xml) into the subfolder "ProtectionTemplates".
 
 > [!TIP]
 > You can use this feature to create a backup copy of your protection templates.
