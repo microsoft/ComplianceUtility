@@ -669,7 +669,7 @@ An Office log file collected from the users temp folder. For example:
 
 The log file name reflects the compuer name, and date and time when the log was created.<br>
 
-For more information, please see the following documentation: How to enable Microsoft 365 Apps for enterprise ULS logging (part "For sign-in or activation issues, add the following registry key").<br><br>
+For more information, please see the following documentation: [How to enable Microsoft 365 Apps for enterprise ULS logging](https://learn.microsoft.com/en-us/office/troubleshoot/diagnostic-logs/how-to-enable-office-365-proplus-uls-logging) (part "For sign-in or activation issues, add the following registry key").<br><br>
 In addition, Office diagnostics data will be collected from the following folder:
 
 ```
