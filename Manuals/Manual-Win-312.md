@@ -56,7 +56,7 @@ Have you ever used the Sensitivity button in a [Microsoft 365 App](https://www.m
 The 'Unified Labeling Support Tool' provides the functionality to reset all corresponding Information Protection client services. Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for error analysis and troubleshooting.
 
 With the 'Unified Labeling Support Tool', you can run the most common options without local administrative privileges:
-[RESET](#reset), [RECORD PROBLEM](#record-problem), and [COLLECT](#collect) [Endpoint URLs](#endpoint-urls).
+[RESET](#reset), [RECORD PROBLEM](#record-problem), and COLLECT [Endpoint URLs](#endpoint-urls).
 
 However, if you run the 'Unified Labeling Support Tool' with local administrative privileges, you will get some more collected logs ([RECORD PROBLEM](#record-problem)) and a complete [RESET](#reset) of all settings, instead of just user-specific settings being reset. By the way: The latter option is sufficient in most cases to reset [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365), while a complete reset is usually useful for all other applications.
 
