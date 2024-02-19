@@ -118,7 +118,7 @@ The Microsoft Azure Information Protection cmdlets are installed with the [Azure
 
 ### Microsoft Graph PowerShell modules (optional) <a name="graph-modules"></a>
 
-The Microsoft [Graph PowerShell modules](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed the option [User license details](#user-licens-details) from the [COLLECT](#collect) menu.
+The Microsoft [Graph PowerShell modules](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed the option [User license details](#user-license-details) from the [COLLECT](#collect) menu.
 
 If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
 
@@ -281,7 +281,7 @@ This shows syntax, description and version information of the 'Unified Labeling 
 
 ### [M] MIT LICENSE / -License
 
-This displays the MIT License.
+This displays the [MIT License](#mit-license).
 
 ### [G] HELP / -Help <a name="help-win"></a>
 
@@ -755,7 +755,7 @@ These files are created by the option [Endpoint URLs](#endpoint-urls).<br>
   >
   > The files are exported with the file extension .ce_ instead of .cer, since some security programs can block these files.
 
-* **UserLicenseDetails.log**<br>
+* **UserLicenseDetails.log**<br> <a name="user-license-log"></a>
 This parameter collects the [User license details](#user-license-details) by [Microsoft Graph](https://www.powershellgallery.com/packages/Microsoft.Graph).<br>
 For more information, please see the following documentation:
 [Get-MgUserLicenseDetail](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/get-mguserlicensedetail), [Get-MgSubscribedSku](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.identity.directorymanagement/get-mgsubscribedsku) and [Product names and service plan identifiers for licensing](https://learn.microsoft.com/en-us/entra/identity/users/licensing-service-plan-reference).
