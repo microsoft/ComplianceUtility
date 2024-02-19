@@ -857,7 +857,7 @@ This file is the Azure Information Protection Windows Event Log.
 
 This file is a network trace recorded by Netsh.exe.<br>
 
-For more information, please see the following documentation: [Netsh Command Syntax](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts), [Contexts](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts), and [Formatting](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts).
+For more information, please see the following documentation: [Netsh command syntax, contexts, and formatting](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts).
 
 <li>
 
