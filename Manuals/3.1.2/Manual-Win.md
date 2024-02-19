@@ -469,7 +469,7 @@ URL:      https://dataservice.protection.outlook.com
 Issuer:   CN=DigiCert Cloud Services CA-1, O=DigiCert Inc, C=US
 ```
 
-Results are written into log file [EndpointURLs.log](#endpoint-urls-log) in the subfolder "Collect" of the Logs folder. Additionally, an export of each certificate is saved in the "EndpointURLs" subfolder with the Endpoint URL as the file name and the [.ce_ file](#cer-file) extension.
+Results are written into log file [EndpointURLs.log](#endpoint-urls-log) in the subfolder "Collect" of the Logs folder. Additionally, an export of each certificate is saved in the "EndpointURLs" subfolder with the Endpoint URL as the file name and the [.ce_ file](#cer-files) extension.
 
 > **Note:**
 >
@@ -492,7 +492,7 @@ Results are written into log file [LabelsAndPolicies.log](#labels-and-policies-l
 
 This parameter collects DLP rules and policies, sensitive information type details, rule packages, keyword dictionaries and exact data match schemas from the [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide).
 
-Results are written into log file [DLPRulesAndPolicies.log](#dlp-rules-and-policies-log) in the subfolder "Collect" of the Logs folder.
+Results are written into log file [DLPRulesAndPolicies.log](#dlp-rules-log) in the subfolder "Collect" of the Logs folder.
 
 > **Note:**
 >
@@ -888,7 +888,7 @@ For more information, please see the following documentation: [Get-AipServiceCon
 
 <li>
 
-**ProtectionTemplates.log and .xml files**
+**ProtectionTemplates.log and .xml files** <a name="protection-templates-log"></a>
 
 </li>
 
@@ -900,7 +900,7 @@ For more information, please see the following documentation: [Get-AipServiceTem
 
 <li>
 
-**LabelsAndPolicies.log**
+**LabelsAndPolicies.log** <a name="labels-and-policies-log"></a>
 
 </li>
 
@@ -910,7 +910,7 @@ For more information, please see the following documentation: [Get-Label](https:
 
 <li>
 
-**DLPRulesAndPolicies.log**
+**DLPRulesAndPolicies.log** <a name="dlp-rules-log"></a>
 
 </li>
 
@@ -920,7 +920,7 @@ For more information, please see the following documentation: [Get-DlpCompliance
 
 <li>
 
-**EndpointURLs.log**
+**EndpointURLs.log** <a name="endpoint-urls-log"></a>
 
 </li>
 
@@ -928,7 +928,7 @@ This file contains information for endpoint URLs and the certificate issuer coll
 
 <li>
 
-**.cer files (.ce_)**
+**.cer files (.ce_)** <a name="cer-files"></a>
 
 </li>
 
