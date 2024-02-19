@@ -607,6 +607,7 @@ The following log folders contain MSIP/MSIPC logging information:<br>
 ```
  
 If you have installed and enabled the Azure Information Protection unified labeling client, the folders containing the AIPLogs.zip file are collected.<br>
+
 For more information, please see the following documentation for the used PowerShell command: [Export-AIPLogs](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/export-aiplogs?view=azureipps).
 
 <li>
@@ -868,37 +869,81 @@ For more information about this PowerShell command, please see the following doc
 
 Log files and folders collected via the sub-entries of the [COLLECT](#collect) menu. Results are written in the subfolder "Collect" of the Logs folder:
 
-**AIPServiceConfiguration.log**<br>
+<ul>
+<li>
+
+**AIPServiceConfiguration.log**
+
+</li>
+
 This file is only collected if you selected [AIP service configuration](https://microsoft.github.io/UnifiedLabelingSupportTool/#[A]_AIP_service_configuration_/_-CollectAIPServiceConfiguration). The file contains the Azure Information Protection service configuration of your tenant.<br>
+
 For more information, please see the following documentation: [Get-AipServiceConfiguration](https://docs.microsoft.com/de-de/powershell/module/aipservice/get-aipserviceconfiguration).
 
-**ProtectionTemplates.log and .xml files**<br>
+<li>
+
+**ProtectionTemplates.log and .xml files**
+
+</li>
+
 These files are only collected if you selected [Protection templates](https://microsoft.github.io/UnifiedLabelingSupportTool/#[T]_Protection_templates_/_-CollectProtectionTemplates).<br>
+
 The ProtectionTemplates.log file contains the Azure Information Protection template details. Additionally, an export of each protection template is saved in the "ProtectionTemplates" subfolder with the protection template ID as the file name and the .xml file extension.<br>
+
 For more information, please see the following documentation: [Get-AipServiceTemplate](https://docs.microsoft.com/en-us/powershell/module/aipservice/get-aipservicetemplate), and [Export-AipServiceTemplate](https://docs.microsoft.com/en-us/powershell/module/aipservice/export-aipservicetemplate?view=azureipps).
 
-**LabelsAndPolicies.log**<br>
+<li>
+
+**LabelsAndPolicies.log**
+
+</li>
+
 This file is created by the collect option [Labels and policies](#labels-and-policies). If you have not initiated a [RESET](#reset) before collecting logs, you can also have a CLP subfolder with the Office CLP policy folder.<br>
+
 For more information, please see the following documentation: [Get-Label](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps) and [Get-LabelPolicy](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-labelpolicy?view=exchange-ps).
 
-**DLPRulesAndPolicies.log**<br>
+<li>
+
+**DLPRulesAndPolicies.log**
+
+</li>
+
 This file is created by the collect option DLP rules and policies.<br>
+
 For more information, please see the following documentation: [Get-DlpCompliancePolicy](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpcompliancepolicy?view=exchange-ps), [Get-DlpComplianceRule](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpcompliancerule?view=exchange-ps), [Get-DlpSensitiveInformationType](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpsensitiveinformationtype), [Get-DlpSensitiveInformationTypeRulePackage](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpsensitiveinformationtyperulepackage), [Get-DlpKeywordDictionary](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpkeyworddictionary), and [Get-DlpEdmSchema](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpedmschema).
 
-**EndpointURLs.log**<br>
+<li>
+
+**EndpointURLs.log**
+
+</li>
+
 This file contains information for endpoint URLs and the certificate issuer collected by the [Endpoint URLs](#endpoint-urls) option.
 
-**.cer files (.ce_)**<br>
+<li>
+
+**.cer files (.ce_)**
+
+</li>
+
 These files are created by the option [Endpoint URLs](#endpoint-urls).<br>
 
-  > **Note:**
-  >
-  > The files are exported with the file extension .ce_ instead of .cer, since some security programs can block these files.
+> **Note:**
+>
+> The files are exported with the file extension .ce_ instead of .cer, since some security programs can block these files.
 
-**UserLicenseDetails.log**<br> <a name="user-license-log"></a>
+<li>
+
+**UserLicenseDetails.log** <a name="user-license-log"></a>
+
+</li>
+
 This parameter collects the [User license details](#user-license-details) by [Microsoft Graph](https://www.powershellgallery.com/packages/Microsoft.Graph).<br>
+
 For more information, please see the following documentation:
 [Get-MgUserLicenseDetail](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/get-mguserlicensedetail), [Get-MgSubscribedSku](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.identity.directorymanagement/get-mgsubscribedsku) and [Product names and service plan identifiers for licensing](https://learn.microsoft.com/en-us/entra/identity/users/licensing-service-plan-reference).
+
+</ul>
 
 # Support <a name="support"></a>
 
@@ -921,3 +966,8 @@ Please check for [known issues](https://github.com/microsoft/UnifiedLabelingSupp
 
 For new issues, file your bug or feature request as a [new Issue](https://github.com/microsoft/UnifiedLabelingSupportTool/issues/new). Please describe the Issue as detailed as possible. A screenshot of the error and/or a step-by-step description of how to reproduce a problem would be very helpful for this.
 
+<br>
+<br>
+<br>
+
+Copyright Microsoft® Corporation.
