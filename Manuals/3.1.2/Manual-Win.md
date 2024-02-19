@@ -434,7 +434,7 @@ If you select this option, a submenu will be expanded, and you can collapse it b
 
 This parameter collects your AIP service configuration information, e.g. [SuperUsers](https://learn.microsoft.com/en-us/azure/information-protection/configure-super-users) or [OnboardingControlPolicy](https://learn.microsoft.com/en-us/powershell/module/aipservice/set-aipserviceonboardingcontrolpolicy?view=azureipps), etc.
 
-Results are written into the log file [AIPServiceConfiguration.log](#AIPServiceConfiguration-log) in the subfolder "Collect" of the Logs folder.
+Results are written into the log file [AIPServiceConfiguration.log](#aip-service-config-log) in the subfolder "Collect" of the Logs folder.
 
 > **Note:**
 >
@@ -878,7 +878,7 @@ Log files and folders collected via the sub-entries of the [COLLECT](#collect) m
 <ul>
 <li>
 
-**AIPServiceConfiguration.log**
+**AIPServiceConfiguration.log** <a name="aip-service-config-log"></a>
 
 </li>
 
