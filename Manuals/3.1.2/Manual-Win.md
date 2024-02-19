@@ -962,7 +962,7 @@ Should you ever encounter a problem with the 'Unified Labeling Support Tool', pl
 Under this policy, the 'Unified Labeling Support Tool' remains in support if the following criteria are met:
 
 * You're using the [lastet version](https://aka.ms/UnifiedLabelingSupportTool/Latest) of the 'Unified Labeling Support Tool'.
-* You must be licensed with a product or service that uses [Microsoft Information Protection and Unified Labeling](https://www.microsoft.com/en-us/us-partner-blog/2018/11/05/microsoft-information-protection-and-unified-labeling/).
+* You must be licensed with a product or service that uses a [Microsoft Information Protection subscription](https://learn.microsoft.com/en-us/office365/servicedescriptions/azure-information-protection#available-plans).
 
 ### How to file issues and get help <a name="get-help"></a>
 
