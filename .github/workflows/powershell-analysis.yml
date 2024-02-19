@@ -21,6 +21,13 @@ jobs:
   build:
     name: PSScriptAnalyzer
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      deployments: read
+      packages: none
+      pull-requests: write
+      security-events: write
     steps:
       - uses: actions/checkout@v2
 
