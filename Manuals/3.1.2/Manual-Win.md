@@ -757,7 +757,7 @@ This file contains the installed software (64-bit) from the system. This file we
 
 </li>
 
-This file contains several regsitry keys related to the Office/Microsoft 365 Appss and Information Protection configuration. The content were taken from these registry keys:
+This file contains several regsitry keys related to the Office/Microsoft 365 Apps and Information Protection configuration. The content were taken from these registry keys:
 
 ```
 [HKLM:\Software\Classes\MSIP.ExcelAddin]
