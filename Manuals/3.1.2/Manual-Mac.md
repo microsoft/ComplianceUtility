@@ -1,4 +1,6 @@
-# Unified Labeling Support Tool
+THIS IS IN DEVELOPMENT
+
+# Unified Labeling Support Tool (macOS)
 
 * [Introduction](#introduction)
    * [MIT License](#mit-license)
