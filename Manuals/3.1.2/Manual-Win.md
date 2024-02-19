@@ -156,10 +156,6 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 
 The 'Unified Labeling Support Tool' is code-signed with a Microsoft certificate.
 
-> **Note:**
-> 
-> Please refer to the [known issues](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md#known-issues).
-
 ### Manual Installation <a name="manual-installaltion"></a>
 
 If you’re using the 'Unified Labeling Support Tool' in an environment that does not have internet access, you need to proceed with the manual installation.
@@ -175,8 +171,6 @@ To verify if the installation was successful, please review the [check installat
 > **Note:**
 >
 > Please also consider point [Allow signed PowerShell scripts](#allow-signed-powershell-scripts).
-> 
-> Please refer to the [known issues](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md#known-issues).
 
 ### Check installation <a name="check-installation"></a>
 
@@ -515,8 +509,6 @@ Results are written into log file [UserLicenseDetails.log](#user-license-log) in
 > The Microsoft [Graph PowerShell cmdlets](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
 >
 > You must log in with the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) user account for which you want to check the license details.
->
-> This feature is available on Apple macOS.
 
 ### [Z] COMPRESS LOGS / -CompressLogs <a name="compress-logs"></a>
 
