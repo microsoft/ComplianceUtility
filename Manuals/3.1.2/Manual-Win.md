@@ -577,7 +577,7 @@ For more information, please see the following documentation: [ipconfig](https:/
 
 These files contain the WinHTTP proxy configuration and are collected with Netsh.exe.<br>
   
-For more information, please see the following documentation: [Netsh Command Syntax](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts), [Contexts](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts), and [Formatting](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts).
+For more information, please see the following documentation: [Netsh Command Syntax, Contects and Formatting](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts).
 
 <li>
 
