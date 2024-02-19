@@ -520,10 +520,6 @@ This option will asks you whether you want to exit the menu after a confirmation
 
 This parameter skips the update check mechanism for all entries of the [COLLECT](#collect) menu.
 
-> **Note:**
->
-> This feature is not available on Apple macOS.
-
 ### - / -Menu <a name="menu"></a>
 
 This will start the 'Unified Labeling Support Tool' with the default menu.
