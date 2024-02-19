@@ -126,7 +126,7 @@ If you do not have this module installed, the 'Unified Labeling Support Tool' wi
 
 ### Microsoft PowerShell (optional) <a name="ms-powershell"></a>
 
-Please follow the instructions for [installing PowerShell on Windows](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3) to install it using your preferred method if you want to use the 'Unified Labeling Support Tool' on Microsoft PowerShell 7.2 (or higher).
+Please follow the instructions for [installing PowerShell on Windows](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) to install it using your preferred method if you want to use the 'Unified Labeling Support Tool' on Microsoft PowerShell 7.2 (or higher).
 
 # Installation <a name="installation"></a>
 
