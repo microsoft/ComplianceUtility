@@ -102,9 +102,7 @@ If you do not have this module installed, the 'Unified Labeling Support Tool' wi
 
 ### AIPService module <a name="aipservice-module"></a>
 
-The Microsoft [AIPService module](https://learn.microsoft.com/de-de/powershell/module/aipservice/?view=azureipps) is required to proceed the options [AIP service configuration](#aip-service-config),
-
-[Protection templates](https://microsoft.github.io/UnifiedLabelingSupportTool/#[T]_Protection_templates_/_-CollectProtectionTemplates), and [Endpoint URLs](#endpoint-urls) from the [COLLECT](#collect) menu.
+The Microsoft [AIPService module](https://learn.microsoft.com/de-de/powershell/module/aipservice/?view=azureipps) is required to proceed the options [AIP service configuration](#aip-service-config), [Protection templates](#protection-templates), and [Endpoint URLs](#endpoint-urls) from the [COLLECT](#collect) menu.
 
 If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
 
