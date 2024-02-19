@@ -1,6 +1,3 @@
-THIS IS IN DEVELOPMENT
-
-
 # Unified Labeling Support Tool
 
 * [Introduction](#introduction)
