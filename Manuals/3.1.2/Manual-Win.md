@@ -130,7 +130,7 @@ Please follow the instructions for [installing PowerShell on Windows](https://le
 
 # Installation <a name="installation"></a>
 
-The 'Unified Labeling Support Tool' is available on [PowerShell Gallery](https://www.powershellgallery.com/) and the fastest and easiest way to install it with user privileges is to run the following command in PowerShell:
+The 'Unified Labeling Support Tool' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/UnifiedLabelingSupportTool/) and the fastest and easiest way to install it with user privileges is to run the following command in PowerShell:
 
 ```
 Install-Module -Name UnifiedLabelingSupportTool -Scope CurrentUser
