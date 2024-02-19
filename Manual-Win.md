@@ -283,7 +283,7 @@ This shows syntax, description and version information of the 'Unified Labeling 
 
 This displays the [MIT License](#mit-license).
 
-### [G] HELP / -Help <a name="help-win"></a>
+### [H] HELP / -Help <a name="help-win"></a>
 
 This opens the online manual.
 
@@ -542,220 +542,360 @@ Please note that not all log files are collected or recorded at all times. It de
 
 Log files and folders collected by the [RECORD PROBLEM](#record-problem) option when you run the 'Unified Labeling Support Tool' with user privileges:
 
-* **Tasklist.log**<br>
+<ul>
+<li>
+  
+**Tasklist.log**
+
+</li>
+
 This file contains a list of currently running processes on the local computer.<br>
+
 For more information, please see the following documentation: [tasklist](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/tasklist).
 
-* **WinIPConfig.txt and IPConfigAll.log**<br>
+<li>
+  
+**WinIPConfig.txt and IPConfigAll.log**
+
+</li>
+
 These files show all current TCP/IP network configuration settings.<br>
+  
 For more information, please see the following documentation: [ipconfig](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig).
 
-* **WinHTTP.log and WinHTTP_WoW6432.log**<br>
+<li>
+
+**WinHTTP.log and WinHTTP_WoW6432.log**
+
+</li>
+
 These files contain the WinHTTP proxy configuration and are collected with Netsh.exe.<br>
+  
 For more information, please see the following documentation: [Netsh Command Syntax](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts), [Contexts](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts), and [Formatting](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts).
 
-* **AutoConfigURL.log**<br>
+<li>
+
+**AutoConfigURL.log**
+
+</li>
+
 This file contains information of the auto proxy configuration settings.<br>
+
 For more information, please see the following documentation: [Automatic Proxy Detection](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/automatic-proxy-detection), and [Use a proxy server in Windows](https://support.microsoft.com/en-us/windows/use-a-proxy-server-in-windows-03096c53-0554-4ffe-b6ab-8b1deee8dae1).
 
-* **ProblemSteps.zip**<br>
+<li>
+
+**ProblemSteps.zip**
+
+</li>
+
 This file records the exact steps you took when the problem occured. It was created by the Steps Recorder (psr.exe).<br>
+
 For more information, please see the following documentation: [Record steps to reproduce a problem](https://support.microsoft.com/en-us/help/22878/windows-10-record-steps).
 
-* **MSIPC/MSIP folders / AIPLogs.zip**<br>
+<li>
+  
+**MSIPC/MSIP folders / AIPLogs.zip**
+
+</li>
+
 The following log folders contain MSIP/MSIPC logging information:<br>
 
-  ```
-  %LOCALAPPDATA%\Microsoft\MSIP
-  %LOCALAPPDATA%\Microsoft\MSIPC
-  ```
+```
+%LOCALAPPDATA%\Microsoft\MSIP
+%LOCALAPPDATA%\Microsoft\MSIPC
+```
  
-  If you have installed and enabled the Azure Information Protection unified labeling client, the folders containing the AIPLogs.zip file are collected.<br>
-  For more information, please see the following documentation for the used PowerShell command: [Export-AIPLogs](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/export-aiplogs?view=azureipps).
+If you have installed and enabled the Azure Information Protection unified labeling client, the folders containing the AIPLogs.zip file are collected.<br>
+For more information, please see the following documentation for the used PowerShell command: [Export-AIPLogs](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/export-aiplogs?view=azureipps).
 
-* **AIP plugin for Adobe Acrobat logs**<br>
+<li>
+
+**AIP plugin for Adobe Acrobat logs**
+
+</li>
+
 The following log folders contain logging information:<br>
 
-  ```
-  %LOCALAPPDATA%\Microsoft\RMSLocalStorage\MIP\logs
-  %USERPROFILE%\appdata\locallow\Microsoft\RMSLocalStorage\mip\logs
-  ```
+```
+%LOCALAPPDATA%\Microsoft\RMSLocalStorage\MIP\logs
+%USERPROFILE%\appdata\locallow\Microsoft\RMSLocalStorage\mip\logs
+```
 
-  For more information, please see the following information: [Adobe reader and Microsoft Information Protection integration FAQs](https://techcommunity.microsoft.com/t5/microsoft-information-protection/adobe-reader-and-microsoft-information-protection-integration/ba-p/482219).
+For more information, please see the following information: [Adobe reader and Microsoft Information Protection integration FAQs](https://techcommunity.microsoft.com/t5/microsoft-information-protection/adobe-reader-and-microsoft-information-protection-integration/ba-p/482219).
 
-* **Application.evtx**<br>
+<li>
+
+**Application.evtx**
+
+</li>
+
 This file is the Application Windows Event Log.
 
-* **System.evtx**<br>
+<li>
+
+**System.evtx**
+
+</li>
+
 This file is the System Windows Event Log.
 
-* **office.log**<br>
+<li>
+  
+**office.log**
+
+</li>
+
 This file is the Office TCOTrace log.
 
-* **Office logging**<br>
+<li>
+  
+**Office logging**
+
+</li>
+
 An Office log file collected from the users temp folder. For example:
 
-  ```
-  %TEMP%\MACHINENAME-20230209-133005.log
-  ```
+```
+%TEMP%\MACHINENAME-20230209-133005.log
+```
 
-  The log file name reflects the compuer name, and date and time when the log was created.<br>
+The log file name reflects the compuer name, and date and time when the log was created.<br>
+
 For more information, please see the following documentation: How to enable Microsoft 365 Apps for enterprise ULS logging (part "For sign-in or activation issues, add the following registry key").<br><br>
 In addition, Office diagnostics data will be collected from the following folder:
 
-  ```
-  %TEMP%\Diagnostics
-  ```
+```
+%TEMP%\Diagnostics
+```
 
-* **MIPSDK-Word.zip, MIPSDK-Excel.zip, MIPSDK-PowerPoint.zip, and MIPSDK-Outlook.zip**<br>
+<li>
+  
+**MIPSDK-Word.zip, MIPSDK-Excel.zip, MIPSDK-PowerPoint.zip, and MIPSDK-Outlook.zip**
+
+</li>
+
 A respective .zip file contains the contents of the corresponding MIPSDK log folder collected at the following locations:
 
-  ```
-  %LOCALAPPDATA%\Microsoft\Word\MIPSDK\mip
-  %LOCALAPPDATA%\Microsoft\Excel\MIPSDK\mip
-  %LOCALAPPDATA%\Microsoft\PowerPoint\MIPSDK\mip
-  %LOCALAPPDATA%\Microsoft\Outlook\MIPSDK\mip
-  ```
+```
+%LOCALAPPDATA%\Microsoft\Word\MIPSDK\mip
+%LOCALAPPDATA%\Microsoft\Excel\MIPSDK\mip
+%LOCALAPPDATA%\Microsoft\PowerPoint\MIPSDK\mip
+%LOCALAPPDATA%\Microsoft\Outlook\MIPSDK\mip
+```
 
-  Each .zip file contains multiple .json files. 
+Each .zip file contains multiple .json files. 
 
-* **LabelsAndPolicies.zip**<br>
+<li>
+
+**LabelsAndPolicies.zip**
+
+</li>
+
 This zip file is created by the option [RECORD PROBLEM](#record-problem).<br>
+
 The file contains the cached labels and policies xml files from the following folder:<br>
 
-  ```
-  %LOCALAPPDATA%\Microsoft\Office\CLP
-  ```
+```
+%LOCALAPPDATA%\Microsoft\Office\CLP
+```
 
-* **CertMachine.log and CertUser.log**<br>
+<li>
+
+**CertMachine.log and CertUser.log**
+
+</li>
+
 These files contain certification information and were collected with Certutil.exe.<br>
+
 For more information, please see the following documentation: [certutil](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/certutil).
 
-* **EnvVar.log**<br>
+<li>
+
+**EnvVar.log**
+
+</li>
+
 This file contains environment variables information from the system ("Get-ChildItem Env:").<br>
+
 For more information about this PowerShell command, please see the following documentation: [Get-ChildItem](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-5.1).
 
-* **Programs32.log**<br>
-This file contains the installed software (32-bit) from the system. This file were taken from this registry key:<br>
+<li>
 
-  ```
-  [HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall]
-  ```
+**Programs32.log**
 
-* **Programs64.log**<br>
-This file contains the installed software (64-bit) from the system. This file were taken from this registry key:<br>
+</li>
 
-  ```
-  [HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall]
-  ```
+This file contains the installed software (32-bit) from the system. This file were taken from this registry key:
 
-* **Registry.log**<br>
-This file contains several regsitry keys related to the Office and AIP configuration. The content were taken from these registry keys:<br>
+```
+[HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall]
+```
 
-  ```
-  [HKLM:\Software\Classes\MSIP.ExcelAddin]
-  [HKLM:\Software\Classes\MSIP.WordAddin]
-  [HKLM:\Software\Classes\MSIP.PowerPointAddin]
-  [HKLM:\Software\Classes\MSIP.OutlookAddin]
-  [HKLM:\Software\Classes\AllFileSystemObjects\shell\Microsoft.Azip.RightClick]
-  [HKLM:\Software\Microsoft\MSIPC]
-  [HKLM:\Software\Microsoft\Office\Word\Addins]
-  [HKLM:\Software\Microsoft\Office\Excel\Addins]
-  [HKLM:\Software\Microsoft\Office\PowerPoint\Addins]
-  [HKLM:\Software\Microsoft\Office\Outlook\Addins]
-  [HKLM:\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\Word\Addins]
-  [HKLM:\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\Excel\Addins]
-  [HKLM:\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\PowerPoint\Addins]
-  [HKLM:\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\Outlook\Addins]
-  [HKLM:\Software\WOW6432Node\Microsoft\MSIPC]
-  [HKLM:\Software\Wow6432Node\Microsoft\Office\Word\Addins]
-  [HKLM:\Software\Wow6432Node\Microsoft\Office\Excel\Addins]
-  [HKLM:\Software\Wow6432Node\Microsoft\Office\PowerPoint\Addins]
-  [HKLM:\Software\Wow6432Node\Microsoft\Office\Outlook\Addins]
-  [HKCU:\Software\Microsoft\MSIP]
-  [HKCU:\Software\Microsoft\Office\16.0\Common\DRM]
-  [HKCU:\Software\Microsoft\Office\16.0\Common\Security]
-  [HKCU:\Software\Microsoft\Office\16.0\Common\Identity]
-  [HKCU:\Software\Microsoft\Office\16.0\Common\Internet]
-  [HKCU:\Software\Microsoft\Office\Word\Addins]
-  [HKCU:\Software\Microsoft\Office\Excel\Addins]
-  [HKCU:\Software\Microsoft\Office\PowerPoint\Addins]
-  [HKCU:\Software\Microsoft\Office\Outlook\Addins]
-  [HKCU:\Software\Microsoft\Office\16.0\Word\Resiliency]
-  [HKCU:\Software\Microsoft\Office\16.0\Excel\Resiliency]
-  [HKCU:\Software\Microsoft\Office\16.0\PowerPoint\Resiliency]
-  [HKCU:\Software\Microsoft\Office\16.0\Outlook\Resiliency]
-  [HKCU:\Software\Classes\Local Settings\Software\Microsoft\MSIPC]
-  [HKCR:\MSIP.ExcelAddin]
-  [HKCR:\MSIP.WordAddin]
-  [HKCR:\MSIP.PowerPointAddin]
-  [HKCR:\MSIP.OutlookAddin]
-  [HKCR:\Local Settings\Software\Microsoft\MSIPC]
-  [HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM]
-  [HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security]
-  [HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]
-  [HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security]
-  [HKCU:\Software\Microsoft\Office\16.0\Common\Licensing\CurrentSkuIdAggregationForApp]
-  [HKCU:\Software\Microsoft\Office\16.0\Common\Licensing\LastKnownC2RProductReleaseId]
-  ```
+<li>
+  
+**Programs64.log**
 
-* **Gpresult.htm**<br>
+</li>
+
+This file contains the installed software (64-bit) from the system. This file were taken from this registry key:
+
+```
+[HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall]
+```
+
+<li>
+  
+**Registry.log**
+
+</li>
+
+This file contains several regsitry keys related to the Office and AIP configuration. The content were taken from these registry keys:
+
+```
+[HKLM:\Software\Classes\MSIP.ExcelAddin]
+[HKLM:\Software\Classes\MSIP.WordAddin]
+[HKLM:\Software\Classes\MSIP.PowerPointAddin]
+[HKLM:\Software\Classes\MSIP.OutlookAddin]
+[HKLM:\Software\Classes\AllFileSystemObjects\shell\Microsoft.Azip.RightClick]
+[HKLM:\Software\Microsoft\MSIPC]
+[HKLM:\Software\Microsoft\Office\Word\Addins]
+[HKLM:\Software\Microsoft\Office\Excel\Addins]
+[HKLM:\Software\Microsoft\Office\PowerPoint\Addins]
+[HKLM:\Software\Microsoft\Office\Outlook\Addins]
+[HKLM:\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\Word\Addins]
+[HKLM:\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\Excel\Addins]
+[HKLM:\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\PowerPoint\Addins]
+[HKLM:\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\Outlook\Addins]
+[HKLM:\Software\WOW6432Node\Microsoft\MSIPC]
+[HKLM:\Software\Wow6432Node\Microsoft\Office\Word\Addins]
+[HKLM:\Software\Wow6432Node\Microsoft\Office\Excel\Addins]
+[HKLM:\Software\Wow6432Node\Microsoft\Office\PowerPoint\Addins]
+[HKLM:\Software\Wow6432Node\Microsoft\Office\Outlook\Addins]
+[HKCU:\Software\Microsoft\MSIP]
+[HKCU:\Software\Microsoft\Office\16.0\Common\DRM]
+[HKCU:\Software\Microsoft\Office\16.0\Common\Security]
+[HKCU:\Software\Microsoft\Office\16.0\Common\Identity]
+[HKCU:\Software\Microsoft\Office\16.0\Common\Internet]
+[HKCU:\Software\Microsoft\Office\Word\Addins]
+[HKCU:\Software\Microsoft\Office\Excel\Addins]
+[HKCU:\Software\Microsoft\Office\PowerPoint\Addins]
+[HKCU:\Software\Microsoft\Office\Outlook\Addins]
+[HKCU:\Software\Microsoft\Office\16.0\Word\Resiliency]
+[HKCU:\Software\Microsoft\Office\16.0\Excel\Resiliency]
+[HKCU:\Software\Microsoft\Office\16.0\PowerPoint\Resiliency]
+[HKCU:\Software\Microsoft\Office\16.0\Outlook\Resiliency]
+[HKCU:\Software\Classes\Local Settings\Software\Microsoft\MSIPC]
+[HKCR:\MSIP.ExcelAddin]
+[HKCR:\MSIP.WordAddin]
+[HKCR:\MSIP.PowerPointAddin]
+[HKCR:\MSIP.OutlookAddin]
+[HKCR:\Local Settings\Software\Microsoft\MSIPC]
+[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM]
+[HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security]
+[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]
+[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security]
+[HKCU:\Software\Microsoft\Office\16.0\Common\Licensing\CurrentSkuIdAggregationForApp]
+[HKCU:\Software\Microsoft\Office\16.0\Common\Licensing\LastKnownC2RProductReleaseId]
+```
+
+<li>
+
+**Gpresult.htm**
+
+</li>
+
 This file contains the Resultant Set of Policy (RSoP) information from the system.<br>
+
 For more information, please see the following documentation: [gpresult](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/gpresult).
 
-* **BaseUTCOffset.log**<br>
+<li>
+  
+**BaseUTCOffset.log**
+
+</li>
+
 This file contains time zone offset information.<br>
+
 For more information about this PowerShell command, please see the following documentation: [Get-TimeZone](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-timezone?view=powershell-5.1).
+
+</ul>
 
 Log files and folders additionally collected by the [RECORD PROBLEM](#record-problem) option when you run the 'Unified Labeling Support Tool' with administrative privileges:
 
-* **CAPI2.evtx**<br>
+<ul>
+<li>
+  
+**CAPI2.evtx**
+
+</li>
+
 This file is the CAPI2 Windows Event Log.<br>
+
 For more information, please see the following documentation: [Saving Events to a Log File](https://docs.microsoft.com/en-us/windows/desktop/WES/saving-events-to-a-log-file).
 
-* **AIP.evtx**<br>
+<li>
+
+**AIP.evtx**
+
+</li>
+
 This file is the Azure Information Protection Windows Event Log.
 
-* **NetMon.etl**<br>
+<li>
+
+**NetMon.etl**
+
+</li>
+
 This file is a network trace recorded by Netsh.exe.<br>
+
 For more information, please see the following documentation: [Netsh Command Syntax](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts), [Contexts](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts), and [Formatting](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts).
 
-* **Filters.log**<br>
+<li>
+
+**Filters.log**
+
+</li>
+
 This file contain a list of Windows filter drivers.<br>
+
 For more information about this PowerShell command, please see the following documentation: [Fltmc.exe](https://docs.microsoft.com/en-us/windows-hardware/drivers/ifs/development-and-testing-tools#fltmcexe-control-program).
+
+</ul>
 
 ### COLLECT <a name="collect-logs"></a>
 
 Log files and folders collected via the sub-entries of the [COLLECT](#collect) menu. Results are written in the subfolder "Collect" of the Logs folder:
 
-* **AIPServiceConfiguration.log**<br>
+**AIPServiceConfiguration.log**<br>
 This file is only collected if you selected [AIP service configuration](https://microsoft.github.io/UnifiedLabelingSupportTool/#[A]_AIP_service_configuration_/_-CollectAIPServiceConfiguration). The file contains the Azure Information Protection service configuration of your tenant.<br>
 For more information, please see the following documentation: [Get-AipServiceConfiguration](https://docs.microsoft.com/de-de/powershell/module/aipservice/get-aipserviceconfiguration).
 
-* **ProtectionTemplates.log and .xml files**<br>
+**ProtectionTemplates.log and .xml files**<br>
 These files are only collected if you selected [Protection templates](https://microsoft.github.io/UnifiedLabelingSupportTool/#[T]_Protection_templates_/_-CollectProtectionTemplates).<br>
 The ProtectionTemplates.log file contains the Azure Information Protection template details. Additionally, an export of each protection template is saved in the "ProtectionTemplates" subfolder with the protection template ID as the file name and the .xml file extension.<br>
 For more information, please see the following documentation: [Get-AipServiceTemplate](https://docs.microsoft.com/en-us/powershell/module/aipservice/get-aipservicetemplate), and [Export-AipServiceTemplate](https://docs.microsoft.com/en-us/powershell/module/aipservice/export-aipservicetemplate?view=azureipps).
 
-* **LabelsAndPolicies.log**<br>
+**LabelsAndPolicies.log**<br>
 This file is created by the collect option [Labels and policies](#labels-and-policies). If you have not initiated a [RESET](#reset) before collecting logs, you can also have a CLP subfolder with the Office CLP policy folder.<br>
 For more information, please see the following documentation: [Get-Label](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps) and [Get-LabelPolicy](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-labelpolicy?view=exchange-ps).
 
-* **DLPRulesAndPolicies.log**<br>
+**DLPRulesAndPolicies.log**<br>
 This file is created by the collect option DLP rules and policies.<br>
 For more information, please see the following documentation: [Get-DlpCompliancePolicy](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpcompliancepolicy?view=exchange-ps), [Get-DlpComplianceRule](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpcompliancerule?view=exchange-ps), [Get-DlpSensitiveInformationType](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpsensitiveinformationtype), [Get-DlpSensitiveInformationTypeRulePackage](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpsensitiveinformationtyperulepackage), [Get-DlpKeywordDictionary](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpkeyworddictionary), and [Get-DlpEdmSchema](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpedmschema).
 
-* **EndpointURLs.log**<br>
+**EndpointURLs.log**<br>
 This file contains information for endpoint URLs and the certificate issuer collected by the [Endpoint URLs](#endpoint-urls) option.
 
-* **.cer files (.ce_)**<br>
+**.cer files (.ce_)**<br>
 These files are created by the option [Endpoint URLs](#endpoint-urls).<br>
 
   > **Note:**
   >
   > The files are exported with the file extension .ce_ instead of .cer, since some security programs can block these files.
 
-* **UserLicenseDetails.log**<br> <a name="user-license-log"></a>
+**UserLicenseDetails.log**<br> <a name="user-license-log"></a>
 This parameter collects the [User license details](#user-license-details) by [Microsoft Graph](https://www.powershellgallery.com/packages/Microsoft.Graph).<br>
 For more information, please see the following documentation:
 [Get-MgUserLicenseDetail](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/get-mguserlicensedetail), [Get-MgSubscribedSku](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.identity.directorymanagement/get-mgsubscribedsku) and [Product names and service plan identifiers for licensing](https://learn.microsoft.com/en-us/entra/identity/users/licensing-service-plan-reference).
