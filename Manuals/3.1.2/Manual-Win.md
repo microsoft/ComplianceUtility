@@ -514,7 +514,7 @@ Results are written into log file [UserLicenseDetails.log](#user-license-log) in
 
 This command line parameter should always be used at the very end of a scenario.
 
-This parameter compresses all collected log files and folders into a .zip archive, and the corresponding file is saved to your desktop. In addition, the default logs folder (%temp%\UnifiedLabelingSupportTool) is cleaned.
+This parameter compresses all collected log files and folders into a .zip archive, and the corresponding file is saved to your desktop. In addition, the default logs folder (`%temp%\UnifiedLabelingSupportTool`) is cleaned.
 
 ### [X] EXIT / - <a name="exit"></a>
 
