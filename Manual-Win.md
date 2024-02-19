@@ -162,7 +162,7 @@ The 'Unified Labeling Support Tool' is code-signed with a Microsoft certificate.
 
 If you’re using the 'Unified Labeling Support Tool' in an environment that does not have internet access, you need to proceed with the manual installation.
 
-To install the 'Unified Labeling Support Tool' manually, you need to create the following folder, and copy/paste all the 'Unified Labeling Support Tool' files (UnifiedLabelingSupportTool.psm1, UnifiedLabelingSupportTool.psd1 and ULSupportTool-Win.htm) into this folder:
+To install the 'Unified Labeling Support Tool' manually, you need to create the following folder, and copy/paste all the 'Unified Labeling Support Tool' files (`UnifiedLabelingSupportTool.psm1`, `UnifiedLabelingSupportTool.psd1` and `ULSupportTool-Win.htm`) into this folder:
 
 ``` %USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.1.2```
 
@@ -214,10 +214,16 @@ Version   Name                         Repository     Description
 
 # Uninstall <a name="uninstall"></a>
 
-If you want to uninstall the 'Unified Labeling Support Tool', and it was installed via the PowerShell Gallery, you need to run the following command:
+If you want to completely uninstall the 'Unified Labeling Support Tool' and it was installed via the PowerShell Gallery, you must execute the following command:
 
 ```
-Uninstall-Module -Name UnifiedLabelingSupportTool
+Uninstall-Module -Name UnifiedLabelingSupportTool -AllVersions
+```
+
+If you want to uninstall a specific version, for example version 3.1.1, you must execute the following command:
+
+```
+Uninstall-Module -Name UnifiedLabelingSupportTool -RequiredVersion 3.1.1
 ```
 
 If the 'Unified Labeling Support Tool' was installed manually, you also need to remove it manually by deleting its installation folder.
@@ -444,6 +450,9 @@ This parameter collects [protection templates](https://learn.microsoft.com/en-us
 
 Results are written into the log file [ProtectionTemplates.log](#protection-templates-log) in the subfolder "Collect" of the Logs folder, and an export of each protection template ([.xml](https://microsoft.github.io/UnifiedLabelingSupportTool/#AIPServiceTemplates.log)) into the subfolder "ProtectionTemplates".
 
+> [!TIP]
+> You can use this feature to create a backup copy of your protection templates.
+
 > **Note:**
 >
 > Please refer to the note in point [AIPService module](#aipservice-module).
@@ -475,6 +484,9 @@ Results are written into log file [EndpointURLs.log](#endpoint-urls-log) in the 
 This parameter collects the labels and policy definitions (with detailled label actions and policy rules) from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide). Those with encryption and those with content marking only.
 
 Results are written into log file [LabelsAndPolicies.log](#labels-and-policies-log) in the subfolder "Collect" of the Logs folder, and you can also have a CLP subfolder with the Office CLP policy.
+
+> [!TIP]
+> You can use the resulting log file to create exact copies of the label and policy settings for troubleshooting purposes, e.g. in test environments. 
 
 > **Note:**
 >
