@@ -398,7 +398,7 @@ You can also review the [Script.log](#script-log-file) file for errors of silent
 As a first step, this parameter activates the required logging, or tracing mechanisms by implementing registry settings, and enabling some Windows event logs. This process will be reflected by a progress bar “Enable logging...".
 In the event that you accidentally close the PowerShell window while logging is enabled, the 'Unified Labeling Support Tool' disables logging the next time you start it.
 
-In a second step asks you to reproduce the problem. While you’re doing so, the 'Unified Labeling Support Tool' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (%temp%\UnifiedLabelingSupportTool). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created. While the files are being cached, you will see a progress bar “Collecting logs...".
+In a second step asks you to reproduce the problem. While you’re doing so, the 'Unified Labeling Support Tool' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`%temp%\UnifiedLabelingSupportTool`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created. While the files are being cached, you will see a progress bar “Collecting logs...".
 
 In the last step, the 'Unified Labeling Support Tool' resets all activated log and trace settings to their defaults. This process will be reflected by a progress bar “Disable logging...".
 
