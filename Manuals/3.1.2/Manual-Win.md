@@ -406,7 +406,7 @@ You can then review the [log files](#log-files) in the logs folder.
 
 > **Note:**
 >
-> Please note that neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the "Unified Labeling Support Tool" is not run in an administrative PowerShell window as a user with local administrative privileges.
+> Please note that neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the 'Unified Labeling Support Tool' is not run in an administrative PowerShell window as a user with local administrative privileges.
 
 ### [C] COLLECT / - <a name="collect"></a>
 
