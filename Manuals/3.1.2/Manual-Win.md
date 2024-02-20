@@ -433,10 +433,6 @@ This parameter collects your AIP service configuration information, e.g. [SuperU
 
 Results are written into the log file [AIPServiceConfiguration.log](#aip-service-config-log) in the subfolder "Collect" of the Logs folder.
 
-> **Note:**
->
-> Please refer to the note in point [AIPService module](#aipservice-module).
-
 ### [T] Protection templates / -CollectProtectionTemplates <a name="protection-templates"></a>
 
 This parameter collects [protection templates](https://learn.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#protection-templates-and-sensitivity-labels) of your tenant.
@@ -445,10 +441,6 @@ Results are written into the log file [ProtectionTemplates.log](#protection-temp
 
 > [!TIP]
 > You can use this feature to create a backup copy of your protection templates.
-
-> **Note:**
->
-> Please refer to the note in point [AIPService module](#aipservice-module).
 
 ### [U] Endpoint URLs / -CollectEndpointURLs <a name="endpoint-urls"></a>
 
