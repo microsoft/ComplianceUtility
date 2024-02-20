@@ -1,4 +1,7 @@
-# Unified Labeling Support Tool
+# Unified Labeling Support Tool 
+###### Version 3.1.2 (Microsoft Windows) <br><br>
+
+**Contents**
 
 * [Introduction](#introduction)
    * [MIT License](#mit-license)
