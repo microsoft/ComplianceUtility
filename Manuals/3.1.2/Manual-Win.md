@@ -1,5 +1,5 @@
 # Unified Labeling Support Tool 
-###### Version 3.1.2 (Microsoft Windows) <br><br>
+###### Version 3.1.2 (Windows) <br><br>
 
 **Contents**
 
