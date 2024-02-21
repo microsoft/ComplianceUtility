@@ -261,7 +261,7 @@ You can also start the 'Unified Labeling Support Tool' within the command line. 
 UnifiedLabelingSupportTool -Information
 ```
 
-To see a complete list of all command line parameters with description, execute the following command (command line hep): <a name="command-line-help"></a>
+To see a complete list of all command line parameters with description, execute the following command (command line help): <a name="command-line-help"></a>
 
 ```
 Get-Help UnifiedLabelingSupportTool -Detailed
