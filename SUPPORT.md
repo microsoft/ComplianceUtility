@@ -23,7 +23,7 @@ For new issues, file your bug or feature request as a new Issue. Please describe
 
 * **Collecting labels and policies raise PowerShell error "not recognized as the name of a cmdlet"**
 
-    When you try to collect [Labels and policies](https://microsoft.github.io/UnifiedLabelingSupportTool/#[L]_Labels_and_policies_/_-CollectLabelsAndPolicies), you might see the following errors:
+    When you try to collect 'Labels and policies', you might see the following errors:
     
     ```
     Get-Label : The term 'Get-Label' is not recognized as the name of a cmdlet, function, script file, or operable program.
