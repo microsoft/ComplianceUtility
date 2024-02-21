@@ -1,0 +1,2 @@
+# ignore all files in any directory named "3.1.3" (aka BETA):
+3.1.3/
