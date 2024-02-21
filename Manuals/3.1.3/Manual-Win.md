@@ -261,7 +261,7 @@ You can also start the 'Unified Labeling Support Tool' within the command line. 
 UnifiedLabelingSupportTool -Information
 ```
 
-To see a full list of all command line parameters with description, run the following command:
+To see a complete list of all command line parameters with description, execute the following command (command line hep): <a name="command-line-help"></a>
 
 ```
 Get-Help UnifiedLabelingSupportTool -Detailed
@@ -288,6 +288,10 @@ This displays the [MIT License](#mit-license).
 ### [H] HELP / -Help <a name="help-win"></a>
 
 This opens the online manual.
+
+> **Note:**
+>
+> If you do not have internet access, please use the [command line help](#command-line-help).
 
 ### [R] RESET / -Reset <String> <a name="reset"></a>
 
