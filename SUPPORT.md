@@ -8,8 +8,8 @@ Should you ever encounter a problem with the 'Unified Labeling Support Tool', pl
 
 Under this policy, the 'Unified Labeling Support Tool' remains in support if the following criteria are met:
 
-- You're using the [lastet version](https://aka.ms/UnifiedLabelingSupportTool/Latest) of the 'Unified Labeling Support Tool'.
-- You must be licensed with a product or service that uses [Microsoft Information Protection and Unified Labeling](https://www.microsoft.com/en-us/us-partner-blog/2018/11/05/microsoft-information-protection-and-unified-labeling/).
+* You're using the [lastet version](https://aka.ms/UnifiedLabelingSupportTool/Latest) of the 'Unified Labeling Support Tool'.
+* You must be licensed with a product or service that uses a [Microsoft Information Protection subscription](https://learn.microsoft.com/en-us/office365/servicedescriptions/azure-information-protection#available-plans).
 
 ## How to file issues and get help  
 
@@ -25,7 +25,7 @@ For new issues, file your bug or feature request as a new Issue. Please describe
 
     When you try to collect [Labels and policies](https://microsoft.github.io/UnifiedLabelingSupportTool/#[L]_Labels_and_policies_/_-CollectLabelsAndPolicies), you might see the following errors:
     
-    ```Text
+    ```
     Get-Label : The term 'Get-Label' is not recognized as the name of a cmdlet, function, script file, or operable program.
     Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
     At line:1 char:1
@@ -35,7 +35,7 @@ For new issues, file your bug or feature request as a new Issue. Please describe
     + FullyQualifiedErrorId : CommandNotFoundException
     ```
     
-    ```Text
+    ```
     Get-LabelPolicy : The term 'Get-LabelPolicy' is not recognized as the name of a cmdlet, function, script file, or operable program.
     Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
     At line:1 char:1
@@ -62,8 +62,10 @@ For new issues, file your bug or feature request as a new Issue. Please describe
 
     If you see this message in a PowerShell command window, you are most likely affected by the Windows® Group Policy setting "Turn on Script Execution":
 
-    ```Text
-    Set-ExecutionPolicy : PowerShell updated your local preference successfully, but the setting is overridden by the group policy applied to your system or Set-ExecutionPolicy : Windows PowerShell updated your execution policy successfully, but the setting is overridden by a policy defined at a more specific scope.
+    ```
+    Set-ExecutionPolicy : PowerShell updated your local preference successfully, but the setting is overridden by the group
+    policy applied to your system or Set-ExecutionPolicy : Windows PowerShell updated your execution policy successfully,
+    but the setting is overridden by a policy defined at a more specific scope.
     ```
 
     **Resolution:** To resolve this problem, you must remove this Group Policy setting or configure a setting that allows scripts to run. Please request assistance from your administrator to do this. Please also read [Use Group Policy to Manage Execution Policy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1#use-group-policy-to-manage-execution-policy) and [Set-ExecutionPolicy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1).
@@ -72,7 +74,7 @@ For new issues, file your bug or feature request as a new Issue. Please describe
 
     This applies only to a manual installation. You may see the following error:
 
-    ```Text
+    ```
     PackageManagement\Install-Package : No match was found for the specified search criteria and module name 'PowerShellGet'.
     Try Get-PSRepository to see all available registered module repositories.
     At C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\1.0.0.1\PSModule.psm1:1772 char:21
@@ -86,7 +88,7 @@ For new issues, file your bug or feature request as a new Issue. Please describe
 
     **Resolution:** To resolve this issue, you must run the following Windows PowerShell command to register the default module repositories:
 
-    ```Text
+    ```
     PS C:\> Register-PSRepository -Default
     ```
 
