@@ -269,9 +269,9 @@ You can also review the [Script.log](#script-log-file) file for errors of silent
 
 **IMPORTANT: Before you proceed with this option, please close all open applications.**
 
-This parameter asks you to reproduce the problem. While you’re doing so, the 'Unified Labeling Support Tool' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`~/Documents/UnifiedLabelingSupportTool`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created. While the files are being cached, you will see a progress bar “Collecting logs...".
+This parameter asks you to reproduce the problem. While you’re doing so, the 'Unified Labeling Support Tool' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`~/Documents/UnifiedLabelingSupportTool`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
 
-You can then review the [log files](#log-files) in the logs folder.
+You can then review the log files in the logs folder.
 
 ### [C] COLLECT / - <a name="collect"></a>
 
