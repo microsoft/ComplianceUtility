@@ -153,7 +153,7 @@ Uninstall-Module -Name UnifiedLabelingSupportTool -RequiredVersion 3.1.2
 
 # User experience <a name="experience"></a>
 
-To start the 'Unified Labeling Support Tool', simply type the following command in a PowerShell command window and press enter:
+First you need to execute the command `pwsh` in a Terminal window to start a PowerShell session. Then type the following command and press enter to execute the 'Unified Labeling Support Tool':
 
 ```
 UnifiedLabelingSupportTool
