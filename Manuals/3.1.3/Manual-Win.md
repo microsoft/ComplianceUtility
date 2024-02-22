@@ -160,7 +160,7 @@ The 'Unified Labeling Support Tool' is code-signed with a Microsoft certificate.
 
 If you’re using the 'Unified Labeling Support Tool' in an environment that does not have internet access, you need to proceed with the manual installation.
 
-To install the 'Unified Labeling Support Tool' manually, you need to create the following folder, and copy/paste all the 'Unified Labeling Support Tool' files (`UnifiedLabelingSupportTool.psm1`, `UnifiedLabelingSupportTool.psd1` and `ULSupportTool-Win.htm`) into this folder:
+To install the 'Unified Labeling Support Tool' manually, you need to create the following folder, and copy/paste all the 'Unified Labeling Support Tool' files (`UnifiedLabelingSupportTool.psm1` and `UnifiedLabelingSupportTool.psd1` into this folder:
 
 ``` %USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.1.3```
 
