@@ -33,7 +33,7 @@
 
 This information gives you background and usage information for the [UnifiedLabelingSupportTool](https://aka.ms/UnifiedLabelingSupportTool/Latest) PowerShell script module.
 
-If you want to use the 'Unified Labeling Support Tool' on Microsoft Windows, you can find the corresponding help file [here](Manual-Win.md).
+If you want to use the 'Unified Labeling Support Tool' on Microsoft Windows, you can find the corresponding online manual [here](Manual-Win.md).
 
 Have you ever used the Sensitivity button in a [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365)? If so, you've used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Unified Labeling Support Tool' will help you.
 
