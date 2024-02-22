@@ -513,7 +513,8 @@ This option will asks you whether you want to exit the menu after a confirmation
 
 ### - / -SkipUpdates <a name="skip-updates"></a>
 
-**IMPORTANT: Use this parameter only if you are sure that all PowerShell modules are up to date.**
+> [!IMPORTANT]
+> Use this parameter only if you are sure that all PowerShell modules are up to date.
 
 This parameter skips the update check mechanism for all entries of the [COLLECT](#collect) menu.
 
