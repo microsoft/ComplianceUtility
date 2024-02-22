@@ -46,7 +46,7 @@ If you want to use the 'Unified Labeling Support Tool' on Apple macOS, you can f
 
 Have you ever used the Sensitivity button in a [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365)? If so, you've either used the [Azure Information Protection client](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) or [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Unified Labeling Support Tool' will help you.
 
-> [!important] 
+> [!CAUTION]
 > The Azure Information Protection (AIP) Unified Labeling add-in for Office has been retired on April 11th, 2024.
 > 
 > **What you need to know:**
@@ -106,7 +106,7 @@ The Microsoft [AIPService module](https://learn.microsoft.com/de-de/powershell/m
 
 If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
 
-> **Note:**
+> **Note**
 > 
 > Please note that the AIPService module does not support PowerShell 7. Therefore, unexpected errors may occur because the AIPService module run in compatibility mode.
 
@@ -114,7 +114,7 @@ If you do not have this module installed, the 'Unified Labeling Support Tool' wi
 
 The Microsoft Azure Information Protection cmdlets are installed with the [Azure Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018). Please ensure to have the latest version of the "AzureInformationProtection" cmdlets installed by checking its [client version release history](https://docs.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history).
 
-> **Note:**
+> **Note**
 > 
 > Please note that the Azure Information Protection cmdlets do not support PowerShell 7. Therefore, unexpected errors may occur because Azure Information Protection cmdlets run in compatibility mode.
 
@@ -142,7 +142,7 @@ If you have local administrative privileges, you can run the following command i
 Install-Module -Name UnifiedLabelingSupportTool
 ```
 
-> **Note:**
+> **Note**
 >
 > If you do not have a required component installed on your computer, you will be prompted to do so. You may need to confirm the installation of NuGet Provider and PowerShell Gallery as a trusted repository, and you may also need to confirm the installation of [PowerShellGet](https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-5.1).
 
@@ -168,7 +168,7 @@ This path need to be listed in the [PSModulePath environment variable](https://d
 
 To verify if the installation was successful, please review the [check installation](#check-installation) section.
 
-> **Note:**
+> **Note**
 >
 > Please also consider point [Allow signed PowerShell scripts](#allow-signed-powershell-scripts).
 
@@ -224,7 +224,7 @@ Uninstall-Module -Name UnifiedLabelingSupportTool -RequiredVersion 3.1.2
 
 If the 'Unified Labeling Support Tool' was installed manually, you also need to remove it manually by deleting its installation folder.
 
-> **Note:**
+> **Note**
 >
 > Under certain circumstances, you may need to run the 'Unified Labeling Support Tool' with administrative privileges to perform an uninstall. Please request assistance from your administrator if necessary.
 
@@ -289,21 +289,21 @@ This displays the [MIT License](#mit-license).
 
 This opens the online manual.
 
-> **Note:**
+> **Note**
 >
 > If you do not have internet access, please use the [command line help](#command-line-help).
 
 ### [R] RESET / -Reset <String> <a name="reset"></a>
 
-**IMPORTANT: Before you proceed with this option, please close all open applications.**
+> [!IMPORTANT]
+> Before you proceed with this option, please close all open applications.
 
 This option removes all relevant policies, labels and settings.
 
-> **Note:**
+> **Note**
 >
-> Reset with the default argument will not reset all settings, but only user-specific settings if you run PowerShell with user privileges. This is sufficient in most cases to reset [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) Apps, while a complete reset is useful for all other applications.
-> 
-> If you want a complete reset, you need to run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges.
+> * Reset with the default argument will not reset all settings, but only user-specific settings if you run PowerShell with user privileges. This is sufficient in most cases to reset [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) Apps, while a complete reset is useful for all other applications.
+> * If you want a complete reset, you need to run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges.
 
 Valid <String> arguments are: "Default", or "Silent":
 
@@ -365,7 +365,7 @@ The following file system folders are cleaned up as well:
 
 The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps) cmdlet is used to reset user settings, if an [Azure Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) installation is found.
 
-> **Note:**
+> **Note**
 >
 > Please note that the Microsoft Azure Information Protection cmdlets do not support PowerShell 7. Therefore, unexpected errors may occur because Azure Information Protection cmdlets run in compatibility mode.
 
@@ -397,7 +397,8 @@ You can also review the [Script.log](#script-log-file) file for errors of silent
 
 ### [P] RECORD PROBLEM / -RecordProblem <a name="record-problem"></a>
 
-**IMPORTANT: Before you proceed with this option, please close all open applications.**
+> [!IMPORTANT]
+> Before you proceed with this option, please close all open applications.
 
 This parameter asks you to reproduce the problem. While you’re doing so, the 'Unified Labeling Support Tool' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`%temp%\UnifiedLabelingSupportTool`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
 
@@ -405,7 +406,7 @@ In the event that you accidentally close the PowerShell window while logging is 
 
 You can then review the [log files](#log-files) in the logs folder.
 
-> **Note:**
+> **Note**
 >
 > Please note that neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the 'Unified Labeling Support Tool' is not run in an administrative PowerShell window as a user with local administrative privileges.
 
@@ -423,13 +424,11 @@ If you select this option, a submenu will be expanded, and you can collapse it b
    └──[S] User license details
 ```
 
-> **Note:**
+> **Note**
 >
-> With an exception of the [User license details](#user-license-details) entry, you need to run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to proceed with any option from this submenu. Please contact your administrator if necessary.
->
-> You need to know your [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) global administrator account information to proceed, as you will be asked for your credentials.
->
-> You need to run the 'Unified Labeling Support Tool' as user with local administrative privileges to continue with option [Endpoint URLs](#endpoint-urls), if the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) App is not bootstraped. Please contact your administrator if necessary.
+> * With an exception of the [User license details](#user-license-details) entry, you need to run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to proceed with any option from this submenu. Please contact your administrator if necessary.
+> * ou need to know your [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) global administrator account information to proceed, as you will be asked for your credentials.
+> * You need to run the 'Unified Labeling Support Tool' as user with local administrative privileges to continue with option [Endpoint URLs](#endpoint-urls), if the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) App is not bootstraped. Please contact your administrator if necessary.
 
 ### [A] AIP service configuration / -CollectAIPServiceConfiguration <a name="aip-service-config"></a>
 
@@ -464,7 +463,7 @@ Issuer:   CN=DigiCert Cloud Services CA-1, O=DigiCert Inc, C=US
 
 Results are written into log file [EndpointURLs.log](#endpoint-urls-log) in the subfolder "Collect" of the Logs folder. Additionally, an export of each certificate is saved in the "EndpointURLs" subfolder with the Endpoint URL as the file name and the [.ce_ file](#cer-files) extension.
 
-> **Note:**
+> **Note**
 >
 > This parameter uses the AIPService module. Please note that the AIPService module does not support PowerShell 7. Therefore, unexpected errors may occur as the AIPService module can only run in compatibility mode.
 
@@ -477,7 +476,7 @@ Results are written into log file [LabelsAndPolicies.log](#labels-and-policies-l
 > [!TIP]
 > You can use the resulting log file to create exact copies of the label and policy settings for troubleshooting purposes, e.g. in test environments. 
 
-> **Note:**
+> **Note**
 >
 > The Microsoft Exchange Online PowerShell V3 cmdlets are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
 
@@ -487,7 +486,7 @@ This parameter collects DLP rules and policies, sensitive information type detai
 
 Results are written into log file [DLPRulesAndPolicies.log](#dlp-rules-log) in the subfolder "Collect" of the Logs folder.
 
-> **Note:**
+> **Note**
 >
 > The Microsoft Exchange Online PowerShell V3 cmdlets are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
 
@@ -497,11 +496,10 @@ This parameter collects the user license details by [Microsoft Graph](https://le
 
 Results are written into log file [UserLicenseDetails.log](#user-license-log) in the subfolder "Collect" of the Logs folder.
 
-> **Note:**
+> **Note**
 >
-> The Microsoft [Graph PowerShell cmdlets](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
->
-> You must log in with the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) user account for which you want to check the license details.
+> * The Microsoft [Graph PowerShell cmdlets](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
+> * You must log in with the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) user account for which you want to check the license details.
 
 ### [Z] COMPRESS LOGS / -CompressLogs <a name="compress-logs"></a>
 
@@ -535,7 +533,9 @@ This log file collects the actions that has been taken and lists the results. It
 
 The 'Unified Labeling Support Tool' collects the following log files and folders.
 
-Please note that not all log files are collected or recorded at all times. It depends on your environment which logs, or traces can be recorded.
+> **Note**
+>
+> Not all log files are collected or recorded at all times. It depends on your environment which logs, or traces can be recorded.
 
 ### RECORD PROBLEM <a name="record-problem-logs"></a>
 
@@ -927,7 +927,7 @@ This file contains information for endpoint URLs and the certificate issuer coll
 
 These files are created by the option [Endpoint URLs](#endpoint-urls).<br>
 
-> **Note:**
+> **Note**
 >
 > The files are exported with the file extension .ce_ instead of .cer, since some security programs can block these files.
 
