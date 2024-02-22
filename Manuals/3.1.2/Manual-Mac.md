@@ -216,7 +216,8 @@ This opens the online manual.
 
 ### [R] RESET / -Reset <String> <a name="reset"></a>
 
-**IMPORTANT: Before you proceed with this option, please close all open applications.**
+> [!IMPORTANT]
+> Before you proceed with this option, please close all open applications.
 
 This option removes all relevant policies, labels and settings.
 
