@@ -42,7 +42,7 @@
 
 This information gives you background and usage information for the [UnifiedLabelingSupportTool](https://aka.ms/UnifiedLabelingSupportTool/Latest) PowerShell script module.
 
-If you want to use the 'Unified Labeling Support Tool' on Apple macOS, you can find the corresponding help file [here](Manual-Mac.md).
+If you want to use the 'Unified Labeling Support Tool' on Apple macOS, you can find the corresponding online manual [here](Manual-Mac.md).
 
 Have you ever used the Sensitivity button in a [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365)? If so, you've either used the [Azure Information Protection client](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) or [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Unified Labeling Support Tool' will help you.
 
