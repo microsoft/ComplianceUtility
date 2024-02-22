@@ -39,7 +39,7 @@ The 'Unified Labeling Support Tool' provides the functionality to reset all corr
 
 > **Note**
 > 
-> If you want to use the 'Unified Labeling Support Tool' on Microsoft Windows, you can find the corresponding help file [here](Manual-Win.md).
+> If you want to use the 'Unified Labeling Support Tool' on Microsoft Windows, you can find the corresponding online manual [here](Manual-Win.md).
 
 ## MIT License <a name="mit-license"></a>
 
