@@ -75,7 +75,7 @@ Unexpected errors may occur, and some features may be limited, if there is no co
 
 Please follow the instructions for [installing PowerShell on macOS](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3) to install it using your preferred method. Nevertheless the [installation via direct download](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3&viewFallbackFrom=powershell-7.1#installation-via-direct-download) is recommended.
 
-> **Note:**
+> **Note**
 >
 > Microsoft PowerShell must be installed with local administrative privileges. Please request assistance from your administrator if necessary.
 
@@ -99,7 +99,7 @@ If you have local administrative privileges, you can run the following command i
 Install-Module -Name UnifiedLabelingSupportTool -Scope AllUsers
 ```
 
-> **Note:**
+> **Note**
 >
 > If you do not have a required component installed on your computer, you will be prompted to do so. You may need to confirm the installation of PowerShell Gallery as a trusted repository.
 
@@ -147,7 +147,7 @@ If you want to uninstall a specific version, for example version 3.1.1, you must
 Uninstall-Module -Name UnifiedLabelingSupportTool -RequiredVersion 3.1.1
 ```
 
-> **Note:**
+> **Note**
 >
 > Under certain circumstances, you may need to run the 'Unified Labeling Support Tool' with administrative privileges to perform an uninstall. Please request assistance from your administrator if necessary.
 
@@ -263,7 +263,8 @@ You can also review the [Script.log](#script-log-file) file for errors of silent
 
 ### [P] RECORD PROBLEM / -RecordProblem <a name="record-problem"></a>
 
-**IMPORTANT: Before you proceed with this option, please close all open applications.**
+> [!IMPORTANT]
+> Before you proceed with this option, please close all open applications.
 
 This parameter asks you to reproduce the problem. While you’re doing so, the 'Unified Labeling Support Tool' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`~/Documents/UnifiedLabelingSupportTool`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created. While the files are being cached, you will see a progress bar “Collecting logs...".
 
@@ -284,11 +285,10 @@ This parameter collects the user license details by [Microsoft Graph](https://le
 
 Results are written into log file [UserLicenseDetails.log](#user-license-log) in the subfolder "Collect" of the Logs folder.
 
-> **Note:**
+> **Note**
 >
-> The Microsoft [Graph PowerShell cmdlets](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
->
-> You must log in with the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) user account for which you want to check the license details.
+> * The Microsoft [Graph PowerShell cmdlets](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
+> * You must log in with the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) user account for which you want to check the license details.
 
 ### [Z] COMPRESS LOGS / -CompressLogs <a name="compress-logs"></a>
 
@@ -302,7 +302,8 @@ This option will asks you whether you want to exit the menu after a confirmation
 
 ### - / -SkipUpdates <a name="skip-updates"></a>
 
-**IMPORTANT: Use this parameter only if you are sure that all PowerShell modules are up to date.**
+> [!IMPORTANT]
+> Use this parameter only if you are sure that all PowerShell modules are up to date.
 
 This parameter skips the update check mechanism for entries of the [COLLECT](#collect) menu.
 
