@@ -33,11 +33,13 @@
 
 This information gives you background and usage information for the [UnifiedLabelingSupportTool](https://aka.ms/UnifiedLabelingSupportTool/Latest) PowerShell script module.
 
-If you want to use the 'Unified Labeling Support Tool' on Microsoft Windows, you can find the corresponding online manual [here](Manual-Win.md).
-
 Have you ever used the Sensitivity button in a [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365)? If so, you've used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Unified Labeling Support Tool' will help you.
 
 The 'Unified Labeling Support Tool' provides the functionality to reset all corresponding Information Protection client services. Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for error analysis and troubleshooting.
+
+> **Note**
+> 
+> If you want to use the 'Unified Labeling Support Tool' on Microsoft Windows, you can find the corresponding online manual [here](Manual-Win.md).
 
 ## MIT License <a name="mit-license"></a>
 
@@ -75,8 +77,8 @@ Unexpected errors may occur, and some features may be limited, if there is no co
 
 Please follow the instructions for [installing PowerShell on macOS](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3) to install it using your preferred method. Nevertheless the [installation via direct download](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3&viewFallbackFrom=powershell-7.1#installation-via-direct-download) is recommended.
 
-> **Note:**
->
+> **Note**
+> 
 > Microsoft PowerShell must be installed with local administrative privileges. Please request assistance from your administrator if necessary.
 
 ### Microsoft Graph PowerShell modules (optional) <a name="graph-modules"></a>
@@ -99,8 +101,8 @@ If you have local administrative privileges, you can run the following command i
 Install-Module -Name UnifiedLabelingSupportTool -Scope AllUsers
 ```
 
-> **Note:**
->
+> **Note**
+> 
 > If you do not have a required component installed on your computer, you will be prompted to do so. You may need to confirm the installation of PowerShell Gallery as a trusted repository.
 
 #### Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
@@ -147,8 +149,8 @@ If you want to uninstall a specific version, for example version 3.1.2, you must
 Uninstall-Module -Name UnifiedLabelingSupportTool -RequiredVersion 3.1.2
 ```
 
-> **Note:**
->
+> **Note**
+> 
 > Under certain circumstances, you may need to run the 'Unified Labeling Support Tool' with administrative privileges to perform an uninstall. Please request assistance from your administrator if necessary.
 
 # User experience <a name="experience"></a>
@@ -177,7 +179,6 @@ Please select an option and press enter:
 ```
 
 > [!TIP]
->
 > For better readability, it is recommended to change the Terminal/PowerShell window settings to the "Pro" profile.
 
 You can also start the 'Unified Labeling Support Tool' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
@@ -214,13 +215,14 @@ This displays the [MIT License](#mit-license).
 
 This opens the online manual.
 
-> **Note:**
+> **Note**
 >
 > If you do not have internet access, please use the [command line help](#command-line-help).
 
 ### [R] RESET / -Reset <String> <a name="reset"></a>
 
-**IMPORTANT: Before you proceed with this option, please close all open applications.**
+> [!IMPORTANT]
+> Before you proceed with this option, please close all open applications.
 
 This option removes all relevant policies, labels and settings.
 
@@ -267,7 +269,8 @@ You can also review the [Script.log](#script-log-file) file for errors of silent
 
 ### [P] RECORD PROBLEM / -RecordProblem <a name="record-problem"></a>
 
-**IMPORTANT: Before you proceed with this option, please close all open applications.**
+> [!IMPORTANT]
+> Before you proceed with this option, please close all open applications.
 
 This parameter asks you to reproduce the problem. While you’re doing so, the 'Unified Labeling Support Tool' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`~/Documents/UnifiedLabelingSupportTool`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
 
@@ -288,11 +291,10 @@ This parameter collects the user license details by [Microsoft Graph](https://le
 
 Results are written into log file [UserLicenseDetails.log](#user-license-log) in the subfolder "Collect" of the Logs folder.
 
-> **Note:**
+> **Note**
 >
-> The Microsoft [Graph PowerShell cmdlets](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
->
-> You must log in with the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) user account for which you want to check the license details.
+> * The Microsoft [Graph PowerShell cmdlets](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
+> * You must log in with the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) user account for which you want to check the license details.
 
 ### [Z] COMPRESS LOGS / -CompressLogs <a name="compress-logs"></a>
 
@@ -306,7 +308,8 @@ This option will asks you whether you want to exit the menu after a confirmation
 
 ### - / -SkipUpdates <a name="skip-updates"></a>
 
-**IMPORTANT: Use this parameter only if you are sure that all PowerShell modules are up to date.**
+> [!IMPORTANT]
+> Use this parameter only if you are sure that all PowerShell modules are up to date.
 
 This parameter skips the update check mechanism for entries of the [COLLECT](#collect) menu.
 
