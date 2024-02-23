@@ -306,7 +306,7 @@ If you select this option, a submenu will be expanded, and you can collapse it b
 
 This parameter collects the labels and policy definitions (with detailled label actions and policy rules) from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide). Those with encryption and those with content marking only.
 
-Results are written into log file [LabelsAndPolicies.log](#labels-and-policies-log) in the subfolder "Collect" of the Logs folder, and on Windows platform you can also have a CLP subfolder with the Office CLP policy.
+Results are written into log file [LabelsAndPolicies.log](#labels-and-policies-log) in the subfolder "Collect" of the Logs folder.
 
 > [!TIP]
 > You can use the resulting log file to create exact copies of the label and policy settings for troubleshooting purposes, e.g. in test environments. 
