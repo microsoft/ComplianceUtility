@@ -9,7 +9,7 @@
 * [Requirements](#requirements)
    * [Internet access](#internet-access)
    * [Microsoft PowerShell](#ms-powershell)
-   * [Exchange Online PowerShell module](#exchange-online-module)
+   * [Exchange Online Management module](#exchange-online-module)
    * [Microsoft Graph PowerShell modules](#graph-modules)
 * [Installation](#installation)
    * [Check installation](#check-installation)
@@ -85,9 +85,9 @@ Please follow the instructions for [installing PowerShell on macOS](https://lear
 > 
 > Microsoft PowerShell must be installed with local administrative privileges. Please request assistance from your administrator if necessary.
 
-### Exchange Online PowerShell module <a name="exchange-online-module"></a>
+### Exchange Online Management module <a name="exchange-online-module"></a>
 
-The Microsoft [Exchange Online PowerShell module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#release-notes) is required to proceed the options [Labels and policies](#labels-and-policies) and [DLP rules and policies](#dlp-rules-and-policies) from the menu [COLLECT](#collect).
+The Microsoft [Exchange Online Management module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#release-notes) is required to proceed the options [Labels and policies](#labels-and-policies) and [DLP rules and policies](#dlp-rules-and-policies) from the menu [COLLECT](#collect).
 
 If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
 
@@ -313,7 +313,7 @@ Results are written into log file [LabelsAndPolicies.log](#labels-and-policies-l
 
 > **Note**
 >
-> The Microsoft Exchange Online PowerShell V3 cmdlets are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
+> The Microsoft Exchange Online Management module is required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
 
 ### [D] DLP rules and policies / -CollectDLPRulesAndPolicies <a name="dlp-rules-and-policies"></a>
 
@@ -323,7 +323,7 @@ Results are written into log file [DLPRulesAndPolicies.log](#dlp-rules-log) in t
 
 > **Note**
 >
-> The Microsoft Exchange Online PowerShell V3 cmdlets are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
+> The Microsoft Exchange Online Management module is required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
 
 ### [S] User license details <a name="user-license-details"></a>
 
