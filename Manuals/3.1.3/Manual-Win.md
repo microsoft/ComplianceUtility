@@ -430,7 +430,7 @@ If you select this option, a submenu will be expanded, and you can collapse it b
 > **Note**
 >
 > * With an exception of the [User license details](#user-license-details) entry, you need to run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to proceed with any option from this submenu. Please contact your administrator if necessary.
-> * ou need to know your [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) global administrator account information to proceed, as you will be asked for your credentials.
+> * You need to know your [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) global administrator account information to proceed, as you will be asked for your credentials.
 > * You need to run the 'Unified Labeling Support Tool' as user with local administrative privileges to continue with option [Endpoint URLs](#endpoint-urls), if the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) App is not bootstraped. Please contact your administrator if necessary.
 
 ### [A] AIP service configuration / -CollectAIPServiceConfiguration <a name="aip-service-config"></a>
