@@ -8,11 +8,11 @@
    * [Microsoft Privacy Statement](#microsoft-privacy-statement)
 * [Requirements](#requirements)
    * [Internet access](#internet-access)
-   * [Exchange Online PowerShell module](#exchange-online-module)
    * [AIPService module](#aipservice-module)
-   * [Microsoft Azure Information Protection cmdlets](#aip-cmdlets)
-   * [Microsoft Graph PowerShell modules](#graph-modules)
+   * [Exchange Online PowerShell module](#exchange-online-module)
+   * [Microsoft Graph PowerShell module](#graph-modules)
    * [Microsoft PowerShell](#ms-powershell)
+   * [Microsoft Azure Information Protection module](#aip-module)
 * [Installation](#installation)
    * [Manual installation](#manual-installaltion)
    * [Check installation](#check-installation)
@@ -94,13 +94,8 @@ The 'Unified Labeling Support Tool' supports the following Microsoft 365/Office 
 
 The 'Unified Labeling Support Tool' uses additional sources and services from the Internet to make its functionality fully available.
 
-Unexpected errors may occur, and some features may be limited, if there is no connection to the Internet.
-
-### Exchange Online PowerShell module <a name="exchange-online-module"></a>
-
-The Microsoft [Exchange Online PowerShell module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#release-notes) is required to proceed the option [Labels and policies](#labels-and-policies) from the menu [COLLECT](#collect).
-
-If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
+> [!WARNING]
+> Unexpected errors may occur, and some features may be limited, if there is no connection to the Internet.
 
 ### AIPService module <a name="aipservice-module"></a>
 
@@ -110,17 +105,15 @@ If you do not have this module installed, the 'Unified Labeling Support Tool' wi
 
 > **Note**
 > 
-> Please note that the AIPService module does not support PowerShell 7. Therefore, unexpected errors may occur because the AIPService module run in compatibility mode.
+> The AIPService module does not support PowerShell 7. Therefore, unexpected errors may occur because the AIPService module is running in compatibility mode.
 
-### Microsoft Azure Information Protection cmdlets (optional) <a name="aip-cmdlets"></a>
+### Exchange Online PowerShell module <a name="exchange-online-module"></a>
 
-The Microsoft Azure Information Protection cmdlets are installed with the [Azure Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018). Please ensure to have the latest version of the "AzureInformationProtection" cmdlets installed by checking its [client version release history](https://docs.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history).
+The Microsoft [Exchange Online PowerShell module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#release-notes) is required to proceed the option [Labels and policies](#labels-and-policies) from the menu [COLLECT](#collect).
 
-> **Note**
-> 
-> Please note that the Azure Information Protection cmdlets do not support PowerShell 7. Therefore, unexpected errors may occur because Azure Information Protection cmdlets run in compatibility mode.
+If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
 
-### Microsoft Graph PowerShell modules (optional) <a name="graph-modules"></a>
+### Microsoft Graph PowerShell modules <a name="graph-modules"></a>
 
 The Microsoft [Graph PowerShell modules](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed the option [User license details](#user-license-details) from the [COLLECT](#collect) menu.
 
@@ -128,7 +121,19 @@ If you do not have this module installed, the 'Unified Labeling Support Tool' wi
 
 ### Microsoft PowerShell (optional) <a name="ms-powershell"></a>
 
-Please follow the instructions for [installing PowerShell on Windows](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) to install it using your preferred method if you want to use the 'Unified Labeling Support Tool' on Microsoft PowerShell 7.2 (or higher).
+Please follow the instructions for [installing PowerShell on Windows](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) to install it using your preferred method if you want to use the 'Unified Labeling Support Tool' on Microsoft [PowerShell 7.2](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2) (or higher).
+
+> **Note**
+> 
+> Neither the [AIPService module](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps) nor the [Azure Information Protection module](https://learn.microsoft.com/en-us/powershell/azure/aip/overview?view=azureipps) support PowerShell 7. Therefore, unexpected errors may occur because these modulse are running in compatibility mode.
+
+### Microsoft Azure Information Protection module (optional) <a name="aip-module"></a>
+
+The Microsoft Azure Information Protection module is installed with the [Azure Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018). Please ensure to have the latest version of the "AzureInformationProtection" cmdlets installed by checking its [client version release history](https://docs.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history).
+
+> **Note**
+> 
+> The Azure Information Protection module does not support PowerShell 7. Therefore, unexpected errors may occur because the Azure Information Protection module is running in compatibility mode.
 
 # Installation <a name="installation"></a>
 
@@ -160,7 +165,7 @@ The 'Unified Labeling Support Tool' is code-signed with a Microsoft certificate.
 
 ### Manual Installation <a name="manual-installaltion"></a>
 
-If you’re using the 'Unified Labeling Support Tool' in an environment that does not have internet access, you need to proceed with the manual installation.
+If you’re using the 'Unified Labeling Support Tool' in an environment that does not have Internet access, you need to proceed with the manual installation.
 
 To install the 'Unified Labeling Support Tool' manually, you need to create the following folder, and copy/paste all the 'Unified Labeling Support Tool' files (`UnifiedLabelingSupportTool.psm1` and `UnifiedLabelingSupportTool.psd1` into this folder:
 
@@ -293,7 +298,7 @@ This opens the online manual.
 
 > **Note**
 >
-> If you do not have internet access, please use the [command line help](#command-line-help).
+> If you do not have Internet access, please use the [command line help](#command-line-help).
 
 ### [R] RESET / -Reset <String> <a name="reset"></a>
 
@@ -369,7 +374,7 @@ The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module
 
 > **Note**
 >
-> Please note that the Microsoft Azure Information Protection cmdlets do not support PowerShell 7. Therefore, unexpected errors may occur because Azure Information Protection cmdlets run in compatibility mode.
+> The Microsoft Azure Information Protection module does not support PowerShell 7. Therefore, unexpected errors may occur because Azure Information Protection module run in compatibility mode.
 
 When you run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges, the following registry keys are cleaned up in addition:
 
@@ -467,7 +472,7 @@ Results are written into log file [EndpointURLs.log](#endpoint-urls-log) in the 
 
 > **Note**
 >
-> This parameter uses the AIPService module. Please note that the AIPService module does not support PowerShell 7. Therefore, unexpected errors may occur as the AIPService module can only run in compatibility mode.
+> This parameter uses the AIPService module. Please note that the AIPService module does not support PowerShell 7. Therefore, unexpected errors may occur because the AIPService module is running in compatibility mode.
 
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
