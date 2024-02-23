@@ -9,6 +9,7 @@
 * [Requirements](#requirements)
    * [Internet access](#internet-access)
    * [Microsoft PowerShell](#ms-powershell)
+   * [Exchange Online PowerShell module](#exchange-online-module)
    * [Microsoft Graph PowerShell modules](#graph-modules)
 * [Installation](#installation)
    * [Check installation](#check-installation)
@@ -20,6 +21,8 @@
    * [RESET](#reset)
    * [RECORD PROBLEM](#record-problem)
    * [COLLECT](#collect)
+     * [Labels and polcies](#labels-and-policies)
+     * [DLP rules and policies](#dlp-rules-and-policies)
      * [User license details](#user-license-details)
    * [COMPRESS LOGS](#compress-logs)
    * [EXIT](#exit)
@@ -82,7 +85,13 @@ Please follow the instructions for [installing PowerShell on macOS](https://lear
 > 
 > Microsoft PowerShell must be installed with local administrative privileges. Please request assistance from your administrator if necessary.
 
-### Microsoft Graph PowerShell modules (optional) <a name="graph-modules"></a>
+### Exchange Online PowerShell module <a name="exchange-online-module"></a>
+
+The Microsoft [Exchange Online PowerShell module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#release-notes) is required to proceed the options [Labels and policies](#labels-and-policies) and [DLP rules and policies](#dlp-rules-and-policies) from the menu [COLLECT](#collect).
+
+If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
+
+### Microsoft Graph PowerShell modules <a name="graph-modules"></a>
 
 The Microsoft [Graph PowerShell modules](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed the option [User license details](#user-license-details) from the [COLLECT](#collect) menu.
 
@@ -283,8 +292,38 @@ If you select this option, a submenu will be expanded, and you can collapse it b
 
 ```
   [C] COLLECT
+   ├──[L] Labels and policies
+   ├──[D] DLP rules and policies
    └──[S] User license details
 ```
+
+> **Note**
+>
+> * With an exception of the [User license details](#user-license-details) entry, you need to run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to proceed with any option from this submenu. Please contact your administrator if necessary.
+> * You need to know your [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) global administrator account information to proceed, as you will be asked for your credentials.
+
+### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
+
+This parameter collects the labels and policy definitions (with detailled label actions and policy rules) from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide). Those with encryption and those with content marking only.
+
+Results are written into log file [LabelsAndPolicies.log](#labels-and-policies-log) in the subfolder "Collect" of the Logs folder, and on Windows platform you can also have a CLP subfolder with the Office CLP policy.
+
+> [!TIP]
+> You can use the resulting log file to create exact copies of the label and policy settings for troubleshooting purposes, e.g. in test environments. 
+
+> **Note**
+>
+> The Microsoft Exchange Online PowerShell V3 cmdlets are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
+
+### [D] DLP rules and policies / -CollectDLPRulesAndPolicies <a name="dlp-rules-and-policies"></a>
+
+This parameter collects DLP rules and policies, sensitive information type details, rule packages, keyword dictionaries and exact data match schemas from the [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide).
+
+Results are written into log file [DLPRulesAndPolicies.log](#dlp-rules-log) in the subfolder "Collect" of the Logs folder.
+
+> **Note**
+>
+> The Microsoft Exchange Online PowerShell V3 cmdlets are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
 
 ### [S] User license details <a name="user-license-details"></a>
 
