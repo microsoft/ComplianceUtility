@@ -372,10 +372,6 @@ The following file system folders are cleaned up as well:
 
 The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps) cmdlet is used to reset user settings, if an [Azure Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) installation is found.
 
-> **Note**
->
-> The Microsoft Azure Information Protection module does not support PowerShell 7. Therefore, unexpected errors may occur because Azure Information Protection module run in compatibility mode.
-
 When you run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges, the following registry keys are cleaned up in addition:
 
 ```
@@ -415,7 +411,7 @@ You can then review the [log files](#log-files) in the logs folder.
 
 > **Note**
 >
-> Please note that neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the 'Unified Labeling Support Tool' is not run in an administrative PowerShell window as a user with local administrative privileges.
+> Neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the 'Unified Labeling Support Tool' is not run in an administrative PowerShell window as a user with local administrative privileges.
 
 ### [C] COLLECT / - <a name="collect"></a>
 
