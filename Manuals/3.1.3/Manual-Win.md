@@ -109,7 +109,7 @@ If you do not have this module installed, the 'Unified Labeling Support Tool' wi
 
 ### Exchange Online Management module <a name="exchange-online-module"></a>
 
-The Microsoft [ExchangeOnlineManagement module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#release-notes) is required to proceed the options [Labels and policies](#labels-and-policies) and [DLP rules and policies](#dlp-rules-and-policies) from the menu [COLLECT](#collect).
+The Microsoft [Exchange Online Management module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#release-notes) is required to proceed the options [Labels and policies](#labels-and-policies) and [DLP rules and policies](#dlp-rules-and-policies) from the menu [COLLECT](#collect).
 
 If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
 
@@ -481,7 +481,7 @@ Results are written into log file [LabelsAndPolicies.log](#labels-and-policies-l
 
 > **Note**
 >
-> The Microsoft ExchangeOnlineManagement module is required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
+> The Microsoft Exchange Online Management module is required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
 
 ### [D] DLP rules and policies / -CollectDLPRulesAndPolicies <a name="dlp-rules-and-policies"></a>
 
@@ -491,7 +491,7 @@ Results are written into log file [DLPRulesAndPolicies.log](#dlp-rules-log) in t
 
 > **Note**
 >
-> The Microsoft ExchangeOnlineManagement module is required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
+> The Microsoft Exchange Online Management module is required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
 
 ### [S] User license details <a name="user-license-details"></a>
 
