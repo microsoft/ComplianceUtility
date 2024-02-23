@@ -333,7 +333,7 @@ Results are written into log file [UserLicenseDetails.log](#user-license-log) in
 
 > **Note**
 >
-> * The Microsoft [Graph PowerShell cmdlets](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
+> * The Microsoft [Graph PowerShell modules](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
 > * You must log in with the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) user account for which you want to check the license details.
 
 ### [Z] COMPRESS LOGS / -CompressLogs <a name="compress-logs"></a>
