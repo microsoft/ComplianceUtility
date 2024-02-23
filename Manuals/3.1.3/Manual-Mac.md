@@ -73,7 +73,7 @@ The 'Unified Labeling Support Tool' uses additional sources and services from th
 
 Unexpected errors may occur, and some features may be limited, if there is no connection to the Internet.
 
-### Microsoft PowerShell (optional) <a name="ms-powershell"></a>
+### Microsoft PowerShell <a name="ms-powershell"></a>
 
 Please follow the instructions for [installing PowerShell on macOS](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3) to install it using your preferred method. Nevertheless the [installation via direct download](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3&viewFallbackFrom=powershell-7.1#installation-via-direct-download) is recommended.
 
