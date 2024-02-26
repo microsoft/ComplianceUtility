@@ -113,7 +113,7 @@ If you do not have this module installed, the 'Unified Labeling Support Tool' wi
 
 ### Graph PowerShell module <a name="graph-module"></a>
 
-The [Graph PowerShell modules](https://www.powershellgallery.com/packages/Microsoft.Graph) is required to proceed the option [User license details](#user-license-details) from the [COLLECT](#collect) menu.
+The [Graph PowerShell module](https://www.powershellgallery.com/packages/Microsoft.Graph) is required to proceed the option [User license details](#user-license-details) from the [COLLECT](#collect) menu.
 
 If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/Microsoft.Graph).
 
