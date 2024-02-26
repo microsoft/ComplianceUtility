@@ -159,7 +159,7 @@ Install-Module -Name UnifiedLabelingSupportTool
 
 #### Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
 
-If PowerShell script execution is restricted in your environment, you need to bypass this restriction to run the 'Unified Labeling Support Tool'. To do this, run the "Set-ExecutionPolicy" command with the following parameters:
+If PowerShell script execution is restricted in your environment, you need to bypass this restriction to run the 'Unified Labeling Support Tool'. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
 
 ```
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
@@ -185,7 +185,7 @@ To verify if the installation was successful, please review the [check installat
 
 ### Check installation <a name="check-installation"></a>
 
-To verify if the installation was successful, you can call the "Get-Module" cmdlet with the following parameter:
+To verify if the installation was successful, you can call the `Get-Module` cmdlet with the following parameter:
 
 ```
 Get-Module -ListAvailable
