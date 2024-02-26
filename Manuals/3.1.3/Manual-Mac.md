@@ -336,19 +336,11 @@ Results are written into log file [LabelsAndPolicies.log](#labels-and-policies-l
 > [!TIP]
 > You can use the resulting log file to create exact copies of the label and policy settings for troubleshooting purposes, e.g. in test environments. 
 
-> **Note**
->
-> The Exchange Online PowerShell module is required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
-
 ### [D] DLP rules and policies / -CollectDLPRulesAndPolicies <a name="dlp-rules-and-policies"></a>
 
 This parameter collects DLP rules and policies, sensitive information type details, rule packages, keyword dictionaries and exact data match schemas from the [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide).
 
 Results are written into log file [DLPRulesAndPolicies.log](#dlp-rules-log) in the subfolder "Collect" of the Logs folder.
-
-> **Note**
->
-> The  Exchange Online PowerShell module is required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
 
 ### [S] User license details <a name="user-license-details"></a>
 
@@ -358,7 +350,6 @@ Results are written into log file [UserLicenseDetails.log](#user-license-log) in
 
 > **Note**
 >
-> * The [Graph PowerShell module](https://www.powershellgallery.com/packages/Microsoft.Graph) is required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
 > * You must log in with the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) user account for which you want to check the license details.
 
 ### [Z] COMPRESS LOGS / -CompressLogs <a name="compress-logs"></a>
