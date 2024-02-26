@@ -8,9 +8,9 @@
    * [Microsoft Privacy Statement](#microsoft-privacy-statement)
 * [Requirements](#requirements)
    * [Internet access](#internet-access)
-   * [Microsoft PowerShell](#ms-powershell)
+   * [PowerShell](#ms-powershell)
+   * [Graph PowerShell module](#graph-module)
    * [Exchange Online PowerShell module](#exchange-online-module)
-   * [Microsoft Graph PowerShell modules](#graph-modules)
 * [Installation](#installation)
    * [Check installation](#check-installation)
 * [Uninstall](#uninstall)
@@ -77,25 +77,25 @@ The 'Unified Labeling Support Tool' uses additional sources and services from th
 > [!WARNING]
 > Unexpected errors may occur, and some features may be limited, if there is no connection to the Internet.
 
-### Microsoft PowerShell <a name="ms-powershell"></a>
+### PowerShell <a name="ms-powershell"></a>
 
-Please follow the instructions for [installing PowerShell on macOS](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3) to install it using your preferred method. Nevertheless the [installation via direct download](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3&viewFallbackFrom=powershell-7.1#installation-via-direct-download) is recommended.
+Please follow the instructions for [installing PowerShell on macOS](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.4) to install it using your preferred method. Nevertheless the [installation via direct download](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.4#installation-via-direct-download) is recommended.
 
 > **Note**
 > 
-> Microsoft PowerShell must be installed with local administrative privileges. Please request assistance from your administrator if necessary.
+> PowerShell must be installed with local administrative privileges. Please request assistance from your administrator if necessary.
+
+### Graph PowerShell module <a name="graph-module"></a>
+
+The [Graph PowerShell module](https://www.powershellgallery.com/packages/Microsoft.Graph) is required to proceed the option [User license details](#user-license-details) from the [COLLECT](#collect) menu.
+
+If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/Microsoft.Graph).
 
 ### Exchange Online PowerShell module <a name="exchange-online-module"></a>
 
-The Microsoft [Exchange Online PowerShell module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#release-notes) is required to proceed the options [Labels and policies](#labels-and-policies) and [DLP rules and policies](#dlp-rules-and-policies) from the menu [COLLECT](#collect).
+The [Exchange Online PowerShell module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#release-notes) is required to proceed the options [Labels and policies](#labels-and-policies) and [DLP rules and policies](#dlp-rules-and-policies) from the menu [COLLECT](#collect).
 
 If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
-
-### Microsoft Graph PowerShell modules <a name="graph-modules"></a>
-
-The Microsoft [Graph PowerShell modules](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed the option [User license details](#user-license-details) from the [COLLECT](#collect) menu.
-
-If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/Microsoft.Graph).
 
 # Installation <a name="installation"></a>
 
@@ -313,7 +313,7 @@ Results are written into log file [LabelsAndPolicies.log](#labels-and-policies-l
 
 > **Note**
 >
-> The Microsoft Exchange Online Management module is required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
+> The Exchange Online PowerShell module is required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
 
 ### [D] DLP rules and policies / -CollectDLPRulesAndPolicies <a name="dlp-rules-and-policies"></a>
 
@@ -323,7 +323,7 @@ Results are written into log file [DLPRulesAndPolicies.log](#dlp-rules-log) in t
 
 > **Note**
 >
-> The Microsoft Exchange Online PowerShell module is required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
+> The  Exchange Online PowerShell module is required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
 
 ### [S] User license details <a name="user-license-details"></a>
 
@@ -333,7 +333,7 @@ Results are written into log file [UserLicenseDetails.log](#user-license-log) in
 
 > **Note**
 >
-> * The Microsoft [Graph PowerShell modules](https://www.powershellgallery.com/packages/Microsoft.Graph) are required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
+> * The [Graph PowerShell module](https://www.powershellgallery.com/packages/Microsoft.Graph) is required to proceed this option. If you do not have this module installed, 'Unified Labeling Support Tool' will try to install it from PowerShell Gallery.
 > * You must log in with the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) user account for which you want to check the license details.
 
 ### [Z] COMPRESS LOGS / -CompressLogs <a name="compress-logs"></a>
