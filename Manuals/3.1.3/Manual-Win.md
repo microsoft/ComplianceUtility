@@ -3,7 +3,7 @@
 
 **Contents**
 
-* [Introduction](#introduction)
+* [Description](#description)
    * [MIT License](#mit-license)
    * [Microsoft Privacy Statement](#microsoft-privacy-statement)
 * [Requirements](#requirements)
@@ -18,7 +18,7 @@
    * [Check installation](#check-installation)
 * [Uninstall](#uninstall)
 * [User experience](#experience)
-* [Features](#features)
+* [Features / Parameters](#features-parameters)
    * [INFORMATION](#information)
    * [HELP](#help-win)
    * [RESET](#reset)
@@ -38,11 +38,10 @@
   * [Microsoft Support Policy](#support-policy)
   * [How to file issues and get help](#get-help)
  
-## Introduction <a name="introduction"></a>
+## Description <a name="description"></a>
 
-This information gives you background and usage information for the [UnifiedLabelingSupportTool](https://aka.ms/UnifiedLabelingSupportTool/Latest) PowerShell script module.
 
-Have you ever used the Sensitivity button in a [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365)? If so, you've either used the [Azure Information Protection client](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) or [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Unified Labeling Support Tool' will help you.
+The 'Unified Labeling Support Tool' provides the functionality to reset all corresponding Information Protection client services. Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for error analysis and troubleshooting.
 
 > [!CAUTION]
 > The Azure Information Protection (AIP) Unified Labeling add-in for Office has been retired on April 11th, 2024.
@@ -53,7 +52,7 @@ Have you ever used the Sensitivity button in a [Microsoft 365 App](https://www.m
 >
 > For the announcement and FAQs of the retirement, refer to our blog: [Retirement notification for the Azure Information Protection Unified Labeling add-in for Office.](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/retirement-notification-for-the-azure-information-protection/ba-p/3791908)
 
-The 'Unified Labeling Support Tool' provides the functionality to reset all corresponding Information Protection client services. Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for error analysis and troubleshooting.
+Have you ever used the Sensitivity button in a [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365)? If so, you've either used the [Azure Information Protection client](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) or [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Unified Labeling Support Tool' will help you.
 
 > **Note**
 > 
@@ -64,7 +63,11 @@ With the 'Unified Labeling Support Tool', you can run the most common options wi
 
 However, if you run the 'Unified Labeling Support Tool' with local administrative privileges, you will get some more collected logs ([RECORD PROBLEM](#record-problem)) and a complete [RESET](#reset) of all settings, instead of just user-specific settings being reset. By the way: The latter option is sufficient in most cases to reset [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365), while a complete reset is usually useful for all other applications.
 
-## MIT License <a name="mit-license"></a>
+
+
+
+
+### MIT License <a name="mit-license"></a>
 
 Copyright © Microsoft Corporation.
 
@@ -74,7 +77,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 
-## Microsoft Privacy Statement <a name="microsoft-privacy-statement"></a>
+### Microsoft Privacy Statement <a name="microsoft-privacy-statement"></a>
 
 Your privacy is important to us. [This privacy statement](https://privacy.microsoft.com/en-US/privacystatement) explains the personal data Microsoft processes, how Microsoft processes it, and for what purposes.
 
@@ -241,7 +244,7 @@ If the 'Unified Labeling Support Tool' was installed manually, you also need to 
 
 # User experience <a name="experience"></a>
 
-To start the 'Unified Labeling Support Tool', simply type the following command in a PowerShell command window and press enter:
+To start the 'Unified Labeling Support Tool', simply type the following command in a PowerShell window and press enter:
 
 ```
 UnifiedLabelingSupportTool
@@ -284,9 +287,36 @@ To see the help for a single command line parameter, for example for "-CompressL
 Get-Help UnifiedLabelingSupportTool -Parameter CompressLogs
 ```
 
-# Features <a name="features"></a>
+# Features / Parameters <a name="features-parameters"></a>
 
-The 'Unified Labeling Support Tool' provides the following features (menu entry / command line parameter):
+The 'Unified Labeling Support Tool' provides the following parameters:
+
+**Syntax:**
+
+```
+UnifiedLabelingSupportTool
+       [-Information]
+       [-License]
+       [-Help]
+       [-Reset] <String>
+       [-RecordProblem]
+       [-CollectAIPServiceConfiguration]
+       [-CollectProtectionTemplates]
+       [-CollectEndpointURLs]
+       [-CollectLabelsAndPolicies]
+       [-CollectDLPRulesAndPolicies]
+       [-CollectUserLicenseDetails]
+       [-SkipUpdates]
+       [-CompressLogs]
+       [-Menu]
+       <CommonParameters>
+```
+
+> **Note**
+>
+> The 'Unified Labeling Support Tool' supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
+
+Description of all features and parameters (feature / parameter):
 
 ### [I] INFORMATION / -Information <a name="information"></a>
 
