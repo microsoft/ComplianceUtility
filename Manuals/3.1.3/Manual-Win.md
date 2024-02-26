@@ -276,7 +276,7 @@ To see a complete list of all command line parameters with details (command line
 Get-Help UnifiedLabelingSupportTool -Detailed
 ```
 
-To see the help for a single command line parameter, for example for "-CompressLogs", run the following command:
+To see the help for a single command line parameter, for example for `-CompressLogs`, run the following command:
 
 ```
 Get-Help UnifiedLabelingSupportTool -Parameter CompressLogs
@@ -413,13 +413,13 @@ When you run the 'Unified Labeling Support Tool' in an administrative PowerShell
 
 **Silent:**
 
-This command line parameter argument does the same as "-Reset Default", but does not print any output - unless an error occurs when attempting to reset:
+This command line parameter argument does the same as `-Reset Default`, but does not print any output - unless an error occurs when attempting to reset:
 
 ```
 UnifiedLabelingSupportTool -Reset Silent
 ```
 
-If a silent reset triggers an error, you can use the additional parameter "-Verbose" to find out more about the cause of the error:
+If a silent reset triggers an error, you can use the additional parameter `-Verbose` to find out more about the cause of the error:
 
 ```
 UnifiedLabelingSupportTool -Reset Silent -Verbose
