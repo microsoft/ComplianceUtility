@@ -127,7 +127,7 @@ The 'Unified Labeling Support Tool' is code-signed with a Microsoft certificate.
 
 ### Check installation <a name="check-installation"></a>
 
-To verify if the installation was successful, you can call the "Get-Module" cmdlet with the following parameter:
+To verify if the installation was successful, you can call the `Get-Module` cmdlet with the following parameter:
 
 ```
 Get-Module -ListAvailable
