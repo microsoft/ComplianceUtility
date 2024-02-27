@@ -60,7 +60,7 @@ Have you ever used the Sensitivity button in a [Microsoft 365 App](https://www.m
 With the 'Unified Labeling Support Tool', you can run the most common options without local administrative privileges:
 [RESET](#reset), [RECORD PROBLEM](#record-problem), and COLLECT [Endpoint URLs](#endpoint-urls).
 
-However, if you run the 'Unified Labeling Support Tool' with local administrative privileges, you will get some more collected logs ([RECORD PROBLEM](#record-problem)) and a complete [RESET](#reset) of all settings, instead of just user-specific settings being reset. By the way: The latter option is sufficient in most cases to reset [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365), while a complete reset is usually useful for all other applications.
+However, if you run the 'Unified Labeling Support Tool' with local administrative privileges, you will get some more collected logs ([RECORD PROBLEM](#record-problem)) and a complete [RESET](#reset) of all settings, instead of just user-specific settings being reset. By the way: The latter option is sufficient in most cases to reset [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services), while a complete reset is usually useful for all other applications.
 
 ### MIT License <a name="mit-license"></a>
 
@@ -86,7 +86,7 @@ The 'Unified Labeling Support Tool' supports [Windows PowerShell 5.1](https://le
 
 The 'Unified Labeling Support Tool' supports the following Microsoft 365/Office versions:
 
-   * Microsoft Office 2016, Microsoft Office 2019, Microsoft Office 2021, Microsoft 365 Apps and Microsoft 365 for Mac ([most recently released version](https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac)).
+   * Microsoft Office 2016, Microsoft Office 2019, Microsoft Office 2021, [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) and Microsoft 365 for Mac ([most recently released version](https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac)).
 
 > **Note**
 >
@@ -360,7 +360,7 @@ This option removes all relevant policies, labels and settings.
 
 > **Note**
 >
-> * Reset with the default argument will not reset all settings, but only user-specific settings if you run PowerShell with user privileges. This is sufficient in most cases to reset [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365), while a complete reset is useful for all other applications.
+> * Reset with the default argument will not reset all settings, but only user-specific settings if you run PowerShell with user privileges. This is sufficient in most cases to reset [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services), while a complete reset is useful for all other applications.
 > * If you want a complete reset, you need to run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges.
 
 Valid <String> arguments are: "Default", or "Silent":
