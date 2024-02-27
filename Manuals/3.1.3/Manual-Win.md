@@ -149,7 +149,7 @@ Install-Module -Name UnifiedLabelingSupportTool
 
 > **Note**
 >
-> If you do not have a required component installed on your computer, you will be prompted to do so. You may need to confirm the installation of NuGet Provider and PowerShell Gallery as a trusted repository, and you may also need to confirm the installation of [PowerShellGet](https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-5.1).
+> If you do not have a required component installed, you will be prompted to do so. You may need to confirm the installation of NuGet Provider and PowerShell Gallery as a trusted repository, and you may also need to confirm the installation of [PowerShellGet](https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-5.1).
 
 #### Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
 
