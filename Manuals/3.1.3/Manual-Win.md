@@ -188,13 +188,13 @@ To verify if the installation was successful, please review the [check installat
 To verify if the installation was successful, you can call the `Get-Module` cmdlet with the following parameter:
 
 ```
-Get-Module -ListAvailable
+Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
 ```
 
 If you find an entry like the following, the installation was successful:
 
 ```
-PS C:\> Get-Module -ListAvailable
+PS C:\> Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
 
     Directory: C:\Users\<UserName>\Documents\WindowsPowerShell\Modules
 
