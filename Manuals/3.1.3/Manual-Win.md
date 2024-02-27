@@ -360,7 +360,7 @@ This option removes all relevant policies, labels and settings.
 
 > **Note**
 >
-> * Reset with the default argument will not reset all settings, but only user-specific settings if you run PowerShell with user privileges. This is sufficient in most cases to reset [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365 Apps), while a complete reset is useful for all other applications.
+> * Reset with the default argument will not reset all settings, but only user-specific settings if you run PowerShell with user privileges. This is sufficient in most cases to reset [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365), while a complete reset is useful for all other applications.
 > * If you want a complete reset, you need to run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges.
 
 Valid <String> arguments are: "Default", or "Silent":
