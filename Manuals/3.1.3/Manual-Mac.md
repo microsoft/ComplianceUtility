@@ -319,8 +319,6 @@ You can also review the [Script.log](#script-log-file) file for errors of silent
 
 This parameter asks you to reproduce the problem. While you’re doing so, the 'Unified Labeling Support Tool' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`~/Documents/UnifiedLabelingSupportTool`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
 
-You can then review the [log files](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/Manuals/3.1.3/Manual-Win.md#log-files) in the logs folder.
-
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
 This parameter collects the labels and policy definitions (with detailled label actions and policy rules) from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide). Those with encryption and those with content marking only.
