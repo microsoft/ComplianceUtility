@@ -165,11 +165,17 @@ The 'Unified Labeling Support Tool' is code-signed with a Microsoft certificate.
 
 If you’re using the 'Unified Labeling Support Tool' in an environment that does not have Internet access, you need to proceed with the manual installation.
 
-To install the 'Unified Labeling Support Tool' manually, you need to create the following folder, and copy/paste all the 'Unified Labeling Support Tool' files (`UnifiedLabelingSupportTool.psm1` and `UnifiedLabelingSupportTool.psd1` into this folder:
+To install the 'Unified Labeling Support Tool' manually, you must create the following folder and copy/paste all 'Unified Labeling Support Tool' files (`UnifiedLabelingSupportTool.psm1` and `UnifiedLabelingSupportTool.psd1`) into this folder.
+
+For Windows PowerShell 5.1:
 
 ``` %USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.1.3```
 
-This path need to be listed in the [PSModulePath environment variable](https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable).
+For Microsoft PowerShell 7.x:
+
+``` %USERPROFILE%\Documents\PowerShell\Modules\UnifiedLabelingSupportTool\3.1.3```
+
+The corresponding path must be listed in the [PSModulePath environment variable](https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable).
 
 To verify if the installation was successful, please review the [check installation](#check-installation) section.
 
