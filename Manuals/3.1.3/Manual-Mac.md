@@ -342,7 +342,7 @@ Results are written into log file [UserLicenseDetails.log](#user-license-log) in
 
 > **Note**
 >
-> * You must log in with the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) user account for which you want to check the license details.
+> * You must log in with the corresponding Microsoft 365 user account for which you want to check the license details.
 
 ### [Z] COMPRESS LOGS / -CompressLogs <a name="compress-logs"></a>
 
