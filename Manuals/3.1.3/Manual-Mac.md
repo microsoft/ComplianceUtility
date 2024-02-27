@@ -70,7 +70,7 @@ The 'Unified Labeling Support Tool' supports the following Office/Microsoft 365 
 
 ### Internet access <a name="internet-access"></a>
 
-The 'Unified Labeling Support Tool' uses additional sources and services from the Internet to make its functionality fully available.
+The 'Unified Labeling Support Tool' uses additional sources from the Internet to make its functionality fully available.
 
 > [!WARNING]
 > Unexpected errors may occur, and some features may be limited, if there is no connection to the Internet.
