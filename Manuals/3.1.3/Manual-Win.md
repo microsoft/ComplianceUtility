@@ -221,7 +221,7 @@ Version   Name                         Repository     Description
 
 # Uninstall <a name="uninstall"></a>
 
-If you want to completely uninstall the 'Unified Labeling Support Tool' and it was installed via the PowerShell Gallery, you must execute the following command:
+If you want to completely uninstall the 'Unified Labeling Support Tool', you must execute the following command:
 
 ```
 Uninstall-Module -Name UnifiedLabelingSupportTool -AllVersions
