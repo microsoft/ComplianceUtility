@@ -454,8 +454,6 @@ This parameter asks you to reproduce the problem. While you’re doing so, the '
 
 In the event that you accidentally close the PowerShell window while logging is enabled, the 'Unified Labeling Support Tool' disables logging the next time you start it.
 
-You can then review the [log files](#log-files) in the logs folder.
-
 > **Note**
 >
 > Neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the 'Unified Labeling Support Tool' is not run in an administrative PowerShell window as a user with local administrative privileges.
