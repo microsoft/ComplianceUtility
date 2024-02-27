@@ -36,7 +36,7 @@
 
 The 'Unified Labeling Support Tool' provides the functionality to reset all corresponding Information Protection client services. Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for error analysis and troubleshooting.
 
-Have you ever used the Sensitivity button in a [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365)? If so, you've used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Unified Labeling Support Tool' will help you.
+Have you ever used the Sensitivity button in a [Microsoft 365 App]([https://www.microsoft.com/en-us/microsoft-365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services))? If so, you've used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Unified Labeling Support Tool' will help you.
 
 > **Note**
 > 
@@ -128,13 +128,13 @@ The 'Unified Labeling Support Tool' is code-signed with a Microsoft certificate.
 To verify if the installation was successful, you can call the `Get-Module` cmdlet with the following parameter:
 
 ```
-Get-Module -ListAvailable
+Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
 ```
 
 If you find an entry like the following, the installation was successful:
 
 ```
-PS C:\> Get-Module -ListAvailable
+PS C:\> Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
 
     Directory: C:\Users\<UserName>\Documents\WindowsPowerShell\Modules
 
@@ -188,6 +188,20 @@ Please select an option and press enter:
 
 > [!TIP]
 > For better readability, it is recommended to change the Terminal/PowerShell window settings to the "Pro" profile.
+
+If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it by selecting option `[C] COLLECT` again: <a name="collect"></a>
+
+```
+  [C] COLLECT
+   ├──[L] Labels and policies
+   ├──[D] DLP rules and policies
+   └──[S] User license details
+```
+
+> **Note**
+>
+> * With an exception of the [User license details](#user-license-details) entry, you need to run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to proceed with any option from this submenu. Please contact your administrator if necessary.
+> * You need to know your Microsoft 365 global administrator account information to proceed, as you will be asked for your credentials.
 
 You can also start the 'Unified Labeling Support Tool' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
 
@@ -310,22 +324,6 @@ You can also review the [Script.log](#script-log-file) file for errors of silent
 This parameter asks you to reproduce the problem. While you’re doing so, the 'Unified Labeling Support Tool' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`~/Documents/UnifiedLabelingSupportTool`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
 
 You can then review the [log files](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/Manuals/3.1.3/Manual-Win.md#log-files) in the logs folder.
-
-### [C] COLLECT / - <a name="collect"></a>
-
-If you select this option, a submenu will be expanded, and you can collapse it by selecting option [C] COLLECT again:
-
-```
-  [C] COLLECT
-   ├──[L] Labels and policies
-   ├──[D] DLP rules and policies
-   └──[S] User license details
-```
-
-> **Note**
->
-> * With an exception of the [User license details](#user-license-details) entry, you need to run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to proceed with any option from this submenu. Please contact your administrator if necessary.
-> * You need to know your [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) global administrator account information to proceed, as you will be asked for your credentials.
 
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
