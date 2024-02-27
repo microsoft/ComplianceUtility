@@ -264,10 +264,6 @@ This displays the [MIT License](#mit-license).
 
 This opens the online manual.
 
-> **Note**
->
-> If you do not have Internet access, please use the [command line help](#command-line-help).
-
 ### [R] RESET / -Reset <String> <a name="reset"></a>
 
 > [!IMPORTANT]
