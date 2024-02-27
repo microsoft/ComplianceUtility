@@ -264,7 +264,27 @@ UnifiedLabelingSupportTool:
 Please select an option and press enter:
 ```
 
-For the most sub-items of the [COLLECT](#collect) menu, you need to run the 'Unified Labeling Support Tool' as a user with local administrative privileges. For option [RESET](#reset), [RECORD PROBLEM](#record-problem), and for sub-item [Endpoint URLs](#endpoint-urls) of the [COLLECT](#collect) menu, you may run as user with local administrative privileges. Please contact your administrator if necessary.
+> **Note**
+>
+> For option [RESET](#reset) and [RECORD PROBLEM](#record-problem) you may run as user with local administrative privileges. Please contact your administrator if necessary.
+
+If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it by selecting option `[C] COLLECT` again: <a name="collect"></a>
+
+```
+  [C] COLLECT
+   ├──[A] AIP service configuration
+   ├──[T] Protection templates
+   ├──[U] Endpoint URLs
+   ├──[L] Labels and policies
+   ├──[D] DLP rules and policies
+   └──[S] User license details
+```
+
+> **Note**
+>
+> * With an exception of the [User license details](#user-license-details) entry, for the most sub-items of the COLLECT menu, you need to run the 'Unified Labeling Support Tool' as a user with local administrative privileges.
+> * You need to run the 'Unified Labeling Support Tool' as user with local administrative privileges to continue with option [Endpoint URLs](#endpoint-urls), if the corresponding Microsoft 365 App is not bootstraped. Please contact your administrator if necessary.
+> * You need to know your Microsoft 365 global administrator account information to proceed, as you will be asked for your credentials.
 
 You can also start the 'Unified Labeling Support Tool' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
 
@@ -443,26 +463,6 @@ You can then review the [log files](#log-files) in the logs folder.
 > **Note**
 >
 > Neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the 'Unified Labeling Support Tool' is not run in an administrative PowerShell window as a user with local administrative privileges.
-
-### [C] COLLECT / - <a name="collect"></a>
-
-If you select this option, a submenu will be expanded, and you can collapse it by selecting option [C] COLLECT again:
-
-```
-  [C] COLLECT
-   ├──[A] AIP service configuration
-   ├──[T] Protection templates
-   ├──[U] Endpoint URLs
-   ├──[L] Labels and policies
-   ├──[D] DLP rules and policies
-   └──[S] User license details
-```
-
-> **Note**
->
-> * With an exception of the [User license details](#user-license-details) entry, you need to run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges to proceed with any option from this submenu. Please contact your administrator if necessary.
-> * You need to know your [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) global administrator account information to proceed, as you will be asked for your credentials.
-> * You need to run the 'Unified Labeling Support Tool' as user with local administrative privileges to continue with option [Endpoint URLs](#endpoint-urls), if the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) App is not bootstraped. Please contact your administrator if necessary.
 
 ### [A] AIP service configuration / -CollectAIPServiceConfiguration <a name="aip-service-config"></a>
 
