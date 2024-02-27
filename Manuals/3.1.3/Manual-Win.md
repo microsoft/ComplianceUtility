@@ -283,7 +283,7 @@ If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it
 > **Note**
 >
 > * With an exception of the [User license details](#user-license-details) entry, for the most sub-items of the COLLECT menu, you need to run the 'Unified Labeling Support Tool' as a user with local administrative privileges.
-> * You need to run the 'Unified Labeling Support Tool' as user with local administrative privileges to continue with option [Endpoint URLs](#endpoint-urls), if the corresponding Microsoft 365 App is not bootstraped. Please contact your administrator if necessary.
+> * You need to run the 'Unified Labeling Support Tool' as user with local administrative privileges to continue with option [Endpoint URLs](#endpoint-urls), if the corresponding [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) is not bootstraped. Please contact your administrator if necessary.
 > * You need to know your Microsoft 365 global administrator account information to proceed, as you will be asked for your credentials.
 
 You can also start the 'Unified Labeling Support Tool' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
