@@ -97,7 +97,7 @@ If you do not have this module installed, the 'Unified Labeling Support Tool' wi
 
 # Installation <a name="installation"></a>
 
-The 'Unified Labeling Support Tool' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/UnifiedLabelingSupportTool/) and the fastest and easiest way to install it with user privileges is to run the following command in PowerShell:
+The 'Unified Labeling Support Tool' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/UnifiedLabelingSupportTool/). To start the installation, you must first execute the `pwsh` command in a Terminal window to start a PowerShell session. Then enter the following command and press enter to start the installation of the 'Unified Labeling Support Tool':
 
 ```
 Install-Module -Name UnifiedLabelingSupportTool -Scope CurrentUser
