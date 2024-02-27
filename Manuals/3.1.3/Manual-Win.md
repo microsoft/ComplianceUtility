@@ -107,7 +107,7 @@ If you do not have this module installed, the 'Unified Labeling Support Tool' wi
 
 > **Note**
 > 
-> The AIPService module does not support PowerShell 7.x. Therefore, unexpected errors may occur because the AIPService module is running in compatibility mode.
+> The AIPService module does not support PowerShell 7.x. Therefore, unexpected errors may occur because the AIP service module is executed in compatibility mode in PowerShell 7.x.
 
 ### Graph PowerShell module <a name="graph-module"></a>
 
@@ -125,17 +125,13 @@ If you do not have this module installed, the 'Unified Labeling Support Tool' wi
 
 Please follow the instructions for [installing PowerShell on Windows](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) to install it using your preferred method if you want to use the 'Unified Labeling Support Tool' on Microsoft [PowerShell 7.4](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (or higher).
 
-> **Note**
-> 
-> Neither the [AIPService module](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps) nor the [Azure Information Protection module](https://learn.microsoft.com/en-us/powershell/azure/aip/overview?view=azureipps) support PowerShell 7.x. Therefore, unexpected errors may occur because these modulse are running in compatibility mode.
-
 ### Azure Information Protection module (optional) <a name="aip-module"></a>
 
 The Azure Information Protection module is installed with the [Azure Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018). Please ensure to have the latest version of the Azure Information Protection module installed by checking its [client version release history](https://docs.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history).
 
 > **Note**
 > 
-> The Azure Information Protection module does not support PowerShell 7.x. Therefore, unexpected errors may occur because the Azure Information Protection module is running in compatibility mode.
+> The Azure Information Protection module does not support PowerShell 7.x. Therefore, unexpected errors may occur because the Azure Information Protection module is executed in compatibility mode in PowerShell 7.x.
 
 # Installation <a name="installation"></a>
 
@@ -497,7 +493,7 @@ Results are written into log file [EndpointURLs.log](#endpoint-urls-log) in the 
 
 > **Note**
 >
-> This parameter uses the AIPService module. Please note that the AIPService module does not support PowerShell 7.x. Therefore, unexpected errors may occur because the AIPService module is running in compatibility mode.
+> This feature/parameter uses the AIPService module, which PowerShell 7.x does not support. Therefore, unexpected errors may occur because the AIP service module is executed in compatibility mode in PowerShell 7.x.
 
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
