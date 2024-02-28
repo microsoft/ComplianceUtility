@@ -246,10 +246,6 @@ UnifiedLabelingSupportTool
        <CommonParameters>
 ```
 
-> **Note**
->
-> The 'Unified Labeling Support Tool' supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
-
 Description of all features and parameters (feature / parameter):
 
 ### [I] INFORMATION / -Information <a name="information"></a>
@@ -364,6 +360,10 @@ This parameter skips the update check mechanism for entries of the [COLLECT](#co
 ### - / -Menu <a name="menu"></a>
 
 This will start the 'Unified Labeling Support Tool' with the default menu.
+
+### <strong>&lt;CommonParameters&gt;</strong>
+
+The 'Unified Labeling Support Tool' supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
 
 # Script log file <a name="script-log-file"></a>
 
