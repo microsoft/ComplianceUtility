@@ -1,6 +1,6 @@
 # Unified Labeling Support Tool
 
-The 'Unified Labeling Support Tool' provides the functionality to reset all corresponding Information Protection client services. Its main purpose is to delete the currently downloaded sensitivity label policies and thus reset all settings, and it can also be used to collect data for error analysis and troubleshooting.
+The 'Unified Labeling Support Tool' is a powerful compliance utility that helps manage sensitivity labels, policies, settings and more. Whether you need to troubleshoot issues or reset configurations, this tool has you covered.
 
 > [!CAUTION]
 > The Azure Information Protection (AIP) Unified Labeling add-in for Office will be retired on April 11th, 2024.
