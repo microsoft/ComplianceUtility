@@ -107,7 +107,7 @@ If you do not have this module installed, the 'Unified Labeling Support Tool' wi
 
 > **Note**
 > 
-> The AIPService module does not support PowerShell 7.x. Therefore, unexpected errors may occur because the AIP service module is executed in compatibility mode in PowerShell 7.x.
+> The AIPService module does not yet support PowerShell 7.x. Therefore, unexpected errors may occur because the AIP service module is executed in compatibility mode in PowerShell 7.x.
 
 ### Graph PowerShell module <a name="graph-module"></a>
 
@@ -489,7 +489,7 @@ Results are written into log file [EndpointURLs.log](#endpoint-urls-log) in the 
 
 > **Note**
 >
-> This feature/parameter uses the AIPService module, which PowerShell 7.x does not support. Therefore, unexpected errors may occur because the AIP service module is executed in compatibility mode in PowerShell 7.x.
+> This feature/parameter uses the AIPService module, which PowerShell 7.x does not yet support. Therefore, unexpected errors may occur because the AIP service module is executed in compatibility mode in PowerShell 7.x.
 
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
