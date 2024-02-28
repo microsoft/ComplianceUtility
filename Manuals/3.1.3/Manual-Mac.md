@@ -246,6 +246,10 @@ UnifiedLabelingSupportTool
        <CommonParameters>
 ```
 
+> **Note**
+>
+> Features/Parameters `-CollectAIPServiceConfiguration`, `-CollectProtectionTemplates` and `-CollectEndpointURLs` are not yet available on Apple macOS. They would need the [AIPService module](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps) and the [Azure Information Protection module](https://www.microsoft.com/en-us/download/details.aspx?id=53018). Both are currently not supported by PowerShell 7.x.
+
 Description of all features and parameters (feature / parameter):
 
 ### [I] INFORMATION / -Information <a name="information"></a>
