@@ -36,7 +36,7 @@
 
 The 'Unified Labeling Support Tool' is a powerful compliance utility that helps manage sensitivity labels, policies, settings and more. Whether you need to troubleshoot issues or reset configurations, this tool has you covered.
 
-Have you ever used the Sensitivity button in a [Microsoft 365 App]([https://www.microsoft.com/en-us/microsoft-365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services))? If so, you've used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Unified Labeling Support Tool' will help you.
+Have you ever used the Sensitivity button in a [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services)? If so, you've used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Unified Labeling Support Tool' will help you.
 
 > **Note**
 > 
