@@ -254,7 +254,7 @@ Description of all features and parameters (feature / parameter):
 
 ### [I] INFORMATION / -Information <a name="information"></a>
 
-This shows syntax, description and version information of the 'Unified Labeling Support Tool'.
+This shows syntax, description and version information.
 
 ### [M] MIT LICENSE / -License
 
