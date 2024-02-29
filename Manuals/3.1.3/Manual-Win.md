@@ -169,11 +169,15 @@ To install the 'Unified Labeling Support Tool' manually, you must create the fol
 
 For Windows PowerShell 5.1:
 
-``` %USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.1.3```
+```
+%USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.1.3
+```
 
 For Microsoft PowerShell 7.x:
 
-``` %USERPROFILE%\Documents\PowerShell\Modules\UnifiedLabelingSupportTool\3.1.3```
+```
+%USERPROFILE%\Documents\PowerShell\Modules\UnifiedLabelingSupportTool\3.1.3
+```
 
 The corresponding path must be listed in the [PSModulePath environment variable](https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable).
 
