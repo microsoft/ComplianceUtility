@@ -475,7 +475,7 @@ This parameter collects important endpoint URLs. The URLs are taken from your lo
 
 In a first step, this parameter is used to check whether you can access the URL. In a second step, the issuer of the corresponding certificate of the URL is collected. This process is represented by an output with the Tenant Id, Endpoint name, URL, and Issuer of the certificate. For example:
 
-```PowerShell
+```
 --------------------------------------------------
 Tenant Id: 48fc04bd-c84b-44ac-b7991b7-a4c5eefd5ac1
 --------------------------------------------------
