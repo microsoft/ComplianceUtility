@@ -137,13 +137,13 @@ The Azure Information Protection module is installed with the [Azure Information
 
 The 'Unified Labeling Support Tool' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/UnifiedLabelingSupportTool/) and the fastest and easiest way to install it with user privileges is to run the following command in PowerShell:
 
-```
+```PowerShell
 Install-Module -Name UnifiedLabelingSupportTool -Scope CurrentUser
 ```
 
 If you have local administrative privileges, you can run the following command instead:
 
-```
+```PowerShell
 Install-Module -Name UnifiedLabelingSupportTool
 ```
 
@@ -155,7 +155,7 @@ Install-Module -Name UnifiedLabelingSupportTool
 
 If PowerShell script execution is restricted in your environment, you need to bypass this restriction to run the 'Unified Labeling Support Tool'. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
 
-```
+```PowerShell
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 ```
 
@@ -187,13 +187,13 @@ To verify if the installation was successful, please review the [check installat
 
 To verify if the installation was successful, you can call the `Get-Module` cmdlet with the following parameter:
 
-```
+```PowerShell
 Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
 ```
 
 If you find an entry like the following, the installation was successful:
 
-```
+```PowerShell
 PS C:\> Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
 
     Directory: C:\Users\<UserName>\Documents\WindowsPowerShell\Modules
@@ -205,13 +205,13 @@ Script       3.1.3      UnifiedLabelingSupportTool    {UnifiedLabelingSupportToo
 
 To verify that an installation was performed using PowerShell Gallery, you can run the following command:
 
-```
+```PowerShell
 Get-InstalledModule -Name UnifiedLabelingSupportTool
 ```
 
 If you find an entry like the following, the installation was performed by PowerShell Gallery:
 
-```
+```PowerShell
 PS C:\> Get-InstalledModule -Name UnifiedLabelingSupportTool
 
 Version   Name                         Repository     Description
@@ -223,13 +223,13 @@ Version   Name                         Repository     Description
 
 If you want to completely uninstall the 'Unified Labeling Support Tool', you must execute the following command:
 
-```
+```PowerShell
 Uninstall-Module -Name UnifiedLabelingSupportTool -AllVersions
 ```
 
 If you want to uninstall a specific version, for example version 3.1.2, you must execute the following command:
 
-```
+```PowerShell
 Uninstall-Module -Name UnifiedLabelingSupportTool -RequiredVersion 3.1.2
 ```
 
@@ -243,13 +243,13 @@ If the 'Unified Labeling Support Tool' was installed manually, you also need to 
 
 To start the 'Unified Labeling Support Tool', simply type the following command in a PowerShell window and press enter:
 
-```
+```PowerShell
 UnifiedLabelingSupportTool
 ```
 
 When you start the 'Unified Labeling Support Tool', you'll see the following menu:
 
-```
+```PowerShell
 UnifiedLabelingSupportTool:
 
   [I] INFORMATION
@@ -259,7 +259,7 @@ UnifiedLabelingSupportTool:
   [P] RECORD PROBLEM
   [C] COLLECT
   [Z] COMPRESS LOGS
-  [X] EXIT MENU
+  [X] EXIT
  
 Please select an option and press enter:
 ```
@@ -270,7 +270,7 @@ Please select an option and press enter:
 
 If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it by selecting option `[C] COLLECT` again: <a name="collect"></a>
 
-```
+```PowerShell
   [C] COLLECT
    ├──[A] AIP service configuration
    ├──[T] Protection templates
@@ -288,19 +288,19 @@ If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it
 
 You can also start the 'Unified Labeling Support Tool' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
 
-```
+```PowerShell
 UnifiedLabelingSupportTool -Information
 ```
 
 To see a complete list of all command line parameters with details (command line help), execute the following command: <a name="command-line-help"></a>
 
-```
+```PowerShell
 Get-Help UnifiedLabelingSupportTool -Detailed
 ```
 
 To see the help for a single command line parameter, for example for `-CompressLogs`, run the following command:
 
-```
+```PowerShell
 Get-Help UnifiedLabelingSupportTool -Parameter CompressLogs
 ```
 
@@ -361,7 +361,7 @@ Valid <String> arguments are: "Default", or "Silent":
 
 When you run PowerShell with user privileges, this argument removes all relevant policies, labels and settings:
 
-```
+```PowerShell
 UnifiedLabelingSupportTool -Reset Default
 ```
 
@@ -429,13 +429,13 @@ When you run the 'Unified Labeling Support Tool' in an administrative PowerShell
 
 This command line parameter argument does the same as `-Reset Default`, but does not print any output - unless an error occurs when attempting to reset:
 
-```
+```PowerShell
 UnifiedLabelingSupportTool -Reset Silent
 ```
 
 If a silent reset triggers an error, you can use the additional parameter `-Verbose` to find out more about the cause of the error:
 
-```
+```PowerShell
 UnifiedLabelingSupportTool -Reset Silent -Verbose
 ```
 
@@ -475,7 +475,7 @@ This parameter collects important endpoint URLs. The URLs are taken from your lo
 
 In a first step, this parameter is used to check whether you can access the URL. In a second step, the issuer of the corresponding certificate of the URL is collected. This process is represented by an output with the Tenant Id, Endpoint name, URL, and Issuer of the certificate. For example:
 
-```
+```PowerShell
 --------------------------------------------------
 Tenant Id: 48fc04bd-c84b-44ac-b7991b7-a4c5eefd5ac1
 --------------------------------------------------
