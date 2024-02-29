@@ -537,7 +537,7 @@ This parameter skips the update check mechanism for all entries of the [COLLECT]
 
 This will start the 'Unified Labeling Support Tool' with the default menu.
 
-### <strong>&lt;CommonParameters&gt;</strong>
+### \<CommonParameters>
 
 The 'Unified Labeling Support Tool' supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
 
