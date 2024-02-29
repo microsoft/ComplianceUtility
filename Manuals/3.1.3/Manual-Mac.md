@@ -133,9 +133,7 @@ Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
 
 If you find an entry like the following, the installation was successful:
 
-```PowerShell
-PS C:\> Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
-
+```
     Directory: C:\Users\<UserName>\Documents\WindowsPowerShell\Modules
 
 ModuleType   Version    Name                          ExportedCommands
@@ -171,7 +169,7 @@ UnifiedLabelingSupportTool
 
 When you start the 'Unified Labeling Support Tool', you'll see the following menu:
 
-```PowerShell
+```
 UnifiedLabelingSupportTool:
 
   [I] INFORMATION
@@ -191,7 +189,7 @@ Please select an option and press enter:
 
 If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it by selecting option `[C] COLLECT` again: <a name="collect"></a>
 
-```PowerShell
+```
   [C] COLLECT
    ├──[L] Labels and policies
    ├──[D] DLP rules and policies
