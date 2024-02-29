@@ -197,9 +197,7 @@ Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
 
 If you find an entry like the following, the installation was successful:
 
-```PowerShell
-PS C:\> Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
-
+```
     Directory: C:\Users\<UserName>\Documents\WindowsPowerShell\Modules
 
 ModuleType   Version    Name                          ExportedCommands
@@ -215,9 +213,7 @@ Get-InstalledModule -Name UnifiedLabelingSupportTool
 
 If you find an entry like the following, the installation was performed by PowerShell Gallery:
 
-```PowerShell
-PS C:\> Get-InstalledModule -Name UnifiedLabelingSupportTool
-
+```
 Version   Name                         Repository     Description
 -------   ----                         ----------     -----------
 3.1.3     UnifiedLabelingSupportTool   PSGallery      Have you ever used the Sensitivity button in...
@@ -253,7 +249,7 @@ UnifiedLabelingSupportTool
 
 When you start the 'Unified Labeling Support Tool', you'll see the following menu:
 
-```PowerShell
+```
 UnifiedLabelingSupportTool:
 
   [I] INFORMATION
@@ -274,7 +270,7 @@ Please select an option and press enter:
 
 If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it by selecting option `[C] COLLECT` again: <a name="collect"></a>
 
-```PowerShell
+```
   [C] COLLECT
    ├──[A] AIP service configuration
    ├──[T] Protection templates
@@ -371,7 +367,7 @@ UnifiedLabelingSupportTool -Reset Default
 
 With the above command the following registry keys are cleaned up:
 
-```source.reg
+```
 [HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\Software\Microsoft\MSIPC]
 [HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\Software\Microsoft\AIPMigration]
 [HKEY_CURRENT_USER\SOFTWARE\Classes\Microsoft.IPViewerChildMenu]
@@ -389,14 +385,14 @@ With the above command the following registry keys are cleaned up:
 
 The [DRMEncryptProperty](https://docs.microsoft.com/en-us/deployoffice/security/protect-sensitive-messages-and-documents-by-using-irm-in-office#office-2016-irm-registry-key-options) and [OpenXMLEncryptProperty](https://admx.help/?Category=Office2013&Policy=office15.Office.Microsoft.Policies.Windows::L_Protectdocumentmetadataforpasswordprotected) registry settings are purged of the following keys:
 
-```source.reg
+```
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Common\Security]
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]
 ```
 
 The [UseOfficeForLabelling](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#office-built-in-labeling-client-and-other-labeling-solutions) (Use the Sensitivity feature in Office to apply and view sensitivity labels) and [AIPException](https://microsoft.github.io/ComplianceCxE/playbooks/AIP2MIP/AIPException/#configuring-sensitivity-labeling-client-in-m365-apps) (Use the Azure Information Protection add-in for sensitivity labeling) registry setting is purged of the following keys:
 
-```source.reg
+```
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels]
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security\Labels]
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Common\Security\Lables]
@@ -421,7 +417,7 @@ The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module
 
 When you run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges, the following registry keys are cleaned up in addition:
 
-```source.reg
+```
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\MSIPC]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSDRM]
@@ -752,7 +748,7 @@ For more information about this PowerShell command, please see the following doc
 
 This file contains the installed software (32-bit) from the system. This file were taken from this registry key:
 
-```source.reg
+```
 [HKEY_LOCAL_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall]
 ```
 
@@ -764,7 +760,7 @@ This file contains the installed software (32-bit) from the system. This file we
 
 This file contains the installed software (64-bit) from the system. This file were taken from this registry key:
 
-```source.reg
+```
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall]
 ```
 
@@ -776,7 +772,7 @@ This file contains the installed software (64-bit) from the system. This file we
 
 This file contains several regsitry keys related to the Office/Microsoft 365 Apps and Information Protection configuration. The content were taken from these registry keys:
 
-```source.reg
+```
 [HKEY_LOCAL_MACHINE\Software\Classes\MSIP.ExcelAddin]
 [HKEY_LOCAL_MACHINE\Software\Classes\MSIP.WordAddin]
 [HKEY_LOCAL_MACHINE\Software\Classes\MSIP.PowerPointAddin]
