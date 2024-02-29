@@ -317,7 +317,7 @@ You can also review the [Script.log](#script-log-file) file for errors of silent
 
 This parameter activates the required logging in a first step and then prompts you to reproduce the problem. While you’re doing so, the 'Unified Labeling Support Tool' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`~/Documents/UnifiedLabelingSupportTool`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
 
-In the event that you accidentally close the PowerShell window while logging is enabled, the 'Unified Labeling Support Tool' disables logging the next time you start it.
+If you accidentally close the PowerShell window while logging is enabled, the 'Unified Labeling Support Tool' disables logging the next time you start it.
 
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
