@@ -367,32 +367,32 @@ UnifiedLabelingSupportTool -Reset Default
 
 With the above command the following registry keys are cleaned up:
 
-```
-[HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\MSIPC]
-[HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\AIPMigration]
-[HKCU:\SOFTWARE\Classes\Microsoft.IPViewerChildMenu]
-[HKCU:\SOFTWARE\Microsoft\Cloud\Office]
-[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\DRM]
-[HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\DRM]
-[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM]
-[HKCU:\SOFTWARE\Microsoft\XPSViewer\Common\DRM]
-[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Identity]
-[HKCU:\SOFTWARE\Microsoft\MSIP]
-[HKCU:\SOFTWARE\Microsoft\MSOIdentityCRL]
-[HKCR:\AllFilesystemObjects\shell\Microsoft.Azip.Inspect]
-[HKCR:\AllFilesystemObjects\shell\Microsoft.Azip.RightClick]
+```source.reg
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\Software\Microsoft\MSIPC]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\Software\Microsoft\AIPMigration]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Microsoft.IPViewerChildMenu]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Cloud\Office]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Common\DRM]
+[HKEY_CURRENT_USER\SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\DRM]
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\XPSViewer\Common\DRM]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Common\Identity]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\MSIP]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\MSOIdentityCRL]
+[HKEY_CLASSES_ROOT\AllFilesystemObjects\shell\Microsoft.Azip.Inspect]
+[HKEY_CLASSES_ROOT\AllFilesystemObjects\shell\Microsoft.Azip.RightClick]
 ```
 
 The [DRMEncryptProperty](https://docs.microsoft.com/en-us/deployoffice/security/protect-sensitive-messages-and-documents-by-using-irm-in-office#office-2016-irm-registry-key-options) and [OpenXMLEncryptProperty](https://admx.help/?Category=Office2013&Policy=office15.Office.Microsoft.Policies.Windows::L_Protectdocumentmetadataforpasswordprotected) registry settings are purged of the following keys:
 
-```
+```source.reg
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Common\Security]
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]
 ```
 
 The [UseOfficeForLabelling](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#office-built-in-labeling-client-and-other-labeling-solutions) (Use the Sensitivity feature in Office to apply and view sensitivity labels) and [AIPException](https://microsoft.github.io/ComplianceCxE/playbooks/AIP2MIP/AIPException/#configuring-sensitivity-labeling-client-in-m365-apps) (Use the Azure Information Protection add-in for sensitivity labeling) registry setting is purged of the following keys:
 
-```
+```source.reg
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels]
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security\Labels]
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Common\Security\Lables]
@@ -417,12 +417,12 @@ The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module
 
 When you run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges, the following registry keys are cleaned up in addition:
 
-```
-[HKLM:\SOFTWARE\Wow6432Node\Microsoft\MSIPC]
-[HKLM:\SOFTWARE\Microsoft\MSIPC]
-[HKLM:\SOFTWARE\Microsoft\MSDRM]
-[HKLM:\SOFTWARE\Wow6432Node\Microsoft\MSDRM]
-[HKLM:\SOFTWARE\WOW6432Node\Microsoft\MSIP]
+```source.reg
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\MSIPC]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSDRM]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\MSDRM]
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\MSIP]
 ```
 
 **Silent:**
@@ -748,8 +748,8 @@ For more information about this PowerShell command, please see the following doc
 
 This file contains the installed software (32-bit) from the system. This file were taken from this registry key:
 
-```
-[HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall]
+```source.reg
+[HKEY_LOCAL_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall]
 ```
 
 <li>
@@ -760,8 +760,8 @@ This file contains the installed software (32-bit) from the system. This file we
 
 This file contains the installed software (64-bit) from the system. This file were taken from this registry key:
 
-```
-[HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall]
+```source.reg
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall]
 ```
 
 <li>
@@ -772,51 +772,51 @@ This file contains the installed software (64-bit) from the system. This file we
 
 This file contains several regsitry keys related to the Office/Microsoft 365 Apps and Information Protection configuration. The content were taken from these registry keys:
 
-```
-[HKLM:\Software\Classes\MSIP.ExcelAddin]
-[HKLM:\Software\Classes\MSIP.WordAddin]
-[HKLM:\Software\Classes\MSIP.PowerPointAddin]
-[HKLM:\Software\Classes\MSIP.OutlookAddin]
-[HKLM:\Software\Classes\AllFileSystemObjects\shell\Microsoft.Azip.RightClick]
-[HKLM:\Software\Microsoft\MSIPC]
-[HKLM:\Software\Microsoft\Office\Word\Addins]
-[HKLM:\Software\Microsoft\Office\Excel\Addins]
-[HKLM:\Software\Microsoft\Office\PowerPoint\Addins]
-[HKLM:\Software\Microsoft\Office\Outlook\Addins]
-[HKLM:\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\Word\Addins]
-[HKLM:\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\Excel\Addins]
-[HKLM:\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\PowerPoint\Addins]
-[HKLM:\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\Outlook\Addins]
-[HKLM:\Software\WOW6432Node\Microsoft\MSIPC]
-[HKLM:\Software\Wow6432Node\Microsoft\Office\Word\Addins]
-[HKLM:\Software\Wow6432Node\Microsoft\Office\Excel\Addins]
-[HKLM:\Software\Wow6432Node\Microsoft\Office\PowerPoint\Addins]
-[HKLM:\Software\Wow6432Node\Microsoft\Office\Outlook\Addins]
-[HKCU:\Software\Microsoft\MSIP]
-[HKCU:\Software\Microsoft\Office\16.0\Common\DRM]
-[HKCU:\Software\Microsoft\Office\16.0\Common\Security]
-[HKCU:\Software\Microsoft\Office\16.0\Common\Identity]
-[HKCU:\Software\Microsoft\Office\16.0\Common\Internet]
-[HKCU:\Software\Microsoft\Office\Word\Addins]
-[HKCU:\Software\Microsoft\Office\Excel\Addins]
-[HKCU:\Software\Microsoft\Office\PowerPoint\Addins]
-[HKCU:\Software\Microsoft\Office\Outlook\Addins]
-[HKCU:\Software\Microsoft\Office\16.0\Word\Resiliency]
-[HKCU:\Software\Microsoft\Office\16.0\Excel\Resiliency]
-[HKCU:\Software\Microsoft\Office\16.0\PowerPoint\Resiliency]
-[HKCU:\Software\Microsoft\Office\16.0\Outlook\Resiliency]
-[HKCU:\Software\Classes\Local Settings\Software\Microsoft\MSIPC]
-[HKCR:\MSIP.ExcelAddin]
-[HKCR:\MSIP.WordAddin]
-[HKCR:\MSIP.PowerPointAddin]
-[HKCR:\MSIP.OutlookAddin]
-[HKCR:\Local Settings\Software\Microsoft\MSIPC]
-[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM]
-[HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security]
-[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]
-[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security]
-[HKCU:\Software\Microsoft\Office\16.0\Common\Licensing\CurrentSkuIdAggregationForApp]
-[HKCU:\Software\Microsoft\Office\16.0\Common\Licensing\LastKnownC2RProductReleaseId]
+```source.reg
+[HKEY_LOCAL_MACHINE\Software\Classes\MSIP.ExcelAddin]
+[HKEY_LOCAL_MACHINE\Software\Classes\MSIP.WordAddin]
+[HKEY_LOCAL_MACHINE\Software\Classes\MSIP.PowerPointAddin]
+[HKEY_LOCAL_MACHINE\Software\Classes\MSIP.OutlookAddin]
+[HKEY_LOCAL_MACHINE\Software\Classes\AllFileSystemObjects\shell\Microsoft.Azip.RightClick]
+[HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC]
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Office\Word\Addins]
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Office\Excel\Addins]
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Office\PowerPoint\Addins]
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Office\Outlook\Addins]
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\Word\Addins]
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\Excel\Addins]
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\PowerPoint\Addins]
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\Outlook\Addins]
+[HKEY_LOCAL_MACHINE\Software\WOW6432Node\Microsoft\MSIPC]
+[HKEY_LOCAL_MACHINE\Software\Wow6432Node\Microsoft\Office\Word\Addins]
+[HKEY_LOCAL_MACHINE\Software\Wow6432Node\Microsoft\Office\Excel\Addins]
+[HKEY_LOCAL_MACHINE\Software\Wow6432Node\Microsoft\Office\PowerPoint\Addins]
+[HKEY_LOCAL_MACHINE\Software\Wow6432Node\Microsoft\Office\Outlook\Addins]
+[HKEY_CURRENT_USER\Software\Microsoft\MSIP]
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\DRM]
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\Security]
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\Identity]
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\Internet]
+[HKEY_CURRENT_USER\Software\Microsoft\Office\Word\Addins]
+[HKEY_CURRENT_USER\Software\Microsoft\Office\Excel\Addins]
+[HKEY_CURRENT_USER\Software\Microsoft\Office\PowerPoint\Addins]
+[HKEY_CURRENT_USER\Software\Microsoft\Office\Outlook\Addins]
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Word\Resiliency]
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Excel\Resiliency]
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\PowerPoint\Resiliency]
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Resiliency]
+[HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC]
+[HKEY_CLASSES_ROOT\MSIP.ExcelAddin]
+[HKEY_CLASSES_ROOT\MSIP.WordAddin]
+[HKEY_CLASSES_ROOT\MSIP.PowerPointAddin]
+[HKEY_CLASSES_ROOT\MSIP.OutlookAddin]
+[HKEY_CLASSES_ROOT\Local Settings\Software\Microsoft\MSIPC]
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Common\DRM]
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security]
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Common\Security]
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\Licensing\CurrentSkuIdAggregationForApp]
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\Licensing\LastKnownC2RProductReleaseId]
 ```
 
 <li>
