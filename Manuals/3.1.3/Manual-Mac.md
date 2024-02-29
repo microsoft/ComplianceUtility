@@ -99,13 +99,13 @@ If you do not have this module installed, the 'Unified Labeling Support Tool' wi
 
 The 'Unified Labeling Support Tool' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/UnifiedLabelingSupportTool/). To start the installation, you must first execute the `pwsh` command in a Terminal window to start a PowerShell session. Then enter the following command and press enter to start the installation of the 'Unified Labeling Support Tool':
 
-```
+```PowerShell
 Install-Module -Name UnifiedLabelingSupportTool -Scope CurrentUser
 ```
 
 If you have local administrative privileges, you can run the following command instead:
 
-```
+```PowerShell
 Install-Module -Name UnifiedLabelingSupportTool -Scope AllUsers
 ```
 
@@ -117,7 +117,7 @@ Install-Module -Name UnifiedLabelingSupportTool -Scope AllUsers
 
 If PowerShell script execution is restricted in your environment, you need to bypass this restriction to run the 'Unified Labeling Support Tool'. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
 
-```
+```PowerShell
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 ```
 
@@ -127,13 +127,13 @@ The 'Unified Labeling Support Tool' is code-signed with a Microsoft certificate.
 
 To verify if the installation was successful, you can call the `Get-Module` cmdlet with the following parameter:
 
-```
+```PowerShell
 Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
 ```
 
 If you find an entry like the following, the installation was successful:
 
-```
+```PowerShell
 PS C:\> Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
 
     Directory: C:\Users\<UserName>\Documents\WindowsPowerShell\Modules
@@ -147,13 +147,13 @@ Script       3.1.3      UnifiedLabelingSupportTool    {UnifiedLabelingSupportToo
 
 If you want to completely uninstall the 'Unified Labeling Support Tool', you must execute the following command:
 
-```
+```PowerShell
 Uninstall-Module -Name UnifiedLabelingSupportTool -AllVersions
 ```
 
 If you want to uninstall a specific version, for example version 3.1.2, you must execute the following command:
 
-```
+```PowerShell
 Uninstall-Module -Name UnifiedLabelingSupportTool -RequiredVersion 3.1.2
 ```
 
@@ -165,13 +165,13 @@ Uninstall-Module -Name UnifiedLabelingSupportTool -RequiredVersion 3.1.2
 
 First you need to execute the command `pwsh` in a Terminal window to start a PowerShell session. Then type the following command and press enter to start the 'Unified Labeling Support Tool':
 
-```
+```PowerShell
 UnifiedLabelingSupportTool
 ```
 
 When you start the 'Unified Labeling Support Tool', you'll see the following menu:
 
-```
+```PowerShell
 UnifiedLabelingSupportTool:
 
   [I] INFORMATION
@@ -181,7 +181,7 @@ UnifiedLabelingSupportTool:
   [P] RECORD PROBLEM
   [C] COLLECT
   [Z] COMPRESS LOGS
-  [X] EXIT MENU
+  [X] EXIT
  
 Please select an option and press enter:
 ```
@@ -191,7 +191,7 @@ Please select an option and press enter:
 
 If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it by selecting option `[C] COLLECT` again: <a name="collect"></a>
 
-```
+```PowerShell
   [C] COLLECT
    ├──[L] Labels and policies
    ├──[D] DLP rules and policies
@@ -205,19 +205,19 @@ If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it
 
 You can also start the 'Unified Labeling Support Tool' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
 
-```
+```PowerShell
 UnifiedLabelingSupportTool -Information
 ```
 
 To see a complete list of all command line parameters with description, execute the following command (command line help): <a name="command-line-help"></a>
 
-```
+```PowerShell
 Get-Help UnifiedLabelingSupportTool -Detailed
 ```
 
 To see the help for a single command line parameter, for example for `-CompressLogs`, run the following command:
 
-```
+```PowerShell
 Get-Help UnifiedLabelingSupportTool -Parameter CompressLogs
 ```
 
@@ -277,7 +277,7 @@ Valid <String> arguments are: "Default", or "Silent":
 
 This argument removes all relevant policies, labels and settings:
 
-```
+```PowerShell
 UnifiedLabelingSupportTool -Reset Default
 ```
 
@@ -300,13 +300,13 @@ With the above command the following file folders will be cleaned up:
 
 This command line parameter argument does the same as `-Reset Default`, but does not print any output - unless an error occurs when attempting to reset:
 
-```
+```PowerShell
 UnifiedLabelingSupportTool -Reset Silent
 ```
 
 If a silent reset triggers an error, you can use the additional parameter `-Verbose` to find out more about the cause of the error:
 
-```
+```PowerShell
 UnifiedLabelingSupportTool -Reset Silent -Verbose
 ```
 
