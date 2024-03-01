@@ -365,7 +365,7 @@ This parameter skips the update check mechanism for entries of the [COLLECT](#co
 
 This will start the 'Information Protection Utility' with the default menu.
 
-### <strong>&lt;CommonParameters&gt;</strong>
+### \<CommonParameters>
 
 The 'Information Protection Utility' supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
 
