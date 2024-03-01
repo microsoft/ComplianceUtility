@@ -138,7 +138,7 @@ If you find an entry like the following, the installation was successful:
 
 ModuleType   Version    Name                          ExportedCommands
 ----------   -------    ----                          ----------------
-Script       3.2.0      InformationProtectionUtility    {InformationProtectionUtility, ULSupportTool}
+Script       3.2.0      InformationProtectionUtility    {InformationProtectionUtility, InfoProtectUtil}
 ```
 
 # Uninstall <a name="uninstall"></a>
@@ -149,15 +149,15 @@ If you want to completely uninstall the 'Information Protection Utility', you mu
 Uninstall-Module -Name InformationProtectionUtility -AllVersions
 ```
 
-If you want to uninstall a specific version, for example version 3.1.2, you must execute the following command:
+If you want to uninstall a previous version, for example version 3.1.2, you must execute the following command:
 
 ```PowerShell
-Uninstall-Module -Name InformationProtectionUtility -RequiredVersion 3.1.2
+Uninstall-Module -Name UnifiedLabelingSupportTool -RequiredVersion 3.1.2
 ```
 
 > **Note**
 > 
-> Under certain circumstances, you may need to run the 'Information Protection Utility' with administrative privileges to perform an uninstall. Please request assistance from your administrator if necessary.
+> Under certain circumstances, you may need to run the uninstallation with administrator privileges. Please request assistance from your administrator if necessary.
 
 # User experience <a name="experience"></a>
 
