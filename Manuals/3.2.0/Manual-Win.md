@@ -1,5 +1,5 @@
-# Unified Labeling Support Tool 
-###### Version 3.1.3-BETA (Windows) <br><br>
+# Information Protection Utility 
+###### Version 3.2.0-BETA (Windows) <br><br>
 
 **Contents**
 
@@ -40,9 +40,9 @@
  
 ## Description <a name="description"></a>
 
-The 'Unified Labeling Support Tool' is a powerful compliance utility that helps manage sensitivity labels, policies, settings and more. Whether you need to troubleshoot issues or reset configurations, this tool has you covered.
+The 'Information Protection Utility' is a powerful compliance utility that helps manage sensitivity labels, policies, settings and more. Whether you need to troubleshoot issues or reset configurations, this tool has you covered.
 
-Have you ever used the Sensitivity button in a [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services)? If so, you've either used the [Azure Information Protection client](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) or [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Unified Labeling Support Tool' will help you.
+Have you ever used the Sensitivity button in a [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services)? If so, you've either used the [Azure Information Protection client](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) or [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Information Protection Utility' will help you.
 
 > [!CAUTION]
 > The Azure Information Protection (AIP) Unified Labeling add-in for Office has been retired on April 11th, 2024.
@@ -53,14 +53,14 @@ Have you ever used the Sensitivity button in a [Microsoft 365 Apps](https://www.
 >
 > For the announcement and FAQs of the retirement, refer to our blog: [Retirement notification for the Azure Information Protection Unified Labeling add-in for Office.](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/retirement-notification-for-the-azure-information-protection/ba-p/3791908)
 
-With the 'Unified Labeling Support Tool', you can run the most common options without local administrative privileges:
+With the 'Information Protection Utility', you can run the most common options without local administrative privileges:
 [RESET](#reset), [RECORD PROBLEM](#record-problem), and COLLECT [Endpoint URLs](#endpoint-urls).
 
-However, if you run the 'Unified Labeling Support Tool' with local administrative privileges, you will get some more collected logs ([RECORD PROBLEM](#record-problem)) and a complete [RESET](#reset) of all settings, instead of just user-specific settings being reset. By the way: The latter option is sufficient in most cases to reset [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services), while a complete reset is usually useful for all other applications.
+However, if you run the 'Information Protection Utility' with local administrative privileges, you will get some more collected logs ([RECORD PROBLEM](#record-problem)) and a complete [RESET](#reset) of all settings, instead of just user-specific settings being reset. By the way: The latter option is sufficient in most cases to reset [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services), while a complete reset is usually useful for all other applications.
 
 > **Note**
 > 
-> If you want to use the 'Unified Labeling Support Tool' on Apple macOS, you can find the corresponding online manuale [here](Manual-Mac.md).
+> If you want to use the 'Information Protection Utility' on Apple macOS, you can find the corresponding online manuale [here](Manual-Mac.md).
 
 ### MIT License <a name="mit-license"></a>
 
@@ -78,13 +78,13 @@ Your privacy is important to us. [This privacy statement](https://privacy.micros
 
 ## Requirements <a name="requirements"></a>
 
-Before you can use the 'Unified Labeling Support Tool' make sure that your environment fulfils the following requierements. Please update your environment if necessary.
+Before you can use the 'Information Protection Utility' make sure that your environment fulfils the following requierements. Please update your environment if necessary.
 
-The 'Unified Labeling Support Tool' supports [Windows PowerShell 5.1](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-5.1) and [PowerShell 7.4](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (or higher) on the following operating systems:
+The 'Information Protection Utility' supports [Windows PowerShell 5.1](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-5.1) and [PowerShell 7.4](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (or higher) on the following operating systems:
 
    * Microsoft Windows 10, Windows 11, Windows Server 2012/R2, Windows Server 2016, Windows Server 2019, Windows Server 2022 and Apple macOS ([three most recent major versions](https://support.microsoft.com/en-us/office/upgrade-macos-to-continue-receiving-microsoft-365-and-office-for-mac-updates-16b8414f-08ec-4b24-8c91-10a918f649f8)).
 
-The 'Unified Labeling Support Tool' supports the following Microsoft 365/Office versions:
+The 'Information Protection Utility' supports the following Microsoft 365/Office versions:
 
    * Microsoft Office 2016, Microsoft Office 2019, Microsoft Office 2021, [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) and Microsoft 365 for Mac ([most recently released version](https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac)).
 
@@ -94,7 +94,7 @@ The 'Unified Labeling Support Tool' supports the following Microsoft 365/Office 
 
 ### Internet access <a name="internet-access"></a>
 
-The 'Unified Labeling Support Tool' uses additional sources from the Internet to make its functionality fully available.
+The 'Information Protection Utility' uses additional sources from the Internet to make its functionality fully available.
 
 > [!WARNING]
 > Unexpected errors may occur, and some features may be limited, if there is no connection to the Internet.
@@ -103,27 +103,27 @@ The 'Unified Labeling Support Tool' uses additional sources from the Internet to
 
 The [AIPService module](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps) is required to proceed the options [AIP service configuration](#aip-service-config), [Protection templates](#protection-templates), and [Endpoint URLs](#endpoint-urls) from the [COLLECT](#collect) menu.
 
-If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
+If you do not have this module installed, the 'Information Protection Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
 
 > **Note**
 > 
-> The AIPService module does not support PowerShell 7.x. Therefore, unexpected errors may occur because the AIP service module is executed in compatibility mode in PowerShell 7.x.
+> The AIPService module does not yet support PowerShell 7.x. Therefore, unexpected errors may occur because the AIP service module is executed in compatibility mode in PowerShell 7.x.
 
 ### Graph PowerShell module <a name="graph-module"></a>
 
 The [Graph PowerShell module](https://www.powershellgallery.com/packages/Microsoft.Graph) is required to proceed the option [User license details](#user-license-details) from the [COLLECT](#collect) menu.
 
-If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/Microsoft.Graph).
+If you do not have this module installed, the 'Information Protection Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/Microsoft.Graph).
 
 ### Exchange Online PowerShell module <a name="exchange-online-module"></a>
 
 The [Exchange Online PowerShell module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#release-notes) is required to proceed the options [Labels and policies](#labels-and-policies) and [DLP rules and policies](#dlp-rules-and-policies) from the menu [COLLECT](#collect).
 
-If you do not have this module installed, the 'Unified Labeling Support Tool' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
+If you do not have this module installed, the 'Information Protection Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
 
 ### Microsoft PowerShell (optional) <a name="ms-powershell"></a>
 
-Please follow the instructions for [installing PowerShell on Windows](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) to install it using your preferred method if you want to use the 'Unified Labeling Support Tool' on Microsoft [PowerShell 7.4](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (or higher).
+Please follow the instructions for [installing PowerShell on Windows](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) to install it using your preferred method if you want to use the 'Information Protection Utility' on Microsoft [PowerShell 7.4](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (or higher).
 
 ### Azure Information Protection module (optional) <a name="aip-module"></a>
 
@@ -135,16 +135,16 @@ The Azure Information Protection module is installed with the [Azure Information
 
 # Installation <a name="installation"></a>
 
-The 'Unified Labeling Support Tool' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/UnifiedLabelingSupportTool/) and the fastest and easiest way to install it with user privileges is to run the following command in PowerShell:
+The 'Information Protection Utility' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/InformationProtectionUtility/) and the fastest and easiest way to install it with user privileges is to run the following command in PowerShell:
 
-```
-Install-Module -Name UnifiedLabelingSupportTool -Scope CurrentUser
+```PowerShell
+Install-Module -Name InformationProtectionUtility -Scope CurrentUser
 ```
 
 If you have local administrative privileges, you can run the following command instead:
 
-```
-Install-Module -Name UnifiedLabelingSupportTool
+```PowerShell
+Install-Module -Name InformationProtectionUtility
 ```
 
 > **Note**
@@ -153,27 +153,27 @@ Install-Module -Name UnifiedLabelingSupportTool
 
 #### Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
 
-If PowerShell script execution is restricted in your environment, you need to bypass this restriction to run the 'Unified Labeling Support Tool'. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
+If PowerShell script execution is restricted in your environment, you need to bypass this restriction to run the 'Information Protection Utility'. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
 
-```
+```PowerShell
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 ```
 
-The 'Unified Labeling Support Tool' is code-signed with a Microsoft certificate.
+The 'Information Protection Utility' is code-signed with a Microsoft certificate.
 
 ### Manual Installation <a name="manual-installaltion"></a>
 
-If you’re using the 'Unified Labeling Support Tool' in an environment that does not have Internet access, you need to proceed with the manual installation.
+If you’re using the 'Information Protection Utility' in an environment that does not have Internet access, you need to proceed with the manual installation.
 
-To install the 'Unified Labeling Support Tool' manually, you must create the following folder and copy/paste all 'Unified Labeling Support Tool' files (`UnifiedLabelingSupportTool.psm1` and `UnifiedLabelingSupportTool.psd1`) into this folder.
+To install the 'Information Protection Utility' manually, you must create the following folder and copy/paste all 'Information Protection Utility' files (`InformationProtectionUtility.psm1` and `InformationProtectionUtility.psd1`) into this folder.
 
 For Windows PowerShell 5.1:
 
-``` %USERPROFILE%\Documents\WindowsPowerShell\Modules\UnifiedLabelingSupportTool\3.1.3```
+``` %USERPROFILE%\Documents\WindowsPowerShell\Modules\InformationProtectionUtility\3.1.3```
 
 For Microsoft PowerShell 7.x:
 
-``` %USERPROFILE%\Documents\PowerShell\Modules\UnifiedLabelingSupportTool\3.1.3```
+``` %USERPROFILE%\Documents\PowerShell\Modules\InformationProtectionUtility\3.1.3```
 
 The corresponding path must be listed in the [PSModulePath environment variable](https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable).
 
@@ -187,70 +187,66 @@ To verify if the installation was successful, please review the [check installat
 
 To verify if the installation was successful, you can call the `Get-Module` cmdlet with the following parameter:
 
-```
-Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
+```PowerShell
+Get-Module -Name InformationProtectionUtility -ListAvailable
 ```
 
 If you find an entry like the following, the installation was successful:
 
-```
-PS C:\> Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
-
+```PowerShell
     Directory: C:\Users\<UserName>\Documents\WindowsPowerShell\Modules
 
 ModuleType   Version    Name                          ExportedCommands
 ----------   -------    ----                          ----------------
-Script       3.1.3      UnifiedLabelingSupportTool    {UnifiedLabelingSupportTool, ULSupportTool}
+Script       3.2.0      InformationProtectionUtility    {InformationProtectionUtility, InfoProtectUtil}
 ```
 
 To verify that an installation was performed using PowerShell Gallery, you can run the following command:
 
-```
-Get-InstalledModule -Name UnifiedLabelingSupportTool
+```PowerShell
+Get-InstalledModule -Name InformationProtectionUtility
 ```
 
 If you find an entry like the following, the installation was performed by PowerShell Gallery:
 
-```
-PS C:\> Get-InstalledModule -Name UnifiedLabelingSupportTool
-
+```PowerShell
 Version   Name                         Repository     Description
 -------   ----                         ----------     -----------
-3.1.3     UnifiedLabelingSupportTool   PSGallery      Have you ever used the Sensitivity button in...
+3.2.0     InformationProtectionUtility   PSGallery      Have you ever used the Sensitivity button in...
 ```
 
 # Uninstall <a name="uninstall"></a>
 
-If you want to completely uninstall the 'Unified Labeling Support Tool', you must execute the following command:
+If you want to completely uninstall the 'Information Protection Utility', you must execute the following command:
 
-```
-Uninstall-Module -Name UnifiedLabelingSupportTool -AllVersions
+```PowerShell
+Uninstall-Module -Name InformationProtectionUtility -AllVersions
 ```
 
-If you want to uninstall a specific version, for example version 3.1.2, you must execute the following command:
+If you want to uninstall a previous version, for example version 3.1.2, you must execute the following command:
 
-```
+```PowerShell
 Uninstall-Module -Name UnifiedLabelingSupportTool -RequiredVersion 3.1.2
 ```
 
-If the 'Unified Labeling Support Tool' was installed manually, you also need to remove it manually by deleting its installation folder.
+If the corresponding module was installed manually, you also need to remove it manually by deleting its installation folder.
 
 > **Note**
 >
-> Under certain circumstances, you may need to run the 'Unified Labeling Support Tool' with administrative privileges to perform an uninstall. Please request assistance from your administrator if necessary.
+> Under certain circumstances, you may need to run the uninstallation with administrator privileges. Please request assistance from your administrator if necessary.
 
 # User experience <a name="experience"></a>
 
-To start the 'Unified Labeling Support Tool', simply type the following command in a PowerShell window and press enter:
+To start the 'Information Protection Utility', simply type the following command in a PowerShell window and press enter:
+
+```PowerShell
+InformationProtectionUtility
+```
+
+When you start the 'Information Protection Utility', you'll see the following menu:
 
 ```
-UnifiedLabelingSupportTool
-```
-
-When you start the 'Unified Labeling Support Tool', you'll see the following menu:
-
-```
-UnifiedLabelingSupportTool:
+InformationProtectionUtility:
 
   [I] INFORMATION
   [M] MIT LICENSE
@@ -282,36 +278,36 @@ If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it
 
 > **Note**
 >
-> * With an exception of the [User license details](#user-license-details) entry, for the most sub-items of the COLLECT menu, you need to run the 'Unified Labeling Support Tool' as a user with local administrative privileges.
-> * You need to run the 'Unified Labeling Support Tool' as user with local administrative privileges to continue with option [Endpoint URLs](#endpoint-urls), if the corresponding [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) is not bootstraped. Please contact your administrator if necessary.
+> * With an exception of the [User license details](#user-license-details) entry, for the most sub-items of the COLLECT menu, you need to run the 'Information Protection Utility' as a user with local administrative privileges.
+> * You need to run the 'Information Protection Utility' as user with local administrative privileges to continue with option [Endpoint URLs](#endpoint-urls), if the corresponding [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) is not bootstraped. Please contact your administrator if necessary.
 > * You need to know your Microsoft 365 global administrator account information to proceed, as you will be asked for your credentials.
 
-You can also start the 'Unified Labeling Support Tool' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
+You can also start the 'Information Protection Utility' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
 
-```
-UnifiedLabelingSupportTool -Information
+```PowerShell
+InformationProtectionUtility -Information
 ```
 
 To see a complete list of all command line parameters with details (command line help), execute the following command: <a name="command-line-help"></a>
 
-```
-Get-Help UnifiedLabelingSupportTool -Detailed
+```PowerShell
+Get-Help InformationProtectionUtility -Detailed
 ```
 
 To see the help for a single command line parameter, for example for `-CompressLogs`, run the following command:
 
-```
-Get-Help UnifiedLabelingSupportTool -Parameter CompressLogs
+```PowerShell
+Get-Help InformationProtectionUtility -Parameter CompressLogs
 ```
 
 # Features / Parameters <a name="features-parameters"></a>
 
-The 'Unified Labeling Support Tool' provides the following parameters:
+The 'Information Protection Utility' provides the following parameters:
 
 **Syntax:**
 
 ```
-UnifiedLabelingSupportTool
+InformationProtectionUtility
        [-Information]
        [-License]
        [-Help]
@@ -353,7 +349,7 @@ This option removes all relevant policies, labels and settings.
 > **Note**
 >
 > * Reset with the default argument will not reset all settings, but only user-specific settings if you run PowerShell with user privileges. This is sufficient in most cases to reset [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services), while a complete reset is useful for all other applications.
-> * If you want a complete reset, you need to run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges.
+> * If you want a complete reset, you need to run the 'Information Protection Utility' in an administrative PowerShell window as a user with local administrative privileges.
 
 Valid <String> arguments are: "Default", or "Silent":
 
@@ -361,8 +357,8 @@ Valid <String> arguments are: "Default", or "Silent":
 
 When you run PowerShell with user privileges, this argument removes all relevant policies, labels and settings:
 
-```
-UnifiedLabelingSupportTool -Reset Default
+```PowerShell
+InformationProtectionUtility -Reset Default
 ```
 
 With the above command the following registry keys are cleaned up:
@@ -393,9 +389,9 @@ The [DRMEncryptProperty](https://docs.microsoft.com/en-us/deployoffice/security/
 The [UseOfficeForLabelling](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#office-built-in-labeling-client-and-other-labeling-solutions) (Use the Sensitivity feature in Office to apply and view sensitivity labels) and [AIPException](https://microsoft.github.io/ComplianceCxE/playbooks/AIP2MIP/AIPException/#configuring-sensitivity-labeling-client-in-m365-apps) (Use the Azure Information Protection add-in for sensitivity labeling) registry setting is purged of the following keys:
 
 ```
-[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels]
-[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security\Labels]
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Common\Security\Lables]
+[HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels]
+[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security\Labels]
+[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security\Lables]
 ```
 
 The following file system folders are cleaned up as well:
@@ -415,7 +411,7 @@ The following file system folders are cleaned up as well:
 
 The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps) cmdlet is used to reset user settings, if an [Azure Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) installation is found.
 
-When you run the 'Unified Labeling Support Tool' in an administrative PowerShell window as a user with local administrative privileges, the following registry keys are cleaned up in addition:
+When you run the 'Information Protection Utility' in an administrative PowerShell window as a user with local administrative privileges, the following registry keys are cleaned up in addition:
 
 ```
 [HKLM:\SOFTWARE\Wow6432Node\Microsoft\MSIPC]
@@ -429,14 +425,14 @@ When you run the 'Unified Labeling Support Tool' in an administrative PowerShell
 
 This command line parameter argument does the same as `-Reset Default`, but does not print any output - unless an error occurs when attempting to reset:
 
-```
-UnifiedLabelingSupportTool -Reset Silent
+```PowerShell
+InformationProtectionUtility -Reset Silent
 ```
 
 If a silent reset triggers an error, you can use the additional parameter `-Verbose` to find out more about the cause of the error:
 
-```
-UnifiedLabelingSupportTool -Reset Silent -Verbose
+```PowerShell
+InformationProtectionUtility -Reset Silent -Verbose
 ```
 
 You can also review the [Script.log](#script-log-file) file for errors of silent reset.
@@ -446,13 +442,13 @@ You can also review the [Script.log](#script-log-file) file for errors of silent
 > [!IMPORTANT]
 > Before you proceed with this option, please close all open applications.
 
-This parameter asks you to reproduce the problem. While you’re doing so, the 'Unified Labeling Support Tool' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`%temp%\UnifiedLabelingSupportTool`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
+As a first step, this parameter activates the required logging and then prompts you to reproduce the problem. While you’re doing so, the 'Information Protection Utility' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`%temp%\InformationProtectionUtility`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
 
-In the event that you accidentally close the PowerShell window while logging is enabled, the 'Unified Labeling Support Tool' disables logging the next time you start it.
+In the event that you accidentally close the PowerShell window while logging is enabled, the 'Information Protection Utility' disables logging the next time you start it.
 
 > **Note**
 >
-> Neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the 'Unified Labeling Support Tool' is not run in an administrative PowerShell window as a user with local administrative privileges.
+> Neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the 'Information Protection Utility' is not run in an administrative PowerShell window as a user with local administrative privileges.
 
 ### [A] AIP service configuration / -CollectAIPServiceConfiguration <a name="aip-service-config"></a>
 
@@ -514,13 +510,13 @@ Results are written into log file [UserLicenseDetails.log](#user-license-log) in
 
 > **Note**
 >
-> * You must log in with the corresponding Microsoft 365 user account for which you want to check the license details.
+> You must log in with the corresponding Microsoft 365 user account for which you want to check the license details.
 
 ### [Z] COMPRESS LOGS / -CompressLogs <a name="compress-logs"></a>
 
 This command line parameter should always be used at the very end of a scenario.
 
-This parameter compresses all collected log files and folders into a .zip archive, and the corresponding file is saved to your desktop. In addition, the default logs folder (`%temp%\UnifiedLabelingSupportTool`) is cleaned.
+This parameter compresses all collected log files and folders into a .zip archive, and the corresponding file is saved to your desktop. In addition, the default logs folder (`%temp%\InformationProtectionUtility`) is cleaned.
 
 ### [X] EXIT / - <a name="exit"></a>
 
@@ -535,15 +531,15 @@ This parameter skips the update check mechanism for all entries of the [COLLECT]
 
 ### - / -Menu <a name="menu"></a>
 
-This will start the 'Unified Labeling Support Tool' with the default menu.
+This will start the 'Information Protection Utility' with the default menu.
 
-### <strong>&lt;CommonParameters&gt;</strong>
+### \<CommonParameters>
 
-The 'Unified Labeling Support Tool' supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
+The 'Information Protection Utility' supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
 
 # Script log file <a name="script-log-file"></a>
 
-The 'Unified Labeling Support Tool' creates the following log file. The log file gives an overview of the executed commands and provides a control mechanism to review the results.
+The 'Information Protection Utility' creates the following log file. The log file gives an overview of the executed commands and provides a control mechanism to review the results.
 
 **Script.log**
 
@@ -551,7 +547,7 @@ This log file collects the actions that has been taken and lists the results. It
 
 # Log files and folders <a name="log-files"></a>
 
-The 'Unified Labeling Support Tool' collects the following log files and folders.
+The 'Information Protection Utility' collects the following log files and folders.
 
 > **Note**
 >
@@ -559,7 +555,7 @@ The 'Unified Labeling Support Tool' collects the following log files and folders
 
 ### RECORD PROBLEM <a name="record-problem-logs"></a>
 
-Log files and folders collected by the [RECORD PROBLEM](#record-problem) option when you run the 'Unified Labeling Support Tool' with user privileges:
+Log files and folders collected by the [RECORD PROBLEM](#record-problem) option when you run the 'Information Protection Utility' with user privileges:
 
 <ul>
 <li>
@@ -841,7 +837,7 @@ For more information about this PowerShell command, please see the following doc
 
 </ul>
 
-Log files and folders additionally collected by the [RECORD PROBLEM](#record-problem) option when you run the 'Unified Labeling Support Tool' with administrative privileges:
+Log files and folders additionally collected by the [RECORD PROBLEM](#record-problem) option when you run the 'Information Protection Utility' with administrative privileges:
 
 <ul>
 <li>
@@ -966,24 +962,24 @@ For more information, please see the following documentation:
 
 # Support <a name="support"></a>
 
-When creating the 'Unified Labeling Support Tool', great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
+When creating the 'Information Protection Utility', great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
 
-Should you ever encounter a problem with the 'Unified Labeling Support Tool', please visit the [support page](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md) on the project site.
+Should you ever encounter a problem with the 'Information Protection Utility', please visit the [support page](https://github.com/microsoft/InformationProtectionUtility/blob/main/SUPPORT.md) on the project site.
 
 ### Microsoft Support Policy <a name="support-policy"></a>
 
-Under this policy, the 'Unified Labeling Support Tool' remains in support if the following criteria are met:
+Under this policy, the 'Information Protection Utility' remains in support if the following criteria are met:
 
-* You're using the [lastet version](https://aka.ms/UnifiedLabelingSupportTool/Latest) of the 'Unified Labeling Support Tool'.
+* You're using the [lastet version](https://aka.ms/InformationProtectionUtility/Latest) of the 'Information Protection Utility'.
 * You must be licensed with a product or service that uses a [Microsoft Information Protection subscription](https://learn.microsoft.com/en-us/office365/servicedescriptions/azure-information-protection#available-plans).
 
 ### How to file issues and get help <a name="get-help"></a>
 
-The 'Unified Labeling Support Tool' uses GitHub [Issues](https://github.com/microsoft/UnifiedLabelingSupportTool/issues) to track problems and feature requests.
+The 'Information Protection Utility' uses GitHub [Issues](https://github.com/microsoft/InformationProtectionUtility/issues) to track problems and feature requests.
 
-Please check for [known issues](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md#known-issues) before submitting new issues to avoid duplicates.
+Please check for [known issues](https://github.com/microsoft/InformationProtectionUtility/blob/main/SUPPORT.md#known-issues) before submitting new issues to avoid duplicates.
 
-For new issues, file your bug or feature request as a [new Issue](https://github.com/microsoft/UnifiedLabelingSupportTool/issues/new). Please describe the Issue as detailed as possible. A screenshot of the error and/or a step-by-step description of how to reproduce a problem would be very helpful for this.
+For new issues, file your bug or feature request as a [new Issue](https://github.com/microsoft/InformationProtectionUtility/issues/new). Please describe the Issue as detailed as possible. A screenshot of the error and/or a step-by-step description of how to reproduce a problem would be very helpful for this.
 
 <br>
 <br>
