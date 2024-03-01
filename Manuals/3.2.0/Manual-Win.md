@@ -169,11 +169,11 @@ To install the 'Information Protection Utility' manually, you must create the fo
 
 For Windows PowerShell 5.1:
 
-``` %USERPROFILE%\Documents\WindowsPowerShell\Modules\InformationProtectionUtility\3.1.3```
+``` %USERPROFILE%\Documents\WindowsPowerShell\Modules\InformationProtectionUtility\3.2.0```
 
 For Microsoft PowerShell 7.x:
 
-``` %USERPROFILE%\Documents\PowerShell\Modules\InformationProtectionUtility\3.1.3```
+``` %USERPROFILE%\Documents\PowerShell\Modules\InformationProtectionUtility\3.2.0```
 
 The corresponding path must be listed in the [PSModulePath environment variable](https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable).
 
@@ -255,7 +255,7 @@ InformationProtectionUtility:
   [P] RECORD PROBLEM
   [C] COLLECT
   [Z] COMPRESS LOGS
-  [X] EXIT MENU
+  [X] EXIT
  
 Please select an option and press enter:
 ```
@@ -382,8 +382,8 @@ With the above command the following registry keys are cleaned up:
 The [DRMEncryptProperty](https://docs.microsoft.com/en-us/deployoffice/security/protect-sensitive-messages-and-documents-by-using-irm-in-office#office-2016-irm-registry-key-options) and [OpenXMLEncryptProperty](https://admx.help/?Category=Office2013&Policy=office15.Office.Microsoft.Policies.Windows::L_Protectdocumentmetadataforpasswordprotected) registry settings are purged of the following keys:
 
 ```
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Common\Security]
-[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]
+[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security]
+[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]
 ```
 
 The [UseOfficeForLabelling](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#office-built-in-labeling-client-and-other-labeling-solutions) (Use the Sensitivity feature in Office to apply and view sensitivity labels) and [AIPException](https://microsoft.github.io/ComplianceCxE/playbooks/AIP2MIP/AIPException/#configuring-sensitivity-labeling-client-in-m365-apps) (Use the Azure Information Protection add-in for sensitivity labeling) registry setting is purged of the following keys:
@@ -485,7 +485,7 @@ Results are written into log file [EndpointURLs.log](#endpoint-urls-log) in the 
 
 > **Note**
 >
-> This feature/parameter uses the AIPService module, which PowerShell 7.x does not support. Therefore, unexpected errors may occur because the AIP service module is executed in compatibility mode in PowerShell 7.x.
+> This feature/parameter uses the [AIPService](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps) module, which PowerShell 7.x does not yet support. Therefore, unexpected errors may occur because the AIP service module is executed in compatibility mode in PowerShell 7.x.
 
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
