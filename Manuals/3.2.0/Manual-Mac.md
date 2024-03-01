@@ -179,7 +179,7 @@ InformationProtectionUtility:
   [P] RECORD PROBLEM
   [C] COLLECT
   [Z] COMPRESS LOGS
-  [X] EXIT MENU
+  [X] EXIT
  
 Please select an option and press enter:
 ```
