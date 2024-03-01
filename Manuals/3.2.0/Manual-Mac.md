@@ -97,16 +97,16 @@ If you do not have this module installed, the 'Information Protection Utility' w
 
 # Installation <a name="installation"></a>
 
-The 'Information Protection Utility' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/UnifiedLabelingSupportTool/). To start the installation, you must first execute the `pwsh` command in a Terminal window to start a PowerShell session. Then enter the following command and press enter to start the installation of the 'Information Protection Utility':
+The 'Information Protection Utility' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/InformationProtectionUtility/). To start the installation, you must first execute the `pwsh` command in a Terminal window to start a PowerShell session. Then enter the following command and press enter to start the installation of the 'Information Protection Utility':
 
 ```PowerShell
-Install-Module -Name UnifiedLabelingSupportTool -Scope CurrentUser
+Install-Module -Name InformationProtectionUtility -Scope CurrentUser
 ```
 
 If you have local administrative privileges, you can run the following command instead:
 
 ```PowerShell
-Install-Module -Name UnifiedLabelingSupportTool -Scope AllUsers
+Install-Module -Name InformationProtectionUtility -Scope AllUsers
 ```
 
 > **Note**
@@ -128,7 +128,7 @@ The 'Information Protection Utility' is code-signed with a Microsoft certificate
 To verify if the installation was successful, you can call the `Get-Module` cmdlet with the following parameter:
 
 ```PowerShell
-Get-Module -Name UnifiedLabelingSupportTool -ListAvailable
+Get-Module -Name InformationProtectionUtility -ListAvailable
 ```
 
 If you find an entry like the following, the installation was successful:
@@ -138,7 +138,7 @@ If you find an entry like the following, the installation was successful:
 
 ModuleType   Version    Name                          ExportedCommands
 ----------   -------    ----                          ----------------
-Script       3.2.0      UnifiedLabelingSupportTool    {UnifiedLabelingSupportTool, ULSupportTool}
+Script       3.2.0      InformationProtectionUtility    {InformationProtectionUtility, ULSupportTool}
 ```
 
 # Uninstall <a name="uninstall"></a>
@@ -146,13 +146,13 @@ Script       3.2.0      UnifiedLabelingSupportTool    {UnifiedLabelingSupportToo
 If you want to completely uninstall the 'Information Protection Utility', you must execute the following command:
 
 ```PowerShell
-Uninstall-Module -Name UnifiedLabelingSupportTool -AllVersions
+Uninstall-Module -Name InformationProtectionUtility -AllVersions
 ```
 
 If you want to uninstall a specific version, for example version 3.1.2, you must execute the following command:
 
 ```PowerShell
-Uninstall-Module -Name UnifiedLabelingSupportTool -RequiredVersion 3.1.2
+Uninstall-Module -Name InformationProtectionUtility -RequiredVersion 3.1.2
 ```
 
 > **Note**
@@ -164,13 +164,13 @@ Uninstall-Module -Name UnifiedLabelingSupportTool -RequiredVersion 3.1.2
 First you need to execute the command `pwsh` in a Terminal window to start a PowerShell session. Then type the following command and press enter to start the 'Information Protection Utility':
 
 ```PowerShell
-UnifiedLabelingSupportTool
+InformationProtectionUtility
 ```
 
 When you start the 'Information Protection Utility', you'll see the following menu:
 
 ```
-UnifiedLabelingSupportTool:
+InformationProtectionUtility:
 
   [I] INFORMATION
   [M] MIT LICENSE
@@ -204,19 +204,19 @@ If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it
 You can also start the 'Information Protection Utility' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
 
 ```PowerShell
-UnifiedLabelingSupportTool -Information
+InformationProtectionUtility -Information
 ```
 
 To see a complete list of all command line parameters with description, execute the following command (command line help): <a name="command-line-help"></a>
 
 ```PowerShell
-Get-Help UnifiedLabelingSupportTool -Detailed
+Get-Help InformationProtectionUtility -Detailed
 ```
 
 To see the help for a single command line parameter, for example for `-CompressLogs`, run the following command:
 
 ```PowerShell
-Get-Help UnifiedLabelingSupportTool -Parameter CompressLogs
+Get-Help InformationProtectionUtility -Parameter CompressLogs
 ```
 
 # Features / Parameters <a name="features-parameters"></a>
@@ -226,7 +226,7 @@ The 'Information Protection Utility' provides the following parameters:
 **Syntax:**
 
 ```
-UnifiedLabelingSupportTool
+InformationProtectionUtility
        [-Information]
        [-License]
        [-Help]
@@ -276,7 +276,7 @@ Valid <String> arguments are: "Default", or "Silent":
 This argument removes all relevant policies, labels and settings:
 
 ```PowerShell
-UnifiedLabelingSupportTool -Reset Default
+InformationProtectionUtility -Reset Default
 ```
 
 With the above command the following file folders will be cleaned up:
@@ -299,13 +299,13 @@ With the above command the following file folders will be cleaned up:
 This command line parameter argument does the same as `-Reset Default`, but does not print any output - unless an error occurs when attempting to reset:
 
 ```PowerShell
-UnifiedLabelingSupportTool -Reset Silent
+InformationProtectionUtility -Reset Silent
 ```
 
 If a silent reset triggers an error, you can use the additional parameter `-Verbose` to find out more about the cause of the error:
 
 ```PowerShell
-UnifiedLabelingSupportTool -Reset Silent -Verbose
+InformationProtectionUtility -Reset Silent -Verbose
 ```
 
 You can also review the [Script.log](#script-log-file) file for errors of silent reset.
@@ -315,7 +315,7 @@ You can also review the [Script.log](#script-log-file) file for errors of silent
 > [!IMPORTANT]
 > Before you proceed with this option, please close all open applications.
 
-As a first step, this parameter activates the required logging and then prompts you to reproduce the problem. While you’re doing so, the 'Information Protection Utility' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`~/Documents/UnifiedLabelingSupportTool`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
+As a first step, this parameter activates the required logging and then prompts you to reproduce the problem. While you’re doing so, the 'Information Protection Utility' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`~/Documents/InformationProtectionUtility`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
 
 In the event that you accidentally close the PowerShell window while logging is enabled, the 'Information Protection Utility' disables logging the next time you start it.
 
@@ -348,7 +348,7 @@ Results are written into log file [UserLicenseDetails.log](#user-license-log) in
 
 This command line parameter should always be used at the very end of a scenario.
 
-This parameter compresses all collected log files and folders into a .zip archive, and the corresponding file is saved to your desktop. In addition, the default logs folder (`~/Documents/UnifiedLabelingSupportTool`) is cleaned.
+This parameter compresses all collected log files and folders into a .zip archive, and the corresponding file is saved to your desktop. In addition, the default logs folder (`~/Documents/InformationProtectionUtility`) is cleaned.
 
 ### [X] EXIT / - <a name="exit"></a>
 
@@ -421,22 +421,22 @@ For more information, please see the following documentation:
 
 When creating the 'Information Protection Utility', great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
 
-Should you ever encounter a problem with the 'Information Protection Utility', please visit the [support page](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md) on the project site.
+Should you ever encounter a problem with the 'Information Protection Utility', please visit the [support page](https://github.com/microsoft/InformationProtectionUtility/blob/main/SUPPORT.md) on the project site.
 
 ### Microsoft Support Policy <a name="support-policy"></a>
 
 Under this policy, the 'Information Protection Utility' remains in support if the following criteria are met:
 
-* You're using the [lastet version](https://aka.ms/UnifiedLabelingSupportTool/Latest) of the 'Information Protection Utility'.
+* You're using the [lastet version](https://aka.ms/InformationProtectionUtility/Latest) of the 'Information Protection Utility'.
 * You must be licensed with a product or service that uses a [Microsoft Information Protection subscription](https://learn.microsoft.com/en-us/office365/servicedescriptions/azure-information-protection#available-plans).
 
 ### How to file issues and get help <a name="get-help"></a>
 
-The 'Information Protection Utility' uses GitHub [Issues](https://github.com/microsoft/UnifiedLabelingSupportTool/issues) to track problems and feature requests.
+The 'Information Protection Utility' uses GitHub [Issues](https://github.com/microsoft/InformationProtectionUtility/issues) to track problems and feature requests.
 
-Please check for [known issues](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md#known-issues) before submitting new issues to avoid duplicates.
+Please check for [known issues](https://github.com/microsoft/InformationProtectionUtility/blob/main/SUPPORT.md#known-issues) before submitting new issues to avoid duplicates.
 
-For new issues, file your bug or feature request as a [new Issue](https://github.com/microsoft/UnifiedLabelingSupportTool/issues/new). Please describe the Issue as detailed as possible. A screenshot of the error and/or a step-by-step description of how to reproduce a problem would be very helpful for this.
+For new issues, file your bug or feature request as a [new Issue](https://github.com/microsoft/InformationProtectionUtility/issues/new). Please describe the Issue as detailed as possible. A screenshot of the error and/or a step-by-step description of how to reproduce a problem would be very helpful for this.
 
 <br>
 <br>
