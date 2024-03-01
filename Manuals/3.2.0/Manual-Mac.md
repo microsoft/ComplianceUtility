@@ -381,8 +381,9 @@ This log file collects the actions that has been taken and lists the results. It
 
 The 'Information Protection Utility' collects the following log files and folders.
 
-Please note that not all log files are collected or recorded at all times. It depends on your environment which logs, or traces can be recorded.
-
+> **Note**
+>
+> Not all log files are collected or recorded at all times. It depends on your environment which logs, or traces can be recorded.
 
 <ul>
 <li>
