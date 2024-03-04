@@ -467,7 +467,7 @@ Results are written into the log file [ProtectionTemplates.log](#protection-temp
 
 ### [E] Endpoint URLs / -CollectEndpointURLs <a name="endpoint-urls"></a>
 
-This parameter collects important endpoint URLs. The URLs are taken from your local registry or your tenant's AIP service configuration information, and extended by additional relevant URLs.
+This parameter collects important endpoint URLs. The URLs are taken from your local registry or your tenant's Purview service configuration information, and extended by additional relevant URLs.
 
 In a first step, this parameter is used to check whether you can access the URL. In a second step, the issuer of the corresponding certificate of the URL is collected. This process is represented by an output with the Tenant Id, Endpoint name, URL, and Issuer of the certificate. For example:
 
