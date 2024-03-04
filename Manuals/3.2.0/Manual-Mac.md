@@ -138,7 +138,7 @@ If you find an entry like the following, the installation was successful:
 
 ModuleType   Version    Name                          ExportedCommands
 ----------   -------    ----                          ----------------
-Script       3.2.0      InformationProtectionUtility    {InformationProtectionUtility, InfoProtectUtil}
+Script       3.2.0      InformationProtectionUtility    {InformationProtectionUtility}
 ```
 
 # Uninstall <a name="uninstall"></a>
