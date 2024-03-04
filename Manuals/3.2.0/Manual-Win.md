@@ -24,7 +24,7 @@
    * [RESET](#reset)
    * [RECORD PROBLEM](#record-problem)
    * [COLLECT](#collect)
-     * [Service configuration](#service-config)
+     * [AIP service configuration](#aip-service-config)
      * [Protection templates](#protection-templates)
      * [Endpoint URLs](#endpoint-urls)
      * [Labels and polcies](#labels-and-policies)
@@ -268,7 +268,7 @@ If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it
 
 ```
   [C] COLLECT
-   ├──[S] Service configuration
+   ├──[A] AIP service configuration
    ├──[T] Protection templates
    ├──[E] Endpoint URLs
    ├──[L] Labels and policies
@@ -450,11 +450,11 @@ In the event that you accidentally close the PowerShell window while logging is 
 >
 > Neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the 'Information Protection Utility' is not run in an administrative PowerShell window as a user with local administrative privileges.
 
-### [S] Service configuration / -CollectServiceConfiguration <a name="service-config"></a>
+### [A] AIP service configuration / -CollectAIPServiceConfiguration <a name="aip-service-config"></a>
 
-This parameter collects your Purview service configuration information, e.g. [SuperUsers](https://learn.microsoft.com/en-us/azure/information-protection/configure-super-users) or [OnboardingControlPolicy](https://learn.microsoft.com/en-us/powershell/module/aipservice/set-aipserviceonboardingcontrolpolicy?view=azureipps), etc.
+This parameter collects your AIP service configuration information, e.g. [SuperUsers](https://learn.microsoft.com/en-us/azure/information-protection/configure-super-users) or [OnboardingControlPolicy](https://learn.microsoft.com/en-us/powershell/module/aipservice/set-aipserviceonboardingcontrolpolicy?view=azureipps), etc.
 
-Results are written into the log file [ServiceConfiguration.log](#service-config-log) in the subfolder "Collect" of the Logs folder.
+Results are written into the log file [AIPServiceConfiguration.log](#aip-service-config-log) in the subfolder "Collect" of the Logs folder.
 
 ### [T] Protection templates / -CollectProtectionTemplates <a name="protection-templates"></a>
 
@@ -887,11 +887,11 @@ Log files and folders collected via the sub-entries of the [COLLECT](#collect) m
 <ul>
 <li>
 
-**ServiceConfiguration.log** <a name="service-config-log"></a>
+**AIPServiceConfiguration.log** <a name="aip-service-config-log"></a>
 
 </li>
 
-This file is only collected if you selected [Service configuration](#service-config). The file contains the Purview Information Protection service configuration of your tenant.<br>
+This file is only collected if you selected [AIP service configuration](#aip-service-config). The file contains the AIP Information Protection service configuration of your tenant.<br>
 
 For more information, please see the following documentation: [Get-AipServiceConfiguration](https://docs.microsoft.com/de-de/powershell/module/aipservice/get-aipserviceconfiguration).
 
