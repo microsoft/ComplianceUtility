@@ -64,7 +64,7 @@ The 'Information Protection Utility' supports:
 
 * Apple macOS ([three most recent major versions](https://support.microsoft.com/en-us/office/upgrade-macos-to-continue-receiving-microsoft-365-and-office-for-mac-updates-16b8414f-08ec-4b24-8c91-10a918f649f8)).
 
-The 'Information Protection Utility' supports the following Office/Microsoft 365 versions:
+The 'Information Protection Utility' supports the following Office and Microsoft 365 versions:
 
 * Microsoft 365 for Mac ([most recently released version](https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac)), Microsoft Office 2019 for Mac and Microsoft Office 2021 for Mac .
 
