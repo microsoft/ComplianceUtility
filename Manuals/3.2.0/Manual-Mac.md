@@ -193,7 +193,7 @@ If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it
   [C] COLLECT
    ├──[L] Labels and policies
    ├──[D] DLP rules and policies
-   └──[S] User license details
+   └──[U] User license details
 ```
 
 > **Note**
@@ -232,7 +232,7 @@ InformationProtectionUtility
        [-Help]
        [-Reset] <String>
        [-RecordProblem]
-       [-CollectAIPServiceConfiguration]
+       [-CollectServiceConfiguration]
        [-CollectProtectionTemplates]
        [-CollectEndpointURLs]
        [-CollectLabelsAndPolicies]
@@ -246,7 +246,7 @@ InformationProtectionUtility
 
 > **Note**
 >
-> Features/Parameters `-CollectAIPServiceConfiguration`, `-CollectProtectionTemplates` and `-CollectEndpointURLs` are not available. They would require the Purview Information Protection module, which is only available via the [Purview Information Protection software](https://www.microsoft.com/en-us/download/details.aspx?id=53018) on Microsoft Windows.
+> Features/Parameters `-CollectServiceConfiguration`, `-CollectProtectionTemplates` and `-CollectEndpointURLs` are not available. They would require the Purview Information Protection module, which is only available via the [Purview Information Protection software](https://www.microsoft.com/en-us/download/details.aspx?id=53018) on Microsoft Windows.
 
 Description of all features and parameters (feature / parameter):
 
