@@ -386,12 +386,9 @@ The 'Information Protection Utility' collects the following log files and folder
 >
 > Not all log files are collected or recorded at all times. It depends on your environment which logs, or traces can be recorded.
 
-<ul>
-<li>
+**RECORD PROBLEM** <a name="record-problem-logs"></a>
 
-**Log folders**
-
-</li>
+Log files and folders collected by the [RECORD PROBLEM](#record-problem) option:
 
 ```
 ~/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/CLP
@@ -405,6 +402,31 @@ The 'Information Protection Utility' collects the following log files and folder
 ~/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs
 ~/Library/Group Containers/UBF8T346G9.Office/mip_policy/mip/logs
 ```
+
+**COLLECT** <a name="collect-logs"></a>
+
+Log files collected by the sub-entries of the [COLLECT](#collect) menu. Results are written in the subfolder "Collect" of the Logs folder:
+
+<ul>
+<li>
+
+**LabelsAndPolicies.log** <a name="labels-and-policies-log"></a>
+
+</li>
+
+This file is created by the collect option [Labels and policies](#labels-and-policies).<br>
+
+For more information, please see the following documentation: [Get-Label](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps) and [Get-LabelPolicy](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-labelpolicy?view=exchange-ps).
+  
+<li>
+
+**DLPRulesAndPolicies.log** <a name="dlp-rules-log"></a>
+
+</li>
+
+This file is created by the collect option [DLP rules and policies](#dlp-rules-and-policies).<br>
+
+For more information, please see the following documentation: [Get-DlpCompliancePolicy](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpcompliancepolicy?view=exchange-ps), [Get-DlpComplianceRule](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpcompliancerule?view=exchange-ps), [Get-DlpSensitiveInformationType](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpsensitiveinformationtype), [Get-DlpSensitiveInformationTypeRulePackage](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpsensitiveinformationtyperulepackage), [Get-DlpKeywordDictionary](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpkeyworddictionary), and [Get-DlpEdmSchema](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpedmschema).
 
 <li>
 
