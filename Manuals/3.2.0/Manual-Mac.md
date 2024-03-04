@@ -335,7 +335,7 @@ This parameter collects DLP rules and policies, sensitive information type detai
 
 Results are written into log file [DLPRulesAndPolicies.log](#dlp-rules-log) in the subfolder "Collect" of the Logs folder.
 
-### [S] User license details <a name="user-license-details"></a>
+### [U] User license details <a name="user-license-details"></a>
 
 This parameter collects the user license details by [Microsoft Graph](https://learn.microsoft.com/en-us/graph/overview).
 
