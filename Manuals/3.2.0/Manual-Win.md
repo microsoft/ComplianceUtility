@@ -12,7 +12,7 @@
    * [Graph PowerShell module](#graph-module)
    * [Exchange Online PowerShell module](#exchange-online-module)
    * [Microsoft PowerShell](#ms-powershell)
-   * [Azure Information Protection module](#aip-module)
+   * [Purview Information Protection module](#aip-module)
 * [Installation](#installation)
    * [Manual installation](#manual-installaltion)
    * [Check installation](#check-installation)
@@ -24,7 +24,7 @@
    * [RESET](#reset)
    * [RECORD PROBLEM](#record-problem)
    * [COLLECT](#collect)
-     * [AIP service configuration](#aip-service-config)
+     * [Service configuration](#service-config)
      * [Protection templates](#protection-templates)
      * [Endpoint URLs](#endpoint-urls)
      * [Labels and polcies](#labels-and-policies)
@@ -42,7 +42,7 @@
 
 The 'Information Protection Utility' is a powerful compliance utility that helps manage sensitivity labels, policies, settings and more. Whether you need to troubleshoot issues or reset configurations, this tool has you covered.
 
-Have you ever used the Sensitivity button in a [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services)? If so, you've either used the [Purview Information Protection client](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) (aka Azure Information Protection client) or [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Information Protection Utility' will help you.
+Have you ever used the Sensitivity button in a [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services)? If so, you've either used [Purview Information Protection](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) (aka [Azure Information Protection client](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client)) or [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Information Protection Utility' will help you.
 
 > [!CAUTION]
 > The Azure Information Protection (AIP) Unified Labeling add-in for Office has been retired on April 11th, 2024.
@@ -84,7 +84,7 @@ The 'Information Protection Utility' supports [Windows PowerShell 5.1](https://l
 
    * Microsoft Windows 10, Windows 11, Windows Server 2012/R2, Windows Server 2016, Windows Server 2019, Windows Server 2022 and Apple macOS ([three most recent major versions](https://support.microsoft.com/en-us/office/upgrade-macos-to-continue-receiving-microsoft-365-and-office-for-mac-updates-16b8414f-08ec-4b24-8c91-10a918f649f8)).
 
-The 'Information Protection Utility' supports the following Microsoft 365/Office versions:
+The 'Information Protection Utility' supports the following Office and Microsoft 365 versions:
 
    * Microsoft Office 2016, Microsoft Office 2019, Microsoft Office 2021, [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) and Microsoft 365 for Mac ([most recently released version](https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac)).
 
@@ -125,13 +125,13 @@ If you do not have this module installed, the 'Information Protection Utility' w
 
 Please follow the instructions for [installing PowerShell on Windows](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) to install it using your preferred method if you want to use the 'Information Protection Utility' on Microsoft [PowerShell 7.4](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (or higher).
 
-### Azure Information Protection module (optional) <a name="aip-module"></a>
+### Purview Information Protection module (optional) <a name="aip-module"></a>
 
-The Azure Information Protection module is installed with the [Azure Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018). Please ensure to have the latest version of the Azure Information Protection module installed by checking its [client version release history](https://docs.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history).
+The Purview Information Protection module is installed with [Purview Information Protection](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) (aka [Azure Information Protection client](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client)). Please ensure to have the latest version of Purview Information Protection module installed by checking its [client version release history](https://docs.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history).
 
 > **Note**
 > 
-> The Azure Information Protection module does not support PowerShell 7.x. Therefore, unexpected errors may occur because the Azure Information Protection module is executed in compatibility mode in PowerShell 7.x.
+> Purview Information Protection module does not support PowerShell 7.x. Therefore, unexpected errors may occur because the Purview Information Protection module is executed in compatibility mode in PowerShell 7.x.
 
 # Installation <a name="installation"></a>
 
@@ -198,7 +198,7 @@ If you find an entry like the following, the installation was successful:
 
 ModuleType   Version    Name                          ExportedCommands
 ----------   -------    ----                          ----------------
-Script       3.2.0      InformationProtectionUtility    {InformationProtectionUtility, InfoProtectUtil}
+Script       3.2.0      InformationProtectionUtility    {InformationProtectionUtility}
 ```
 
 To verify that an installation was performed using PowerShell Gallery, you can run the following command:
@@ -268,12 +268,12 @@ If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it
 
 ```
   [C] COLLECT
-   ├──[A] AIP service configuration
+   ├──[S] Service configuration
    ├──[T] Protection templates
-   ├──[U] Endpoint URLs
+   ├──[E] Endpoint URLs
    ├──[L] Labels and policies
    ├──[D] DLP rules and policies
-   └──[S] User license details
+   └──[U] User license details
 ```
 
 > **Note**
@@ -313,7 +313,7 @@ InformationProtectionUtility
        [-Help]
        [-Reset] <String>
        [-RecordProblem]
-       [-CollectAIPServiceConfiguration]
+       [-CollectServiceConfiguration]
        [-CollectProtectionTemplates]
        [-CollectEndpointURLs]
        [-CollectLabelsAndPolicies]
@@ -450,7 +450,7 @@ In the event that you accidentally close the PowerShell window while logging is 
 >
 > Neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the 'Information Protection Utility' is not run in an administrative PowerShell window as a user with local administrative privileges.
 
-### [A] AIP service configuration / -CollectAIPServiceConfiguration <a name="aip-service-config"></a>
+### [S] Service configuration / -CollectServiceConfiguration <a name="service-config"></a>
 
 This parameter collects your AIP service configuration information, e.g. [SuperUsers](https://learn.microsoft.com/en-us/azure/information-protection/configure-super-users) or [OnboardingControlPolicy](https://learn.microsoft.com/en-us/powershell/module/aipservice/set-aipserviceonboardingcontrolpolicy?view=azureipps), etc.
 
@@ -465,7 +465,7 @@ Results are written into the log file [ProtectionTemplates.log](#protection-temp
 > [!TIP]
 > You can use this feature to create a backup copy of your protection templates.
 
-### [U] Endpoint URLs / -CollectEndpointURLs <a name="endpoint-urls"></a>
+### [E] Endpoint URLs / -CollectEndpointURLs <a name="endpoint-urls"></a>
 
 This parameter collects important endpoint URLs. The URLs are taken from your local registry or your tenant's AIP service configuration information, and extended by additional relevant URLs.
 
@@ -502,7 +502,7 @@ This parameter collects DLP rules and policies, sensitive information type detai
 
 Results are written into log file [DLPRulesAndPolicies.log](#dlp-rules-log) in the subfolder "Collect" of the Logs folder.
 
-### [S] User license details <a name="user-license-details"></a>
+### [U] User license details <a name="user-license-details"></a>
 
 This parameter collects the user license details by [Microsoft Graph](https://learn.microsoft.com/en-us/graph/overview).
 
