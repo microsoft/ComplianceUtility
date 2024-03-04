@@ -97,7 +97,7 @@ If you do not have this module installed, the 'Information Protection Utility' w
 
 # Installation <a name="installation"></a>
 
-The 'Information Protection Utility' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/InformationProtectionUtility/). To start the installation, you must first execute the `pwsh` command in a Terminal window to start a PowerShell session. Then enter the following command and press enter to start the installation of the 'Information Protection Utility':
+The 'Information Protection Utility' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/InformationProtectionUtility/). To start the installation, you must first execute the `pwsh` command in a Terminal window to start a PowerShell session. Then type the following command and press enter to start the installation of the 'Information Protection Utility':
 
 ```PowerShell
 Install-Module -Name InformationProtectionUtility -Scope CurrentUser
