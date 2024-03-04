@@ -903,7 +903,7 @@ For more information, please see the following documentation: [Get-AipServiceCon
 
 These files are only collected if you selected [Protection templates](#protection-templates).<br>
 
-The ProtectionTemplates.log file contains the Azure Information Protection template details. Additionally, an export of each protection template is saved in the "ProtectionTemplates" subfolder with the protection template ID as the file name and the .xml file extension.<br>
+The ProtectionTemplates.log file contains the Purview Information Protection template details. Additionally, an export of each protection template is saved in the "ProtectionTemplates" subfolder with the protection template ID as the file name and the .xml file extension.<br>
 
 For more information, please see the following documentation: [Get-AipServiceTemplate](https://docs.microsoft.com/en-us/powershell/module/aipservice/get-aipservicetemplate), and [Export-AipServiceTemplate](https://docs.microsoft.com/en-us/powershell/module/aipservice/export-aipservicetemplate?view=azureipps).
 
