@@ -247,7 +247,7 @@ InformationProtectionUtility
 > **Note**
 >
 > Features/Parameters `-CollectAIPServiceConfiguration`, `-CollectProtectionTemplates` and `-CollectEndpointURLs` are not available.
-> They would either require the [AIPService module](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps) or the [Purview Information Protection module](https://www.microsoft.com/en-us/download/details.aspx?id=53018), which are not available on Apple macOS.
+> They would either require the [AIPService module](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps) or [Purview Information Protection](https://www.microsoft.com/en-us/download/details.aspx?id=53018), neither of which are available on Apple macOS.
 
 Description of all features and parameters (feature / parameter):
 
