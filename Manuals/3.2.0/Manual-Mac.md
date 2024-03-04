@@ -246,7 +246,7 @@ InformationProtectionUtility
 
 > **Note**
 >
-> Features/Parameters `-CollectAIPServiceConfiguration`, `-CollectProtectionTemplates` and `-CollectEndpointURLs` are not available. They would require the Azure Information Protection module, which is only available via the [Azure Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) on Microsoft Windows.
+> Features/Parameters `-CollectAIPServiceConfiguration`, `-CollectProtectionTemplates` and `-CollectEndpointURLs` are not available. They would require the Purview Information Protection module, which is only available via the [Purview Information Protection software](https://www.microsoft.com/en-us/download/details.aspx?id=53018) on Microsoft Windows.
 
 Description of all features and parameters (feature / parameter):
 
