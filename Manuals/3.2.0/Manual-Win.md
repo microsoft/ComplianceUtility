@@ -313,7 +313,7 @@ InformationProtectionUtility
        [-Help]
        [-Reset] <String>
        [-RecordProblem]
-       [-CollectServiceConfiguration]
+       [-CollectAIPServiceConfiguration]
        [-CollectProtectionTemplates]
        [-CollectEndpointURLs]
        [-CollectLabelsAndPolicies]
