@@ -452,9 +452,9 @@ In the event that you accidentally close the PowerShell window while logging is 
 
 ### [S] Service configuration / -CollectServiceConfiguration <a name="service-config"></a>
 
-This parameter collects your AIP service configuration information, e.g. [SuperUsers](https://learn.microsoft.com/en-us/azure/information-protection/configure-super-users) or [OnboardingControlPolicy](https://learn.microsoft.com/en-us/powershell/module/aipservice/set-aipserviceonboardingcontrolpolicy?view=azureipps), etc.
+This parameter collects your Purview service configuration information, e.g. [SuperUsers](https://learn.microsoft.com/en-us/azure/information-protection/configure-super-users) or [OnboardingControlPolicy](https://learn.microsoft.com/en-us/powershell/module/aipservice/set-aipserviceonboardingcontrolpolicy?view=azureipps), etc.
 
-Results are written into the log file [AIPServiceConfiguration.log](#aip-service-config-log) in the subfolder "Collect" of the Logs folder.
+Results are written into the log file [ServiceConfiguration.log](#service-config-log) in the subfolder "Collect" of the Logs folder.
 
 ### [T] Protection templates / -CollectProtectionTemplates <a name="protection-templates"></a>
 
@@ -887,11 +887,11 @@ Log files and folders collected via the sub-entries of the [COLLECT](#collect) m
 <ul>
 <li>
 
-**AIPServiceConfiguration.log** <a name="aip-service-config-log"></a>
+**ServiceConfiguration.log** <a name="service-config-log"></a>
 
 </li>
 
-This file is only collected if you selected [AIP service configuration](#aip-service-config). The file contains the Azure Information Protection service configuration of your tenant.<br>
+This file is only collected if you selected [Service configuration](#service-config). The file contains the Purview Information Protection service configuration of your tenant.<br>
 
 For more information, please see the following documentation: [Get-AipServiceConfiguration](https://docs.microsoft.com/de-de/powershell/module/aipservice/get-aipserviceconfiguration).
 
