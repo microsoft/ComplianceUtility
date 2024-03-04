@@ -891,7 +891,7 @@ Log files and folders collected via the sub-entries of the [COLLECT](#collect) m
 
 </li>
 
-This file is only collected if you selected [AIP service configuration](#aip-service-config). The file contains the AIP Information Protection service configuration of your tenant.<br>
+This file is only collected if you selected [AIP service configuration](#aip-service-config). The file contains the AIP service configuration of your tenant.<br>
 
 For more information, please see the following documentation: [Get-AipServiceConfiguration](https://docs.microsoft.com/de-de/powershell/module/aipservice/get-aipserviceconfiguration).
 
