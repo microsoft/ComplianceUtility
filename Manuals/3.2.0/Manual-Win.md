@@ -12,7 +12,7 @@
    * [Graph PowerShell module](#graph-module)
    * [Exchange Online PowerShell module](#exchange-online-module)
    * [Microsoft PowerShell](#ms-powershell)
-   * [Purview Information Protection module](#aip-module)
+   * [Purview Information Protection module](#pip-module)
 * [Installation](#installation)
    * [Manual installation](#manual-installaltion)
    * [Check installation](#check-installation)
@@ -125,7 +125,7 @@ If you do not have this module installed, the 'Information Protection Utility' w
 
 Please follow the instructions for [installing PowerShell on Windows](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) to install it using your preferred method if you want to use the 'Information Protection Utility' on Microsoft [PowerShell 7.4](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (or higher).
 
-### Purview Information Protection module (optional) <a name="aip-module"></a>
+### Purview Information Protection module (optional) <a name="pip-module"></a>
 
 The Purview Information Protection module is installed with [Purview Information Protection](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) (aka [Azure Information Protection client](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client)). Please ensure to have the latest version of Purview Information Protection module installed by checking its [client version release history](https://docs.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history).
 
@@ -621,13 +621,13 @@ The following log folders contain MSIP/MSIPC logging information:<br>
 %LOCALAPPDATA%\Microsoft\MSIPC
 ```
  
-If you have installed and enabled the Azure Information Protection unified labeling client, the folders containing the AIPLogs.zip file are collected.<br>
+If you have installed Purview Information Protection, the folders containing the AIPLogs.zip file are collected.<br>
 
-For more information, please see the following documentation for the used PowerShell command: [Export-AIPLogs](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/export-aiplogs?view=azureipps).
+For more information, please see the following documentation for the used PowerShell command: [Export-Logs](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/export-aiplogs?view=azureipps).
 
 <li>
 
-**AIP plugin for Adobe Acrobat logs**
+**MIP plugin for Adobe Acrobat logs**
 
 </li>
 
@@ -905,7 +905,7 @@ These files are only collected if you selected [Protection templates](#protectio
 
 The ProtectionTemplates.log file contains the Purview Information Protection template details. Additionally, an export of each protection template is saved in the "ProtectionTemplates" subfolder with the protection template ID as the file name and the .xml file extension.<br>
 
-For more information, please see the following documentation: [Get-AipServiceTemplate](https://docs.microsoft.com/en-us/powershell/module/aipservice/get-aipservicetemplate), and [Export-AipServiceTemplate](https://docs.microsoft.com/en-us/powershell/module/aipservice/export-aipservicetemplate?view=azureipps).
+For more information, please see the following documentation: [Get-ServiceTemplate](https://docs.microsoft.com/en-us/powershell/module/aipservice/get-aipservicetemplate), and [Export-ServiceTemplate](https://docs.microsoft.com/en-us/powershell/module/aipservice/export-aipservicetemplate?view=azureipps).
 
 <li>
 
