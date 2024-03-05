@@ -246,8 +246,7 @@ InformationProtectionUtility
 
 > **Note**
 >
-> Features/Parameters `-CollectAIPServiceConfiguration`, `-CollectProtectionTemplates` and `-CollectEndpointURLs` are not available.
-> They would either require the [AIPService module](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps) or [Purview Information Protection](https://www.microsoft.com/en-us/download/details.aspx?id=53018) (aka [Azure Information Protection](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client)), neither of which are available on Apple macOS.
+> Features/Parameters `-CollectAIPServiceConfiguration`, `-CollectProtectionTemplates` and `-CollectEndpointURLs` are not available. They would require the [AIPService module](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps), which PowerShell 7.x does not yet support on Apple macOS.
 
 Description of all features and parameters (feature / parameter):
 
