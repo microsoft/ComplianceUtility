@@ -107,7 +107,7 @@ If you do not have this module installed, the 'Information Protection Utility' w
 
 > **Note**
 > 
-> The AIPService module does not yet support PowerShell 7.x. Therefore, unexpected errors may occur because the AIPService module is executed in compatibility mode in PowerShell 7.x.
+> The AIPService module does not yet support PowerShell 7.x. Therefore, unexpected errors may occur because the AIPService module is executed in [compatibility mode](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_windows_powershell_compatibility?view=powershell-7.4) in PowerShell 7.x.
 
 ### Graph PowerShell module <a name="graph-module"></a>
 
@@ -131,7 +131,7 @@ The Purview Information Protection module is installed with [Purview Information
 
 > **Note**
 > 
-> Purview Information Protection module does not support PowerShell 7.x. Therefore, unexpected errors may occur because the Purview Information Protection module is executed in compatibility mode in PowerShell 7.x.
+> Purview Information Protection module does not support PowerShell 7.x. Therefore, unexpected errors may occur because the Purview Information Protection module is executed in [compatibility mode](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_windows_powershell_compatibility?view=powershell-7.4) in PowerShell 7.x.
 
 # Installation <a name="installation"></a>
 
@@ -485,7 +485,7 @@ Results are written into log file [EndpointURLs.log](#endpoint-urls-log) in the 
 
 > **Note**
 >
-> This feature/parameter uses the [AIPService](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps) module, which PowerShell 7.x does not yet support. Therefore, unexpected errors may occur because the AIPService module is executed in compatibility mode in PowerShell 7.x.
+> This feature/parameter uses the [AIPService](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps) module, which PowerShell 7.x does not yet support. Therefore, unexpected errors may occur because the AIPService module is executed in [compatibility mode](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_windows_powershell_compatibility?view=powershell-7.4) in PowerShell 7.x.
 
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
