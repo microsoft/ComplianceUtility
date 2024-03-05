@@ -409,7 +409,7 @@ The following file system folders are cleaned up as well:
 %LOCALAPPDATA%\Microsoft\DRM
 ```
 
-The [Clear-Authentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps) cmdlet is used to reset user settings, if an [Purview Information Protection](https://www.microsoft.com/en-us/download/details.aspx?id=53018) installation is found.
+The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps) cmdlet is used to reset user settings, if a [Purview Information Protection](https://www.microsoft.com/en-us/download/details.aspx?id=53018) or an [Azure Information Protection](https://www.microsoft.com/en-us/download/details.aspx?id=53018) installation is found.
 
 When you run the 'Information Protection Utility' in an administrative PowerShell window as a user with local administrative privileges, the following registry keys are cleaned up in addition:
 
