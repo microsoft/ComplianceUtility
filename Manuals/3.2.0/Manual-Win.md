@@ -127,7 +127,7 @@ Please follow the instructions for [installing PowerShell on Windows](https://le
 
 ### Purview Information Protection module (optional) <a name="pip-module"></a>
 
-The Purview Information Protection module is installed with [Purview Information Protection](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) (aka [Azure Information Protection client](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client)). Please ensure to have the latest version of Purview Information Protection module installed by checking its [client version release history](https://docs.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history).
+The Purview Information Protection module is installed with [Purview Information Protection](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) (aka [Azure Information Protection](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client)). Please ensure to have the latest version of Purview Information Protection module installed by checking its [client version release history](https://docs.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history).
 
 > **Note**
 > 
@@ -409,7 +409,7 @@ The following file system folders are cleaned up as well:
 %LOCALAPPDATA%\Microsoft\DRM
 ```
 
-The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps) cmdlet is used to reset user settings, if a [Purview Information Protection](https://www.microsoft.com/en-us/download/details.aspx?id=53018) or an [Azure Information Protection](https://www.microsoft.com/en-us/download/details.aspx?id=53018) installation is found.
+The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps) cmdlet is used to reset user settings, if a [Purview Information Protection](https://www.microsoft.com/en-us/download/details.aspx?id=53018) (aka [Azure Information Protection](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) installation is found.
 
 When you run the 'Information Protection Utility' in an administrative PowerShell window as a user with local administrative privileges, the following registry keys are cleaned up in addition:
 
