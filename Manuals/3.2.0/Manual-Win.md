@@ -137,13 +137,13 @@ The Purview Information Protection module is installed with [Purview Information
 
 The 'Information Protection Utility' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/InformationProtectionUtility/) and the fastest and easiest way to install it with user privileges is to run the following command in PowerShell:
 
-```PowerShell
+```
 Install-Module -Name InformationProtectionUtility -Scope CurrentUser
 ```
 
 If you have local administrative privileges, you can run the following command instead:
 
-```PowerShell
+```
 Install-Module -Name InformationProtectionUtility
 ```
 
@@ -155,7 +155,7 @@ Install-Module -Name InformationProtectionUtility
 
 If PowerShell script execution is restricted in your environment, you must first remove this restriction in order to be able to run the 'Information Protection Utility'. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
 
-```PowerShell
+```
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 ```
 
@@ -187,13 +187,13 @@ To verify if the installation was successful, please review the [check installat
 
 To verify if the installation was successful, you can call the `Get-Module` cmdlet with the following parameter:
 
-```PowerShell
+```
 Get-Module -Name InformationProtectionUtility -ListAvailable
 ```
 
 If you find an entry like the following, the installation was successful:
 
-```PowerShell
+```
     Directory: C:\Users\<UserName>\Documents\WindowsPowerShell\Modules
 
 ModuleType Version    Name                                ExportedCommands
@@ -203,13 +203,13 @@ Script     3.2.0      InformationProtectionUtility        {InformationProtection
 
 To verify that an installation was performed using PowerShell Gallery, you can run the following command:
 
-```PowerShell
+```
 Get-InstalledModule -Name InformationProtectionUtility
 ```
 
 If you find an entry like the following, the installation was performed by PowerShell Gallery:
 
-```PowerShell
+```
 Version   Name                         Repository     Description
 -------   ----                         ----------     -----------
 3.2.0     InformationProtectionUtility   PSGallery      The 'Information Protection Utility' is a powerful compliance...
@@ -219,7 +219,7 @@ Version   Name                         Repository     Description
 
 If you want to completely uninstall the 'Information Protection Utility', you must execute the following command:
 
-```PowerShell
+```
 Uninstall-Module -Name InformationProtectionUtility -AllVersions
 ```
 
@@ -233,7 +233,7 @@ If the corresponding module was installed manually, you also need to remove it m
 
 To start the 'Information Protection Utility', simply type the following command in a PowerShell window and press enter:
 
-```PowerShell
+```
 InformationProtectionUtility
 ```
 
@@ -278,19 +278,19 @@ If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it
 
 You can also start the 'Information Protection Utility' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
 
-```PowerShell
+```
 InformationProtectionUtility -Information
 ```
 
 To see a complete list of all command line parameters with details (command line help), execute the following command: <a name="command-line-help"></a>
 
-```PowerShell
+```
 Get-Help InformationProtectionUtility -Detailed
 ```
 
 To see the help for a single command line parameter, for example for `-CompressLogs`, run the following command:
 
-```PowerShell
+```
 Get-Help InformationProtectionUtility -Parameter CompressLogs
 ```
 
@@ -351,7 +351,7 @@ Valid <String> arguments are: "Default", or "Silent":
 
 When you run PowerShell with user privileges, this argument removes all relevant policies, labels and settings:
 
-```PowerShell
+```
 InformationProtectionUtility -Reset Default
 ```
 
@@ -419,13 +419,13 @@ When you run the 'Information Protection Utility' in an administrative PowerShel
 
 This command line parameter argument does the same as `-Reset Default`, but does not print any output - unless an error occurs when attempting to reset:
 
-```PowerShell
+```
 InformationProtectionUtility -Reset Silent
 ```
 
 If a silent reset triggers an error, you can use the additional parameter `-Verbose` to find out more about the cause of the error:
 
-```PowerShell
+```
 InformationProtectionUtility -Reset Silent -Verbose
 ```
 
