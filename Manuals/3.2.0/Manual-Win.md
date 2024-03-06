@@ -196,9 +196,9 @@ If you find an entry like the following, the installation was successful:
 ```PowerShell
     Directory: C:\Users\<UserName>\Documents\WindowsPowerShell\Modules
 
-ModuleType   Version    Name                          ExportedCommands
-----------   -------    ----                          ----------------
-Script       3.2.0      InformationProtectionUtility    {InformationProtectionUtility}
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Script     3.2.0      InformationProtectionUtility        {InformationProtectionUtility}
 ```
 
 To verify that an installation was performed using PowerShell Gallery, you can run the following command:
@@ -212,7 +212,7 @@ If you find an entry like the following, the installation was performed by Power
 ```PowerShell
 Version   Name                         Repository     Description
 -------   ----                         ----------     -----------
-3.2.0     InformationProtectionUtility   PSGallery      The 'Information Protection Utility' is a powerful...
+3.2.0     InformationProtectionUtility   PSGallery      The 'Information Protection Utility' is a powerful compliance utility...
 ```
 
 # Uninstall <a name="uninstall"></a>
