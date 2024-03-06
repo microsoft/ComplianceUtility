@@ -600,7 +600,7 @@ For more information, please see the following documentation: [Automatic Proxy D
 
 This file records the exact steps you took when the problem occured. It was created by the Steps Recorder (psr.exe).<br>
 
-For more information, please see the following documentation: [Record steps to reproduce a problem](https://support.microsoft.com/en-us/help/22878/windows-10-record-steps).
+For more information, please see the following documentation: [Record steps to reproduce a problem](https://support.microsoft.com/en-us/help/22878/windows-10-record-steps) and [Steps Recorder deprecation](https://support.microsoft.com/en-us/windows/steps-recorder-deprecation-a64888d7-8482-4965-8ce3-25fb004e975f).
 
 <li>
   
