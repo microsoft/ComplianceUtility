@@ -136,9 +136,9 @@ If you find an entry like the following, the installation was successful:
 ```
     Directory: C:\Users\<UserName>\Documents\WindowsPowerShell\Modules
 
-ModuleType   Version    Name                          ExportedCommands
-----------   -------    ----                          ----------------
-Script       3.2.0      InformationProtectionUtility    {InformationProtectionUtility}
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Script     3.2.0      InformationProtectionUtility        InformationProtectionUtility
 ```
 
 # Uninstall <a name="uninstall"></a>
