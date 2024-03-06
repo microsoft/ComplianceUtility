@@ -286,15 +286,18 @@ With the above command the following file folders will be cleaned up:
 ~/Library/Containers/com.microsoft.Outlook/Data/Library/Logs
 ~/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs
 ~/Library/Group Containers/UBF8T346G9.Office/mip_policy/mip/logs
-~/Library/Containers/Microsoft Word/Data/Library/Logs/Diagnostics
-~/Library/Containers/Microsoft Excel/Data/Library/Logs/Diagnostics
-~/Library/Containers/Microsoft PowerPoint/Data/Library/Logs/Diagnostics
-~/Library/Containers/Microsoft Outlook/Data/Library/Logs/Diagnostics
-~/Library/Containers/Microsoft Word/Data/Library/Caches/Microsoft/uls/com.microsoft.Word/logs
-~/Library/Containers/Microsoft Excel/Data/Library/Caches/Microsoft/uls/com.microsoft.Excel/logs
-~/Library/Containers/Microsoft PowerPoint/Data/Library/Caches/Microsoft/uls/com.microsoft.PowerPoint/logs
-~/Library/Containers/Microsoft Outlook/Data/Library/Caches/Microsoft/uls/com.microsoft.Outlook/logs
-~/Library/Group Containers/UBF8T346G9.Office/Licenses/5
+
+<!-- ~/Library/Containers/Microsoft Word/Data/Library/Logs/Diagnostics -->
+<!-- ~/Library/Containers/Microsoft Excel/Data/Library/Logs/Diagnostics -->
+<!-- ~/Library/Containers/Microsoft PowerPoint/Data/Library/Logs/Diagnostics -->
+<!-- ~/Library/Containers/Microsoft Outlook/Data/Library/Logs/Diagnostics -->
+<!-- ~/Library/Containers/Microsoft Word/Data/Library/Caches/Microsoft/uls/com.microsoft.Word/logs -->
+<!-- ~/Library/Containers/Microsoft Excel/Data/Library/Caches/Microsoft/uls/com.microsoft.Excel/logs -->
+<!-- ~/Library/Containers/Microsoft PowerPoint/Data/Library/Caches/Microsoft/uls/com.microsoft.PowerPoint/logs -->
+<!-- ~/Library/Containers/Microsoft Outlook/Data/Library/Caches/Microsoft/uls/com.microsoft.Outlook/logs -->
+<!--~/Library/Group Containers/UBF8T346G9.Office/Licenses/5 -->
+
+<!-- This content will not appear in the rendered Markdown -->
 ```
 
 **Silent:**
