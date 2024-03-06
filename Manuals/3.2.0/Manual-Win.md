@@ -198,21 +198,7 @@ If you find an entry like the following, the installation was successful:
 
 ModuleType Version    Name                                ExportedCommands
 ---------- -------    ----                                ----------------
-Script     3.2.0      InformationProtectionUtility        {InformationProtectionUtility, UnifiedLabelingSupportTool, InfoProtUtil}
-```
-
-To verify that an installation was performed using PowerShell Gallery, you can run the following command:
-
-```
-Get-InstalledModule -Name InformationProtectionUtility
-```
-
-If you find an entry like the following, the installation was performed by PowerShell Gallery:
-
-```
-Version   Name                         Repository     Description
--------   ----                         ----------     -----------
-3.2.0     InformationProtectionUtility   PSGallery      The 'Information Protection Utility' is a powerful compliance...
+Script     3.2.0      InformationProtectionUtility        {InformationProtectionUtility, UnifiedLabelingSupportTool, Info...
 ```
 
 # Uninstall <a name="uninstall"></a>
