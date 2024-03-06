@@ -198,7 +198,7 @@ If you find an entry like the following, the installation was successful:
 
 ModuleType Version    Name                                ExportedCommands
 ---------- -------    ----                                ----------------
-Script     3.2.0      InformationProtectionUtility        {InformationProtectionUtility}
+Script     3.2.0      InformationProtectionUtility        {InformationProtectionUtility, UnifiedLabelingSupportTool, InfoProtUtil}
 ```
 
 To verify that an installation was performed using PowerShell Gallery, you can run the following command:
