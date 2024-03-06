@@ -149,12 +149,6 @@ If you want to completely uninstall the 'Information Protection Utility', you mu
 Uninstall-Module -Name InformationProtectionUtility -AllVersions
 ```
 
-If you want to uninstall a previous version, for example version 3.1.2, you must execute the following command:
-
-```
-Uninstall-Module -Name UnifiedLabelingSupportTool -RequiredVersion 3.1.2
-```
-
 > **Note**
 > 
 > Under certain circumstances, you may need to run the uninstallation with administrator privileges. Please request assistance from your administrator if necessary.
