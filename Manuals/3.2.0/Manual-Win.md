@@ -11,7 +11,7 @@
    * [AIPService module](#aipservice-module)
    * [Graph PowerShell module](#graph-module)
    * [Exchange Online PowerShell module](#exchange-online-module)
-   * [Microsoft PowerShell](#ms-powershell)
+   * [PowerShell](#ms-powershell)
    * [Purview Information Protection module](#pip-module)
 * [Installation](#installation)
    * [Manual installation](#manual-installaltion)
