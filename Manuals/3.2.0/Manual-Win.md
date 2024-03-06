@@ -153,7 +153,7 @@ Install-Module -Name InformationProtectionUtility
 
 #### Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
 
-If PowerShell script execution is restricted in your environment, you must first remove this restriction in order to be able to run the "Information Protection Utility". To do this, run the `Set-ExecutionPolicy` command with the following parameters:
+If PowerShell script execution is restricted in your environment, you must first remove this restriction in order to be able to run the 'Information Protection Utility'. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
 
 ```PowerShell
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
