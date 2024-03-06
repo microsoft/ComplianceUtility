@@ -223,12 +223,6 @@ If you want to completely uninstall the 'Information Protection Utility', you mu
 Uninstall-Module -Name InformationProtectionUtility -AllVersions
 ```
 
-If you want to uninstall a previous version, for example version 3.1.2, you must execute the following command:
-
-```PowerShell
-Uninstall-Module -Name UnifiedLabelingSupportTool -RequiredVersion 3.1.2
-```
-
 If the corresponding module was installed manually, you also need to remove it manually by deleting its installation folder.
 
 > **Note**
