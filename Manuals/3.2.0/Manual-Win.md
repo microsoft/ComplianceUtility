@@ -198,7 +198,7 @@ If you find an entry like the following, the installation was successful:
 
 ModuleType Version    Name                     ExportedCommands
 ---------- -------    ----                     ----------------
-Script     3.2.0      ComplianceUtility        {ComplianceUtility, UnifiedLabelingSupportTool, Info...
+Script     3.2.0      ComplianceUtility        {ComplianceUtility, CompUtil, UnifiedLabelingSupportTool}
 ```
 
 # Uninstall <a name="uninstall"></a>
