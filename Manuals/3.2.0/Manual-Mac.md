@@ -1,4 +1,4 @@
-# Information Protection Utility
+# Compliance Utility
 ###### Version 3.2.0-BETA (macOS) <br><br>
 
 **Contents**
@@ -34,13 +34,13 @@
  
 ## Description <a name="description"></a>
 
-The 'Information Protection Utility' is a powerful compliance utility that helps manage sensitivity labels, policies, settings and more. Whether you need to troubleshoot issues or reset configurations, this tool has you covered.
+The 'Compliance Utility' is a powerful compliance utility that helps manage sensitivity labels, policies, settings and more. Whether you need to troubleshoot issues or reset configurations, this tool has you covered.
 
-Have you ever used the Sensitivity button in a [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services)? If so, you've used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Information Protection Utility' will help you.
+Have you ever used the Sensitivity button in a [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services)? If so, you've used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Compliance Utility' will help you.
 
 > **Note**
 > 
-> If you want to use the 'Information Protection Utility' on Microsoft Windows, you can find the corresponding online manual [here](Manual-Win.md).
+> If you want to use the 'Compliance Utility' on Microsoft Windows, you can find the corresponding online manual [here](Manual-Win.md).
 
 ### MIT License <a name="mit-license"></a>
 
@@ -58,19 +58,19 @@ Your privacy is important to us. [This privacy statement](https://privacy.micros
 
 ## Requirements <a name="requirements"></a>
 
-Before you can use the 'Information Protection Utility' make sure that your environment fulfils the following requierements. Please update your environment if necessary.
+Before you can use the 'Compliance Utility' make sure that your environment fulfils the following requierements. Please update your environment if necessary.
 
-The 'Information Protection Utility' supports:
+The 'Compliance Utility' supports:
 
 * Apple macOS ([three most recent major versions](https://support.microsoft.com/en-us/office/upgrade-macos-to-continue-receiving-microsoft-365-and-office-for-mac-updates-16b8414f-08ec-4b24-8c91-10a918f649f8)).
 
-The 'Information Protection Utility' supports the following Office and Microsoft 365 versions:
+The 'Compliance Utility' supports the following Office and Microsoft 365 versions:
 
 * Microsoft 365 for Mac ([most recently released version](https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac)), Microsoft Office 2019 for Mac and Microsoft Office 2021 for Mac .
 
 ### Internet access <a name="internet-access"></a>
 
-The 'Information Protection Utility' uses additional sources from the Internet to make its functionality fully available.
+The 'Compliance Utility' uses additional sources from the Internet to make its functionality fully available.
 
 > [!WARNING]
 > Unexpected errors may occur, and some features may be limited, if there is no connection to the Internet.
@@ -87,26 +87,26 @@ Please follow the instructions for [installing PowerShell on macOS](https://lear
 
 The [Graph PowerShell module](https://www.powershellgallery.com/packages/Microsoft.Graph) is required to proceed the option [User license details](#user-license-details) from the [COLLECT](#collect) menu.
 
-If you do not have this module installed, the 'Information Protection Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/Microsoft.Graph).
+If you do not have this module installed, the 'Compliance Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/Microsoft.Graph).
 
 ### Exchange Online PowerShell module <a name="exchange-online-module"></a>
 
 The [Exchange Online PowerShell module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps) is required to proceed the options [Labels and policies](#labels-and-policies) and [DLP rules and policies](#dlp-rules-and-policies) from the menu [COLLECT](#collect).
 
-If you do not have this module installed, the 'Information Protection Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
+If you do not have this module installed, the 'Compliance Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
 
 # Installation <a name="installation"></a>
 
-The 'Information Protection Utility' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/InformationProtectionUtility/). To start the installation, you must first execute the `pwsh` command in a Terminal window to start a PowerShell session. Then type the following command and press enter to start the installation of the 'Information Protection Utility':
+The 'Compliance Utility' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/ComplianceUtility/). To start the installation, you must first execute the `pwsh` command in a Terminal window to start a PowerShell session. Then type the following command and press enter to start the installation of the 'Compliance Utility':
 
 ```
-Install-Module -Name InformationProtectionUtility -Scope CurrentUser
+Install-Module -Name ComplianceUtility -Scope CurrentUser
 ```
 
 If you have local administrative privileges, you can run the following command instead:
 
 ```
-Install-Module -Name InformationProtectionUtility -Scope AllUsers
+Install-Module -Name ComplianceUtility -Scope AllUsers
 ```
 
 > **Note**
@@ -115,20 +115,20 @@ Install-Module -Name InformationProtectionUtility -Scope AllUsers
 
 #### Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
 
-If PowerShell script execution is restricted in your environment, you must first remove this restriction in order to be able to run the 'Information Protection Utility'. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
+If PowerShell script execution is restricted in your environment, you must first remove this restriction in order to be able to run the 'Compliance Utility'. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
 
 ```
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 ```
 
-The 'Information Protection Utility' is code-signed with a Microsoft certificate.
+The 'Compliance Utility' is code-signed with a Microsoft certificate.
 
 ### Check installation <a name="check-installation"></a>
 
 To verify if the installation was successful, you can call the `Get-Module` cmdlet with the following parameter:
 
 ```
-Get-Module -Name InformationProtectionUtility -ListAvailable
+Get-Module -Name ComplianceUtility -ListAvailable
 ```
 
 If you find an entry like the following, the installation was successful:
@@ -136,17 +136,17 @@ If you find an entry like the following, the installation was successful:
 ```
     Directory: C:\Users\<UserName>\Documents\WindowsPowerShell\Modules
 
-ModuleType Version    Name                                ExportedCommands
----------- -------    ----                                ----------------
-Script     3.2.0      InformationProtectionUtility        {InformationProtectionUtility, UnifiedLabelingSupportTool, Info...
+ModuleType Version    Name                     ExportedCommands
+---------- -------    ----                     ----------------
+Script     3.2.0      ComplianceUtility        {ComplianceUtility, UnifiedLabelingSupportTool, Info...
 ```
 
 # Uninstall <a name="uninstall"></a>
 
-If you want to completely uninstall the 'Information Protection Utility', you must execute the following command:
+If you want to completely uninstall the 'Compliance Utility', you must execute the following command:
 
 ```
-Uninstall-Module -Name InformationProtectionUtility -AllVersions
+Uninstall-Module -Name ComplianceUtility -AllVersions
 ```
 
 > **Note**
@@ -155,16 +155,16 @@ Uninstall-Module -Name InformationProtectionUtility -AllVersions
 
 # User experience <a name="experience"></a>
 
-First you need to execute the command `pwsh` in a Terminal window to start a PowerShell session. Then type the following command and press enter to start the 'Information Protection Utility':
+First you need to execute the command `pwsh` in a Terminal window to start a PowerShell session. Then type the following command and press enter to start the 'Compliance Utility':
 
 ```
-InformationProtectionUtility
+ComplianceUtility
 ```
 
-When you start the 'Information Protection Utility', you'll see the following menu:
+When you start the 'Compliance Utility', you'll see the following menu:
 
 ```
-InformationProtectionUtility:
+ComplianceUtility:
 
   [I] INFORMATION
   [M] MIT LICENSE
@@ -192,35 +192,35 @@ If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it
 
 > **Note**
 >
-> * With an exception of the [User license details](#user-license-details) entry, you need to run the 'Information Protection Utility' in an administrative PowerShell window as a user with local administrative privileges to proceed with any option from this submenu. Please contact your administrator if necessary.
+> * With an exception of the [User license details](#user-license-details) entry, you need to run the 'Compliance Utility' in an administrative PowerShell window as a user with local administrative privileges to proceed with any option from this submenu. Please contact your administrator if necessary.
 > * You need to know your Microsoft 365 global administrator account information to proceed, as you will be asked for your credentials.
 
-You can also start the 'Information Protection Utility' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
+You can also start the 'Compliance Utility' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
 
 ```
-InformationProtectionUtility -Information
+ComplianceUtility -Information
 ```
 
 To see a complete list of all command line parameters with description, execute the following command (command line help): <a name="command-line-help"></a>
 
 ```
-Get-Help InformationProtectionUtility -Detailed
+Get-Help ComplianceUtility -Detailed
 ```
 
 To see the help for a single command line parameter, for example for `-CompressLogs`, run the following command:
 
 ```
-Get-Help InformationProtectionUtility -Parameter CompressLogs
+Get-Help ComplianceUtility -Parameter CompressLogs
 ```
 
 # Features / Parameters <a name="features-parameters"></a>
 
-The 'Information Protection Utility' provides the following parameters:
+The 'Compliance Utility' provides the following parameters:
 
 **Syntax:**
 
 ```
-InformationProtectionUtility
+ComplianceUtility
        [-Information]
        [-License]
        [-Help]
@@ -270,7 +270,7 @@ Valid <String> arguments are: "Default", or "Silent":
 This argument removes all relevant policies, labels and settings:
 
 ```
-InformationProtectionUtility -Reset Default
+ComplianceUtility -Reset Default
 ```
 
 With the above command the following file folders will be cleaned up:
@@ -293,13 +293,13 @@ With the above command the following file folders will be cleaned up:
 This command line parameter argument does the same as `-Reset Default`, but does not print any output - unless an error occurs when attempting to reset:
 
 ```
-InformationProtectionUtility -Reset Silent
+ComplianceUtility -Reset Silent
 ```
 
 If a silent reset triggers an error, you can use the additional parameter `-Verbose` to find out more about the cause of the error:
 
 ```
-InformationProtectionUtility -Reset Silent -Verbose
+ComplianceUtility -Reset Silent -Verbose
 ```
 
 You can also review the [Script.log](#script-log-file) file for errors of silent reset.
@@ -309,9 +309,9 @@ You can also review the [Script.log](#script-log-file) file for errors of silent
 > [!IMPORTANT]
 > Before you proceed with this option, please close all open applications.
 
-As a first step, this parameter activates the required logging and then prompts you to reproduce the problem. While you’re doing so, the 'Information Protection Utility' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`~/Documents/InformationProtectionUtility`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
+As a first step, this parameter activates the required logging and then prompts you to reproduce the problem. While you’re doing so, the 'Compliance Utility' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`~/Documents/ComplianceUtility`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
 
-In the event that you accidentally close the PowerShell window while logging is enabled, the 'Information Protection Utility' disables logging the next time you start it.
+In the event that you accidentally close the PowerShell window while logging is enabled, the 'Compliance Utility' disables logging the next time you start it.
 
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
@@ -342,7 +342,7 @@ Results are written into log file [UserLicenseDetails.log](#user-license-log) in
 
 This command line parameter should always be used at the very end of a scenario.
 
-This parameter compresses all collected log files and folders into a .zip archive, and the corresponding file is saved to your desktop. In addition, the default logs folder (`~/Documents/InformationProtectionUtility`) is cleaned.
+This parameter compresses all collected log files and folders into a .zip archive, and the corresponding file is saved to your desktop. In addition, the default logs folder (`~/Documents/ComplianceUtility`) is cleaned.
 
 ### [X] EXIT / - <a name="exit"></a>
 
@@ -357,15 +357,15 @@ This parameter skips the update check mechanism for entries of the [COLLECT](#co
 
 ### - / -Menu <a name="menu"></a>
 
-This will start the 'Information Protection Utility' with the default menu.
+This will start the 'Compliance Utility' with the default menu.
 
 ### \<CommonParameters>
 
-The 'Information Protection Utility' supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
+The 'Compliance Utility' supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
 
 # Script log file <a name="script-log-file"></a>
 
-The 'Information Protection Utility' creates the following log file. The log file gives an overview of the executed commands and provides a control mechanism to review the results.
+The 'Compliance Utility' creates the following log file. The log file gives an overview of the executed commands and provides a control mechanism to review the results.
 
 **Script.log**
 
@@ -373,7 +373,7 @@ This log file collects the actions that has been taken and lists the results. It
 
 # Log files and folders <a name="log-files"></a>
 
-The 'Information Protection Utility' collects the following log files and folders.
+The 'Compliance Utility' collects the following log files and folders.
 
 > **Note**
 >
@@ -445,24 +445,24 @@ For more information, please see the following documentation:
 
 # Support <a name="support"></a>
 
-When creating the 'Information Protection Utility', great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
+When creating the 'Compliance Utility', great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
 
-Should you ever encounter a problem with the 'Information Protection Utility', please visit the [support page](https://github.com/microsoft/InformationProtectionUtility/blob/main/SUPPORT.md) on the project site.
+Should you ever encounter a problem with the 'Compliance Utility', please visit the [support page](https://github.com/microsoft/ComplianceUtility/blob/main/SUPPORT.md) on the project site.
 
 ### Microsoft Support Policy <a name="support-policy"></a>
 
-Under this policy, the 'Information Protection Utility' remains in support if the following criteria are met:
+Under this policy, the 'Compliance Utility' remains in support if the following criteria are met:
 
-* You're using the [lastet version](https://aka.ms/InformationProtectionUtility/Latest) of the 'Information Protection Utility'.
+* You're using the [lastet version](https://aka.ms/ComplianceUtility/Latest) of the 'Compliance Utility'.
 * You must be licensed with a product or service that uses a [Microsoft Information Protection subscription](https://learn.microsoft.com/en-us/office365/servicedescriptions/azure-information-protection#available-plans).
 
 ### How to file issues and get help <a name="get-help"></a>
 
-The 'Information Protection Utility' uses GitHub [Issues](https://github.com/microsoft/InformationProtectionUtility/issues) to track problems and feature requests.
+The 'Compliance Utility' uses GitHub [Issues](https://github.com/microsoft/ComplianceUtility/issues) to track problems and feature requests.
 
-Please check for [known issues](https://github.com/microsoft/InformationProtectionUtility/blob/main/SUPPORT.md#known-issues) before submitting new issues to avoid duplicates.
+Please check for [known issues](https://github.com/microsoft/ComplianceUtility/blob/main/SUPPORT.md#known-issues) before submitting new issues to avoid duplicates.
 
-For new issues, file your bug or feature request as a [new Issue](https://github.com/microsoft/InformationProtectionUtility/issues/new). Please describe the Issue as detailed as possible. A screenshot of the error and/or a step-by-step description of how to reproduce a problem would be very helpful for this.
+For new issues, file your bug or feature request as a [new Issue](https://github.com/microsoft/ComplianceUtility/issues/new). Please describe the Issue as detailed as possible. A screenshot of the error and/or a step-by-step description of how to reproduce a problem would be very helpful for this.
 
 <br>
 <br>
