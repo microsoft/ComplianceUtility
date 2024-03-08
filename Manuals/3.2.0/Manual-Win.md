@@ -42,7 +42,7 @@
 
 The 'Compliance Utility' is a powerful tool that helps troubleshoot and diagnose sensitivity labels, policies, settings and more. Whether you need to fix issues or reset configurations, this tool has you covered.
 
-Have you ever used the Sensitivity button in a [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services)? If so, you've either used the [Azure Information Protection (AIP) Unified Labeling add-in for Office](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) or the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Compliance Utility' will help you.
+Have you ever used the Sensitivity button in a [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365/products-apps-services)? If so, you've either used the [Azure Information Protection (AIP) Unified Labeling add-in for Office](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection#aip-unified-labeling-client) or the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). In case something doesn't work as expected or you don't see any labeling at all, the 'Compliance Utility' will help you.
 
 > [!CAUTION]
 > The Azure Information Protection (AIP) Unified Labeling add-in for Office has been retired on April 11th, 2024.
