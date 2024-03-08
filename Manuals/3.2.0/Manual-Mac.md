@@ -60,13 +60,19 @@ Your privacy is important to us. [This privacy statement](https://privacy.micros
 
 Before you can use the 'Compliance Utility' make sure that your environment fulfils the following requierements. Please update your environment if necessary.
 
-The 'Compliance Utility' supports:
+The 'Compliance Utility' supports the following operating systems:
 
-* Apple macOS ([three most recent major versions](https://support.microsoft.com/en-us/office/upgrade-macos-to-continue-receiving-microsoft-365-and-office-for-mac-updates-16b8414f-08ec-4b24-8c91-10a918f649f8)).
+* Apple macOS ([three most recent major versions](https://support.microsoft.com/en-us/office/upgrade-macos-to-continue-receiving-microsoft-365-and-office-for-mac-updates-16b8414f-08ec-4b24-8c91-10a918f649f8))
 
-The 'Compliance Utility' supports the following Office and Microsoft 365 versions:
+The 'Compliance Utility' supports the following Office and Microsoft 365 editions:
 
-* Microsoft 365 for Mac ([most recently released version](https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac)), Microsoft Office 2019 for Mac and Microsoft Office 2021 for Mac .
+* Microsoft 365 for Mac ([most recently released version](https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac))
+* Microsoft Office 2021 for Mac
+* Microsoft Office 2019 for Mac
+
+> **Note**
+> 
+> Please refer to the [Microsoft product lifecycle](https://learn.microsoft.com/en-us/lifecycle/products/?expanded=m365&terms=mac&products=office) page to find out which versions of Office are still supported.
 
 ### Internet access <a name="internet-access"></a>
 
