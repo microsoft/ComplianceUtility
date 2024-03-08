@@ -80,17 +80,34 @@ Your privacy is important to us. [This privacy statement](https://privacy.micros
 
 Before you can use the 'Compliance Utility' make sure that your environment fulfils the following requierements. Please update your environment if necessary.
 
-The 'Compliance Utility' supports [Windows PowerShell 5.1](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-5.1) and [PowerShell 7.4](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (or higher) on the following operating systems:
+The 'Compliance Utility' supports the following PowerShell editions:
 
-   * Microsoft Windows 10, Windows 11, Windows Server 2012/R2, Windows Server 2016, Windows Server 2019, Windows Server 2022 and Apple macOS ([three most recent major versions](https://support.microsoft.com/en-us/office/upgrade-macos-to-continue-receiving-microsoft-365-and-office-for-mac-updates-16b8414f-08ec-4b24-8c91-10a918f649f8)).
-
-The 'Compliance Utility' supports the following Office and Microsoft 365 versions:
-
-   * Microsoft Office 2016, Microsoft Office 2019, Microsoft Office 2021, [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) and Microsoft 365 for Mac ([most recently released version](https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac)).
+* Windows [PowerShell 5.1](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-5.1)
+* [PowerShell 7.4](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (or higher)
 
 > **Note**
 >
 > [Differences between Windows PowerShell 5.1 and PowerShell 7.x](https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell?view=powershell-7.4)
+
+The 'Compliance Utility' supports the following Windows versions:
+
+* Windows 11
+* Windows 10
+* Windows Server 2022
+* Windows Server 2019
+* Windows Server 2016
+* Windows Server 2012 R2 and Windows Server 2012
+
+The 'Compliance Utility' supports the following Office and Microsoft 365 editions:
+
+* Microsoft 365 Apps (versions listed in the table of [supported versions](https://learn.microsoft.com/en-us/officeupdates/update-history-microsoft365-apps-by-date#supported-versions) for Microsoft 365 Apps)
+* Microsoft Office 2021
+* Microsoft Office 2019
+* Microsoft Office 2016
+
+> **Note**
+> 
+> Please refer to the [Microsoft product lifecycle](https://learn.microsoft.com/en-us/lifecycle/products) page to find out which versions of Windows or Office are still supported.
 
 ### Internet access <a name="internet-access"></a>
 
