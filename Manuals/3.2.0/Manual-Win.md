@@ -857,6 +857,14 @@ This file is the Azure Information Protection Windows Event Log.
 
 <li>
 
+**MPIP.evtx**
+
+</li>
+
+This file is the Microsoft Purview Information Protection Windows Event Log.
+
+<li>
+
 **NetMon.etl**
 
 </li>
