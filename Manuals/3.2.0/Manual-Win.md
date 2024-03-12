@@ -449,7 +449,7 @@ In the event that you accidentally close the PowerShell window while logging is 
 
 ### [A] AIP service configuration / -CollectAIPServiceConfiguration <a name="aip-service-config"></a>
 
-This parameter collects your AIP service configuration information, e.g. [SuperUsers](https://learn.microsoft.com/en-us/azure/information-protection/configure-super-users) or [OnboardingControlPolicy](https://learn.microsoft.com/en-us/powershell/module/aipservice/set-aipserviceonboardingcontrolpolicy?view=azureipps), etc.
+This parameter collects your AIP service configuration information (e.g. [SuperUsers](https://learn.microsoft.com/en-us/azure/information-protection/configure-super-users) or [OnboardingControlPolicy](https://learn.microsoft.com/en-us/powershell/module/aipservice/set-aipserviceonboardingcontrolpolicy?view=azureipps) etc.) by using the [AIPService module](#aipservice-module).
 
 Results are written into the log file [AIPServiceConfiguration.log](#aip-service-config-log) in the subfolder "Collect" of the Logs folder.
 
