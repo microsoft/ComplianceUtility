@@ -478,7 +478,7 @@ URL:      https://dataservice.protection.outlook.com
 Issuer:   CN=DigiCert Cloud Services CA-1, O=DigiCert Inc, C=US
 ```
 
-Results are written into log file [EndpointURLs.log](#endpoint-urls-log) in the subfolder "Collect" of the Logs folder. Additionally, an export of each certificate is saved in the "EndpointURLs" subfolder with the Endpoint URL as the file name and the [.ce_ file](#cer-files) extension.
+Results are written into log file [EndpointURLs.log](#endpoint-urls-log) in the subfolder "Collect" of the Logs folder. Additionally, an export of each certificate is saved in the "EndpointURLs" subfolder with the Endpoint URL as the file name and the [.ce_](#cer-files) file extension.
 
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
