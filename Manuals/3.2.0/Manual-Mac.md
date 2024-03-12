@@ -187,6 +187,10 @@ Please select an option and press enter:
 > [!TIP]
 > For better readability, it is recommended to change the Terminal/PowerShell window settings to the "Pro" profile.
 
+> **Note**
+>
+> When the 'Compliance Utility' is started for the first time and an installation of the 'Unified Labeling Support Tool' is found, it is removed.
+
 If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it by selecting option `[C] COLLECT` again: <a name="collect"></a>
 
 ```
