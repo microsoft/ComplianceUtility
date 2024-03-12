@@ -480,10 +480,6 @@ Issuer:   CN=DigiCert Cloud Services CA-1, O=DigiCert Inc, C=US
 
 Results are written into log file [EndpointURLs.log](#endpoint-urls-log) in the subfolder "Collect" of the Logs folder. Additionally, an export of each certificate is saved in the "EndpointURLs" subfolder with the Endpoint URL as the file name and the [.ce_ file](#cer-files) extension.
 
-> **Note**
->
-> This feature/parameter uses the [AIPService](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps) module, which PowerShell 7.x does not yet support. Therefore, unexpected errors may occur because the AIPService module is executed in [compatibility mode](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_windows_powershell_compatibility?view=powershell-7.4) in PowerShell 7.x.
-
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
 This parameter collects the labels and policy definitions (with detailled label actions and policy rules) from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide). Those with encryption and those with content marking only.
