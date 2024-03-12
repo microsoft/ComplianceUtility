@@ -497,7 +497,7 @@ Results are written into log file [DLPRulesAndPolicies.log](#dlp-rules-log) in t
 
 ### [U] User license details <a name="user-license-details"></a>
 
-This parameter collects the user license details by the [Graph PowerShell module](#graph-module)
+This parameter collects the user license details by the [Graph PowerShell module](#graph-module).
 
 Results are written into log file [UserLicenseDetails.log](#user-license-log) in the subfolder "Collect" of the Logs folder.
 
