@@ -260,7 +260,7 @@ Please select an option and press enter:
 > **Note**
 >
 > * For option [RESET](#reset) and [RECORD PROBLEM](#record-problem) you may run as user with local administrative privileges. Please contact your administrator if necessary.
-> * When the "Compliance Tool" is started for the first time and an installation of the "Unified Labeling Support Tool" is found, it is removed.
+> * When the 'Compliance Utility' is started for the first time and an installation of the 'Unified Labeling Support Tool' is found, it is removed.
 
 If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it by selecting option `[C] COLLECT` again: <a name="collect"></a>
 
