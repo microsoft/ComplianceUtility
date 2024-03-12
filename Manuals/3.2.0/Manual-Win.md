@@ -455,7 +455,7 @@ Results are written into the log file [AIPServiceConfiguration.log](#aip-service
 
 ### [T] Protection templates / -CollectProtectionTemplates <a name="protection-templates"></a>
 
-This parameter collects [protection templates](https://learn.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#protection-templates-and-sensitivity-labels) of your tenant.
+This parameter collects [protection templates](https://learn.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#protection-templates-and-sensitivity-labels) of your tenant by using the [AIPService module](#aipservice-module)
 
 Results are written into the log file [ProtectionTemplates.log](#protection-templates-log) in the subfolder "Collect" of the Logs folder, and an export of each protection template (.xml) into the subfolder "ProtectionTemplates".
 
@@ -464,7 +464,7 @@ Results are written into the log file [ProtectionTemplates.log](#protection-temp
 
 ### [E] Endpoint URLs / -CollectEndpointURLs <a name="endpoint-urls"></a>
 
-This parameter collects important endpoint URLs. The URLs are taken from your local registry or your tenant's Purview service configuration information, and extended by additional relevant URLs.
+This parameter collects important endpoint URLs. The URLs are taken from your local registry or your tenant's Purview service configuration information (by using the [AIPService module](#aipservice-module), and extended by additional relevant URLs.
 
 In a first step, this parameter is used to check whether you can access the URL. In a second step, the issuer of the corresponding certificate of the URL is collected. This process is represented by an output with the Tenant Id, Endpoint name, URL, and Issuer of the certificate. For example:
 
