@@ -120,7 +120,7 @@ The 'Compliance Utility' uses additional sources from the Internet to make its f
 
 The [AIPService module](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps) is required to proceed the options [AIP service configuration](#aip-service-config), [Protection templates](#protection-templates), and [Endpoint URLs](#endpoint-urls) from the [COLLECT](#collect) menu.
 
-If you do not have this module installed, the 'Compliance Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
+If you do not have this module installed, the 'Compliance Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/AIPService).
 
 > **Note**
 > 
