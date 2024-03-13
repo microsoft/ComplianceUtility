@@ -842,7 +842,7 @@ Log files and folders additionally collected by the [RECORD PROBLEM](#record-pro
 
 This file is the CAPI2 Windows Event Log.<br>
 
-For more information, please see the following documentation: [Saving Events to a Log File](https://docs.microsoft.com/en-us/windows/desktop/WES/saving-events-to-a-log-file).
+For more information, please see the following documentation: [wevtutil](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/wevtutil) (export-log).
 
 <li>
 
@@ -852,6 +852,8 @@ For more information, please see the following documentation: [Saving Events to 
 
 This file is the Azure Information Protection Windows Event Log.
 
+For more information, please see the following documentation: [wevtutil](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/wevtutil) (export-log).
+
 <li>
 
 **PIP.evtx**
@@ -859,6 +861,8 @@ This file is the Azure Information Protection Windows Event Log.
 </li>
 
 This file is the Purview Information Protection Windows Event Log.
+
+For more information, please see the following documentation: [wevtutil](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/wevtutil) (export-log).
 
 <li>
 
