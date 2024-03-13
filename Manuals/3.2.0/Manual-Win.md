@@ -604,7 +604,7 @@ For more information, please see the following documentation: [Record steps to r
 
 <li>
   
-**MSIPC/MSIP folders / AIPLogs.zip / MPIPLogs.zip**
+**MSIPC/MSIP folders / AIPLogs.zip**
 
 </li>
 
@@ -615,7 +615,7 @@ The following log folders contain MSIP/MSIPC logging information:<br>
 %LOCALAPPDATA%\Microsoft\MSIPC
 ```
  
-If you have installed Purview Information Protection, the folders containing the MPIPLogs.zip file are collected. If you have installed Azure Information Protection, the folders containing the AIPLogs.zip file are collected.<br>
+If you have installed Purview Information Protection (aka Azure Information Protection), the folders containing the AIPLogs.zip file are collected.<br>
 
 For more information, please see the following documentation for the used PowerShell command: [Export-Logs](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/export-aiplogs?view=azureipps).
 
@@ -854,11 +854,11 @@ This file is the Azure Information Protection Windows Event Log.
 
 <li>
 
-**MPIP.evtx**
+**PIP.evtx**
 
 </li>
 
-This file is the Microsoft Purview Information Protection Windows Event Log.
+This file is the Purview Information Protection Windows Event Log.
 
 <li>
 
