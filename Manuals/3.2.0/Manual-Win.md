@@ -604,7 +604,7 @@ For more information, please see the following documentation: [Record steps to r
 
 <li>
   
-**MSIPC/MSIP folders / AIPLogs.zip**
+**MSIPC/MSIP folders, AIPLogs.zip**
 
 </li>
 
