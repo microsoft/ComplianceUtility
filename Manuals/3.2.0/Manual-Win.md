@@ -485,10 +485,10 @@ Results are written into log file [EndpointURLs.log](#endpoint-urls-log) in the 
 
 This parameter collects the labels and policy definitions (with detailled label actions and policy rules) from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
-Results are written into log file [LabelsAndPolicies.log](#labels-and-policies-log) in the subfolder "Collect" of the Logs folder, and you can also have a CLP subfolder with the Office CLP policy.
+Results are written into several .xml files ([Labels.xml](#labels-and-policies-xml), LabelsDetailedActions.xml, LabelPolicies.xml and LabelRules.xml) in the subfolder "Collect\LabelsAndPolicies" of the Logs folder, and you can also have a CLP subfolder with the Office CLP policy.
 
 > [!TIP]
-> You can use the resulting log file to create exact copies of the label and policy settings for troubleshooting purposes, e.g. in test environments. 
+> You can use the resulting .xml files to create exact copies of the label and policy settings for troubleshooting purposes, e.g. in test environments. 
 
 ### [D] DLP rules and policies / -CollectDLPRulesAndPolicies <a name="dlp-rules-and-policies"></a>
 
@@ -915,13 +915,13 @@ For more information, please see the following documentation: [Get-ServiceTempla
 
 <li>
 
-**LabelsAndPolicies.log** <a name="labels-and-policies-log"></a>
+**Labels.xml, LabelsDetailedActions.xml, LabelPolicies.xml and LabelRules.xml** <a name="labels-and-policies-xml"></a>
 
 </li>
 
-This file is created by the collect option [Labels and policies](#labels-and-policies). If you have not initiated a [RESET](#reset) before collecting logs, you can also have a CLP subfolder with the Office CLP policy folder.<br>
+These files are created by the collect option [Labels and policies](#labels-and-policies). If you have not initiated a [RESET](#reset) before collecting logs, you can also have a CLP subfolder with the Office CLP policy folder.<br>
 
-For more information, please see the following documentation: [Get-Label](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps) and [Get-LabelPolicy](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-labelpolicy?view=exchange-ps).
+For more information, please see the following documentation: [Get-Label](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps), [Get-LabelPolicy](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-labelpolicy?view=exchange-ps) and [Export-Clixml](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml).
 
 <li>
 
