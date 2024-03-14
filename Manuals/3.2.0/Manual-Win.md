@@ -617,7 +617,7 @@ The following log folders contain MSIP/MSIPC logging information:<br>
  
 If you have installed Purview Information Protection (aka Azure Information Protection), the folders containing the AIPLogs.zip file are collected.<br>
 
-For more information, please see the following documentation for the used PowerShell command: [Export-Logs](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/export-aiplogs?view=azureipps).
+For more information, please see the following documentation for the used PowerShell command: [Export-AIPLogs](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/export-aiplogs?view=azureipps).
 
 <li>
 
