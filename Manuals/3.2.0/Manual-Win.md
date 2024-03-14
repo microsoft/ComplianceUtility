@@ -458,7 +458,7 @@ Results are written into the log file [AIPServiceConfiguration.log](#aip-service
 
 This parameter collects [protection templates](https://learn.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#protection-templates-and-sensitivity-labels) of your tenant by using the [AIPService module](#aipservice-module).
 
-Results are written into the log file [ProtectionTemplates.log](#protection-templates-log) in the subfolder "Collect" of the Logs folder, and an export of each protection template (.xml) into the subfolder "ProtectionTemplates".
+Results are written in .xml files ([ProtectionTemplates.xml](#protection-templates-xml) and [ProtectionTemplateDetails.xml](#protection-templates-xml)) in the subfolder "Collect " of the Logs folder, and an export of each protection template (.xml) into the subfolder "ProtectionTemplates".
 
 > [!TIP]
 > You can use this feature to create a backup copy of your protection templates.
@@ -903,13 +903,13 @@ For more information, please see the following documentation: [Get-AipServiceCon
 
 <li>
 
-**ProtectionTemplates.log and .xml files** <a name="protection-templates-log"></a>
+**ProtectionTemplates.xml, ProtectionTemplateDetails.xml, and .xml backup files** <a name="protection-templates-xml"></a>
 
 </li>
 
-These files are only collected if you selected [Protection templates](#protection-templates).<br>
+These files are collected if you selected [Protection templates](#protection-templates) from the collect menu.<br>
 
-The ProtectionTemplates.log file contains the Purview Information Protection template details. Additionally, an export of each protection template is saved in the "ProtectionTemplates" subfolder with the protection template ID as the file name and the .xml file extension.<br>
+The "ProtectionTemplates.xml" file contains the Purview Information Protection templates and the "ProtectionTemplateDetails.xml" file contains the template details. Additionally, an export of each protection template is saved in the "ProtectionTemplates" subfolder with the protection template ID as the file name and the .xml file extension.<br>
 
 For more information, please see the following documentation: [Get-ServiceTemplate](https://docs.microsoft.com/en-us/powershell/module/aipservice/get-aipservicetemplate), and [Export-ServiceTemplate](https://docs.microsoft.com/en-us/powershell/module/aipservice/export-aipservicetemplate?view=azureipps).
 
@@ -921,7 +921,7 @@ For more information, please see the following documentation: [Get-ServiceTempla
 
 These files are created by the collect option [Labels and policies](#labels-and-policies). If you have not initiated a [RESET](#reset) before collecting logs, you can also have a CLP subfolder with the Office CLP policy folder.<br>
 
-For more information, please see the following documentation: [Get-Label](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps), [Get-LabelPolicy](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-labelpolicy?view=exchange-ps) and [Export-Clixml](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml).
+For more information, please see the following documentation: [Get-Label](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps) and [Get-LabelPolicy](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-labelpolicy?view=exchange-ps).
 
 <li>
 
