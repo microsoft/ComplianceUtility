@@ -923,10 +923,6 @@ These files are created by the collect option [Labels and policies](#labels-and-
 
 For more information, please see the following documentation: [Get-Label](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps), [Get-LabelPolicy](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-labelpolicy?view=exchange-ps), [Get-AutoSensitivityLabelPolicy](https://learn.microsoft.com/en-us/powershell/module/exchange/get-autosensitivitylabelpolicy) and [Get-AutoSensitivityLabelRule](https://learn.microsoft.com/en-us/powershell/module/exchange/get-autosensitivitylabelrule).
 
-
-
-For more information, please see the following documentation: [Get-Label](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps) and [Get-LabelPolicy](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-labelpolicy?view=exchange-ps).
-
 <li>
 
 **DlpPolicy.xml, DlpRule.xml, DlpPolicyDistributionStatus.xml, DlpSensitiveInformationType.xml, DlpSensitiveInformationTypeRulePackage.xml, DlpKeywordDictionary.xml and DlpEdmSchema.xml** <a name="dlp-rules-xml"></a>
