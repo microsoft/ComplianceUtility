@@ -327,7 +327,7 @@ In the event that you accidentally close the PowerShell window while logging is 
 
 This parameter collects the labels and policy definitions (with detailled label actions and policy rules) from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
-Results are written in .xml files ([Labels.xml](#labels-and-policies-xml), [LabelsDetailedActions.xml](#labels-and-policies-xml), [LabelPolicies.xml](#labels-and-policies-xml) and [LabelRules.xml](#labels-and-policies-xml)) in the subfolder "Collect\LabelsAndPolicies" of the Logs folder.
+The results are written to the log files ([Labels.xml](#labels-and-policies-xml), [LabelsDetailedActions.xml](#labels-and-policies-xml), [LabelPolicies.xml](#labels-and-policies-xml) and [LabelRules.xml](#labels-and-policies-xml)) in the subfolder "Collect\LabelsAndPolicies" of the Logs folder.
 
 > [!TIP]
 > You can use the resulting .xml files to create exact copies of the label and policy settings for troubleshooting purposes, e.g. in test environments. 
@@ -336,13 +336,13 @@ Results are written in .xml files ([Labels.xml](#labels-and-policies-xml), [Labe
 
 This parameter collects DLP rules and policies, sensitive information type details, rule packages, keyword dictionaries and exact data match schemas from the [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
-Results are written into log file [DLPRulesAndPolicies.log](#dlp-rules-log) in the subfolder "Collect" of the Logs folder.
+The results are written to the log file [DLPRulesAndPolicies.log](#dlp-rules-log) in the subfolder "Collect" of the Logs folder.
 
 ### [U] User license details <a name="user-license-details"></a>
 
 This parameter collects the user license details by the [Graph PowerShell module](#graph-module).
 
-Results are written into log file [UserLicenseDetails.log](#user-license-log) in the subfolder "Collect" of the Logs folder.
+The results are written to the log file [UserLicenseDetails.log](#user-license-log) in the subfolder "Collect" of the Logs folder.
 
 > **Note**
 >
