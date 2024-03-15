@@ -328,7 +328,6 @@ In the event that you accidentally close the PowerShell window while logging is 
 This parameter collects the labels and policy definitions (with detailled label actions and policy rules) from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
 The results are written to the log files ([Labels.xml](#labels-and-policies-xml), [LabelsDetailedActions.xml](#labels-and-policies-xml), [LabelPolicies.xml](#labels-and-policies-xml) and [LabelRules.xml](#labels-and-policies-xml)) in the subfolder "Collect\LabelsAndPolicies" of the Logs folder.
-
 > [!TIP]
 > You can use the resulting .xml files to create exact copies of the label and policy settings for troubleshooting purposes, e.g. in test environments. 
 
@@ -336,7 +335,7 @@ The results are written to the log files ([Labels.xml](#labels-and-policies-xml)
 
 This parameter collects DLP rules and policies, sensitive information type details, rule packages, keyword dictionaries and exact data match schemas from the [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
-The results are written to the log file [DLPRulesAndPolicies.log](#dlp-rules-log) in the subfolder "Collect" of the Logs folder.
+The results are written to the log files [DlpPolicy.xml](#dlp-rules-xml), [DlpRule.xml](#dlp-rules-xml), [DlpPolicyDistributionStatus.xml](#dlp-rules-xml), [DlpSensitiveInformationType.xml](#dlp-rules-xml), [DlpSensitiveInformationTypeRulePackage.xml](#dlp-rules-xml), [DlpKeywordDictionary.xml](#dlp-rules-xml) and [DlpEdmSchema.xml](#dlp-rules-xml) in the subfolder "Collect\DLPRulesAndPolicies" of the Logs folder.
 
 ### [U] User license details <a name="user-license-details"></a>
 
@@ -417,17 +416,17 @@ Log files collected by the sub-entries of the [COLLECT](#collect) menu. Results 
 
 </li>
 
-These files are created by the collect option [Labels and policies](#labels-and-policies).<br>
+These files are created by the collect option [Labels and policies](#labels-and-policies). If you have not initiated a [RESET](#reset) before collecting logs, you can also have a CLP subfolder with the Office CLP policy folder.<br>
 
-For more information, please see the following documentation: [Get-Label](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps), [Get-LabelPolicy](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-labelpolicy?view=exchange-ps) and [Export-Clixml](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml).
-  
+For more information, please see the following documentation: [Get-Label](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps) and [Get-LabelPolicy](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-labelpolicy?view=exchange-ps).
+
 <li>
 
-**DLPRulesAndPolicies.log** <a name="dlp-rules-log"></a>
+**DlpPolicy.xml, DlpRule.xml, DlpPolicyDistributionStatus.xml, DlpSensitiveInformationType.xml, DlpSensitiveInformationTypeRulePackage.xml, DlpKeywordDictionary.xml and DlpEdmSchema.xml** <a name="dlp-rules-xml"></a>
 
 </li>
 
-This file is created by the collect option [DLP rules and policies](#dlp-rules-and-policies).<br>
+These files are created by the collect option [DLP rules and policies](#dlp-rules-and-policies).<br>
 
 For more information, please see the following documentation: [Get-DlpCompliancePolicy](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpcompliancepolicy?view=exchange-ps), [Get-DlpComplianceRule](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpcompliancerule?view=exchange-ps), [Get-DlpSensitiveInformationType](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpsensitiveinformationtype), [Get-DlpSensitiveInformationTypeRulePackage](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpsensitiveinformationtyperulepackage), [Get-DlpKeywordDictionary](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpkeyworddictionary), and [Get-DlpEdmSchema](https://learn.microsoft.com/en-us/powershell/module/exchange/get-dlpedmschema).
 
