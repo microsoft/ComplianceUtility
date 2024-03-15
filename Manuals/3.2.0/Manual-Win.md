@@ -452,13 +452,13 @@ In the event that you accidentally close the PowerShell window while logging is 
 
 This parameter collects your AIP service configuration information (e.g. [SuperUsers](https://learn.microsoft.com/en-us/azure/information-protection/configure-super-users) or [OnboardingControlPolicy](https://learn.microsoft.com/en-us/powershell/module/aipservice/set-aipserviceonboardingcontrolpolicy?view=azureipps) etc.) by using the [AIPService module](#aipservice-module).
 
-Results are written into the log file [AIPServiceConfiguration.log](#aip-service-config-log) in the subfolder "Collect" of the Logs folder.
+The results are written to the log file [AIPServiceConfiguration.log](#aip-service-config-log) in the subfolder "Collect" of the Logs folder.
 
 ### [T] Protection templates / -CollectProtectionTemplates <a name="protection-templates"></a>
 
 This parameter collects [protection templates](https://learn.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#protection-templates-and-sensitivity-labels) of your tenant by using the [AIPService module](#aipservice-module).
 
-Results are written in .xml files ([ProtectionTemplates.xml](#protection-templates-xml) and [ProtectionTemplateDetails.xml](#protection-templates-xml)) in the subfolder "Collect " of the Logs folder, and an export of each protection template (.xml) into the subfolder "ProtectionTemplates".
+The results are written to the log files [ProtectionTemplates.xml](#protection-templates-xml) and [ProtectionTemplateDetails.xml](#protection-templates-xml) in the subfolder "Collect " of the Logs folder, and an export of each protection template (.xml) into the subfolder "ProtectionTemplates".
 
 > [!TIP]
 > You can use this feature to create a backup copy of your protection templates.
@@ -479,13 +479,13 @@ URL:      https://dataservice.protection.outlook.com
 Issuer:   CN=DigiCert Cloud Services CA-1, O=DigiCert Inc, C=US
 ```
 
-Results are written into log file [EndpointURLs.log](#endpoint-urls-log) in the subfolder "Collect" of the Logs folder. Additionally, an export of each certificate is saved in the "EndpointURLs" subfolder with the Endpoint URL as the file name and the [.ce_](#cer-files) file extension.
+The results are written to log file [EndpointURLs.log](#endpoint-urls-log) in the subfolder "Collect" of the Logs folder. Additionally, an export of each certificate is saved in the "EndpointURLs" subfolder with the Endpoint URL as the file name and the [.ce_](#cer-files) file extension.
 
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
 This parameter collects the labels and policy definitions (with detailled label actions and policy rules) from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
-Results are written in .xml files ([Labels.xml](#labels-and-policies-xml), [LabelsDetailedActions.xml](#labels-and-policies-xml), [LabelPolicies.xml](#labels-and-policies-xml) and [LabelRules.xml](#labels-and-policies-xml)) in the subfolder "Collect\LabelsAndPolicies" of the Logs folder, and you can also have a CLP subfolder with the Office CLP policy.
+The results are written to the log files ([Labels.xml](#labels-and-policies-xml), [LabelsDetailedActions.xml](#labels-and-policies-xml), [LabelPolicies.xml](#labels-and-policies-xml) and [LabelRules.xml](#labels-and-policies-xml)) in the subfolder "Collect\LabelsAndPolicies" of the Logs folder, and you can also have a CLP subfolder with the Office CLP policy.
 
 > [!TIP]
 > You can use the resulting .xml files to create exact copies of the label and policy settings for troubleshooting purposes, e.g. in test environments. 
@@ -494,13 +494,13 @@ Results are written in .xml files ([Labels.xml](#labels-and-policies-xml), [Labe
 
 This parameter collects DLP rules and policies, sensitive information type details, rule packages, keyword dictionaries and exact data match schemas from the [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
-Results are written into log file [DLPRulesAndPolicies.log](#dlp-rules-log) in the subfolder "Collect" of the Logs folder.
+The results are written to the log file [DLPRulesAndPolicies.log](#dlp-rules-log) in the subfolder "Collect" of the Logs folder.
 
 ### [U] User license details <a name="user-license-details"></a>
 
 This parameter collects the user license details by the [Graph PowerShell module](#graph-module).
 
-Results are written into log file [UserLicenseDetails.log](#user-license-log) in the subfolder "Collect" of the Logs folder.
+The results are written to log file [UserLicenseDetails.log](#user-license-log) in the subfolder "Collect" of the Logs folder.
 
 > **Note**
 >
