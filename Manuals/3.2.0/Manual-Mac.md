@@ -325,9 +325,10 @@ In the event that you accidentally close the PowerShell window while logging is 
 
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
-This parameter collects Information Protection labels and policy definitions (with detailled label actions and policy rules) from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
+This parameter collects Information Protection labels, policies (with detailled actions and rules), auto-label policies and rules from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
-The results are written to the log files ([Labels.xml](#labels-and-policies-xml), [LabelsDetailedActions.xml](#labels-and-policies-xml), [LabelPolicies.xml](#labels-and-policies-xml) and [LabelRules.xml](#labels-and-policies-xml)) in the subfolder "Collect\LabelsAndPolicies" of the Logs folder.
+The results are written to the log files ([Labels.xml](#labels-and-policies-xml), [LabelsDetailedActions.xml](#labels-and-policies-xml), [LabelPolicies.xml](#labels-and-policies-xml), [LabelRules.xml](#labels-and-policies-xml), [AutoLabelPolicies.xml](#labels-and-policies-xml) and [AutoLabelRules.xml](#labels-and-policies-xml)) in the subfolder "Collect\LabelsAndPolicies" of the Logs folder.
+
 > [!TIP]
 > You can use the resulting .xml files to create exact copies of the label and policy settings for troubleshooting purposes, e.g. in test environments. 
 
@@ -412,13 +413,13 @@ Log files collected by the sub-entries of the [COLLECT](#collect) menu. Results 
 <ul>
 <li>
 
-**Labels.xml, LabelsDetailedActions.xml, LabelPolicies.xml and LabelRules.xml** <a name="labels-and-policies-xml"></a>
+**Labels.xml, LabelsDetailedActions.xml, LabelPolicies.xml, LabelRules.xml, AutoLabelPolicies.xml, AutoLabelRules.xml** <a name="labels-and-policies-xml"></a>
 
 </li>
 
-These files are created by the collect option [Labels and policies](#labels-and-policies). If you have not initiated a [RESET](#reset) before collecting logs, you can also have a CLP subfolder with the Office CLP policy folder.<br>
+These files are created by the collect option [Labels and policies](#labels-and-policies).<br>
 
-For more information, please see the following documentation: [Get-Label](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps) and [Get-LabelPolicy](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-labelpolicy?view=exchange-ps).
+For more information, please see the following documentation: [Get-Label](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-label?view=exchange-ps), [Get-LabelPolicy](https://docs.microsoft.com/en-us/powershell/module/exchange/policy-and-compliance/get-labelpolicy?view=exchange-ps), [Get-AutoSensitivityLabelPolicy](https://learn.microsoft.com/en-us/powershell/module/exchange/get-autosensitivitylabelpolicy) and [Get-AutoSensitivityLabelRule](https://learn.microsoft.com/en-us/powershell/module/exchange/get-autosensitivitylabelrule).
 
 <li>
 
