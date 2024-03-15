@@ -483,7 +483,7 @@ The results are written to log file [EndpointURLs.log](#endpoint-urls-log) in th
 
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
-This parameter collects the Information Protection labels and policy definitions (with detailled label actions and policy rules) from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
+This parameter collects Information Protection labels and policy definitions (with detailled label actions and policy rules) from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
 The results are written to the log files ([Labels.xml](#labels-and-policies-xml), [LabelsDetailedActions.xml](#labels-and-policies-xml), [LabelPolicies.xml](#labels-and-policies-xml) and [LabelRules.xml](#labels-and-policies-xml)) in the subfolder "Collect\LabelsAndPolicies" of the Logs folder, and you can also have a CLP subfolder with the Office CLP policy.
 
