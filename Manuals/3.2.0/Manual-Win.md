@@ -494,7 +494,6 @@ The results are written to the log files ([Labels.xml](#labels-and-policies-xml)
 
 This parameter collects DLP rules and policies, sensitive information type details, rule packages, keyword dictionaries and exact data match schemas from the [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
-The results are written to the log file [DLPRulesAndPolicies.log](#dlp-rules-xml) in the subfolder "Collect" of the Logs folder.
 The results are written to the log files [DlpPolicy.xml](#dlp-rules-xml), [DlpRule.xml](#dlp-rules-xml), [DlpPolicyDistributionStatus.xml](#dlp-rules-xml), [DlpSensitiveInformationType.xml](#dlp-rules-xml), [DlpSensitiveInformationTypeRulePackage.xml](#dlp-rules-xml), [DlpKeywordDictionary.xml](#dlp-rules-xml) and [DlpEdmSchema.xml](#dlp-rules-xml) in the subfolder "Collect\DLPRulesAndPolicies" of the Logs folder.
 
 ### [U] User license details <a name="user-license-details"></a>
