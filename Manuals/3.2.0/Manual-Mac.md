@@ -394,7 +394,7 @@ The 'Compliance Utility' collects the following log files and folders.
 <ul>
 <li>
   
-Folders collected by the [RECORD PROBLEM](#record-problem) option:
+**Folders collected by the [RECORD PROBLEM](#record-problem) option:**
 
 ```
 ~/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/CLP
