@@ -418,7 +418,7 @@ Folders collected by the [RECORD PROBLEM](#record-problem) option:
 
 This file contains basic system information.<br>
 
-For more information, please see the following documentation: [system_profiler](https://ss64.com/mac/system_profiler.html).
+For more information, please see the following documentation: [system_profiler](https://en.wikipedia.org/wiki/System_profiler).
 
 </ul>
 
