@@ -886,6 +886,16 @@ For more information about this PowerShell command, please see the following doc
 
 </ul>
 
+**SystemInformation.log**
+
+</li>
+
+This file contains basic system information.<br>
+
+For more information, please see the following documentation: [Get-ComputerInfo](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-computerinfo).
+
+</ul>
+
 ### COLLECT <a name="collect-logs"></a>
 
 Log files and folders collected via the sub-entries of the [COLLECT](#collect) menu. Results are written in the subfolder "Collect" of the Logs folder:
