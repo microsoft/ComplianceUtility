@@ -829,6 +829,16 @@ This file contains time zone offset information.<br>
 
 For more information about this PowerShell command, please see the following documentation: [Get-TimeZone](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-timezone?view=powershell-5.1).
 
+<li>
+
+**SystemInformation.log**
+
+</li>
+
+This file contains basic system information.<br>
+
+For more information, please see the following documentation: [Get-ComputerInfo](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-computerinfo).
+
 </ul>
 
 Log files and folders additionally collected by the [RECORD PROBLEM](#record-problem) option when you run the 'Compliance Utility' with administrative privileges:
@@ -883,16 +893,6 @@ For more information, please see the following documentation: [Netsh command syn
 This file contain a list of Windows filter drivers.<br>
 
 For more information about this PowerShell command, please see the following documentation: [Fltmc.exe](https://docs.microsoft.com/en-us/windows-hardware/drivers/ifs/development-and-testing-tools#fltmcexe-control-program).
-
-</ul>
-
-**SystemInformation.log**
-
-</li>
-
-This file contains basic system information.<br>
-
-For more information, please see the following documentation: [Get-ComputerInfo](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-computerinfo).
 
 </ul>
 
