@@ -323,6 +323,10 @@ As a first step, this parameter activates the required logging and then prompts 
 
 In the event that you accidentally close the PowerShell window while logging is enabled, the 'Compliance Utility' disables logging the next time you start it.
 
+> **Note**
+>
+> When collecting basic [system information](#system-information), the message "'Terminal' wants to access data from other applications" may appear. Since no personal information is collected, only hardware and software data, it has no effect on how you confirm the message.
+
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
 This parameter collects Information Protection labels, policies (with detailled actions and rules), auto-label policies and rules from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
@@ -412,7 +416,7 @@ The 'Compliance Utility' collects the following log files and folders.
 </li>
 <li>
 
-**SystemInformation.log**
+**SystemInformation.log** <a name="system-information"></a>
 
 </li>
 
