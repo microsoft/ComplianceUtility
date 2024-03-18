@@ -391,6 +391,9 @@ The 'Compliance Utility' collects the following log files and folders.
 
 **RECORD PROBLEM** <a name="record-problem-logs"></a>
 
+<ul>
+<li>
+  
 Folders collected by the [RECORD PROBLEM](#record-problem) option:
 
 ```
@@ -405,6 +408,19 @@ Folders collected by the [RECORD PROBLEM](#record-problem) option:
 ~/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs
 ~/Library/Group Containers/UBF8T346G9.Office/mip_policy/mip/logs
 ```
+
+</li>
+<li>
+
+**SystemInformation.log**
+
+</li>
+
+This file contains basic system information.<br>
+
+For more information, please see the following documentation: [system_profiler](https://ss64.com/mac/system_profiler.html).
+
+</ul>
 
 **COLLECT** <a name="collect-logs"></a>
 
