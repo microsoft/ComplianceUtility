@@ -732,7 +732,7 @@ For more information about this PowerShell command, please see the following doc
 
 <li>
 
-**Programs32.log**
+**Programs32.csv**
 
 </li>
 
@@ -744,7 +744,7 @@ This file contains the installed software (32-bit) from the system. This file we
 
 <li>
   
-**Programs64.log**
+**Programs64.csv**
 
 </li>
 
@@ -753,6 +753,14 @@ This file contains the installed software (64-bit) from the system. This file we
 ```
 [HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall]
 ```
+
+<li>
+
+**ScheduledTasks.csv**
+
+</li>
+
+This file contains a collection of Scheduled Tasks.
 
 <li>
   
