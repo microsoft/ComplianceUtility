@@ -395,22 +395,33 @@ The 'Compliance Utility' collects the following log files and folders.
 
 **RECORD PROBLEM** <a name="record-problem-logs"></a>
 
+Log files and folders collected by the [RECORD PROBLEM](#record-problem) option:
+
 <ul>
 <li>
   
-**Folders collected by the [RECORD PROBLEM](#record-problem) option:**
+**Office/App CLP logging**
 
 ```
 ~/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/CLP
 ~/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/Office/CLP
 ~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/Office/CLP
 ~/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/Office/CLP
+~/Library/Group Containers/UBF8T346G9.Office/mip_policy/mip/logs
+~/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs
+```
+
+<li>
+  
+**Office diagnostic logging**
+
+</li>
+  
+```
 ~/Library/Containers/com.microsoft.Word/Data/Library/Logs
 ~/Library/Containers/com.microsoft.Excel/Data/Library/Logs
 ~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Logs
 ~/Library/Containers/com.microsoft.Outlook/Data/Library/Logs
-~/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs
-~/Library/Group Containers/UBF8T346G9.Office/mip_policy/mip/logs
 ```
 
 </li>
