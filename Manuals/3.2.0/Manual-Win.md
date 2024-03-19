@@ -762,6 +762,8 @@ This file contains the installed software (64-bit) from the system. This file we
 
 This file contains a collection of Scheduled Tasks.
 
+For more information, please see the following documentation: [Get-ScheduledTask](https://learn.microsoft.com/en-us/powershell/module/scheduledtasks/get-scheduledtask) and [Get-ScheduledTaskInfo](https://learn.microsoft.com/en-us/powershell/module/scheduledtasks/get-scheduledtaskinfo).
+
 <li>
   
 **Registry.log**
