@@ -373,8 +373,9 @@ With the above command the following registry keys are cleaned up:
 The [DRMEncryptProperty](https://docs.microsoft.com/en-us/deployoffice/security/protect-sensitive-messages-and-documents-by-using-irm-in-office#office-2016-irm-registry-key-options) and [OpenXMLEncryptProperty](https://admx.help/?Category=Office2013&Policy=office15.Office.Microsoft.Policies.Windows::L_Protectdocumentmetadataforpasswordprotected) registry settings are purged of the following keys:
 
 ```
-[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]
 [HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security]
+[HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security]
+[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security]
 ```
 
 The [UseOfficeForLabelling](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#office-built-in-labeling-client-and-other-labeling-solutions) (Use the Sensitivity feature in Office to apply and view sensitivity labels) and [AIPException](https://microsoft.github.io/ComplianceCxE/playbooks/AIP2MIP/AIPException/#configuring-sensitivity-labeling-client-in-m365-apps) (Use the Azure Information Protection add-in for sensitivity labeling) registry setting is purged of the following keys:
@@ -382,6 +383,7 @@ The [UseOfficeForLabelling](https://docs.microsoft.com/en-us/microsoft-365/compl
 ```
 [HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels]
 [HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security\Labels]
+[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security\Labels]
 ```
 
 The following file system folders are cleaned up as well:
