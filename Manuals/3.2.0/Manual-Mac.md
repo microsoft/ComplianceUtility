@@ -273,6 +273,10 @@ This opens the online manual.
 
 This option removes all relevant policies, labels and settings.
 
+> **Note**
+>
+> When resetting, the message "'Terminal' wants to access data from other applications" may appear. As no personal information is collected, only the settings are cleaned up, this has no effect on how you confirm the message.
+
 Valid <String> arguments are: "Default", or "Silent":
 
 **Default:**
@@ -325,7 +329,7 @@ In the event that you accidentally close the PowerShell window while logging is 
 
 > **Note**
 >
-> When collecting basic [system information](#system-information), the message "'Terminal' wants to access data from other applications" may appear. Since no personal information is collected, only hardware and software data, it has no effect on how you confirm the message.
+> When collecting basic [system information](#system-information), the message "'Terminal' wants to access data from other applications" may appear. Since no personal information is collected, only hardware and software data, this has no effect on how you confirm the message.
 
 ### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
