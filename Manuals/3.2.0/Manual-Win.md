@@ -226,7 +226,7 @@ If you want to completely uninstall the 'Compliance Utility', you must execute t
 Uninstall-Module -Name ComplianceUtility -AllVersions
 ```
 
-If the corresponding module was installed manually, you also need to remove it manually by deleting its installation folder.
+If the 'Compliance Utility' was installed manually, you also need to remove it manually by deleting its installation folder.
 
 > **Note**
 >
