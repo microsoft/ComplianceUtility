@@ -389,7 +389,6 @@ The [UseOfficeForLabelling](https://docs.microsoft.com/en-us/microsoft-365/compl
 ```
 [HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security\Labels]
 [HKCU:\SOFTWARE\Policies\Microsoft\Office\16.0\Common\Security\Labels]
-[HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Security\Lables]
 ```
 
 The following file system folders are cleaned up as well:
