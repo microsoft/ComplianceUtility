@@ -1,21 +1,21 @@
 # Support
 
-When creating the 'Unified Labeling Support Tool', great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
+When creating the 'Compliance Utility', great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
 
-Should you ever encounter a problem with the 'Unified Labeling Support Tool', please use the information on this page to report it so that the problem can be resolved.
+Should you ever encounter a problem with the 'Compliance Utility', please use the information on this page to report it so that the problem can be resolved.
 
 ## Microsoft Support Policy  
 
-Under this policy, the 'Unified Labeling Support Tool' remains in support if the following criteria are met:
+Under this policy, the 'Compliance Utility' remains in support if the following criteria are met:
 
-* You're using the [lastet version](https://aka.ms/UnifiedLabelingSupportTool/Latest) of the 'Unified Labeling Support Tool'.
+* You're using the [lastet version](https://aka.ms/ComplianceUtility/Latest) of the 'Compliance Utility'.
 * You must be licensed with a product or service that uses a [Microsoft Information Protection subscription](https://learn.microsoft.com/en-us/office365/servicedescriptions/azure-information-protection#available-plans).
 
 ## How to file issues and get help  
 
-The 'Unified Labeling Support Tool' uses GitHub [Issues](https://github.com/microsoft/UnifiedLabelingSupportTool/issues) to track problems and feature requests.
+The 'Compliance Utility' uses GitHub [Issues](https://github.com/microsoft/ComplianceUtility/issues) to track problems and feature requests.
 
-Please check for [known issues](https://github.com/microsoft/UnifiedLabelingSupportTool/blob/main/SUPPORT.md#known-issues) before submitting new issues to avoid duplicates.
+Please check for [known issues](https://github.com/microsoft/ComplianceUtility/blob/main/SUPPORT.md#known-issues) before submitting new issues to avoid duplicates.
 
 For new issues, file your bug or feature request as a new Issue. Please describe the Issue as detailed as possible. A screenshot of the error and/or a step-by-step description of how to reproduce a problem would be very helpful for this.
 
@@ -54,7 +54,7 @@ For new issues, file your bug or feature request as a new Issue. Please describe
 
 * **Set-ExecutionPolicy has no effect**
 
-    This applies only to a manual installation: If you downloaded the 'Unified Labeling Support Tool' from its [GitHub website](https://aka.ms/UnifiedLabelingSupportTool/Latest), it will be extended by an [Alternate Data Streams in NTFS](https://blogs.technet.microsoft.com/askcore/2013/03/24/alternate-data-streams-in-ntfs) (ADS). If the corresponding website in the ADS is not trusted in your environment, the PowerShell command "Set-ExecutionPolicy" has no effect.
+    This applies only to a manual installation: If you downloaded the 'Compliance Utility' from its [GitHub website](https://aka.ms/ComplianceUtility/Latest), it will be extended by an [Alternate Data Streams in NTFS](https://blogs.technet.microsoft.com/askcore/2013/03/24/alternate-data-streams-in-ntfs) (ADS). If the corresponding website in the ADS is not trusted in your environment, the PowerShell command "Set-ExecutionPolicy" has no effect.
 
     **Resolution:** Either you right-click the downloaded script files and "Unblock" it, or you add the corresponding website to your trusted site settings.
 
