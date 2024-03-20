@@ -1,5 +1,5 @@
 # Compliance Utility 
-###### Version 3.2.0-BETA (Windows) <br><br>
+###### Version 3.2.0 (Windows) <br><br>
 
 **Contents**
 
