@@ -137,7 +137,7 @@ Please follow the instructions for [installing PowerShell on Windows](https://le
 
 ### Purview Information Protection module (optional) <a name="pip-module"></a>
 
-The Purview Information Protection module is installed with [Purview Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) (aka 'Azure Information Protection'). It is used with the [RESET](#reset) feature (Clear-AIPAuthentication) if a corresponding installation of the [Purview Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) is found. Please ensure to have the latest version of Purview Information Protection module installed by checking its [client version release history](https://docs.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history).
+The Purview Information Protection module is installed with [Purview Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) (aka 'Azure Information Protection'). It is used with the [RESET](#reset) feature ([Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps) if a corresponding installation of the [Purview Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) is found. Please ensure to have the latest version of Purview Information Protection module installed by checking its [client version release history](https://docs.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history).
 
 > **Note**
 > 
