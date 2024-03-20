@@ -1,5 +1,5 @@
 # Compliance Utility
-###### Version 3.2.0-BETA (macOS) <br><br>
+###### Version 3.2.0 (macOS) <br><br>
 
 **Contents**
 
