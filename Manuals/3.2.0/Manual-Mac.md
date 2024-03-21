@@ -112,7 +112,7 @@ Install-Module -Name ComplianceUtility -AllowClobber -Scope CurrentUser
 If you have local administrative privileges, you can run the following command instead:
 
 ```
-Install-Module -Name ComplianceUtility -Scope AllUsers
+Install-Module -Name ComplianceUtility -AllowClobber -Scope AllUsers
 ```
 
 > **Note**
