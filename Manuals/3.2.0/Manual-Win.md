@@ -1,4 +1,4 @@
-# Compliance Utility 
+# Compliance Utility manual
 ###### Version 3.2.0 (Windows) <br><br>
 
 **Contents**
