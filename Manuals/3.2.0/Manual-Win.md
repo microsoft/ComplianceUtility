@@ -148,13 +148,13 @@ The Purview Information Protection module is installed with [Purview Information
 The 'Compliance Utility' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/ComplianceUtility/) and the fastest and easiest way to install it with user privileges is to run the following command in PowerShell:
 
 ```
-Install-Module -Name ComplianceUtility -Scope CurrentUser
+Install-Module -Name ComplianceUtility -AllowClobber -Scope CurrentUser
 ```
 
 If you have local administrative privileges, you can run the following command instead:
 
 ```
-Install-Module -Name ComplianceUtility
+Install-Module -Name ComplianceUtility -AllowClobber
 ```
 
 > **Note**
