@@ -106,7 +106,7 @@ If you do not have this module installed, the 'Compliance Utility' will try to i
 The 'Compliance Utility' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/ComplianceUtility/). To start the installation, you must first execute the `pwsh` command in a Terminal window to start a PowerShell session. Then type the following command and press enter to start the installation of the 'Compliance Utility':
 
 ```
-Install-Module -Name ComplianceUtility -Scope CurrentUser
+Install-Module -Name ComplianceUtility -AllowClobber -Scope CurrentUser
 ```
 
 If you have local administrative privileges, you can run the following command instead:
