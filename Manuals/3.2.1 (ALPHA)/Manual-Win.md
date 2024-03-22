@@ -179,11 +179,11 @@ To install the 'Compliance Utility' manually, you must create the following fold
 
 For Windows PowerShell 5.1:
 
-``` %USERPROFILE%\Documents\WindowsPowerShell\Modules\ComplianceUtility\3.2.0```
+``` %USERPROFILE%\Documents\WindowsPowerShell\Modules\ComplianceUtility\3.2.1```
 
 For Microsoft PowerShell 7.x:
 
-``` %USERPROFILE%\Documents\PowerShell\Modules\ComplianceUtility\3.2.0```
+``` %USERPROFILE%\Documents\PowerShell\Modules\ComplianceUtility\3.2.1```
 
 The corresponding path must be listed in the [PSModulePath environment variable](https://docs.microsoft.com/en-us/powershell/scripting/developer/module/modifying-the-psmodulepath-installation-path?view=powershell-5.1#to-view-the-psmodulepath-variable).
 
@@ -208,7 +208,7 @@ If you find an entry like the following, the installation was successful:
 
 ModuleType Version    Name                     ExportedCommands
 ---------- -------    ----                     ----------------
-Script     3.2.0      ComplianceUtility        {ComplianceUtility, CompUtil, UnifiedLabelingSupportTool}
+Script     3.2.1      ComplianceUtility        {ComplianceUtility, CompUtil, UnifiedLabelingSupportTool}
 ```
 
 # Uninstall <a name="uninstall"></a>
@@ -217,6 +217,12 @@ If you want to completely uninstall the 'Compliance Utility', you must execute t
 
 ```
 Uninstall-Module -Name ComplianceUtility -AllVersions
+```
+
+If you want to uninstall a specific version, for example version 3.2.0, you must execute the following command:
+
+```
+Uninstall-Module -Name ComplianceUtility -RequiredVersion 3.2.0
 ```
 
 If the 'Compliance Utility' was installed manually, you also need to remove it manually by deleting its installation folder.
