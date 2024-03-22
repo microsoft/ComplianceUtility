@@ -401,7 +401,7 @@ The following file system folders are cleaned up as well:
 %LOCALAPPDATA%\Microsoft\DRM
 ```
 
-The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps) cmdlet is used to reset user settings, if a [Purview Information Protection labeling client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) (previously 'Azure Information Protection unified labeling client') installation is found.
+The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps) cmdlet is used to reset user settings, if a [Purview Information Protection labeling client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) (or an 'Azure Information Protection unified labeling client') installation is found.
 
 When you run the 'Compliance Utility' in an administrative PowerShell window as a user with local administrative privileges, the following registry keys are cleaned up in addition:
 
