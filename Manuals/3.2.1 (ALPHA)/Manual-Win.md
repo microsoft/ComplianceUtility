@@ -175,7 +175,7 @@ The 'Compliance Utility' is code-signed with a Microsoft certificate.
 
 If you’re using the 'Compliance Utility' in an environment that does not have Internet access, you need to proceed with the manual installation.
 
-To install the 'Compliance Utility' manually, you must create the following folder and copy/paste all 'Compliance Utility' files (`ComplianceUtility.psm1` and `ComplianceUtility.psd1`) into this folder.
+To install the 'Compliance Utility' manually, you must create the following folder and copy/paste all 'Compliance Utility' files (`ComplianceUtility.psm1` and `ComplianceUtility.psd1`) into this folder:
 
 For Windows PowerShell 5.1:
 
