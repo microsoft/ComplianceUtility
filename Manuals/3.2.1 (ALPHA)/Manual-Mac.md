@@ -144,7 +144,7 @@ If you find an entry like the following, the installation was successful:
 
 ModuleType Version    Name                     ExportedCommands
 ---------- -------    ----                     ----------------
-Script     3.2.0      ComplianceUtility        {ComplianceUtility, CompUtil, UnifiedLabelingSupportTool}
+Script     3.2.1      ComplianceUtility        {ComplianceUtility, CompUtil, UnifiedLabelingSupportTool}
 ```
 
 # Uninstall <a name="uninstall"></a>
@@ -153,6 +153,12 @@ If you want to completely uninstall the 'Compliance Utility', you must execute t
 
 ```
 Uninstall-Module -Name ComplianceUtility -AllVersions
+```
+
+If you want to uninstall a specific version, for example version 3.2.0, you must execute the following command:
+
+```
+Uninstall-Module -Name ComplianceUtility -RequiredVersion 3.2.0
 ```
 
 > **Note**
