@@ -101,6 +101,11 @@ The 'Compliance Utility' supports the following Windows versions:
 The 'Compliance Utility' supports the following Office and Microsoft 365 editions:
 
 * Microsoft 365 Apps (versions listed in the table of [supported versions](https://learn.microsoft.com/en-us/officeupdates/update-history-microsoft365-apps-by-date#supported-versions) for Microsoft 365 Apps)
+* Microsoft Office 2021 LTSC
+* Microsoft Office 2019
+* Microsoft Office 2016
+
+For information on support for the version of Office you are using, please refer to [Product and Services Lifecycle Information](https://learn.microsoft.com/en-us/lifecycle/products/?terms=Office).
 
 ### Internet access <a name="internet-access"></a>
 
