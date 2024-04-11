@@ -678,6 +678,8 @@ In addition, Office diagnostics data will be collected from the following folder
 %TEMP%\Diagnostics
 ```
 
+The resulting log files collected in the above folder can be viewed with the Microsoft [ULS viewer](https://www.microsoft.com/en-us/download/details.aspx?id=44020).
+
 <li>
   
 **MIPSDK-Word.zip, MIPSDK-Excel.zip, MIPSDK-PowerPoint.zip, and MIPSDK-Outlook.zip**
