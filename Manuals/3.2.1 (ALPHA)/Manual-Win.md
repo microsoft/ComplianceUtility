@@ -142,7 +142,7 @@ Please follow the instructions for [installing PowerShell on Windows](https://le
 
 ### Purview Information Protection module (optional) <a name="pip-module"></a>
 
-The Purview Information Protection module is installed with the [Purview Information Protection labeling client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) (previously 'Azure Information Protection unified labeling client'). It is used with the [RESET](#reset) feature (by [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps)) if a corresponding installation of the 'Purview Information Protection labeling client' (or an 'Azure Information Protection unified labeling client') is found. Please ensure to have the latest version of the corresponding client software installed by checking its [client version release history](https://learn.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history#servicing-information-and-timelines).
+The Purview Information Protection module is installed with the [Purview Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) (previously 'Azure Information Protection unified labeling client'). It is used with the [RESET](#reset) feature (by [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps)) if a corresponding installation of the 'Purview Information Protection client' (or an 'Azure Information Protection unified labeling client') is found. Please ensure to have the latest version of the corresponding client software installed by checking its [client version release history](https://learn.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history#servicing-information-and-timelines).
 
 > **Note**
 > 
@@ -412,7 +412,7 @@ The following file system folders are cleaned up as well:
 %LOCALAPPDATA%\Microsoft\DRM
 ```
 
-The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps) cmdlet is used to reset user settings, if a [Purview Information Protection labeling client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) (or an 'Azure Information Protection unified labeling client') installation is found.
+The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps) cmdlet is used to reset user settings, if a [Purview Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) (or an 'Azure Information Protection unified labeling client') installation is found.
 
 When you run the 'Compliance Utility' in an administrative PowerShell window as a user with local administrative privileges, the following registry keys are cleaned up in addition:
 
@@ -620,7 +620,7 @@ The following log folders contain MSIP/MSIPC logging information:<br>
 %LOCALAPPDATA%\Microsoft\MSIPC
 ```
  
-If you have installed Purview Information Protection labeling client (previously 'Azure Information Protection unified labeling client'), the folders containing the AIPLogs.zip file are collected.<br>
+If you have installed Purview Information Protection client (previously 'Azure Information Protection unified labeling client'), the folders containing the AIPLogs.zip file are collected.<br>
 
 For more information, please see the following documentation for the used PowerShell command: [Export-AIPLogs](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/export-aiplogs?view=azureipps).
 
