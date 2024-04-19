@@ -138,7 +138,7 @@ The Purview Information Protection module is installed with the [Purview Informa
 If you have not yet done so: [Install or upgrade the information protection client](https://learn.microsoft.com/en-us/purview/information-protection-client?tabs=devices%2Cinstall-client-exe%2Cclassification-file-types%2Cexcluded-folders#install-or-upgrade-the-information-protection-client) now and make sure that you always have the latest version of the 'Purview Information Protection client' installed by checking its [client version release history](https://learn.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history#servicing-information-and-timelines)
 
 > [!CAUTION]
-> The Azure Information Protection (AIP) Unified Labeling add-in for Office has ben retired on April 11th, 2024.
+> The Azure Information Protection (AIP) Unified Labeling add-in for Office has been retired on April 11th, 2024.
 > 
 > To continue using sensitivity labels powered by Microsoft Purview Information Protection in Office applications, you must transition to the built-in labeling experience in Microsoft 365 Apps.
 >
