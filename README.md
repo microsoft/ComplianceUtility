@@ -7,7 +7,7 @@ Have you ever used the Sensitivity button in a [Microsoft 365 App](https://www.m
 The online manual for the 'Compliance Utility' can be found [here](https://aka.ms/ComplianceUtility/manual).
 
 > [!CAUTION]
-> The Azure Information Protection (AIP) Unified Labeling add-in for Office has ben retired on April 11th, 2024.
+> The Azure Information Protection (AIP) Unified Labeling add-in for Office has been retired on April 11th, 2024.
 > 
 > To continue using sensitivity labels powered by Microsoft Purview Information Protection in Office applications, you must transition to the built-in labeling experience in Microsoft 365 Apps.
 >
