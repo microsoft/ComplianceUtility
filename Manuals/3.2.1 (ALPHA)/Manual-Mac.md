@@ -1,5 +1,5 @@
 # Compliance Utility manual
-###### Version 3.2.1-APHA (macOS) <br><br>
+###### Version 3.2.1 (macOS) <br><br>
 
 **Contents**
 
