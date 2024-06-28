@@ -137,23 +137,6 @@ The Purview Information Protection module is installed with the [Purview Informa
 
 If you have not yet done so: [Install or upgrade the information protection client](https://learn.microsoft.com/en-us/purview/information-protection-client?tabs=devices%2Cinstall-client-exe%2Cclassification-file-types%2Cexcluded-folders#install-or-upgrade-the-information-protection-client) now and make sure that you always have the latest version of the 'Purview Information Protection client' installed by checking its [client version release history](https://learn.microsoft.com/en-us/azure/information-protection/rms-client/unifiedlabelingclient-version-release-history#servicing-information-and-timelines)
 
-> [!CAUTION]
-> The Azure Information Protection (AIP) Unified Labeling add-in for Office has been retired on April 11th, 2024.
-> 
-> To continue using sensitivity labels powered by Microsoft Purview Information Protection in Office applications, you must transition to the built-in labeling experience in Microsoft 365 Apps.
->
-> **Important retirement milestones:**
->
-> * April 11th, 2024 - New Client: Release of the Microsoft Purview Information Protection client for preview on the Microsoft Download Center. This client version 3.0 does not include the AIP Add-in for Office. To continue using the Information Protection Scanner, Viewer and File Labeler, your organization must upgrade and deploy the new client package.
-> * April 11th, 2024 - Previous Client: AIP Unified Labeling add-in is retired and no longer in support. Extensions to continue using the AIP add-in are granted on a case-to-case basis; please reach out to Microsoft Support or your account team.
-> * May 2024: AIP Unified Labeling add-in permanently disabled in Office. AIP Unified Labeling add-in for Office clients will be blocked from using the add-in and download of label policy will fail for all clients without extensions.
-> 
-> **What you need to do to prepare:**
->
-> For detailed migration steps, refer to our playbook: [From bolt-on to built-in – Migrate from Azure Information Protection Add-in.](https://microsoft.github.io/ComplianceCxE/playbooks/AIP2MIPPlaybook/)
->
-> For the announcement and FAQs of the retirement, refer to our blog: [Retirement notification for the Azure Information Protection Unified Labeling add-in for Office.](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/retirement-notification-for-the-azure-information-protection/ba-p/3791908)
-
 > **Note**
 >
 > Purview Information Protection module does not support PowerShell 7.x. Therefore, unexpected errors may occur because the Purview Information Protection module is executed in [compatibility mode](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_windows_powershell_compatibility?view=powershell-7.4) in PowerShell 7.x.
