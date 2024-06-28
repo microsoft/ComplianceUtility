@@ -4,7 +4,7 @@
 # Licensed under the MIT License
 
 <# Variables #>
-$Global:strVersion = "3.2.0" <# Version #>
+$Global:strVersion = "3.2.1" <# Version #> 
 $Global:strDefaultWindowTitle = $Host.UI.RawUI.WindowTitle <# Caching window title #>
 $Global:host.UI.RawUI.WindowTitle = "Compliance Utility ($Global:strVersion)" <# Set window title #>
 $Global:bolMenuCollectExtended = $false <# Variable for COLLECT menu handling #>
@@ -177,7 +177,7 @@ Function ComplianceUtility {
         The 'Compliance Utility' is a powerful tool that helps troubleshoot and diagnose sensitivity labels, policies, settings and more. Whether you need to fix issues or reset configurations, this tool has you covered.
 
         .DESCRIPTION
-        Have you ever used the Sensitivity button in a Microsoft 365 App or applied a sensitivity label by right-clicking on a file? If so, you've either used the Office's built-in labeling experience or the Purview Information Protection client. If something is not working as expected with your DLP policies, sensitivity labels or you don't see any labels at all the 'Compliance Utility' will help you.
+        Have you ever used the Sensitivity button in a Microsoft 365 App or applied a sensitivity label by right-clicking on a file? If so, you've either used the Office's built-in labeling experience or the Purview Information Protection labeling client. If something is not working as expected with your DLP policies, sensitivity labels or you don't see any labels at all the 'Compliance Utility' will help you.
 
         INTERNET ACCESS
         The 'Compliance Utility' uses additional sources from the Internet to make its functionality fully available.
@@ -195,17 +195,17 @@ Function ComplianceUtility {
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         
         VERSION
-        3.2.0
+        3.2.1
         
         CREATE DATE
-        03/20/2024
+        06/28/2024
 
         AUTHOR
         Claus Schiroky
         Customer Service & Support | EMEA Modern Work Team
         Microsoft Deutschland GmbH
 
-        HOMEPAGE
+        GITHUB REPOSITORY
         https://aka.ms/ComplianceUtility
 
         PRIVACY STATEMENT
@@ -283,7 +283,7 @@ Function ComplianceUtility {
         %LOCALAPPDATA%\Microsoft\MSIPC
         %LOCALAPPDATA%\Microsoft\DRM
 
-        The Clear-AIPAuthentication cmdlet is used to reset user settings, if a Purview Information Protection (aka 'Azure Information Protection') installation is found.
+        The Clear-AIPAuthentication cmdlet is used to reset user settings, if a Purview Information Protection labeling client (or an 'Azure Information Protection unified labeling client') installation is found.
 
         When you run the 'Compliance Utility' in an administrative PowerShell window as a user with local administrative privileges, the following registry keys are cleaned up in addition:
 
@@ -501,13 +501,13 @@ Function ComplianceUtility {
         This will start the 'Compliance Utility' with the default menu.
 
     .LINK
-        https://github.com/microsoft/ComplianceUtility
+        https://aka.ms/ComplianceUtility
 
     #>
 
     <# Binding for parameters #>
     [CmdletBinding (
-        HelpURI = "https://github.com/microsoft/ComplianceUtility/blob/main/Manuals/3.2.0/Manual-Win.md", <# URL for online manual #>
+        HelpURI = "https://github.com/microsoft/ComplianceUtility/blob/main/Manuals/3.2.1/Manual-Win.md", <# URL for online manual #>
         PositionalBinding = $false, <# None-positional parameters #>
         DefaultParameterSetName = "Menu" <# Default start parameter #>
     )]
@@ -851,7 +851,7 @@ Function fncHelp {
         If ($(fncTestInternetAccess "github.com") -Eq $true) {
 
             <# Open manual #>
-            Start-Process "https://github.com/microsoft/ComplianceUtility/blob/main/Manuals/3.2.0/Manual-Win.md"
+            Start-Process "https://github.com/microsoft/ComplianceUtility/blob/main/Manuals/3.2.1/Manual-Win.md"
 
             <# Logging #>
             fncLogging -strLogFunction "fncHelp" -strLogDescription "HELP" -strLogValue "Called"
@@ -876,7 +876,7 @@ Function fncHelp {
         If ($(fncTestInternetAccess "github.com") -Eq $true) {
 
             <# Open manual #>
-            Open "https://github.com/microsoft/ComplianceUtility/blob/main/Manuals/3.2.0/Manual-Mac.md"
+            Open "https://github.com/microsoft/ComplianceUtility/blob/main/Manuals/3.2.1/Manual-Mac.md"
 
             <# Logging #>
             fncLogging -strLogFunction "fncHelp" -strLogDescription "HELP" -strLogValue "Called"
@@ -2006,18 +2006,23 @@ Function fncCollectingLogs {
 
             <# Create Office log folder #>
             New-Item -ItemType Directory -Force -Path "$Global:strUniqueLogFolder\Office" | Out-Null
- 
-            <# Perform action only, if the CLP folder contain files (Note: Afer a RESET this folder is empty). #>
-            If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Office\CLP -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
+  
+            <# Check for Office CLP path #>
+            If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Office\CLP) -Eq $true) {
 
-                <# Compress label and policy xml files into zip file (overwrites) #>
-                Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\Office\CLP"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\LabelsAndPolicies" -Force -ErrorAction SilentlyContinue
+                <# Perform action only, if the CLP folder contain files (Note: Afer a RESET this folder is empty). #>
+                If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Office\CLP -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
 
-                <# Logging #>
-                fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export Office CLP" -strLogValue "\Office\LabelsAndPolicies.zip"
+                    <# Compress label and policy xml files into zip file (overwrites) #>
+                    Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\Office\CLP"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\LabelsAndPolicies" -Force -ErrorAction SilentlyContinue
+
+                    <# Logging #>
+                    fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export Office CLP" -strLogValue "\Office\LabelsAndPolicies.zip"
+
+                }
 
             }
-
+ 
             <# Detect/create Office MIP path only if no AIP client is installed; because with AIP client we collect already the mip folder with the AIPLogs.zip #>
             If (-not (Get-Module -ListAvailable -Name AzureInformationProtection, PurviewInformationProtection)) { <# Check for AIP client #>
   
@@ -4668,9 +4673,9 @@ Function fncCollectUserLiceneseDetails {
 
 }
 
-Function fncRemovePreviousVersions {
+Function fncRemoveUnifiedLabelingSupportTool {
 
-    <# Detect and try to remove previous versions #>
+    <# Detect and try to remove previous versions of Unified Labeling Support Tool#>
     Try {
 
         <# Remove UnifiedLabelingSupportTool only if an existing folder was found #>
@@ -4678,6 +4683,9 @@ Function fncRemovePreviousVersions {
 
             <# Detect Windows for manual removal #>
             If ([System.Environment]::OSVersion.Platform -eq "Win32NT") {
+
+                <# Output #>
+                Write-Host "Removing Unified Labeling Support Tool, please wait..."
 
                 <# Actions on PowerShell Desktop (5.1) #>
                 If ($PSVersionTable.PSEdition.ToString() -eq "Desktop") {
@@ -4688,9 +4696,6 @@ Function fncRemovePreviousVersions {
 
                     <# Detect path #>
                     If ($(Test-Path -Path $Private:strToolDesktopPath) -Eq $true) {
-                    
-                        <# Output #>
-                        Write-Host "Removing previous version, please wait..."
 
                         <# Remove folder/content #>
                         Remove-Item -LiteralPath $Private:strToolDesktopPath -Force -Recurse -ErrorAction Stop | Out-Null
@@ -4708,9 +4713,6 @@ Function fncRemovePreviousVersions {
 
                     <# Detect path #>
                     If ($(Test-Path -Path $Private:strToolCorePath) -Eq $true) {
-
-                        <# Output #>
-                        Write-Host "Removing previous version, please wait..."
 
                         <# Remove folder/content #>
                         Remove-Item -LiteralPath $Private:strToolCorePath -Force -Recurse -ErrorAction Stop | Out-Null
@@ -5144,8 +5146,8 @@ Function fncShowMenu {
 <# Initialize module #>
 fncInitialize
 
-<# Remove previous versions #>
-fncRemovePreviousVersions
+<# Remove Unified Labeling Support Tool) #>
+fncRemoveUnifiedLabelingSupportTool
 
 <# Detect enabled logging #>
 fncValidateForActivatedLogging
