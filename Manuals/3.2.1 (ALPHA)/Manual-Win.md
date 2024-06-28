@@ -1,5 +1,5 @@
 # Compliance Utility manual
-###### Version 3.2.1-APHA (Windows) <br><br>
+###### Version 3.2.1 (Windows) <br><br>
 
 **Contents**
 
