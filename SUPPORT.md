@@ -21,6 +21,23 @@ For new issues, file your bug or feature request as a new Issue. Please describe
 
 ## Known issues
 
+* **Error "End of Central Directory record could not be found" when installing the 'Compliance Utility'**
+
+    When you try to install the 'Compliance Utility', you may see the following error:
+    
+    ```
+    PackageManagement\Install-Package : Package 'ComplianceUtility' failed to be installed because: End of Central Directory
+    record could not be found.
+    At C:\Programm Files\WindowsPowerShell\Modules\PowerShellGet\1.0.0.1\PSModule.psm1:1809 char:21
+    + ...          $null = PackageManagement\Install-Package @PSBoundParameters
+    +                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       + CategoryInfo            : InvalidResult: (ComplianceUtility:String) [Install-Package], Exception
+       + FullQualifiedErrorId    : Package '{0}' failed to be installed because: {1}, Microsoft.PowerShell.PackageManagement
+      .Cmdletes.InstallPackage
+    ```
+
+    **Resolution:** To solve this issue you need to ensure to have any proxy or network filtering meachanism disabled.
+
 * **Collecting labels and policies raise PowerShell error "not recognized as the name of a cmdlet"**
 
     When you try to collect 'Labels and policies', you might see the following errors:
@@ -91,23 +108,6 @@ For new issues, file your bug or feature request as a new Issue. Please describe
     ```
     PS C:\> Register-PSRepository -Default
     ```
-
-* **Trying to run RESET raise PowerShell error "End of Central Directory record could not be found"**
-
-    When you try to use 'RESET', you might see the following error:
-    
-    ```
-    PackageManagement\Install-Package : Package 'ComplianceUtility' failed to be installed because: End of Central Directory
-    record could not be found.
-    At C:\Programm Files\WindowsPowerShell\Modules\PowerShellGet\1.0.0.1\PSModule.psm1:1809 char:21
-    + ...          $null = PackageManagement\Install-Package @PSBoundParameters
-    +                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-       + CategoryInfo            : InvalidResult: (ComplianceUtility:String) [Install-Package], Exception
-       + FullQualifiedErrorId    : Package '{0}' failed to be installed because: {1}, Microsoft.PowerShell.PackageManagement
-      .Cmdletes.InstallPackage
-    ```
-
-    **Resolution:** To solve this issue you need to ensure to have any proxy or network filtering meachanism disabled.
 
 * **"powershell-7.3.4-osx-x64.pkg" can't be opened because Apple cannot check it for malicious software** 
 
