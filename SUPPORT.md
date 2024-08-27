@@ -69,6 +69,22 @@ For new issues, file your bug or feature request as a new Issue. Please describe
     
     **Resolution:** You must add the appropriate administrator (usually the global administrator) to the [Information Protection](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/scc-permissions?view=o365-worldwide#role-groups-in-microsoft-defender-for-office-365-and-microsoft-purview-compliance) roles group in the [Microsoft Purview Compliance Center](https://compliance.microsoft.com/compliancecenterpermissions).
 
+* **Running RESET raise PowerShell error "The specified path, file name, or both are too long"**
+
+    This applies only to Windows environments. When you try to run RESET, you may see the following error:
+
+    ```
+    Get-ChhildItem : The specified path, file name, or both are too long. The fully qualified file name must be less than
+    260 characters, and the directory name must be less than 248 characters.
+    At C:\Program Files\WindowsPowerShell\Modules\ComplianceUtility\3.2.1\ComplianceUtility.psm1:1194 char:17
+    + ...         Get-ChildItem -Path $Private:objItem -Exclude “Telemetry” ...
+    +             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       + CategoryInfo            : ReadError: (C:\Users...}}.drm:String) [Get-ChildItem], PathTooLongException
+       + FullyQualifiedErrorId   : GetItemIOError,Microsoft.PowerShell.Commands.GetChildItemCommand
+    ```
+
+    **Resolution:** You need to [enable long paths on Windows.](https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=registry#registry-setting-to-enable-long-paths)
+
 * **Set-ExecutionPolicy has no effect**
 
     This applies only to a manual installation: If you downloaded the 'Compliance Utility' from its [GitHub website](https://aka.ms/ComplianceUtility/Latest), it will be extended by an [Alternate Data Streams in NTFS](https://blogs.technet.microsoft.com/askcore/2013/03/24/alternate-data-streams-in-ntfs) (ADS). If the corresponding website in the ADS is not trusted in your environment, the PowerShell command "Set-ExecutionPolicy" has no effect.
