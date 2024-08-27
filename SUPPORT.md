@@ -36,7 +36,7 @@ For new issues, file your bug or feature request as a new Issue. Please describe
       .Cmdletes.InstallPackage
     ```
 
-    **Resolution:** To solve this issue you need to ensure to have any proxy or network filtering meachanism disabled.
+    **Resolution:** To solve this issue you need to ensure to have any proxy or network filtering mechanism disabled.
 
 * **Collecting labels and policies raise PowerShell error "not recognized as the name of a cmdlet"**
 
