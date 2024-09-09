@@ -256,7 +256,7 @@ ComplianceUtility
 
 > **Note**
 >
-> Features/Parameters `-CollectAIPServiceConfiguration`, `-CollectProtectionTemplates` and `-CollectEndpointURLs` are not available. They would require the [AIPService module](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps), which is not yet supported on PowerShell 7.x.
+> Features/Parameters `-CollectAIPServiceConfiguration`, `-CollectProtectionTemplates` and `-CollectEndpointURLs` are not available. They would require the [AIPService module](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps), which is not supported on PowerShell 7.x.
 
 Description of all features and parameters (feature / parameter):
 
