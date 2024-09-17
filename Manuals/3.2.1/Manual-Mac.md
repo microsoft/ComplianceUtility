@@ -67,6 +67,7 @@ The 'Compliance Utility' supports the following operating systems:
 The 'Compliance Utility' supports the following Office and Microsoft 365 editions:
 
 * Microsoft 365 for Mac ([most recently released version](https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac))
+* Microsoft Office 2024 for Mac
 * Microsoft Office 2021 for Mac
 * Microsoft Office 2019 for Mac
 
