@@ -697,6 +697,20 @@ The file contains the cached labels and policies .xml files from the following f
 
 <li>
 
+**OfficeDLP.zip**
+
+</li>
+
+This .zip file is created by the option [RECORD PROBLEM](#record-problem).<br>
+
+The file contains the cached DLP folder content from the following folder:<br>
+
+```
+%LOCALAPPDATA%\Microsoft\Office\DLP
+```
+
+<li>
+
 **CertMachine.log and CertUser.log**
 
 </li>
