@@ -385,7 +385,7 @@ The following file system folders are cleaned up as well:
 %LOCALAPPDATA%\Microsoft\Excel\MIPSDK\mip
 %LOCALAPPDATA%\Microsoft\PowerPoint\MIPSDK\mip
 %LOCALAPPDATA%\Microsoft\Outlook\MIPSDK\mip
-%LOCALAPPDATA%\Microsoft\Office\MIPSDK
+%LOCALAPPDATA%\Microsoft\Office\MIPSDK\mip
 %LOCALAPPDATA%\Microsoft\Office\DLP\mip
 %LOCALAPPDATA%\Microsoft\Office\CLP
 %TEMP%\Diagnostics
