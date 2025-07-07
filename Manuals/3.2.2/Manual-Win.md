@@ -385,8 +385,9 @@ The following file system folders are cleaned up as well:
 %LOCALAPPDATA%\Microsoft\Excel\MIPSDK\mip
 %LOCALAPPDATA%\Microsoft\PowerPoint\MIPSDK\mip
 %LOCALAPPDATA%\Microsoft\Outlook\MIPSDK\mip
+%LOCALAPPDATA%\Microsoft\OneNote\MIPSDK\mip
 %LOCALAPPDATA%\Microsoft\Office\MIPSDK\mip
-%LOCALAPPDATA%\Microsoft\Office\DLP\mip
+%LOCALAPPDATA%\Microsoft\Office\DLP
 %LOCALAPPDATA%\Microsoft\Office\CLP
 %TEMP%\Diagnostics
 %LOCALAPPDATA%\Microsoft\MSIP
@@ -663,7 +664,7 @@ The resulting log files collected in the above folder can be viewed with the Mic
 
 <li>
 
-**MIPSDK-Word.zip, MIPSDK-Excel.zip, MIPSDK-PowerPoint.zip, and MIPSDK-Outlook.zip**
+**MIPSDK-Word.zip, MIPSDK-Excel.zip, MIPSDK-PowerPoint.zip, MIPSDK-Outlook.zip, MIPSDK-OneNote.zip, and MIPSDK-Office.zip**
 
 </li>
 
@@ -674,9 +675,11 @@ A respective .zip file contains the contents of the corresponding MIPSDK log fol
 %LOCALAPPDATA%\Microsoft\Excel\MIPSDK\mip
 %LOCALAPPDATA%\Microsoft\PowerPoint\MIPSDK\mip
 %LOCALAPPDATA%\Microsoft\Outlook\MIPSDK\mip
+%LOCALAPPDATA%\Microsoft\OneNote\MIPSDK\mip
+%LOCALAPPDATA%\Microsoft\Office\MIPSDK\mip
 ```
 
-Each .zip file contains multiple .json files. 
+Each .zip file can contains multiple files (e.g. .json files or SQLLite database).
 
 <li>
 
