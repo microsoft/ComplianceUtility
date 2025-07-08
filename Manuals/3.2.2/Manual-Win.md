@@ -462,7 +462,7 @@ Tenant Id: 48fc04bd-c84b-44ac-b7991b7-a4c5eefd5ac1
  
 Endpoint: UnifiedLabelingDistributionPointUrl
 URL:      https://dataservice.protection.outlook.com
-Issuer:   CN=DigiCert Cloud Services CA-1, O=DigiCert Inc, C=US
+Issuer:   CN=Microsoft Azure RSA TLS Issuing CA 08, O=Microsoft Corporation, C=US
 ```
 
 The results are written to log file [EndpointURLs.log](#endpoint-urls-log) in the subfolder "Collect" of the Logs folder. Additionally, an export of each certificate is saved in the "EndpointURLs" subfolder with the Endpoint URL as the file name and the [.ce_](#cer-files) file extension.
