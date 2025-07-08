@@ -42,7 +42,7 @@ Have you ever used the sensitivity button in a [Microsoft 365 App](https://www.m
 > 
 > If you want to use the 'Compliance Utility' on Microsoft Windows, you can find the corresponding online manual [here](Manual-Win.md).
 
-### MIT License <a name="mit-license"></a>
+### 🔵MIT License <a name="mit-license"></a>
 
 Copyright © Microsoft Corporation.
 
@@ -52,7 +52,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 
-### Microsoft Privacy Statement <a name="microsoft-privacy-statement"></a>
+### 🔵Microsoft Privacy Statement <a name="microsoft-privacy-statement"></a>
 
 Your privacy is important to us. [This privacy statement](https://privacy.microsoft.com/en-US/privacystatement) explains the personal data Microsoft processes, how Microsoft processes it, and for what purposes.
 
@@ -75,14 +75,14 @@ The 'Compliance Utility' supports the following Office and Microsoft 365 edition
 > 
 > Please refer to the [Microsoft product lifecycle](https://learn.microsoft.com/en-us/lifecycle/products/?expanded=m365&terms=mac&products=office) page to find out which versions of Office are still supported.
 
-### Internet access <a name="internet-access"></a>
+### 🔵Internet access <a name="internet-access"></a>
 
 The 'Compliance Utility' uses additional sources from the Internet to make its functionality fully available.
 
 > [!WARNING]
 > Unexpected errors may occur, and some features may be limited, if there is no connection to the Internet.
 
-### PowerShell <a name="ms-powershell"></a>
+### 🔵PowerShell <a name="ms-powershell"></a>
 
 Please follow the instructions for [installing PowerShell on macOS](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.4) to install it using your preferred method. Nevertheless the [installation via direct download](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.4#installation-via-direct-download) is recommended.
 
@@ -90,13 +90,13 @@ Please follow the instructions for [installing PowerShell on macOS](https://lear
 > 
 > PowerShell must be installed with local administrative privileges. Please request assistance from your administrator if necessary.
 
-### Graph PowerShell module <a name="graph-module"></a>
+### 🔵Graph PowerShell module <a name="graph-module"></a>
 
 The [Graph PowerShell module](https://www.powershellgallery.com/packages/Microsoft.Graph) is required to proceed the option [User license details](#user-license-details) from the [COLLECT](#collect) menu.
 
 If you do not have this module installed, the 'Compliance Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/Microsoft.Graph).
 
-### Exchange Online PowerShell module <a name="exchange-online-module"></a>
+### 🔵Exchange Online PowerShell module <a name="exchange-online-module"></a>
 
 The [Exchange Online PowerShell module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps) is required to proceed the options [Labels and policies](#labels-and-policies) and [DLP rules and policies](#dlp-rules-and-policies) from the menu [COLLECT](#collect).
 
@@ -120,14 +120,14 @@ Install-Module -Name ComplianceUtility -AllowClobber -Scope AllUsers
 > 
 > If you do not have a required component installed on your computer, you will be prompted to do so.
 
-#### Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
+#### 🔵Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
 If PowerShell script execution is restricted in your environment, you must first remove this restriction in order to be able to run the 'Compliance Utility'. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
 
 ```
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 ```
 
-#### Trust  PowerShell Gallery repository <a name="trust-powershellgallery-repository"></a>
+#### 🔵Trust  PowerShell Gallery repository <a name="trust-powershellgallery-repository"></a>
 
 You must set [PowerShell Gallery](https://www.powershellgallery.com) as a trusted repository in order to download or install requiered PowerShell modules or cmdlets by running the following command:
 
@@ -135,7 +135,7 @@ You must set [PowerShell Gallery](https://www.powershellgallery.com) as a truste
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 ```
 
-### Check installation <a name="check-installation"></a>
+### 🔵Check installation <a name="check-installation"></a>
 
 To verify if the installation was successful, you can call the `Get-Module` cmdlet with the following parameter:
 
@@ -153,7 +153,7 @@ ModuleType Version    Name                     ExportedCommands
 Script     3.2.2      ComplianceUtility        {ComplianceUtility, CompUtil, UnifiedLabelingSupportTool}
 ```
 
-# Uninstall <a name="uninstall"></a>
+# 🟢Uninstall <a name="uninstall"></a>
 
 If you want to completely uninstall the 'Compliance Utility', you must execute the following command:
 
@@ -266,19 +266,19 @@ ComplianceUtility
 
 Description of all features and parameters (feature / parameter):
 
-### [I] INFORMATION / -Information <a name="information"></a>
+### 🔵[I] INFORMATION / -Information <a name="information"></a>
 
 This shows syntax, description and version information.
 
-### [M] MIT LICENSE / -License
+### 🔵[M] MIT LICENSE / -License
 
 This displays the [MIT License](#mit-license).
 
-### [H] HELP / -Help <a name="help-win"></a>
+### 🔵[H] HELP / -Help <a name="help-win"></a>
 
 This opens the online manual.
 
-### [R] RESET / -Reset <String> <a name="reset"></a>
+### 🔵[R] RESET / -Reset <String> <a name="reset"></a>
 
 > [!IMPORTANT]
 > Before you proceed with this option, please close all open applications.
@@ -334,7 +334,7 @@ ComplianceUtility -Reset Silent -Verbose
 
 You can also review the [Script.log](#script-log-file) file for errors of silent reset.
 
-### [P] RECORD PROBLEM / -RecordProblem <a name="record-problem"></a>
+### 🔵[P] RECORD PROBLEM / -RecordProblem <a name="record-problem"></a>
 
 > [!IMPORTANT]
 > Before you proceed with this option, please close all open applications.
@@ -347,7 +347,7 @@ In the event that you accidentally close the PowerShell window while logging is 
 >
 > When collecting basic [system information](#system-information), the message "'Terminal' wants to access data from other applications" may appear. Since no personal information is collected, only hardware and software data, this has no effect on how you confirm the message.
 
-### [L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
+### 🔵[L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
 This parameter collects Information Protection labels, policies (with detailled actions and rules), auto-label policies and rules from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
@@ -356,13 +356,13 @@ The results are written to the log files ([Labels.xml](#labels-and-policies-xml)
 > [!TIP]
 > You can use the resulting .xml files to create exact copies of the label and policy settings for troubleshooting purposes, e.g. in test environments. 
 
-### [D] DLP rules and policies / -CollectDLPRulesAndPolicies <a name="dlp-rules-and-policies"></a>
+### 🔵[D] DLP rules and policies / -CollectDLPRulesAndPolicies <a name="dlp-rules-and-policies"></a>
 
 This parameter collects DLP rules and policies, sensitive information type details, rule packages, keyword dictionaries and exact data match schemas from the [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
 The results are written to the log files [DlpPolicy.xml](#dlp-rules-xml), [DlpRule.xml](#dlp-rules-xml), [DlpPolicyDistributionStatus.xml](#dlp-rules-xml), [DlpSensitiveInformationType.xml](#dlp-rules-xml), [DlpSensitiveInformationTypeRulePackage.xml](#dlp-rules-xml), [DlpKeywordDictionary.xml](#dlp-rules-xml) and [DlpEdmSchema.xml](#dlp-rules-xml) in the subfolder "Collect\DLPRulesAndPolicies" of the Logs folder.
 
-### [U] User license details <a name="user-license-details"></a>
+### 🔵[U] User license details <a name="user-license-details"></a>
 
 This parameter collects the user license details by the [Graph PowerShell module](#graph-module).
 
@@ -372,32 +372,32 @@ The results are written to the log file [UserLicenseDetails.log](#user-license-l
 >
 > You must log in with the corresponding Microsoft 365 user account for which you want to check the license details.
 
-### [Z] COMPRESS LOGS / -CompressLogs <a name="compress-logs"></a>
+### 🔵[Z] COMPRESS LOGS / -CompressLogs <a name="compress-logs"></a>
 
 This command line parameter should always be used at the very end of a scenario.
 
 This parameter compresses all collected log files and folders into a .zip archive, and the corresponding file is saved to your desktop. In addition, the default logs folder (`~/Documents/ComplianceUtility`) is cleaned.
 
-### [X] EXIT / - <a name="exit"></a>
+### 🔵[X] EXIT / - <a name="exit"></a>
 
 This option will asks you whether you want to exit the menu after a confirmation prompt.
 
-### - / -SkipUpdates <a name="skip-updates"></a>
+### 🔵- / -SkipUpdates <a name="skip-updates"></a>
 
 > [!IMPORTANT]
 > Use this parameter only if you are sure that all PowerShell modules are up to date.
 
 This parameter skips the update check mechanism for entries of the [COLLECT](#collect) menu.
 
-### - / -Menu <a name="menu"></a>
+### 🔵- / -Menu <a name="menu"></a>
 
 This will start the 'Compliance Utility' with the default menu.
 
-### \<CommonParameters>
+### 🔵\<CommonParameters>
 
 The 'Compliance Utility' supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
 
-# Script log file <a name="script-log-file"></a>
+# 🟢Script log file <a name="script-log-file"></a>
 
 The 'Compliance Utility' creates the following log file. The log file gives an overview of the executed commands and provides a control mechanism to review the results.
 
@@ -405,7 +405,7 @@ The 'Compliance Utility' creates the following log file. The log file gives an o
 
 This log file collects the actions that has been taken and lists the results. It also logs general environment information from the used client machine, like the Apple macOS edition or PowerShell version.
 
-# Log files and folders <a name="log-files"></a>
+# 🟢Log files and folders <a name="log-files"></a>
 
 The 'Compliance Utility' collects the following log files and folders.
 
@@ -501,14 +501,14 @@ When creating the 'Compliance Utility', great care was taken to ensure quality a
 
 Should you ever encounter a problem with the 'Compliance Utility', please visit the [support page](https://github.com/microsoft/ComplianceUtility/blob/main/SUPPORT.md) on the project site.
 
-### Microsoft Support Policy <a name="support-policy"></a>
+### 🔵Microsoft Support Policy <a name="support-policy"></a>
 
 Under this policy, the 'Compliance Utility' remains in support if the following criteria are met:
 
 * You're using the [lastet version](https://aka.ms/ComplianceUtility/Latest) of the 'Compliance Utility'.
 * You must be licensed with a product or service that uses a [Microsoft Information Protection subscription](https://learn.microsoft.com/en-us/office365/servicedescriptions/azure-information-protection#available-plans).
 
-### How to file issues and get help <a name="get-help"></a>
+### 🔵How to file issues and get help <a name="get-help"></a>
 
 The 'Compliance Utility' uses GitHub [Issues](https://github.com/microsoft/ComplianceUtility/issues) to track problems and feature requests.
 
