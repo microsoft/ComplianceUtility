@@ -153,7 +153,7 @@ Install-Module -Name ComplianceUtility -AllowClobber
 
 > **Note**
 >
-> If you do not have a required component installed, you will be prompted to do so. You may need to confirm the installation of NuGet Provider and  you may also need to confirm the installation of [PowerShellGet](https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-5.1).
+> If you do not have a required component installed, you will be prompted to do so. You may need to confirm the installation of NuGet provider and  you may also need to confirm the installation of [PowerShellGet](https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-5.1).
 #### Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
 
 If PowerShell script execution is restricted in your environment, you must first remove this restriction in order to be able to run the 'Compliance Utility'. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
@@ -164,9 +164,9 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 
 The 'Compliance Utility' is code-signed with a Microsoft certificate.
 
-#### Trust  PowerShell Gallery Repository <a name="trust-powershellgallery-repository"></a>
+#### Trust  PowerShell Gallery repository <a name="trust-powershellgallery-repository"></a>
 
-You need to set PowerShell Gallery as a trusted repository to be able to downlaod and install NuGet Provider and PowerShellGet by run the following command:
+You must set PowerShell Gallery as a trusted repository in order to download and install NuGet provider and PowerShellGet by running the following command:
 
 ```
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
