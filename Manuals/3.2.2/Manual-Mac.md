@@ -129,7 +129,7 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 
 #### Trust  PowerShell Gallery repository <a name="trust-powershellgallery-repository"></a>
 
-You must set PowerShell Gallery as a trusted repository in order to download or install requiered PowerShell modules or cmdlets by running the following command:
+You must set [PowerShell Gallery](https://www.powershellgallery.com) as a trusted repository in order to download or install requiered PowerShell modules or cmdlets by running the following command:
 
 ```
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
