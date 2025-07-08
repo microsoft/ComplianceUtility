@@ -413,7 +413,7 @@ The 'Compliance Utility' collects the following log files and folders.
 >
 > Not all log files are collected or recorded at all times. It depends on your environment which logs, or traces can be recorded.
 
-**RECORD PROBLEM** <a name="record-problem-logs"></a>
+**🔵RECORD PROBLEM** <a name="record-problem-logs"></a>
 
 Log files and folders collected by the [RECORD PROBLEM](#record-problem) option:
 
@@ -457,7 +457,7 @@ For more information, please see the following documentation: [system_profiler](
 
 </ul>
 
-**COLLECT** <a name="collect-logs"></a>
+**🔵COLLECT** <a name="collect-logs"></a>
 
 Log files collected by the sub-entries of the [COLLECT](#collect) menu. Results are written in the subfolder "Collect" of the Logs folder:
 
