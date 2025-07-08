@@ -56,7 +56,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Your privacy is important to us. [This privacy statement](https://privacy.microsoft.com/en-US/privacystatement) explains the personal data Microsoft processes, how Microsoft processes it, and for what purposes.
 
-## Requirements <a name="requirements"></a>
+## 🟢Requirements <a name="requirements"></a>
 
 Before you can use the 'Compliance Utility' make sure that your environment fulfils the following requierements. Please update your environment if necessary.
 
