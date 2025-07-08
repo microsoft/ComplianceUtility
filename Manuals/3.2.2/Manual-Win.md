@@ -665,7 +665,7 @@ The resulting log files collected in the above folder can be viewed with the Mic
 
 <li>
 
-**MIPSDK-Word.zip, MIPSDK-Excel.zip, MIPSDK-PowerPoint.zip, MIPSDK-Outlook.zip, MIPSDK-OneNote.zip, and MIPSDK-Office.zip**
+**MIPSDK-Word.zip, MIPSDK-Excel.zip, MIPSDK-PowerPoint.zip, MIPSDK-Outlook.zip, MIPSDK-OneNote.zip, MIPSDK-Office.zip, and MIPSDKPDF-Outlook.zip**
 
 </li>
 
@@ -676,6 +676,7 @@ A respective .zip file contains the contents of the corresponding MIPSDK log fol
 %LOCALAPPDATA%\Microsoft\Excel\MIPSDK\mip
 %LOCALAPPDATA%\Microsoft\PowerPoint\MIPSDK\mip
 %LOCALAPPDATA%\Microsoft\Outlook\MIPSDK\mip
+%LOCALAPPDATA%\Microsoft\Outlook\MIPSDKPDF\mip
 %LOCALAPPDATA%\Microsoft\OneNote\MIPSDK\mip
 %LOCALAPPDATA%\Microsoft\Office\MIPSDK\mip
 ```
