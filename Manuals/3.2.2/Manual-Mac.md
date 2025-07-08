@@ -118,17 +118,22 @@ Install-Module -Name ComplianceUtility -AllowClobber -Scope AllUsers
 
 > **Note**
 > 
-> If you do not have a required component installed on your computer, you will be prompted to do so. You may need to confirm the installation of PowerShell Gallery as a trusted repository.
+> If you do not have a required component installed on your computer, you will be prompted to do so.
 
 #### Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
-
 If PowerShell script execution is restricted in your environment, you must first remove this restriction in order to be able to run the 'Compliance Utility'. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
 
 ```
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 ```
 
-The 'Compliance Utility' is code-signed with a Microsoft certificate.
+#### Trust  PowerShell Gallery repository <a name="trust-powershellgallery-repository"></a>
+
+You must set PowerShell Gallery as a trusted repository in order to download or install requiered PowerShell modules or cmdlets by running the following command:
+
+```
+Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+```
 
 ### Check installation <a name="check-installation"></a>
 
@@ -301,10 +306,14 @@ With the above command the following file folders will be cleaned up:
 ~/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/Office/CLP
 ~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/Office/CLP
 ~/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/Office/CLP
+~/Library/Containers/com.microsoft.OneNote/Data/Library/Application Support/Microsoft/Office/CLP
+~/Library/Containers/com.microsoft.Office/Data/Library/Application Support/Microsoft/Office/CLP
 ~/Library/Containers/com.microsoft.Word/Data/Library/Logs
 ~/Library/Containers/com.microsoft.Excel/Data/Library/Logs
 ~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Logs
 ~/Library/Containers/com.microsoft.Outlook/Data/Library/Logs
+~/Library/Containers/com.microsoft.OneNote/Data/Library/Logs
+~/Library/Containers/com.microsoft.Office/Data/Library/Logs
 ~/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs
 ~/Library/Group Containers/UBF8T346G9.Office/mip_policy/mip/logs
 ```
