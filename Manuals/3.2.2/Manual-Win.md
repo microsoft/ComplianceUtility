@@ -683,6 +683,9 @@ A respective .zip file contains the contents of the corresponding MIPSDK log fol
 
 Each .zip file can contains multiple files (e.g. .json files or SQLLite database).
 
+> [!TIP]
+> Relevant SQLLite databases can be analyzed with the [DB Browser for SQLite](https://sqlitebrowser.org), for example.
+
 <li>
 
 **OfficeCLP.zip**
