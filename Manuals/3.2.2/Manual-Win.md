@@ -166,7 +166,7 @@ The 'Compliance Utility' is code-signed with a Microsoft certificate.
 
 #### Trust  PowerShell Gallery repository <a name="trust-powershellgallery-repository"></a>
 
-You must set PowerShell Gallery as a trusted repository in order to download and install NuGet provider and PowerShellGet by running the following command:
+You must set [PowerShell Gallery](https://www.powershellgallery.com) as a trusted repository in order to download and install NuGet provider and PowerShellGet by running the following command:
 
 ```
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
