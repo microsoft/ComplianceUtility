@@ -32,7 +32,7 @@
   * [Microsoft Support Policy](#support-policy)
   * [How to file issues and get help](#get-help)
  
-## ► Description <a name="description"></a> ◀
+## ► Description ◀<a name="description"></a>
 
 The 'Compliance Utility' is a powerful tool that helps troubleshoot and diagnose sensitivity labels, policies, settings and more. Whether you need to fix issues or reset configurations, this tool has you covered.
 
