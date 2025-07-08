@@ -102,7 +102,7 @@ The [Exchange Online PowerShell module](https://learn.microsoft.com/en-us/powers
 
 If you do not have this module installed, the 'Compliance Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
 
-# Installation <a name="installation"></a>
+# 🟢Installation <a name="installation"></a>
 
 The 'Compliance Utility' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/ComplianceUtility/). To start the installation, you must first execute the `pwsh` command in a Terminal window to start a PowerShell session. Then type the following command and press enter to start the installation of the 'Compliance Utility':
 
@@ -171,7 +171,7 @@ Uninstall-Module -Name ComplianceUtility -RequiredVersion 3.2.1
 > 
 > Under certain circumstances, you may need to run the uninstallation with administrator privileges. Please request assistance from your administrator if necessary.
 
-# User experience <a name="experience"></a>
+# 🟢User experience <a name="experience"></a>
 
 First you need to execute the command `pwsh` in a Terminal window to start a PowerShell session. Then type the following command and press enter to start the 'Compliance Utility':
 
@@ -235,7 +235,7 @@ To see the help for a single command line parameter, for example for `-CompressL
 Get-Help ComplianceUtility -Parameter CompressLogs
 ```
 
-# Features / Parameters <a name="features-parameters"></a>
+# 🟢Features / Parameters <a name="features-parameters"></a>
 
 The 'Compliance Utility' provides the following parameters:
 
@@ -495,7 +495,7 @@ For more information, please see the following documentation:
 
 </ul>
 
-# Support <a name="support"></a>
+# 🟢Support <a name="support"></a>
 
 When creating the 'Compliance Utility', great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
 
