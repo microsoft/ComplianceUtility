@@ -691,7 +691,7 @@ Each .zip file can contains multiple files (e.g. .json files or SQLLite database
 
 This .zip file is created by the option [RECORD PROBLEM](#record-problem).<br>
 
-The file contains the cached labels and policies from the following folder:<br>
+The file contains the cached policies from the following folder:<br>
 
 ```
 %LOCALAPPDATA%\Microsoft\Office\CLP
