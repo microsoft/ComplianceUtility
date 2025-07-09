@@ -307,13 +307,18 @@ With the above command the following file folders will be cleaned up:
 ~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/Office/CLP
 ~/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/Office/CLP
 ~/Library/Containers/com.microsoft.OneNote/Data/Library/Application Support/Microsoft/Office/CLP
-~/Library/Containers/com.microsoft.Office/Data/Library/Application Support/Microsoft/Office/CLP
+
+~/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/MIPSDK/mip
+~/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/MIPSDK/mip
+~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/MIPSDK/mip
+~/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/MIPSDK/mip
+~/Library/Containers/com.microsoft.OneNote/Data/Library/Application Support/Microsoft/MIPSDK/mip
+
 ~/Library/Containers/com.microsoft.Word/Data/Library/Logs
 ~/Library/Containers/com.microsoft.Excel/Data/Library/Logs
 ~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Logs
 ~/Library/Containers/com.microsoft.Outlook/Data/Library/Logs
 ~/Library/Containers/com.microsoft.OneNote/Data/Library/Logs
-~/Library/Containers/com.microsoft.Office/Data/Library/Logs
 ~/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs
 ~/Library/Group Containers/UBF8T346G9.Office/mip_policy/mip/logs
 ```
@@ -420,13 +425,19 @@ Log files and folders collected by the [RECORD PROBLEM](#record-problem) option:
 <ul>
 <li>
   
-**Office/App CLP logging**
+**Office/App MIPSDK and CLP logging**
 
 ```
 ~/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/CLP
 ~/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/Office/CLP
 ~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/Office/CLP
 ~/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/Office/CLP
+~/Library/Containers/com.microsoft.OneNote/Data/Library/Application Support/Microsoft/Office/CLP
+~/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/MIPSDK/mip
+~/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/MIPSDK/mip
+~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/MIPSDK/mip
+~/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/MIPSDK/mip
+~/Library/Containers/com.microsoft.OneNote/Data/Library/Application Support/Microsoft/MIPSDK/mip
 ~/Library/Group Containers/UBF8T346G9.Office/mip_policy/mip/logs
 ~/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs
 ```
@@ -442,6 +453,7 @@ Log files and folders collected by the [RECORD PROBLEM](#record-problem) option:
 ~/Library/Containers/com.microsoft.Excel/Data/Library/Logs
 ~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Logs
 ~/Library/Containers/com.microsoft.Outlook/Data/Library/Logs
+~/Library/Containers/com.microsoft.OneNote/Data/Library/Logs
 ```
 
 </li>
