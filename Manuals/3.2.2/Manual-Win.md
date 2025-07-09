@@ -38,7 +38,7 @@
   * [Microsoft Support Policy](#support-policy)
   * [How to file issues and get help](#get-help)
 
-## 🟢Description <a name="description"></a>
+## 🟦Description <a name="description"></a>
 
 The 'Compliance Utility' is a powerful tool that helps troubleshoot and diagnose sensitivity labels, policies, settings and more. Whether you need to fix issues or reset configurations, this tool has you covered.
 
@@ -66,7 +66,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Your privacy is important to us. [This privacy statement](https://privacy.microsoft.com/en-US/privacystatement) explains the personal data Microsoft processes, how Microsoft processes it, and for what purposes.
 
-## 🟢Requirements <a name="requirements"></a>
+## 🟦Requirements <a name="requirements"></a>
 
 Before you can use the 'Compliance Utility' make sure that your environment fulfils the following requierements. Please update your environment if necessary.
 
@@ -137,7 +137,7 @@ If you have not yet done so: [Install or upgrade the information protection clie
 > **Note**
 >
 > Purview Information Protection module does not support PowerShell 7.x. Therefore, unexpected errors may occur because the Purview Information Protection module is executed in [compatibility mode](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_windows_powershell_compatibility?view=powershell-7.4) in PowerShell 7.x.
-# 🟢Installation <a name="installation"></a>
+# 🟦Installation <a name="installation"></a>
 
 The 'Compliance Utility' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/ComplianceUtility/) and the fastest and easiest way to install it with user privileges is to run the following command in PowerShell:
 
@@ -211,7 +211,7 @@ ModuleType Version    Name                     ExportedCommands
 Script     3.2.2      ComplianceUtility        {ComplianceUtility, CompUtil, UnifiedLabelingSupportTool}
 ```
 
-# 🟢Uninstall <a name="uninstall"></a>
+# 🟦Uninstall <a name="uninstall"></a>
 
 If you want to completely uninstall the 'Compliance Utility', you must execute the following command:
 
@@ -230,7 +230,7 @@ If the 'Compliance Utility' was installed manually, you also need to remove it m
 > **Note**
 >
 > Under certain circumstances, you may need to run the uninstallation with administrator privileges. Please request assistance from your administrator if necessary.
-# 🟢User experience <a name="experience"></a>
+# 🟦User experience <a name="experience"></a>
 
 To start the 'Compliance Utility', simply type the following command in a PowerShell window and press enter:
 
@@ -293,7 +293,7 @@ To see the help for a single command line parameter, for example for `-CompressL
 Get-Help ComplianceUtility -Parameter CompressLogs
 ```
 
-# 🟢Features / Parameters <a name="features-parameters"></a>
+# 🟦Features / Parameters <a name="features-parameters"></a>
 
 The 'Compliance Utility' provides the following parameters:
 
@@ -522,7 +522,7 @@ This will start the 'Compliance Utility' with the default menu.
 
 The 'Compliance Utility' supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_commonparameters).
 
-# 🟢Script log file <a name="script-log-file"></a>
+# 🟦Script log file <a name="script-log-file"></a>
 
 The 'Compliance Utility' creates the following log file. The log file gives an overview of the executed commands and provides a control mechanism to review the results.
 
@@ -530,7 +530,7 @@ The 'Compliance Utility' creates the following log file. The log file gives an o
 
 This log file collects the actions that has been taken and lists the results. It also logs general environment information from the used client machine, like the Windows edition or Windows PowerShell version.
 
-# 🟢Log files and folders <a name="log-files"></a>
+# 🟦Log files and folders <a name="log-files"></a>
 
 The 'Compliance Utility' collects the following log files and folders.
 
@@ -987,7 +987,7 @@ For more information, please see the following documentation:
 
 </ul>
 
-# 🟢Support <a name="support"></a>
+# 🟦Support <a name="support"></a>
 
 When creating the 'Compliance Utility', great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
 
