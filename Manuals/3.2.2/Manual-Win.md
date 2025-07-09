@@ -857,9 +857,9 @@ For more information about this PowerShell command, please see the following doc
 
 </li>
 
-This file contains basic system information.<br>
+This file contains basic system information and device join status.<br>
 
-For more information, please see the following documentation: [Get-ComputerInfo](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-computerinfo).
+For more information, please see the following documentation: [Get-ComputerInfo](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-computerinfo), and [dsregcmd.exe](https://learn.microsoft.com/en-us/entra/identity/devices/troubleshoot-device-dsregcmd).
 
 </ul>
 
