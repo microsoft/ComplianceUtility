@@ -293,7 +293,7 @@ To see the help for a single command line parameter, for example for `-CompressL
 Get-Help ComplianceUtility -Parameter CompressLogs
 ```
 
-# 🟦Features / Parameters <a name="features-parameters"></a>
+# 🟦Features | Parameters <a name="features-parameters"></a>
 
 The 'Compliance Utility' provides the following parameters:
 
@@ -318,21 +318,21 @@ ComplianceUtility
        <CommonParameters>
 ```
 
-Description of all features and parameters (feature / parameter):
+Description of all features and parameters (feature | parameter):
 
-### 🔵[I] INFORMATION / -Information <a name="information"></a>
+### 🔵[I] INFORMATION | -Information <a name="information"></a>
 
 This shows syntax, description and version information.
 
-### 🔵[M] MIT LICENSE / -License
+### 🔵[M] MIT LICENSE | -License
 
 This displays the [MIT License](#mit-license).
 
-### 🔵[H] HELP / -Help <a name="help-win"></a>
+### 🔵[H] HELP | -Help <a name="help-win"></a>
 
 This opens the online manual.
 
-### 🔵[R] RESET / -Reset <String> <a name="reset"></a>
+### 🔵[R] RESET | -Reset <String> <a name="reset"></a>
 
 > [!IMPORTANT]
 > Before you proceed with this option, please close all open applications.
@@ -432,7 +432,7 @@ ComplianceUtility -Reset Silent -Verbose
 
 You can also review the [Script.log](#script-log-file) file for errors of silent reset.
 
-### 🔵[P] RECORD PROBLEM / -RecordProblem <a name="record-problem"></a>
+### 🔵[P] RECORD PROBLEM | -RecordProblem <a name="record-problem"></a>
 
 > [!IMPORTANT]
 > Before you proceed with this option, please close all open applications.
@@ -443,13 +443,13 @@ In the event that you accidentally close the PowerShell window while logging is 
 > **Note**
 >
 > Neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the 'Compliance Utility' is not run in an administrative PowerShell window as a user with local administrative privileges.
-### 🔵[A] AIP service configuration / -CollectAIPServiceConfiguration <a name="aip-service-config"></a>
+### 🔵[A] AIP service configuration | -CollectAIPServiceConfiguration <a name="aip-service-config"></a>
 
 This parameter collects your AIP service configuration information (e.g. [SuperUsers](https://learn.microsoft.com/en-us/azure/information-protection/configure-super-users) or [OnboardingControlPolicy](https://learn.microsoft.com/en-us/powershell/module/aipservice/set-aipserviceonboardingcontrolpolicy?view=azureipps) etc.) by using the [AIPService module](#aipservice-module).
 
 The results are written to the log file [AIPServiceConfiguration.log](#aip-service-config-log) in the subfolder "Collect" of the Logs folder.
 
-### 🔵[T] Protection templates / -CollectProtectionTemplates <a name="protection-templates"></a>
+### 🔵[T] Protection templates | -CollectProtectionTemplates <a name="protection-templates"></a>
 
 This parameter collects [protection templates](https://learn.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide#protection-templates-and-sensitivity-labels) of your tenant by using the [AIPService module](#aipservice-module).
 
@@ -457,7 +457,7 @@ The results are written to the log files [ProtectionTemplates.xml](#protection-t
 
 > [!TIP]
 > You can use this feature to create a backup copy of your protection templates.
-### 🔵[E] Endpoint URLs / -CollectEndpointURLs <a name="endpoint-urls"></a>
+### 🔵[E] Endpoint URLs | -CollectEndpointURLs <a name="endpoint-urls"></a>
 
 This parameter collects important endpoint URLs. The URLs are taken from your local registry or your tenant's Purview service configuration information (by using the [AIPService module](#aipservice-module)), and extended by additional relevant URLs.
 
@@ -475,7 +475,7 @@ Issuer:   CN=Microsoft Azure RSA TLS Issuing CA 08, O=Microsoft Corporation, C=U
 
 The results are written to log file [EndpointURLs.log](#endpoint-urls-log) in the subfolder "Collect" of the Logs folder. Additionally, an export of each certificate is saved in the "EndpointURLs" subfolder with the Endpoint URL as the file name and the [.ce_](#cer-files) file extension.
 
-### 🔵[L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
+### 🔵[L] Labels and policies | -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
 This parameter collects Information Protection labels, policies (with detailled actions and rules), auto-label policies and rules from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
@@ -483,13 +483,13 @@ The results are written to the log files ([Labels.xml](#labels-and-policies-xml)
 
 > [!TIP]
 > You can use the resulting .xml files to create exact copies of the label and policy settings for troubleshooting purposes, e.g. in test environments. 
-### 🔵[D] DLP rules and policies / -CollectDLPRulesAndPolicies <a name="dlp-rules-and-policies"></a>
+### 🔵[D] DLP rules and policies | -CollectDLPRulesAndPolicies <a name="dlp-rules-and-policies"></a>
 
 This parameter collects DLP rules and policies, sensitive information type details, rule packages, keyword dictionaries and exact data match schemas from the [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
 The results are written to the log files [DlpPolicy.xml](#dlp-rules-xml), [DlpRule.xml](#dlp-rules-xml), [DlpPolicyDistributionStatus.xml](#dlp-rules-xml), [DlpSensitiveInformationType.xml](#dlp-rules-xml), [DlpSensitiveInformationTypeRulePackage.xml](#dlp-rules-xml), [DlpKeywordDictionary.xml](#dlp-rules-xml) and [DlpEdmSchema.xml](#dlp-rules-xml) in the subfolder "Collect\DLPRulesAndPolicies" of the Logs folder.
 
-### 🔵[U] User license details <a name="user-license-details"></a>
+### 🔵[U] User license details | -CollectUserLicenseDetails <a name="user-license-details"></a>
 
 This parameter collects the user license details by the [Graph PowerShell module](#graph-module).
 
@@ -498,13 +498,13 @@ The results are written to log file [UserLicenseDetails.log](#user-license-log) 
 > **Note**
 >
 > You must log in with the corresponding Microsoft 365 user account for which you want to check the license details.
-### 🔵[Z] COMPRESS LOGS / -CompressLogs <a name="compress-logs"></a>
+### 🔵[Z] COMPRESS LOGS | -CompressLogs <a name="compress-logs"></a>
 
 This command line parameter should always be used at the very end of a scenario.
 
 This parameter compresses all collected log files and folders into a .zip archive, and the corresponding file is saved to your desktop. In addition, the default logs folder (`%temp%\ComplianceUtility`) is cleaned.
 
-### 🔵[X] EXIT / - <a name="exit"></a>
+### 🔵[X] EXIT | - <a name="exit"></a>
 
 This option will asks you whether you want to exit the menu after a confirmation prompt.
 
@@ -514,11 +514,11 @@ This option will asks you whether you want to exit the menu after a confirmation
 > Use this parameter only if you are sure that all PowerShell modules are up to date.
 This parameter skips the update check mechanism for all entries of the [COLLECT](#collect) menu.
 
-### 🔵- / -Menu <a name="menu"></a>
+### 🔵- | -Menu <a name="menu"></a>
 
 This will start the 'Compliance Utility' with the default menu.
 
-### 🔵\<CommonParameters>
+### 🔵<CommonParameters>
 
 The 'Compliance Utility' supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_commonparameters).
 
