@@ -15,7 +15,7 @@
    * [Check installation](#check-installation)
 * [Uninstall](#uninstall)
 * [User experience](#experience)
-* [Features / Parameters](#features-parameters)
+* [Features | Parameters](#features-parameters)
    * [INFORMATION](#information)
    * [HELP](#help-win)
    * [RESET](#reset)
@@ -235,7 +235,7 @@ To see the help for a single command line parameter, for example for `-CompressL
 Get-Help ComplianceUtility -Parameter CompressLogs
 ```
 
-# 🟦Features / Parameters <a name="features-parameters"></a>
+# 🟦Features | Parameters <a name="features-parameters"></a>
 
 The 'Compliance Utility' provides the following parameters:
 
@@ -264,21 +264,21 @@ ComplianceUtility
 >
 > Features/Parameters `-CollectAIPServiceConfiguration`, `-CollectProtectionTemplates` and `-CollectEndpointURLs` are not available. They would require the [AIPService module](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps), which is not supported on PowerShell 7.x.
 
-Description of all features and parameters (feature / parameter):
+Description of all features and parameters (feature | parameter):
 
-### 🔵[I] INFORMATION / -Information <a name="information"></a>
+### 🔵[I] INFORMATION | -Information <a name="information"></a>
 
 This shows syntax, description and version information.
 
-### 🔵[M] MIT LICENSE / -License
+### 🔵[M] MIT LICENSE | -License
 
 This displays the [MIT License](#mit-license).
 
-### 🔵[H] HELP / -Help <a name="help-win"></a>
+### 🔵[H] HELP | -Help <a name="help-win"></a>
 
 This opens the online manual.
 
-### 🔵[R] RESET / -Reset <String> <a name="reset"></a>
+### 🔵[R] RESET | -Reset <String> <a name="reset"></a>
 
 > [!IMPORTANT]
 > Before you proceed with this option, please close all open applications.
@@ -337,7 +337,7 @@ ComplianceUtility -Reset Silent -Verbose
 
 You can also review the [Script.log](#script-log-file) file for errors of silent reset.
 
-### 🔵[P] RECORD PROBLEM / -RecordProblem <a name="record-problem"></a>
+### 🔵[P] RECORD PROBLEM | -RecordProblem <a name="record-problem"></a>
 
 > [!IMPORTANT]
 > Before you proceed with this option, please close all open applications.
@@ -350,7 +350,7 @@ In the event that you accidentally close the PowerShell window while logging is 
 >
 > When collecting basic [system information](#system-information), the message "'Terminal' wants to access data from other applications" may appear. Since no personal information is collected, only hardware and software data, this has no effect on how you confirm the message.
 
-### 🔵[L] Labels and policies / -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
+### 🔵[L] Labels and policies | -CollectLabelsAndPolicies <a name="labels-and-policies"></a>
 
 This parameter collects Information Protection labels, policies (with detailled actions and rules), auto-label policies and rules from your [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
@@ -359,7 +359,7 @@ The results are written to the log files ([Labels.xml](#labels-and-policies-xml)
 > [!TIP]
 > You can use the resulting .xml files to create exact copies of the label and policy settings for troubleshooting purposes, e.g. in test environments. 
 
-### 🔵[D] DLP rules and policies / -CollectDLPRulesAndPolicies <a name="dlp-rules-and-policies"></a>
+### 🔵[D] DLP rules and policies | -CollectDLPRulesAndPolicies <a name="dlp-rules-and-policies"></a>
 
 This parameter collects DLP rules and policies, sensitive information type details, rule packages, keyword dictionaries and exact data match schemas from the [Microsoft Purview compliance portal](https://learn.microsoft.com/en-us/microsoft-365/compliance/microsoft-365-compliance-center?view=o365-worldwide) by using the [Exchange Online PowerShell module](#exchange-online-module).
 
@@ -375,24 +375,24 @@ The results are written to the log file [UserLicenseDetails.log](#user-license-l
 >
 > You must log in with the corresponding Microsoft 365 user account for which you want to check the license details.
 
-### 🔵[Z] COMPRESS LOGS / -CompressLogs <a name="compress-logs"></a>
+### 🔵[Z] COMPRESS LOGS | -CompressLogs <a name="compress-logs"></a>
 
 This command line parameter should always be used at the very end of a scenario.
 
 This parameter compresses all collected log files and folders into a .zip archive, and the corresponding file is saved to your desktop. In addition, the default logs folder (`~/Documents/ComplianceUtility`) is cleaned.
 
-### 🔵[X] EXIT / - <a name="exit"></a>
+### 🔵[X] EXIT | - <a name="exit"></a>
 
 This option will asks you whether you want to exit the menu after a confirmation prompt.
 
-### 🔵- / -SkipUpdates <a name="skip-updates"></a>
+### 🔵- | -SkipUpdates <a name="skip-updates"></a>
 
 > [!IMPORTANT]
 > Use this parameter only if you are sure that all PowerShell modules are up to date.
 
 This parameter skips the update check mechanism for entries of the [COLLECT](#collect) menu.
 
-### 🔵- / -Menu <a name="menu"></a>
+### 🔵- | -Menu <a name="menu"></a>
 
 This will start the 'Compliance Utility' with the default menu.
 
