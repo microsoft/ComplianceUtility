@@ -4,7 +4,7 @@
 # Licensed under the MIT License
 
 <# Variables #>
-$Global:strVersion = "3.2.1" <# Version #> 
+$Global:strVersion = "3.2.2" <# Version #> 
 $Global:strDefaultWindowTitle = $Host.UI.RawUI.WindowTitle <# Caching window title #>
 $Global:host.UI.RawUI.WindowTitle = "Compliance Utility ($Global:strVersion)" <# Set window title #>
 $Global:bolMenuCollectExtended = $false <# Variable for COLLECT menu handling #>
@@ -26,10 +26,10 @@ Function fncInitialize{
         <# Check for supported Windows versions #>
         If ($Global:strOSVersion -like "*Windows 10*" -Or
             $Global:strOSVersion -like "*Windows 11*" -Or
-            $Global:strOSVersion -like "*2012*" -Or
             $Global:strOSVersion -like "*Server 2016*" -Or
             $Global:strOSVersion -like "*Server 2019*" -Or
-            $Global:strOSVersion -like "*Server 2022*"){
+            $Global:strOSVersion -like "*Server 2022*" -Or
+            $Global:strOSVersion -like "*Server 2025*"){
 
             <# Variables #>
             $Global:strTempFolder = (Get-Item Env:"Temp").Value <# User temp folder #>
@@ -46,7 +46,7 @@ Function fncInitialize{
             fncLogging -strLogFunction "fncInitialize" -strLogDescription "Unsupported operating system" -strLogValue $true
 
             <# Output #>
-            Write-ColoredOutput Red "ATTENTION: The 'Compliance Utility' does not support the operating system you're using.`nPlease ensure to use one of the following supported operating systems:`nMicrosoft Windows 11, Windows 10, Windows Server 2022, Windows Server 2019, Windows Server 2016, and Windows Server 2012/R2.`n"
+            Write-ColoredOutput Red "ATTENTION: The 'Compliance Utility' does not support the operating system you're using.`nPlease ensure to use one of the following supported operating systems:`nMicrosoft Windows 11, Windows 10, Windows Server 2025, Windows Server 2022, Windows Server 2019, Windows Server 2016, and Windows Server 2012/R2.`n"
 
             <# Set back window title #>
             $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
@@ -69,7 +69,7 @@ Function fncInitialize{
         $Global:strOSVersion = $(sw_vers -productVersion) <# Apple macOS version #>
 
         <# Check for unsupported macOS #>
-        If ($Global:strOSVersion -lt "12.5") {
+        If ($Global:strOSVersion -lt "16.89") {
 
             <# Variable #>
             $Global:strOSVersion = $null
@@ -78,7 +78,7 @@ Function fncInitialize{
             fncLogging -strLogFunction "fncInitialize" -strLogDescription "Unsupported operating system" -strLogValue $true
 
             <# Output #>
-            Write-ColoredOutput Red "ATTENTION: The 'Compliance Utility' does not support the operating system you're using.`nPlease ensure to use a supported operating system:`nApple macOS 12.5 (Monterey) or higher.`n"
+            Write-ColoredOutput Red "ATTENTION: The 'Compliance Utility' does not support the operating system you're using.`nPlease ensure to use a supported operating system:`nApple macOS 16.89 (Ventura ) or higher.`n"
 
             <# Set back window title #>
             $Global:host.UI.RawUI.WindowTitle = $Global:strDefaultWindowTitle
@@ -195,14 +195,14 @@ Function ComplianceUtility {
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         
         VERSION
-        3.2.1
+        3.2.2
         
         CREATE DATE
-        06/28/2024
+        07/10/2025
 
         AUTHOR
         Claus Schiroky
-        Customer Service & Support | EMEA Modern Work Team
+        Modern Solutions & Support - EMEA Modern Work Team
         Microsoft Deutschland GmbH
 
         GITHUB REPOSITORY
@@ -276,7 +276,10 @@ Function ComplianceUtility {
         %LOCALAPPDATA%\Microsoft\Excel\MIPSDK\mip
         %LOCALAPPDATA%\Microsoft\PowerPoint\MIPSDK\mip
         %LOCALAPPDATA%\Microsoft\Outlook\MIPSDK\mip
-        %LOCALAPPDATA%\Microsoft\Office\DLP\mip
+        %LOCALAPPDATA%\Microsoft\Outlook\MIPSDKPDF\mip
+        %LOCALAPPDATA%\Microsoft\OneNote\MIPSDK\mip
+        %localappdata%\Microsoft\Office\MIPSDK\mip
+        %LOCALAPPDATA%\Microsoft\Office\DLP
         %LOCALAPPDATA%\Microsoft\Office\CLP
         %TEMP%\Diagnostics
         %LOCALAPPDATA%\Microsoft\MSIP
@@ -313,10 +316,17 @@ Function ComplianceUtility {
         ~/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/Office/CLP
         ~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/Office/CLP
         ~/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/Office/CLP
+        ~/Library/Containers/com.microsoft.OneNote/Data/Library/Application Support/Microsoft/Office/CLP
+        ~/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/MIPSDK/mip
+        ~/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/MIPSDK/mip
+        ~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/MIPSDK/mip
+        ~/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/MIPSDK/mip
+        ~/Library/Containers/com.microsoft.OneNote/Data/Library/Application Support/Microsoft/MIPSDK/mip
         ~/Library/Containers/com.microsoft.Word/Data/Library/Logs
         ~/Library/Containers/com.microsoft.Excel/Data/Library/Logs
         ~/Library/Containers/com.microsoft.PowerPoint/Data/Library/Logs
         ~/Library/Containers/com.microsoft.Outlook/Data/Library/Logs
+        ~/Library/Containers/com.microsoft.OneNote/Data/Library/Logs
         ~/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs
         ~/Library/Group Containers/UBF8T346G9.Office/mip_policy/mip/logs
         
@@ -340,7 +350,7 @@ Function ComplianceUtility {
         In the event that you accidentally close the PowerShell window while logging is enabled, the 'Compliance Utility' disables logging the next time you start it.
 
         Note (for Windows user):
-        - Neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the 'Compliance Utility' is not run in an administrative PowerShell window as a user with local administrative privileges.
+        - Neither CAPI2 or AIP event logs nor filter drivers are recorded if the 'Compliance Utility' is not run in an administrative PowerShell window as a user with local administrative privileges.
 
         Note (for Apple macOS user):
         - When collecting basic system information, the message "'Terminal' wants to access data from other applications" may appear. Since no personal information is collected, only hardware and software data, it has no effect on how you confirm the message.
@@ -356,7 +366,7 @@ Function ComplianceUtility {
         - The AIPService module does not yet support PowerShell 7.x. Therefore, unexpected errors may occur because the AIPService module is executed in compatibility mode in PowerShell 7.x.
 
         Note (for Apple macOS user):
-        - This parameter is not available. It would require the AIPService module, which is not yet supported on PowerShell 7.x.
+        - This parameter is not available. It would require the AIPService module, which is not supported on PowerShell 7.x.
 
     .PARAMETER CollectProtectionTemplates
         This parameter collects protection templates of your tenant by using the AIPService module.
@@ -371,7 +381,7 @@ Function ComplianceUtility {
         - The AIPService module does not yet support PowerShell 7.x. Therefore, unexpected errors may occur because the AIPService module is executed in compatibility mode in PowerShell 7.x.
 
         Note (for Apple macOS user):
-        - This parameter is not available. It would require the AIPService module, which is not yet supported on PowerShell 7.x.
+        - This parameter is not available. It would require the AIPService module, which is not supported on PowerShell 7.x.
 
     .PARAMETER CollectEndpointURLs
         This parameter collects important endpoint URLs. The URLs are taken from your local registry or your tenant's AIP service configuration information (by using the AIPService module), and extended by additional relevant URLs.
@@ -384,7 +394,7 @@ Function ComplianceUtility {
 
         Endpoint: UnifiedLabelingDistributionPointUrl
         URL:      https://dataservice.protection.outlook.com
-        Issuer:   CN=DigiCert Cloud Services CA-1, O=DigiCert Inc, C=US
+        Issuer:   CN=Microsoft Azure RSA TLS Issuing CA 08, O=Microsoft Corporation, C=US
 
         In addition, results are written into log file EndpointURLs.log in the subfolder "Collect" of the Logs folder.
 
@@ -394,7 +404,7 @@ Function ComplianceUtility {
         - The AIPService module does not yet support PowerShell 7.x. Therefore, unexpected errors may occur because the AIPService module is executed in compatibility mode in PowerShell 7.x.
 
         Note (for Apple macOS user):
-        - This parameter is not available. It would require the AIPService module, which is not yet supported on PowerShell 7.x.       
+        - This parameter is not available. It would require the AIPService module, which is not supported on PowerShell 7.x.       
 
     .PARAMETER CollectLabelsAndPolicies
         This parameter collects Information Protection labels, policies (with detailled actions and rules), auto-label policies and rules from your Microsoft Purview compliance portal by using the Exchange Online PowerShell module.
@@ -507,7 +517,7 @@ Function ComplianceUtility {
 
     <# Binding for parameters #>
     [CmdletBinding (
-        HelpURI = "https://github.com/microsoft/ComplianceUtility/blob/main/Manuals/3.2.1/Manual-Win.md", <# URL for online manual #>
+        HelpURI = "https://github.com/microsoft/ComplianceUtility/blob/main/Manuals/3.2.2/Manual-Win.md", <# URL for online manual #>
         PositionalBinding = $false, <# None-positional parameters #>
         DefaultParameterSetName = "Menu" <# Default start parameter #>
     )]
@@ -644,7 +654,7 @@ Function ComplianceUtility {
     }
 
     <# Variable for unavailable COLLECT features on macOS #>
-    $Private:strNotAvailableOnMac = "This feature is not yet available on Apple macOS."
+    $Private:strNotAvailableOnMac = "This feature is not available on Apple macOS."
 
     <# Actions for SkipUpdates #>
     If ($PSBoundParameters.ContainsKey("SkipUpdates")) {
@@ -823,7 +833,7 @@ Function fncInformation {
     If ($Global:bolCommingFromMenu -eq $true) {
     
         <# Output #>
-        Write-Output "NAME:`nComplianceUtility`n`nDESCRIPTION:`nThe 'Compliance Utility' is a powerful tool that helps troubleshoot and diagnose sensitivity labels, policies, settings and more. Whether you need to fix issues or reset configurations, this tool has you covered.`n`nVERSION:`n$Global:strVersion`n`nAUTHOR:`nClaus Schiroky`nCustomer Service & Support - EMEA Modern Work Team`nMicrosoft Deutschland GmbH`n`nHOMEPAGE:`nhttps://aka.ms/ComplianceUtility`n`nPRIVACY STATEMENT:`nhttps://privacy.microsoft.com/PrivacyStatement`n`nCOPYRIGHT:`nCopyright (c) Microsoft Corporation.`n"
+        Write-Output "NAME:`nComplianceUtility`n`nDESCRIPTION:`nThe 'Compliance Utility' is a powerful tool that helps troubleshoot and diagnose sensitivity labels, policies, settings and more. Whether you need to fix issues or reset configurations, this tool has you covered.`n`nVERSION:`n$Global:strVersion`n`nAUTHOR:`nClaus Schiroky`nModern Solutions & Support - EMEA Modern Work Team`nMicrosoft Deutschland GmbH`n`nHOMEPAGE:`nhttps://aka.ms/ComplianceUtility`n`nPRIVACY STATEMENT:`nhttps://privacy.microsoft.com/PrivacyStatement`n`nCOPYRIGHT:`nCopyright (c) Microsoft Corporation.`n"
 
     }
 
@@ -851,7 +861,7 @@ Function fncHelp {
         If ($(fncTestInternetAccess "github.com") -Eq $true) {
 
             <# Open manual #>
-            Start-Process "https://github.com/microsoft/ComplianceUtility/blob/main/Manuals/3.2.1/Manual-Win.md"
+            Start-Process "https://github.com/microsoft/ComplianceUtility/blob/main/Manuals/3.2.2/Manual-Win.md"
 
             <# Logging #>
             fncLogging -strLogFunction "fncHelp" -strLogDescription "HELP" -strLogValue "Called"
@@ -876,7 +886,7 @@ Function fncHelp {
         If ($(fncTestInternetAccess "github.com") -Eq $true) {
 
             <# Open manual #>
-            Open "https://github.com/microsoft/ComplianceUtility/blob/main/Manuals/3.2.1/Manual-Mac.md"
+            Open "https://github.com/microsoft/ComplianceUtility/blob/main/Manuals/3.2.2/Manual-Mac.md"
 
             <# Logging #>
             fncLogging -strLogFunction "fncHelp" -strLogDescription "HELP" -strLogValue "Called"
@@ -1040,7 +1050,10 @@ Function fncReset ($strResetMethod) {
             fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Excel\MIPSDK\mip"
             fncDeleteItem "$env:LOCALAPPDATA\Microsoft\PowerPoint\MIPSDK\mip"
             fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Outlook\MIPSDK\mip"
-            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Office\DLP\mip"
+            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Outlook\MIPSDKPDF\mip"
+            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\OneNote\MIPSDK\mip"
+            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Office\MIPSDK\mip"
+            fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Office\DLP"
             fncDeleteItem "$env:LOCALAPPDATA\Microsoft\Office\CLP"
             fncDeleteItem "$env:TEMP\Diagnostics"
             fncDeleteItem "$env:LOCALAPPDATA\Microsoft\MSIP"
@@ -1108,20 +1121,27 @@ Function fncReset ($strResetMethod) {
         <# Reset for macOS #>
         If ($IsMacOS -eq $true) {
 
-            <# Clean Office folders #>
+            <# Clean Office CLP/MIPSDK folders #>
             fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/CLP" <# Word #>
             fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/Office/CLP" <# Excel #>
             fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/Office/CLP" <# PowerPoint #>
             fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/Office/CLP" <# Outlook #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.OneNote/Data/Library/Application Support/Microsoft/Office/CLP" <# OneNote #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/MIPSDK/mip" <# Word #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/MIPSDK/mip" <# Excel #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/MIPSDK/mip" <# PowerPoint #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/MIPSDK/mip" <# Outlook #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.OneNote/Data/Library/Application Support/Microsoft/MIPSDK/mip" <# OneNote #>
 
             <# Clean Office log folders #>
             fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Word/Data/Library/Logs" <# Word #>
             fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Excel/Data/Library/Logs" <# Excel #>
             fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.PowerPoint/Data/Library/Logs" <# PowerPoint #>
             fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.Outlook/Data/Library/Logs" <# Outlook #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.OneNote/Data/Library/Logs" <# OneNote #>
 
             <# Clean RMS Sharing App log folders #>
-            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs" <# Outlook #>
+            fncDeleteItem "$(printenv HOME)/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs"
 
             <# Clean Office MIP #>
             fncDeleteItem "$(printenv HOME)/Library/Group Containers/UBF8T346G9.Office/mip_policy/mip/logs" <# MIP #>
@@ -1347,7 +1367,7 @@ Function fncRecordProblem {
             If ($Global:bolRunningPrivileged -eq $false) {
 
                 <# Logging #>
-                Write-ColoredOutput Red "ATTENTION: Please note that neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded.`nIf you want a complete record, you must run the 'Compliance Utility' in an administrative PowerShell window as a user with local administrative privileges."
+                Write-ColoredOutput Red "ATTENTION: Please note that neither CAPI2 or AIP event logs nor filter drivers are recorded.`nIf you want a complete record, you must run the 'Compliance Utility' in an administrative PowerShell window as a user with local administrative privileges."
 
             }
         
@@ -1383,7 +1403,7 @@ Function fncRecordProblem {
 
             <# Output #>
             Write-ColoredOutput Red "IMPORTANT: Now reproduce the problem, but leave this window open."
-            Read-Host "After reproducing the problem, close all the applications you were using, return here and press enter to complete the recording"
+            Read-Host "After reproducing the problem, close all the applications you were using, return here and press enter to complete the recording."
 
             <# Output #>
             Write-Output "Collecting logs, please wait...`n"
@@ -1556,7 +1576,7 @@ Function fncEnableLogging {
     If ($Global:bolRunningPrivileged -eq $true) {
 
         <# Progress bar update #>
-        Write-Progress -Activity " Enable logging: CAPI2 event logging..." -PercentComplete (100/8 * 1)
+        Write-Progress -Activity " Enable logging: CAPI2 event logging..." -PercentComplete (100/7 * 1)
 
         <# Enable CAPI2 event log #>
         Write-Output Y | wevtutil set-log Microsoft-Windows-CAPI2/Operational /enabled:True
@@ -1570,19 +1590,10 @@ Function fncEnableLogging {
         <# Logging #>
         fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "CAPI2 event log" -strLogValue "Cleared"
 
-        <# Progress bar update #>
-        Write-Progress -Activity " Enable logging: Starting network trace..." -PercentComplete (100/8 * 2)
-
-        <# Start network trace #>
-        netsh.exe trace start capture=yes scenario=NetConnection,InternetClient sessionname="ComplianceUtility-Trace" report=disabled maxsize=1024, tracefile="$Global:strUniqueLogFolder\NetMon.etl" | Out-Null
-    
-        <# Logging #>
-        fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "Network trace" -strLogValue "Started"
-
     }
 
     <# Progress bar update #>
-    Write-Progress -Activity " Enable logging: Office logging..." -PercentComplete (100/8 * 3)
+    Write-Progress -Activity " Enable logging: Office logging..." -PercentComplete (100/7 * 2)
 
     <# Enable Office logging for 2016 (16.0) #>
     If ($(Test-Path -Path "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Logging") -Eq $false) {
@@ -1608,7 +1619,7 @@ Function fncEnableLogging {
     fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "Office Logging" -strLogValue "Enabled"
 
     <# Progress bar update #>
-    Write-Progress -Activity " Enable logging: Office TCOTrace..." -PercentComplete (100/8 * 4)
+    Write-Progress -Activity " Enable logging: Office TCOTrace..." -PercentComplete (100/7 * 3)
 
     <# <# Check for registry key "Debug" (2016) #>
     If ($(Test-Path -Path "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Debug") -Eq $false) { 
@@ -1624,7 +1635,7 @@ Function fncEnableLogging {
     fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "Office TCOTrace" -strLogValue "Enabled"
 
     <# Progress bar update #>
-    Write-Progress -Activity " Enable logging: Cleaning MSIP/MSIPC logs..." -PercentComplete (100/8 * 5)
+    Write-Progress -Activity " Enable logging: Cleaning MSIP/MSIPC logs..." -PercentComplete (100/7 * 4)
 
     <# Clean MSIP/MSIPC/AIP v2 logs folder #>
     If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\MSIP\Logs) -Eq $true) { <# If foler exist #>
@@ -1659,14 +1670,14 @@ Function fncEnableLogging {
 
     }
 
-    <# Check for MIP folder #>
-    If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Office\DLP\mip) -Eq $true) {
+    <# Check for DLP folder #>
+    If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Office\DLP) -Eq $true) {
 
         <# Clean Office DLP/MIP log folder #>
-        Remove-Item -Path "$env:LOCALAPPDATA\Microsoft\Office\DLP\mip" -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
+        Remove-Item -Path "$env:LOCALAPPDATA\Microsoft\Office\DLP" -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
         
         <# Logging #>
-        fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "Office DLP/MIP log folder" -strLogValue "Cleared"
+        fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "Office DLP log folder" -strLogValue "Cleared"
 
     }
 
@@ -1712,7 +1723,40 @@ Function fncEnableLogging {
         <# Logging #>
         fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "Outlook MIPSDK log folder" -strLogValue "Cleared"
     
+    }
+
+    <# Check for Outlook MIPSDKPDF log folder #>
+    If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Outlook\MIPSDKPDF\mip) -Eq $true) {
+
+        <# Clean Outlook MIPSDKPDF log folder #>
+        Remove-Item -Path "$env:LOCALAPPDATA\Microsoft\Outlook\MIPSDKPDF\mip" -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
+            
+        <# Logging #>
+        fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "Outlook MIPSDKPDF log folder" -strLogValue "Cleared"
+    
     }    
+
+    <# Check for OneNote MIPSDK log folder #>
+    If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\OneNote\MIPSDK\mip) -Eq $true) {
+
+        <# Clean OneNote MIPSDK log folder #>
+        Remove-Item -Path "$env:LOCALAPPDATA\Microsoft\OneNote\MIPSDK\mip" -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
+            
+        <# Logging #>
+        fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "OneNote MIPSDK log folder" -strLogValue "Cleared"
+    
+    }  
+
+    <# Check for Office MIPSDK log folder #>
+    If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\Office\MIPSDK\mip) -Eq $true) {
+
+        <# Clean Office MIPSDK log folder #>
+        Remove-Item -Path "$env:LOCALAPPDATA\Microsoft\Office\MIPSDK\mip" -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
+            
+        <# Logging #>
+        fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "Office MIPSDK log folder" -strLogValue "Cleared"
+    
+    }  
 
     <# Detect Diagnostic folder #>
     If ($(Test-Path -Path $env:TEMP\Diagnostics) -Eq $true) {
@@ -1726,7 +1770,7 @@ Function fncEnableLogging {
     }
 
     <# Progress bar update #>
-    Write-Progress -Activity " Enable logging: Flushing DNS..." -PercentComplete (100/8 * 6)
+    Write-Progress -Activity " Enable logging: Flushing DNS..." -PercentComplete (100/7 * 5)
 
     <# Flush DNS #>
     ipconfig.exe /flushdns | Out-Null
@@ -1735,7 +1779,7 @@ Function fncEnableLogging {
     fncLogging -strLogFunction "fncEnableLogging" -strLogDescription "Flush DNS" -strLogValue "Called"
 
     <# Progress bar update #>
-    Write-Progress -Activity " Enable logging: Starting PSR..." -PercentComplete (100/8 * 7)
+    Write-Progress -Activity " Enable logging: Starting PSR..." -PercentComplete (100/7 * 6)
 
     <# Start PSR #>
     psr.exe /gui 0 /start /output "$Global:strUniqueLogFolder\ProblemSteps.zip"
@@ -1785,7 +1829,7 @@ Function fncDisableLogging {
     If ($Global:bolRunningPrivileged -eq $true) {
 
         <# Progress bar update #>
-        Write-Progress -Activity " Disable logging: CAPI2 event log..." -PercentComplete (100/6 * 1) 
+        Write-Progress -Activity " Disable logging: CAPI2 event log..." -PercentComplete (100/5 * 1) 
 
         <# Disable CAPI2 event log #>
         wevtutil.exe set-log Microsoft-Windows-CAPI2/Operational /enabled:false
@@ -1793,19 +1837,10 @@ Function fncDisableLogging {
         <# Logging #>
         fncLogging -strLogFunction "fncDisableLogging" -strLogDescription "CAPI2 event log" -strLogValue "Disabled"
 
-        <# Progress bar update #>
-        Write-Progress -Activity " Disable logging: Network trace..." -PercentComplete (100/6 * 2)
-
-        <# Stopping network trace #>
-        netsh.exe trace stop sessionname="ComplianceUtility-Trace" | Out-Null
-    
-        <# Logging #>
-        fncLogging -strLogFunction "fncDisableLogging" -strLogDescription "Network trace" -strLogValue "Disabled"
-
     }
 
     <# Progress bar update #>
-    Write-Progress -Activity " Disable logging: Office logging..." -PercentComplete (100/6 * 3)
+    Write-Progress -Activity " Disable logging: Office logging..." -PercentComplete (100/5 * 2)
 
     <# Disable Office logging for  2016 (16.0) #>
     fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Logging"
@@ -1815,7 +1850,7 @@ Function fncDisableLogging {
     fncLogging -strLogFunction "fncDisableLogging" -strLogDescription "Office Logging" -strLogValue "Disabled"
 
     <# Progress bar update #>
-    Write-Progress -Activity " Disable logging: Office TCOTrace..." -PercentComplete (100/6 * 4)
+    Write-Progress -Activity " Disable logging: Office TCOTrace..." -PercentComplete (100/5 * 3)
 
     <# Disable Office TCOTrace logging for Office 2016 (16.0) #>
     fncDeleteItem "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Debug"
@@ -1824,7 +1859,7 @@ Function fncDisableLogging {
     fncLogging -strLogFunction "fncDisableLogging" -strLogDescription "Office TCOTrace" -strLogValue "Disabled"
 
     <# Progress bar update #>
-    Write-Progress -Activity " Disable logging: PSR..." -PercentComplete (100/6 * 5)
+    Write-Progress -Activity " Disable logging: PSR..." -PercentComplete (100/5 * 4)
 
     <# Stop PSR #>
     psr.exe /stop
@@ -1906,6 +1941,9 @@ Function fncCollectingLogs {
         <# Collecting system information #>
         Get-ComputerInfo > "$Global:strUniqueLogFolder\SystemInformation.log"
 
+        <# Collecting device join status #>
+        dsregcmd.exe /status | Out-File "$Global:strUniqueLogFolder\SystemInformation.log" -Append
+
         <# Logging #>
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export system information" -strLogValue "SystemInformation.log"
 
@@ -1913,7 +1951,7 @@ Function fncCollectingLogs {
         If ($Global:bolRunningPrivileged -eq $true) {
 
             <# Progress bar update #>
-            Write-Progress -Activity " Collecting logs: CAPI2 event log..." -PercentComplete (100/27 * 1)
+            Write-Progress -Activity " Collecting logs: CAPI2 event log..." -PercentComplete (100/26 * 1)
 
             <# Export CAPI2 event log #>
             wevtutil.exe export-log Microsoft-Windows-CAPI2/Operational "$Global:strUniqueLogFolder\CAPI2.evtx" /overwrite:true
@@ -1922,7 +1960,7 @@ Function fncCollectingLogs {
             fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export CAPI2 event log" -strLogValue "CAPI2.evtx"
 
             <# Progress bar update #>
-            Write-Progress -Activity " Collecting logs: Azure Information Protection event log..." -PercentComplete (100/27 * 2)
+            Write-Progress -Activity " Collecting logs: Azure Information Protection event log..." -PercentComplete (100/26 * 2)
 
             <# Actions when AIP event log exist #>
             If ([System.Diagnostics.EventLog]::Exists("Azure Information Protection") -Eq $true) {
@@ -1950,17 +1988,7 @@ Function fncCollectingLogs {
             }
 
             <# Progress bar update #>
-            Write-Progress -Activity " Collecting logs: Network trace..." -PercentComplete (100/27 * 4)
-
-            <# Stop network trace #>
-            netsh.exe trace stop sessionname="ComplianceUtility-Trace" | Out-Null
-
-            <# Logging #>
-            fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Network trace" -strLogValue "Stopped"
-            fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export network trace" -strLogValue "NetMon.etl"
-
-            <# Progress bar update #>
-            Write-Progress -Activity " Collecting logs: Filter drivers..." -PercentComplete (100/27 * 5)
+            Write-Progress -Activity " Collecting logs: Filter drivers..." -PercentComplete (100/26 * 4)
 
             <# Export filter drivers #>
             fltmc.exe filters > "$Global:strUniqueLogFolder\Filters.log"
@@ -1971,7 +1999,7 @@ Function fncCollectingLogs {
         }
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: PSR recording..." -PercentComplete (100/27 * 6)
+        Write-Progress -Activity " Collecting logs: PSR recording..." -PercentComplete (100/26 * 5)
 
         <# Stop PSR #>
         psr.exe /stop
@@ -1981,7 +2009,7 @@ Function fncCollectingLogs {
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export PSR" -strLogValue "ProblemSteps.zip"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: Application event log..." -PercentComplete (100/27 * 7)
+        Write-Progress -Activity " Collecting logs: Application event log..." -PercentComplete (100/26 * 6)
 
         <# Export Application event log #>
         wevtutil.exe export-log Application "$Global:strUniqueLogFolder\Application.evtx" /overwrite:true
@@ -1990,7 +2018,7 @@ Function fncCollectingLogs {
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export Application event log" -strLogValue "Application.evtx"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: System event log..." -PercentComplete (100/27 * 8)
+        Write-Progress -Activity " Collecting logs: System event log..." -PercentComplete (100/26 * 7)
 
         <# Export System event log #>
         wevtutil.exe export-log System "$Global:strUniqueLogFolder\System.evtx" /overwrite:true
@@ -1999,7 +2027,7 @@ Function fncCollectingLogs {
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export System event log" -strLogValue "System.evtx"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: Office log files..." -PercentComplete (100/27 * 9)
+        Write-Progress -Activity " Collecting logs: Office log files..." -PercentComplete (100/26 * 8)
 
         <# Check for Office log path and create it, if it not exist #>
         If ($(Test-Path -Path "$Global:strUniqueLogFolder\Office") -Eq $false) {
@@ -2014,57 +2042,67 @@ Function fncCollectingLogs {
                 If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Office\CLP -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
 
                     <# Compress label and policy xml files into zip file (overwrites) #>
-                    Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\Office\CLP"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\LabelsAndPolicies" -Force -ErrorAction SilentlyContinue
+                    Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\Office\CLP"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\OfficeCLP" -Force -ErrorAction SilentlyContinue
 
                     <# Logging #>
-                    fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export Office CLP" -strLogValue "\Office\LabelsAndPolicies.zip"
+                    fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export Office CLP" -strLogValue "\Office\OfficeCLP.zip"
 
                 }
 
             }
- 
-            <# Detect/create Office MIP path only if no AIP client is installed; because with AIP client we collect already the mip folder with the AIPLogs.zip #>
-            If (-not (Get-Module -ListAvailable -Name AzureInformationProtection, PurviewInformationProtection)) { <# Check for AIP client #>
-  
-                <# Check for Office MIP path #>
-                If ($(Test-Path -Path "$Global:strUniqueLogFolder\Office\DLP\mip") -Eq $true) {
-
-                    <# Actions if the MIP folder contain files  #>
-                    If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Office\DLP\mip -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
-
-                        <# Create Office MIP log folder #>
-                        New-Item -ItemType Directory -Force -Path "$Global:strUniqueLogFolder\Office\mip" | Out-Null
-
-                        <# Export Office MIP content #>
-                        fncCopyItem $env:LOCALAPPDATA\Microsoft\Office\DLP\mip "$Global:strUniqueLogFolder\Office" "mip\*"
-
-                        <# Logging #>
-                        fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export Office MIP logs" -strLogValue "\Office\mip"
-
-                    }
-                }
    
+            <# Check for Office DLP path #>
+            If ($(Test-Path -Path "$Global:strUniqueLogFolder\Office\DLP") -Eq $true) {
+
+                <# Perform action only, if the DLP folder contain files (Note: Afer a RESET this folder is empty). #>
+                If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Office\DLP -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
+
+                    <# Compress DLP folder content into zip file (overwrites) #>
+                    Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\Office\DLP"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\OfficeDLP" -Force -ErrorAction SilentlyContinue
+
+                    <# Logging #>
+                    fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export Office DLP" -strLogValue "\Office\OfficeDLP.zip"
+
+                }
+
             }
-    
+
+            <# Check for Outlook MIPSDKPDF path #>
+            If ($(Test-Path -Path "$Global:strUniqueLogFolder\Outlook\MIPSDKPDF\mip") -Eq $true) {
+
+                <# Perform action only, if the MIPSDKPDF folder contain files (Note: Afer a RESET this folder is empty). #>
+                If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\Outlook\MIPSDKPDF\mip -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
+
+                    <# Compress MIPSDKPDF folder content into zip file (overwrites) #>
+                    Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\Office\Outlook\MIPSDKPDF"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\MIPSDKPDF-Outlook" -Force -ErrorAction SilentlyContinue
+
+                    <# Logging #>
+                    fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export Outlook MIPSDKPDF" -strLogValue "\Office\MIPSDKPDF-Outlook.zip"
+
+                }
+
+            }
+
         }
 
-        <# Define array for MIP SDK apps #>
-        $Private:arrMIPSDKApps = "Word", "Excel", "PowerPoint", "Outlook"
+        <# Define array for MIPSDK apps/folders #>
+        $Private:arrMIPSDKApps = "Word", "Excel", "PowerPoint", "Outlook", "OneNote", "Office"
+        $Private:strMipPathItem
 
         <# Loop though array and collect MIPSDK logs #>
-        ForEach ($_ in $Private:arrMIPSDKApps) {
+        ForEach ($Private:strMipPathItem in $Private:arrMIPSDKApps) {
 
-            <# Check for each App MIPSDK log path, and collect .json files #>
-            If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\$_\MIPSDK\mip) -Eq $true) {
+            <# Check for each App MIPSDK log path, and collect log files #>
+            If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\$Private:strMipPathItem\MIPSDK\mip) -Eq $true) {
 
                 <# Collect MIPSDK log folder only, if the folder contains files (Note: Afer a RESET this folder is empty). #>
-                If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\$_\MIPSDK\mip -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
+                If (((Get-ChildItem -LiteralPath $env:LOCALAPPDATA\Microsoft\$Private:strMipPathItem\MIPSDK\mip -File -Force | Select-Object -First 1 | Measure-Object).Count -ne 0)) {
     
                     <# Compress MIPSDK\mip content to .zip file (overwrites) #>
-                    Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\$_\MIPSDK\mip"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\MIPSDK-$_.zip" -Force -ErrorAction SilentlyContinue
+                    Compress-Archive -Path $env:LOCALAPPDATA\Microsoft\$Private:strMipPathItem\MIPSDK\mip"\*" -DestinationPath "$Global:strUniqueLogFolder\Office\MIPSDK-$Private:strMipPathItem.zip" -Force -ErrorAction SilentlyContinue
     
                     <# Logging #>
-                    fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export $_ MIPSDK logs" -strLogValue "\Office\MIPDSK-$_.zip"
+                    fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export $Private:strMipPathItem MIPSDK logs" -strLogValue "\Office\MIPDSK-$Private:strMipPathItem.zip"
     
                 }
     
@@ -2072,8 +2110,9 @@ Function fncCollectingLogs {
 
         }
 
-        <# Releasing MIP SDK apps array #>
+        <# Releasing MIPSDK variables/array #>
         $Private:arrMIPSDKApps = $null
+        $Private:strMipPathItem = $null
 
         <# Copy Office Diagnostics folder from temp folder to Office logs folder #>
         fncCopyItem $env:TEMP\Diagnostics "$Global:strUniqueLogFolder\Office" "Diagnostics\*"
@@ -2098,7 +2137,7 @@ Function fncCollectingLogs {
         fncDeleteItem "$Global:strTempFolder\Office.log"
 
         # Progress bar update #>
-        Write-Progress -Activity " Collecting logs: AIP/PIP/Office Diagnostics logs folders..." -PercentComplete (100/27 * 10)
+        Write-Progress -Activity " Collecting logs: AIP/PIP/Office Diagnostics logs folders..." -PercentComplete (100/26 * 9)
 
         <# Remember default progress bar status: 'Continue' #>
         $Private:strOriginalPreference = $Global:ProgressPreference 
@@ -2186,11 +2225,11 @@ Function fncCollectingLogs {
             <# Logging: If no AIP/PIP client is installed #>
             fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "AIP/PIP client installed" -strLogValue $false
 
-            <# Export Office MIP content to logs folder #>
-            fncCopyItem $env:LOCALAPPDATA\Microsoft\Office\DLP\mip "$Global:strUniqueLogFolder\Office" "mip\*"
+            <# Export Office DLP content to logs folder #>
+            fncCopyItem $env:LOCALAPPDATA\Microsoft\Office\DLP "$Global:strUniqueLogFolder\Office" "DLP\*"
 
             <# Logging #>
-            fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export Office MIP content" -strLogValue "\Office"
+            fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export Office DLP content" -strLogValue "\Office\DLP"
 
             <# Export Office Diagnostics content to logs folder #>
             fncCopyItem $env:TEMP\Diagnostics "$Global:strUniqueLogFolder\Office" "Diagnostics\*"
@@ -2216,7 +2255,7 @@ Function fncCollectingLogs {
         $Global:ProgressPreference = $Private:strOriginalPreference  
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: WinHTTP..." -PercentComplete (100/27 * 11)
+        Write-Progress -Activity " Collecting logs: WinHTTP..." -PercentComplete (100/26 * 10)
 
         <# Export WinHTTP #>
         netsh.exe winhttp show proxy > "$Global:strUniqueLogFolder\WinHTTP.log"
@@ -2225,7 +2264,7 @@ Function fncCollectingLogs {
         fncLOgging -strLogFunction "fncCollectingLogs" -strLogDescription "Export WinHTTP" -strLogValue "WinHTTP.log"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: WinHTTP (WoW6432)..." -PercentComplete (100/27 * 12)
+        Write-Progress -Activity " Collecting logs: WinHTTP (WoW6432)..." -PercentComplete (100/26 * 11)
 
         <# Export WinHTTP_WoW6432 (only 64-bit OS) #>
         If ((Get-CimInstance Win32_OperatingSystem  -Verbose:$false).OSArchitecture -eq "64-bit") {
@@ -2241,7 +2280,7 @@ Function fncCollectingLogs {
         If ((Get-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\" -Name AutoConfigURL -ErrorAction SilentlyContinue).AutoConfigURL) {
 
             <# Progress bar update #>
-            Write-Progress -Activity " Collecting logs: AutoConfigURL..." -PercentComplete (100/27 * 13)
+            Write-Progress -Activity " Collecting logs: AutoConfigURL..." -PercentComplete (100/26 * 12)
 
             <# Logging #>
             fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export IE AutoConfigURL" -strLogValue "AutoConfigURL.log" <# Windows version and release ID #>
@@ -2252,7 +2291,7 @@ Function fncCollectingLogs {
         }
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: Machine certificates..." -PercentComplete (100/27 * 14)
+        Write-Progress -Activity " Collecting logs: Machine certificates..." -PercentComplete (100/26 * 13)
 
         <# Export machine certificates #>
         certutil.exe -silent -store my > "$Global:strUniqueLogFolder\CertMachine.log"
@@ -2261,7 +2300,7 @@ Function fncCollectingLogs {
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export machine certificates" -strLogValue "CertMachine.log"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: User certificates..." -PercentComplete (100/27 * 15)
+        Write-Progress -Activity " Collecting logs: User certificates..." -PercentComplete (100/26 * 14)
 
         <# Export user certificates #>
         certutil.exe -silent -user -store my > "$Global:strUniqueLogFolder\CertUser.log"
@@ -2270,7 +2309,7 @@ Function fncCollectingLogs {
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export user certificates" -strLogValue "CertUser.log"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: Credentials information..." -PercentComplete (100/27 * 16)
+        Write-Progress -Activity " Collecting logs: Credentials information..." -PercentComplete (100/26 * 15)
 
         <# Export Credential Manager data #>
         cmdkey.exe /list > "$Global:strUniqueLogFolder\CredMan.log"
@@ -2279,7 +2318,7 @@ Function fncCollectingLogs {
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export Credential Manager" -strLogValue "CredMan.log"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: IP configuration..." -PercentComplete (100/27 * 17)
+        Write-Progress -Activity " Collecting logs: IP configuration..." -PercentComplete (100/26 * 16)
 
         <# Export IP configuration #>
         ipconfig.exe /all > "$Global:strUniqueLogFolder\IPConfigAll.log"
@@ -2288,7 +2327,7 @@ Function fncCollectingLogs {
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export ipconfig" -strLogValue "IPConfigAll.log"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: DNS..." -PercentComplete (100/27 * 18)
+        Write-Progress -Activity " Collecting logs: DNS..." -PercentComplete (100/26 * 17)
 
         <# Export DNS configuration  #>
         ipconfig.exe /displaydns > "$Global:strUniqueLogFolder\WinIPConfig.txt" | Out-Null
@@ -2297,7 +2336,7 @@ Function fncCollectingLogs {
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export DNS" -strLogValue "WinIPConfig.txt"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: Environment information..." -PercentComplete (100/27 * 19)
+        Write-Progress -Activity " Collecting logs: Environment information..." -PercentComplete (100/26 * 18)
 
         <# Export environment variables #>
         Get-ChildItem Env: | Out-File "$Global:strUniqueLogFolder\EnvVar.log"
@@ -2306,7 +2345,7 @@ Function fncCollectingLogs {
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export environment variables" -strLogValue "EnvVar.log"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: Group policy report..." -PercentComplete (100/27 * 20)
+        Write-Progress -Activity " Collecting logs: Group policy report..." -PercentComplete (100/26 * 19)
         
         <# Export group policy #>
         gpresult /f /h "$Global:strUniqueLogFolder\Gpresult.htm" | Out-Null
@@ -2315,7 +2354,7 @@ Function fncCollectingLogs {
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export group policy report" -strLogValue "Gpresult.htm"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: Time zone information..." -PercentComplete (100/27 * 21)
+        Write-Progress -Activity " Collecting logs: Time zone information..." -PercentComplete (100/26 * 20)
 
         <# Export timezone offse #>
         (Get-Timezone).BaseUTCOffset.Hours | Out-File "$Global:strUniqueLogFolder\BaseUTCOffset.log"
@@ -2324,7 +2363,7 @@ Function fncCollectingLogs {
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export timezone offset" -strLogValue "BaseUTCOffset.log"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: Tasklist..." -PercentComplete (100/27 * 22)
+        Write-Progress -Activity " Collecting logs: Tasklist..." -PercentComplete (100/26 * 21)
 
         <# Export Tasklist #>
         Tasklist.exe /svc > "$Global:strUniqueLogFolder\Tasklist.log"
@@ -2333,7 +2372,7 @@ Function fncCollectingLogs {
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export Tasklist" -strLogValue "Tasklist.log"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: Programs and Features..." -PercentComplete (100/27 * 23)
+        Write-Progress -Activity " Collecting logs: Programs and Features..." -PercentComplete (100/26 * 22)
 
         <# Export Programs and Features (32) #>
         If ($(Test-Path -Path "HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall") -Eq $true) {
@@ -2353,7 +2392,7 @@ Function fncCollectingLogs {
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export Programs (x64)" -strLogValue "Programs64.csv"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: Scheduled Tasks..." -PercentComplete (100/27 * 24)
+        Write-Progress -Activity " Collecting logs: Scheduled Tasks..." -PercentComplete (100/26 * 23)
 
         <# Array to collect Scheduled Tasks data #>
         [System.Collections.ArrayList]$Private:arrScheduledTasks = @()
@@ -2385,13 +2424,13 @@ Function fncCollectingLogs {
         fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export Scheduled Tasks" -strLogValue "ScheduledTasks.csv"
 
         <# Progress bar update #>
-        Write-Progress -Activity " Collecting logs: AIP registry keys..." -PercentComplete (100/27 * 25)
+        Write-Progress -Activity " Collecting logs: AIP registry keys..." -PercentComplete (100/26 * 24)
         
         <# Export AIP plugin Adobe Acrobat RMS logs #>
         If ($(Test-Path -Path $env:LOCALAPPDATA\Microsoft\RMSLocalStorage\MIP\logs) -Eq $true) {
 
             <# Progress bar update #>
-            Write-Progress -Activity " Collecting logs: Adobe logs..." -PercentComplete (100/27 * 26)
+            Write-Progress -Activity " Collecting logs: Adobe logs..." -PercentComplete (100/26 * 25)
 
             <# Export MSIP/MSIPC content to logs folder #>
             fncCopyItem $env:LOCALAPPDATA\Microsoft\RMSLocalStorage\MIP\logs "$Global:strUniqueLogFolder\Adobe\LOCALAPPDATA" "Adobe\LOCALAPPDATA\*"
@@ -2435,6 +2474,7 @@ Function fncCollectingLogs {
                                 "HKCU:\SOFTWARE\Microsoft\MSIP",
                                 "HKCU:\Software\Microsoft\Office\16.0\Common\Identity",
                                 "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\Internet",
+                                "HKCU:\SOFTWARE\Microsoft\Office\16.0\Common\DRM",
                                 "HKCU:\SOFTWARE\Microsoft\Office\Word\Addins",
                                 "HKCU:\SOFTWARE\Microsoft\Office\Excel\Addins",
                                 "HKCU:\SOFTWARE\Microsoft\Office\PowerPoint\Addins",
@@ -2456,17 +2496,23 @@ Function fncCollectingLogs {
                                 "HKCU:\Software\Microsoft\Office\16.0\Common\Licensing\CurrentSkuIdAggregationForApp",
                                 "HKCU:\Software\Microsoft\Office\16.0\Common\Licensing\LastKnownC2RProductReleaseId"
 
-        <# Loop though array and cache to a temp file #>
-        ForEach ($_ in $Private:arrRegistryKeys) {
+        <# Define variable for reg values #>
+        $Private:strRegValue
 
-            If ($(Test-Path -Path $_) -Eq $true) {
+        <# Loop though array and cache to a temp file #>
+        ForEach ($Private:strRegValue in $Private:arrRegistryKeys) {
+
+            If ($(Test-Path -Path $Private:strRegValue) -Eq $true) {
 
                 $Private:strTempFile = $Private:strTempFile + 1
-                & REG EXPORT $_.Replace(":", $null) "$Global:strTempFolder\$Private:strTempFile.reg" /Y | Out-Null <# Remove the ":" to export (replace) #>
+                & REG EXPORT $Private:strRegValue.Replace(":", $null) "$Global:strTempFolder\$Private:strTempFile.reg" /Y | Out-Null <# Remove the ":" to export (replace) #>
 
             }
 
         }
+
+        <# Releasing variable for reg values #>
+        $Private:strRegValue = $null
 
         <# Insert first information; create log file #>
         "Windows Registry Editor Version 5.00" | Set-Content "$Global:strUniqueLogFolder\Registry.log"
@@ -2496,13 +2542,24 @@ Function fncCollectingLogs {
         fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/Office/CLP" "$Global:strUniqueLogFolder/Excel" "$(printenv HOME)/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/Office/CLP/*" <# Excel #>
         fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/Office/CLP" "$Global:strUniqueLogFolder/PowerPoint" "$(printenv HOME)/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/Office/CLP/*" <# PowerPoint #>
         fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/Office/CLP" "$Global:strUniqueLogFolder/Outlook" "$(printenv HOME)/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/Office/CLP/*" <# Outlook #>
+        fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.OneNote/Data/Library/Application Support/Microsoft/Office/CLP" "$Global:strUniqueLogFolder/OneNote" "$(printenv HOME)/Library/Containers/com.microsoft.OneNote/Data/Library/Application Support/Microsoft/Office/CLP/*" <# OneNote #>
+
+        <# Copy MIPSDK log files #>
+        fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/MIPSDK/mip" "$Global:strUniqueLogFolder/Word" "$(printenv HOME)/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/MIPSDK/mip/*" <# Word #>
+        fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/MIPSDK/mip" "$Global:strUniqueLogFolder/Excel" "$(printenv HOME)/Library/Containers/com.microsoft.Excel/Data/Library/Application Support/Microsoft/MIPSDK/mip/*" <# Excel #>
+        fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/MIPSDK/mip" "$Global:strUniqueLogFolder/PowerPoint" "$(printenv HOME)/Library/Containers/com.microsoft.PowerPoint/Data/Library/Application Support/Microsoft/MIPSDK/mip/*" <# PowerPoint #>
+        fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/MIPSDK/mip" "$Global:strUniqueLogFolder/Outlook" "$(printenv HOME)/Library/Containers/com.microsoft.Outlook/Data/Library/Application Support/Microsoft/MIPSDK/mip/*" <# Outlook #>
+        fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.OneNote/Data/Library/Application Support/Microsoft/MIPSDK/mip" "$Global:strUniqueLogFolder/OneNote" "$(printenv HOME)/Library/Containers/com.microsoft.OneNote/Data/Library/Application Support/Microsoft/MIPSDK/mip/*" <# OneNote #>
 
         <# Copy log files #>
         fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.Word/Data/Library/Logs" "$Global:strUniqueLogFolder/Word/Logs" "$(printenv HOME)/Library/Containers/com.microsoft.Word/Data/Library/Logs/*" <# Word #>
         fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.Excel/Data/Library/Logs" "$Global:strUniqueLogFolder/Excel/Logs" "$(printenv HOME)/Library/Containers/com.microsoft.Excel/Data/Library/Logs/*" <# Excel #>
         fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.PowerPoint/Data/Library/Logs" "$Global:strUniqueLogFolder/PowerPoint/Logs" "$(printenv HOME)/Library/Containers/com.microsoft.PowerPoint/Data/Library/Logs/*" <# PowerPoint #>
         fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.Outlook/Data/Library/Logs" "$Global:strUniqueLogFolder/Outlook/Logs" "$(printenv HOME)/Library/Containers/com.microsoft.Outlook/Data/Library/Logs/*" <# Outlook #>
-        fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs" "$Global:strUniqueLogFolder/rms-sharing-mac/Logs" "$(printenv HOME)/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs/*" <# RMS Sharing App #>
+        fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.OneNote/Data/Library/Logs" "$Global:strUniqueLogFolder/OneNote/Logs" "$(printenv HOME)/Library/Containers/com.microsoft.OneNote/Data/Library/Logs/*" <# OneNote #>
+        
+        <# Copy RMS sharing app logs #>
+        fncCopyItem "$(printenv HOME)/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs" "$Global:strUniqueLogFolder/rms-sharing-mac/Logs" "$(printenv HOME)/Library/Containers/com.microsoft.protection.rms-sharing-mac/Data/Library/Logs/*"
 
         <# Copy Office MIP SDK logs #>
         fncCopyItem "$(printenv HOME)/Library/Group Containers/UBF8T346G9.Office/mip_policy/mip/logs" "$Global:strUniqueLogFolder/mip/Logs" "$(printenv HOME)/Library/Group Containers/UBF8T346G9.Office/mip_policy/mip/logs/*"
@@ -3538,7 +3595,7 @@ Function fncCollectLabelsAndPolicies {
                 $Private:CLPPolicy = $true
 
                 <# Logging #>
-                fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Export Office CLP policy folder" -strLogValue "\Collect\LabelsAndPolicies\CLP"
+                fncLogging -strLogFunction "fncCollectLabelsAndPolicies" -strLogDescription "Export Office CLP folder" -strLogValue "\Collect\LabelsAndPolicies\CLP"
 
             }
 
