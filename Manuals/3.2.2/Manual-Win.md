@@ -18,7 +18,7 @@
    * [Check installation](#check-installation)
 * [Uninstall](#uninstall)
 * [User experience](#experience)
-* [Features / Parameters](#features-parameters)
+* [Features | Parameters](#features-parameters)
    * [INFORMATION](#information)
    * [HELP](#help-win)
    * [RESET](#reset)
