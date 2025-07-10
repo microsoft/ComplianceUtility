@@ -508,7 +508,7 @@ This parameter compresses all collected log files and folders into a .zip archiv
 
 This option will asks you whether you want to exit the menu after a confirmation prompt.
 
-### 🔵- / -SkipUpdates <a name="skip-updates"></a>
+### 🔵- | -SkipUpdates <a name="skip-updates"></a>
 
 > [!IMPORTANT]
 > Use this parameter only if you are sure that all PowerShell modules are up to date.
