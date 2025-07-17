@@ -198,7 +198,7 @@ Function ComplianceUtility {
         3.2.2
         
         CREATE DATE
-        07/10/2025
+        07/17/2025
 
         AUTHOR
         Claus Schiroky
@@ -2261,7 +2261,7 @@ Function fncCollectingLogs {
         netsh.exe winhttp show proxy > "$Global:strUniqueLogFolder\WinHTTP.log"
         
         <# Logging #>
-        fncLOgging -strLogFunction "fncCollectingLogs" -strLogDescription "Export WinHTTP" -strLogValue "WinHTTP.log"
+        fncLogging -strLogFunction "fncCollectingLogs" -strLogDescription "Export WinHTTP" -strLogValue "WinHTTP.log"
 
         <# Progress bar update #>
         Write-Progress -Activity " Collecting logs: WinHTTP (WoW6432)..." -PercentComplete (100/26 * 11)
