@@ -51,7 +51,8 @@ However, if you run the 'Compliance Utility' with local administrative privilege
 
 > **Note**
 > 
-> If you want to use the 'Compliance Utility' on Apple macOS, you can find the corresponding online manual [here](Manual-Mac.md).
+> * If you want to use the 'Compliance Utility' on Apple macOS, you can find the corresponding online manual [here](Manual-Mac.md).
+> * Please note that the information described here applies only to Microsoft Word, Excel, PowerPoint, and OneNote.
 ### 🔵MIT License <a name="mit-license"></a>
 
 Copyright © Microsoft Corporation.
