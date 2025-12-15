@@ -1,5 +1,5 @@
 # Compliance Utility manual
-###### Version 3.2.2 (macOS) <br><br>
+###### Version 3.2.3 (macOS) <br><br>
 
 **Contents**
 
@@ -69,7 +69,6 @@ The 'Compliance Utility' supports the following Office and Microsoft 365 edition
 * Microsoft 365 for Mac ([most recently released version](https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac))
 * Microsoft Office 2024 for Mac
 * Microsoft Office 2021 for Mac
-* Microsoft Office 2019 for Mac
 
 > **Note**
 > 
@@ -150,7 +149,7 @@ If you find an entry like the following, the installation was successful:
 
 ModuleType Version    Name                     ExportedCommands
 ---------- -------    ----                     ----------------
-Script     3.2.2      ComplianceUtility        {ComplianceUtility, CompUtil, UnifiedLabelingSupportTool}
+Script     3.2.3      ComplianceUtility        {ComplianceUtility, CompUtil, UnifiedLabelingSupportTool}
 ```
 
 # 🟦Uninstall <a name="uninstall"></a>
@@ -161,10 +160,10 @@ If you want to completely uninstall the 'Compliance Utility', you must execute t
 Uninstall-Module -Name ComplianceUtility -AllVersions
 ```
 
-If you want to uninstall a specific version, for example version 3.2.1, you must execute the following command:
+If you want to uninstall a specific version, for example version 3.2.2, you must execute the following command:
 
 ```
-Uninstall-Module -Name ComplianceUtility -RequiredVersion 3.2.1
+Uninstall-Module -Name ComplianceUtility -RequiredVersion 3.2.2
 ```
 
 > **Note**
