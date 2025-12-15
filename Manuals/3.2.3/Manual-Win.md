@@ -78,6 +78,7 @@ The 'Compliance Utility' supports the following PowerShell editions:
 > **Note**
 >
 > [Differences between Windows PowerShell 5.1 and PowerShell 7.x](https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell?view=powershell-7.4)
+
 The 'Compliance Utility' supports the following Windows versions:
 
 * Windows 11
