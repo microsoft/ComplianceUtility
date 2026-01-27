@@ -2,7 +2,7 @@
 
 When creating the 'Compliance Utility', great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
 
-Should you ever encounter a problem with the 'Compliance Utility', please use the information on this page to.
+Should you ever encounter a problem with the 'Compliance Utility', please use the information on this page to report it.
 
 ## Microsoft Support Policy  
 
