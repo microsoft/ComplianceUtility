@@ -40,18 +40,18 @@
 
 ## 🟦Description <a name="description"></a>
 
-The 'Compliance Utility' is a powerful tool that helps troubleshoot and diagnose sensitivity labels, policies, settings and more. Whether you need to fix issues or reset configurations, this tool has you covered.
+The Compliance Utility is a powerful tool that helps troubleshoot and diagnose sensitivity labels, policies, settings and more. Whether you need to fix issues or reset configurations, this tool has you covered.
 
-Have you ever used the sensitivity button in a [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) app or applied a sensitivity label by right-clicking on a file? If so, you've either used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide) or the [Purview Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018). If something is not working as expected with your DLP policies, sensitivity labels or you don't see any labels at all the 'Compliance Utility' will help you.
+Have you ever used the sensitivity button in a [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) app or applied a sensitivity label by right-clicking on a file? If so, you've either used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide) or the [Purview Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018). If something is not working as expected with your DLP policies, sensitivity labels or you don't see any labels at all the Compliance Utility will help you.
 
-With the 'Compliance Utility', you can run the most common options without local administrative privileges:
+With the Compliance Utility, you can run the most common options without local administrative privileges:
 [RESET](#reset), [RECORD PROBLEM](#record-problem), and COLLECT [Endpoint URLs](#endpoint-urls).
 
-However, if you run the 'Compliance Utility' with local administrative privileges, you will get some more collected logs ([RECORD PROBLEM](#record-problem)) and a complete [RESET](#reset) of all settings, instead of just user-specific settings being reset. By the way: The latter option is sufficient in most cases to reset [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) apps, while a complete reset is usually useful for all other applications.
+However, if you run the Compliance Utility with local administrative privileges, you will get some more collected logs ([RECORD PROBLEM](#record-problem)) and a complete [RESET](#reset) of all settings, instead of just user-specific settings being reset. By the way: The latter option is sufficient in most cases to reset [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) apps, while a complete reset is usually useful for all other applications.
 
 > **Note**
 > 
-> * If you want to use the 'Compliance Utility' on Apple macOS, you can find the corresponding online manual [here](Manual-Mac.md).
+> * If you want to use the Compliance Utility on Apple macOS, you can find the corresponding online manual [here](Manual-Mac.md).
 ### 🔵MIT License <a name="mit-license"></a>
 
 Copyright © Microsoft Corporation.
