@@ -68,9 +68,9 @@ Your privacy is important to us. [This privacy statement](https://privacy.micros
 
 ## 🟦Requirements <a name="requirements"></a>
 
-Before you can use the 'Compliance Utility' make sure that your environment fulfils the following requierements. Please update your environment if necessary.
+Before you can use the Compliance Utility make sure that your environment fulfils the following requierements. Please update your environment if necessary.
 
-The 'Compliance Utility' supports the following PowerShell editions:
+The Compliance Utility supports the following PowerShell editions:
 
 * Windows [PowerShell 5.1](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-5.1) (recommended)
 * [PowerShell 7.4](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5) (or higher)
@@ -79,7 +79,7 @@ The 'Compliance Utility' supports the following PowerShell editions:
 >
 > [Differences between Windows PowerShell 5.1 and PowerShell 7.x](https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell?view=powershell-7.4)
 
-The 'Compliance Utility' supports the following Windows versions:
+The Compliance Utility supports the following Windows versions:
 
 * Windows 11
 * Windows Server 2025
@@ -87,7 +87,7 @@ The 'Compliance Utility' supports the following Windows versions:
 * Windows Server 2019
 * Windows Server 2016
 
-The 'Compliance Utility' supports the following Office and Microsoft 365 editions:
+The Compliance Utility supports the following Office and Microsoft 365 editions:
 
 * Microsoft 365 apps (versions listed in the table of [supported versions](https://learn.microsoft.com/en-us/officeupdates/update-history-microsoft365-apps-by-date#supported-versions) for Microsoft 365 apps)
 * Microsoft Office 2024 LTSC
@@ -97,7 +97,7 @@ For information on support for the version of Office you are using, please refer
 
 ### 🔵Internet access <a name="internet-access"></a>
 
-The 'Compliance Utility' uses additional sources from the Internet to make its functionality fully available.
+The Compliance Utility uses additional sources from the Internet to make its functionality fully available.
 
 > [!WARNING]
 > Unexpected errors may occur, and some features may be limited, if there is no connection to the Internet.
@@ -105,7 +105,7 @@ The 'Compliance Utility' uses additional sources from the Internet to make its f
 
 The [AIPService module](https://learn.microsoft.com/en-us/powershell/module/aipservice/?view=azureipps) is required to proceed the options [AIP service configuration](#aip-service-config), [Protection templates](#protection-templates), and [Endpoint URLs](#endpoint-urls) from the [COLLECT](#collect) menu.
 
-If you do not have this module installed, the 'Compliance Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/AIPService).
+If you do not have this module installed, the Compliance Utility will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/AIPService).
 
 > **Note**
 > 
@@ -114,17 +114,17 @@ If you do not have this module installed, the 'Compliance Utility' will try to i
 
 The [Graph PowerShell module](https://learn.microsoft.com/en-us/graph/overview) is required to proceed the option [User license details](#user-license-details) from the [COLLECT](#collect) menu.
 
-If you do not have this module installed, the 'Compliance Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/Microsoft.Graph).
+If you do not have this module installed, the Compliance Utility will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/Microsoft.Graph).
 
 ### 🔵Exchange Online PowerShell module <a name="exchange-online-module"></a>
 
 The [Exchange Online PowerShell module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#release-notes) is required to proceed the options [Labels and policies](#labels-and-policies) and [DLP rules and policies](#dlp-rules-and-policies) from the menu [COLLECT](#collect).
 
-If you do not have this module installed, the 'Compliance Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
+If you do not have this module installed, the Compliance Utility will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
 
 ### 🔵PowerShell (optional) <a name="ms-powershell"></a>
 
-Please follow the instructions for [installing PowerShell on Windows](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5) to install it using your preferred method if you want to use the 'Compliance Utility' on [PowerShell 7.4](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (or higher).
+Please follow the instructions for [installing PowerShell on Windows](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5) to install it using your preferred method if you want to use the Compliance Utility on [PowerShell 7.4](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (or higher).
 
 ### 🔵Purview Information Protection module (optional) <a name="pip-module"></a>
 
@@ -137,7 +137,7 @@ If you have not yet done so: [Install or upgrade the information protection clie
 > Purview Information Protection module does not support PowerShell 7.x. Therefore, unexpected errors may occur because the Purview Information Protection module is executed in [compatibility mode](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_windows_powershell_compatibility?view=powershell-7.4) in PowerShell 7.x.
 # 🟦Installation <a name="installation"></a>
 
-The 'Compliance Utility' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/ComplianceUtility/) and the fastest and easiest way to install it with user privileges is to run the following command in PowerShell:
+The Compliance Utility is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/ComplianceUtility/) and the fastest and easiest way to install it with user privileges is to run the following command in PowerShell:
 
 ```
 Install-Module -Name ComplianceUtility -AllowClobber -Scope CurrentUser
@@ -154,13 +154,13 @@ Install-Module -Name ComplianceUtility -AllowClobber
 > If you do not have a required component installed, you will be prompted to do so. You may need to confirm the installation of NuGet provider and  you may also need to confirm the installation of [PowerShellGet](https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-5.1).
 #### 🔵Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
 
-If PowerShell script execution is restricted in your environment, you must first remove this restriction in order to be able to run the 'Compliance Utility'. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
+If PowerShell script execution is restricted in your environment, you must first remove this restriction in order to be able to run the Compliance Utility. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
 
 ```
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 ```
 
-The 'Compliance Utility' is code-signed with a Microsoft certificate.
+The Compliance Utility is code-signed with a Microsoft certificate.
 
 #### 🔵Trust  PowerShell Gallery repository <a name="trust-powershellgallery-repository"></a>
 
@@ -172,9 +172,9 @@ Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 
 ### 🔵Manual Installation <a name="manual-installaltion"></a>
 
-If you’re using the 'Compliance Utility' in an environment that does not have Internet access, you need to proceed with the manual installation.
+If you’re using the Compliance Utility in an environment that does not have Internet access, you need to proceed with the manual installation.
 
-To install the 'Compliance Utility' manually, you must create the following folder and copy/paste all 'Compliance Utility' files (`ComplianceUtility.psm1` and `ComplianceUtility.psd1`) into this folder:
+To install the Compliance Utility manually, you must create the following folder and copy/paste all Compliance Utility files (`ComplianceUtility.psm1` and `ComplianceUtility.psd1`) into this folder:
 
 For Windows PowerShell 5.1:
 
@@ -191,7 +191,7 @@ To verify if the installation was successful, please review the [check installat
 > **Note**
 >
 > * Please also consider point [Allow signed PowerShell scripts](#allow-signed-powershell-scripts).
-> * Depending on which function is to be used by the 'Compliance Utility', any additional modules required must be downloaded and installed manually.
+> * Depending on which function is to be used by the Compliance Utility, any additional modules required must be downloaded and installed manually.
 ### 🔵Check installation <a name="check-installation"></a>
 
 To verify if the installation was successful, you can call the `Get-Module` cmdlet with the following parameter:
@@ -211,7 +211,7 @@ Script     3.2.3      ComplianceUtility        {ComplianceUtility, CompUtil, Uni
 
 # 🟦Uninstall <a name="uninstall"></a>
 
-If you want to completely uninstall the 'Compliance Utility', you must execute the following command:
+If you want to completely uninstall the Compliance Utility, you must execute the following command:
 
 ```
 Uninstall-Module -Name ComplianceUtility -AllVersions
@@ -223,20 +223,20 @@ If you want to uninstall a specific version, for example version 3.2.2, you must
 Uninstall-Module -Name ComplianceUtility -RequiredVersion 3.2.2
 ```
 
-If the 'Compliance Utility' was installed manually, you also need to remove it manually by deleting its installation folder.
+If the Compliance Utility was installed manually, you also need to remove it manually by deleting its installation folder.
 
 > **Note**
 >
 > Under certain circumstances, you may need to run the uninstallation with administrator privileges. Please request assistance from your administrator if necessary.
 # 🟦User experience <a name="experience"></a>
 
-To start the 'Compliance Utility', simply type the following command in a PowerShell window and press enter:
+To start the Compliance Utility, simply type the following command in a PowerShell window and press enter:
 
 ```
 ComplianceUtility
 ```
 
-When you start the 'Compliance Utility', you'll see the following menu:
+When you start the Compliance Utility, you'll see the following menu:
 
 ```
 ComplianceUtility:
@@ -255,7 +255,7 @@ Please select an option and press enter:
 > **Note**
 >
 > * For option [RESET](#reset) and [RECORD PROBLEM](#record-problem) you may run as user with local administrative privileges. Please contact your administrator if necessary.
-> * When the 'Compliance Utility' is started for the first time and an installation of the 'Unified Labeling Support Tool' is found, it is removed.
+> * When the Compliance Utility is started for the first time and an installation of the 'Unified Labeling Support Tool' is found, it is removed.
 If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it by selecting option `[C] COLLECT` again: <a name="collect"></a>
 
 ```
@@ -270,10 +270,10 @@ If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it
 
 > **Note**
 >
-> * With an exception of the [User license details](#user-license-details) entry, for the most sub-items of the COLLECT menu, you need to run the 'Compliance Utility' as a user with local administrative privileges.
-> * You need to run the 'Compliance Utility' as user with local administrative privileges to continue with option [Endpoint URLs](#endpoint-urls), if the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) app is not bootstraped. Please contact your administrator if necessary.
+> * With an exception of the [User license details](#user-license-details) entry, for the most sub-items of the COLLECT menu, you need to run the Compliance Utility as a user with local administrative privileges.
+> * You need to run the Compliance Utility as user with local administrative privileges to continue with option [Endpoint URLs](#endpoint-urls), if the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) app is not bootstraped. Please contact your administrator if necessary.
 > * You need to know your Microsoft 365 global administrator account information to proceed, as you will be asked for your credentials.
-You can also start the 'Compliance Utility' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
+You can also start the Compliance Utility within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
 
 ```
 ComplianceUtility -Information
@@ -293,7 +293,7 @@ Get-Help ComplianceUtility -Parameter CompressLogs
 
 # 🟦Features | Parameters <a name="features-parameters"></a>
 
-The 'Compliance Utility' provides the following parameters:
+The Compliance Utility provides the following parameters:
 
 **Syntax:**
 
@@ -339,7 +339,7 @@ This option removes all relevant policies, labels and settings.
 > **Note**
 >
 > * Reset with the default argument will not reset all settings, but only user-specific settings if you run PowerShell with user privileges. This is sufficient in most cases to reset [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) apps, while a complete reset is useful for all other applications.
-> * If you want a complete reset, you need to run the 'Compliance Utility' in an administrative PowerShell window as a user with local administrative privileges.
+> * If you want a complete reset, you need to run the Compliance Utility in an administrative PowerShell window as a user with local administrative privileges.
 Valid <String> arguments are: "Default", or "Silent":
 
 **Default:**
@@ -404,7 +404,7 @@ The following file system folders are cleaned up as well:
 
 The [Clear-AIPAuthentication](https://docs.microsoft.com/en-us/powershell/module/azureinformationprotection/Clear-AIPAuthentication?view=azureipps) cmdlet is used to reset user settings, if a [Purview Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018) (or an 'Azure Information Protection unified labeling client') installation is found.
 
-When you run the 'Compliance Utility' in an administrative PowerShell window as a user with local administrative privileges, the following registry keys are cleaned up in addition:
+When you run the Compliance Utility in an administrative PowerShell window as a user with local administrative privileges, the following registry keys are cleaned up in addition:
 
 ```
 [HKLM:\SOFTWARE\Wow6432Node\Microsoft\MSIPC]
@@ -434,13 +434,13 @@ You can also review the [Script.log](#script-log-file) file for errors of silent
 
 > [!IMPORTANT]
 > Before you proceed with this option, please close all open applications.
-As a first step, this parameter activates the required logging and then prompts you to reproduce the problem. While you’re doing so, the 'Compliance Utility' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`%temp%\ComplianceUtility`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
+As a first step, this parameter activates the required logging and then prompts you to reproduce the problem. While you’re doing so, the Compliance Utility collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`%temp%\ComplianceUtility`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
 
-In the event that you accidentally close the PowerShell window while logging is enabled, the 'Compliance Utility' disables logging the next time you start it.
+In the event that you accidentally close the PowerShell window while logging is enabled, the Compliance Utility disables logging the next time you start it.
 
 > **Note**
 >
-> Neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the 'Compliance Utility' is not run in an administrative PowerShell window as a user with local administrative privileges.
+> Neither CAPI2 or AIP event logs, network trace nor filter drivers are recorded if the Compliance Utility is not run in an administrative PowerShell window as a user with local administrative privileges.
 ### 🔵[A] AIP service configuration | -CollectAIPServiceConfiguration <a name="aip-service-config"></a>
 
 This parameter collects your AIP service configuration information (e.g. [SuperUsers](https://learn.microsoft.com/en-us/azure/information-protection/configure-super-users) or [OnboardingControlPolicy](https://learn.microsoft.com/en-us/powershell/module/aipservice/set-aipserviceonboardingcontrolpolicy?view=azureipps) etc.) by using the [AIPService module](#aipservice-module).
@@ -514,15 +514,15 @@ This parameter skips the update check mechanism for all entries of the [COLLECT]
 
 ### 🔵- | -Menu <a name="menu"></a>
 
-This will start the 'Compliance Utility' with the default menu.
+This will start the Compliance Utility with the default menu.
 
 ### 🔵\<CommonParameters>
 
-The 'Compliance Utility' supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_commonparameters).
+The Compliance Utility supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_commonparameters).
 
 # 🟦Script log file <a name="script-log-file"></a>
 
-The 'Compliance Utility' creates the following log file. The log file gives an overview of the executed commands and provides a control mechanism to review the results.
+The Compliance Utility creates the following log file. The log file gives an overview of the executed commands and provides a control mechanism to review the results.
 
 **Script.log**
 
@@ -530,14 +530,14 @@ This log file collects the actions that has been taken and lists the results. It
 
 # 🟦Log files and folders <a name="log-files"></a>
 
-The 'Compliance Utility' collects the following log files and folders.
+The Compliance Utility collects the following log files and folders.
 
 > **Note**
 >
 > Not all log files are collected or recorded at all times. It depends on your environment which logs, or traces can be recorded.
 ### 🔵RECORD PROBLEM <a name="record-problem-logs"></a>
 
-Log files and folders collected by the [RECORD PROBLEM](#record-problem) option when you run the 'Compliance Utility' with user privileges:
+Log files and folders collected by the [RECORD PROBLEM](#record-problem) option when you run the Compliance Utility with user privileges:
 
 <ul>
 <li>
@@ -864,7 +864,7 @@ For more information, please see the following documentation: [Get-ComputerInfo]
 
 </ul>
 
-Log files and folders additionally collected by the [RECORD PROBLEM](#record-problem) option when you run the 'Compliance Utility' with administrative privileges:
+Log files and folders additionally collected by the [RECORD PROBLEM](#record-problem) option when you run the Compliance Utility with administrative privileges:
 
 <ul>
 <li>
@@ -990,20 +990,20 @@ For more information, please see the following documentation:
 
 # 🟦Support <a name="support"></a>
 
-When creating the 'Compliance Utility', great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
+When creating the Compliance Utility, great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
 
-Should you ever encounter a problem with the 'Compliance Utility', please visit the [support page](https://github.com/microsoft/ComplianceUtility/blob/main/SUPPORT.md) on the project site.
+Should you ever encounter a problem with the Compliance Utility, please visit the [support page](https://github.com/microsoft/ComplianceUtility/blob/main/SUPPORT.md) on the project site.
 
 ### 🔵Microsoft Support Policy <a name="support-policy"></a>
 
-Under this policy, the 'Compliance Utility' remains in support if the following criteria are met:
+Under this policy, the Compliance Utility remains in support if the following criteria are met:
 
-* You're using the [lastet version](https://aka.ms/ComplianceUtility/Latest) of the 'Compliance Utility'.
+* You're using the [lastet version](https://aka.ms/ComplianceUtility/Latest) of the Compliance Utility.
 * You must be licensed with a product or service that uses a [Microsoft Information Protection subscription](https://learn.microsoft.com/en-us/office365/servicedescriptions/azure-information-protection#available-plans).
 
 ### 🔵How to file issues and get help <a name="get-help"></a>
 
-The 'Compliance Utility' uses GitHub [Issues](https://github.com/microsoft/ComplianceUtility/issues) to track problems and feature requests.
+The Compliance Utility uses GitHub [Issues](https://github.com/microsoft/ComplianceUtility/issues) to track problems and feature requests.
 
 Please check for [known issues](https://github.com/microsoft/ComplianceUtility/blob/main/SUPPORT.md#known-issues) before submitting new issues to avoid duplicates.
 
