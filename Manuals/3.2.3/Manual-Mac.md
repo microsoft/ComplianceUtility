@@ -36,7 +36,7 @@
 
 The Compliance Utility is a powerful tool that helps troubleshoot and diagnose sensitivity labels, policies, settings and more. Whether you need to fix issues or reset configurations, this tool has you covered.
 
-Have you ever used the sensitivity button in a [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365/products-apps-services)? If so, you've used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). If something is not working as expected with your DLP policies, sensitivity labels or you don't see any labels at all the Compliance Utility will help you.
+Have you ever used the sensitivity button in a [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) app? If so, you've used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). If something is not working as expected with your DLP policies, sensitivity labels or you don't see any labels at all the Compliance Utility will help you.
 
 > **Note**
 > 
@@ -60,11 +60,11 @@ Your privacy is important to us. [This privacy statement](https://privacy.micros
 
 Before you can use the Compliance Utility make sure that your environment fulfils the following requierements. Please update your environment if necessary.
 
-The 'Compliance Utility' supports the following operating systems:
+The Compliance Utility supports the following operating systems:
 
 * Apple macOS ([three most recent major versions](https://support.microsoft.com/en-us/office/upgrade-macos-to-continue-receiving-microsoft-365-and-office-for-mac-updates-16b8414f-08ec-4b24-8c91-10a918f649f8))
 
-The 'Compliance Utility' supports the following Office and Microsoft 365 editions:
+The Compliance Utility supports the following Office and Microsoft 365 editions:
 
 * Microsoft 365 for Mac ([most recently released version](https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac#release-history-for-office-for-mac))
 * Microsoft Office 2024 for Mac
@@ -76,7 +76,7 @@ The 'Compliance Utility' supports the following Office and Microsoft 365 edition
 
 ### 🔵Internet access <a name="internet-access"></a>
 
-The 'Compliance Utility' uses additional sources from the Internet to make its functionality fully available.
+The Compliance Utility uses additional sources from the Internet to make its functionality fully available.
 
 > [!WARNING]
 > Unexpected errors may occur, and some features may be limited, if there is no connection to the Internet.
@@ -93,17 +93,17 @@ Please follow the instructions for [installing PowerShell on macOS](https://lear
 
 The [Graph PowerShell module](https://www.powershellgallery.com/packages/Microsoft.Graph) is required to proceed the option [User license details](#user-license-details) from the [COLLECT](#collect) menu.
 
-If you do not have this module installed, the 'Compliance Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/Microsoft.Graph).
+If you do not have this module installed, the Compliance Utility will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/Microsoft.Graph).
 
 ### 🔵Exchange Online PowerShell module <a name="exchange-online-module"></a>
 
 The [Exchange Online PowerShell module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps) is required to proceed the options [Labels and policies](#labels-and-policies) and [DLP rules and policies](#dlp-rules-and-policies) from the menu [COLLECT](#collect).
 
-If you do not have this module installed, the 'Compliance Utility' will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
+If you do not have this module installed, the Compliance Utility will try to install the current version from [PowerShell Gallery](https://www.powershellgallery.com/packages/ExchangeOnlineManagement).
 
 # 🟦Installation <a name="installation"></a>
 
-The 'Compliance Utility' is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/ComplianceUtility/). To start the installation, you must first execute the `pwsh` command in a Terminal window to start a PowerShell session. Then type the following command and press enter to start the installation of the 'Compliance Utility':
+The Compliance Utility is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/ComplianceUtility/). To start the installation, you must first execute the `pwsh` command in a Terminal window to start a PowerShell session. Then type the following command and press enter to start the installation of the 'Compliance Utility':
 
 ```
 Install-Module -Name ComplianceUtility -AllowClobber -Scope CurrentUser
@@ -120,7 +120,7 @@ Install-Module -Name ComplianceUtility -AllowClobber -Scope AllUsers
 > If you do not have a required component installed on your computer, you will be prompted to do so.
 
 #### 🔵Allow signed PowerShell scripts <a name="allow-signed-powershell-scripts"></a>
-If PowerShell script execution is restricted in your environment, you must first remove this restriction in order to be able to run the 'Compliance Utility'. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
+If PowerShell script execution is restricted in your environment, you must first remove this restriction in order to be able to run the Compliance Utility. To do this, run the `Set-ExecutionPolicy` command with the following parameters:
 
 ```
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
@@ -154,7 +154,7 @@ Script     3.2.3      ComplianceUtility        {ComplianceUtility, CompUtil, Uni
 
 # 🟦Uninstall <a name="uninstall"></a>
 
-If you want to completely uninstall the 'Compliance Utility', you must execute the following command:
+If you want to completely uninstall the Compliance Utility, you must execute the following command:
 
 ```
 Uninstall-Module -Name ComplianceUtility -AllVersions
@@ -178,7 +178,7 @@ First you need to execute the command `pwsh` in a Terminal window to start a Pow
 ComplianceUtility
 ```
 
-When you start the 'Compliance Utility', you'll see the following menu:
+When you start the Compliance Utility, you'll see the following menu:
 
 ```
 ComplianceUtility:
@@ -200,7 +200,7 @@ Please select an option and press enter:
 
 > **Note**
 >
-> When the 'Compliance Utility' is started for the first time and an installation of the 'Unified Labeling Support Tool' is found, it is removed.
+> When the Compliance Utility is started for the first time and an installation of the 'Unified Labeling Support Tool' is found, it is removed.
 
 If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it by selecting option `[C] COLLECT` again: <a name="collect"></a>
 
@@ -213,10 +213,10 @@ If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it
 
 > **Note**
 >
-> * With an exception of the [User license details](#user-license-details) entry, you need to run the 'Compliance Utility' in an administrative PowerShell window as a user with local administrative privileges to proceed with any option from this submenu. Please contact your administrator if necessary.
+> * With an exception of the [User license details](#user-license-details) entry, you need to run the Compliance Utility in an administrative PowerShell window as a user with local administrative privileges to proceed with any option from this submenu. Please contact your administrator if necessary.
 > * You need to know your Microsoft 365 global administrator account information to proceed, as you will be asked for your credentials.
 
-You can also start the 'Compliance Utility' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
+You can also start the Compliance Utility within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
 
 ```
 ComplianceUtility -Information
@@ -236,7 +236,7 @@ Get-Help ComplianceUtility -Parameter CompressLogs
 
 # 🟦Features | Parameters <a name="features-parameters"></a>
 
-The 'Compliance Utility' provides the following parameters:
+The Compliance Utility provides the following parameters:
 
 **Syntax:**
 
@@ -341,9 +341,9 @@ You can also review the [Script.log](#script-log-file) file for errors of silent
 > [!IMPORTANT]
 > Before you proceed with this option, please close all open applications.
 
-As a first step, this parameter activates the required logging and then prompts you to reproduce the problem. While you’re doing so, the 'Compliance Utility' collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`~/Documents/ComplianceUtility`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
+As a first step, this parameter activates the required logging and then prompts you to reproduce the problem. While you’re doing so, the Compliance Utility collects and records data. Once you have reproduced the problem, all collected files will be stored into the default logs folder (`~/Documents/ComplianceUtility`). Every time you call this option, a new unique subfolder will be created in the logs-folder that reflects the date and time when it was created.
 
-In the event that you accidentally close the PowerShell window while logging is enabled, the 'Compliance Utility' disables logging the next time you start it.
+In the event that you accidentally close the PowerShell window while logging is enabled, the Compliance Utility disables logging the next time you start it.
 
 > **Note**
 >
@@ -393,15 +393,15 @@ This parameter skips the update check mechanism for entries of the [COLLECT](#co
 
 ### 🔵- | -Menu <a name="menu"></a>
 
-This will start the 'Compliance Utility' with the default menu.
+This will start the Compliance Utility with the default menu.
 
 ### 🔵\<CommonParameters>
 
-The 'Compliance Utility' supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
+The Compliance Utility supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [about_CommonParameters](https:/go.microsoft.com/fwlink/?LinkID=113216).
 
 # 🟦Script log file <a name="script-log-file"></a>
 
-The 'Compliance Utility' creates the following log file. The log file gives an overview of the executed commands and provides a control mechanism to review the results.
+The Compliance Utility creates the following log file. The log file gives an overview of the executed commands and provides a control mechanism to review the results.
 
 **Script.log**
 
@@ -409,7 +409,7 @@ This log file collects the actions that has been taken and lists the results. It
 
 # 🟦Log files and folders <a name="log-files"></a>
 
-The 'Compliance Utility' collects the following log files and folders.
+The Compliance Utility collects the following log files and folders.
 
 > **Note**
 >
@@ -506,20 +506,20 @@ For more information, please see the following documentation:
 
 # 🟦Support <a name="support"></a>
 
-When creating the 'Compliance Utility', great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
+When creating the Compliance Utility, great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
 
-Should you ever encounter a problem with the 'Compliance Utility', please visit the [support page](https://github.com/microsoft/ComplianceUtility/blob/main/SUPPORT.md) on the project site.
+Should you ever encounter a problem with the Compliance Utility, please visit the [support page](https://github.com/microsoft/ComplianceUtility/blob/main/SUPPORT.md) on the project site.
 
 ### 🔵Microsoft Support Policy <a name="support-policy"></a>
 
-Under this policy, the 'Compliance Utility' remains in support if the following criteria are met:
+Under this policy, the Compliance Utility remains in support if the following criteria are met:
 
-* You're using the [lastet version](https://aka.ms/ComplianceUtility/Latest) of the 'Compliance Utility'.
+* You're using the [lastet version](https://aka.ms/ComplianceUtility/Latest) of the Compliance Utility.
 * You must be licensed with a product or service that uses a [Microsoft Information Protection subscription](https://learn.microsoft.com/en-us/office365/servicedescriptions/azure-information-protection#available-plans).
 
 ### 🔵How to file issues and get help <a name="get-help"></a>
 
-The 'Compliance Utility' uses GitHub [Issues](https://github.com/microsoft/ComplianceUtility/issues) to track problems and feature requests.
+The Compliance Utility uses GitHub [Issues](https://github.com/microsoft/ComplianceUtility/issues) to track problems and feature requests.
 
 Please check for [known issues](https://github.com/microsoft/ComplianceUtility/blob/main/SUPPORT.md#known-issues) before submitting new issues to avoid duplicates.
 
