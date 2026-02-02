@@ -42,12 +42,12 @@
 
 The 'Compliance Utility' is a powerful tool that helps troubleshoot and diagnose sensitivity labels, policies, settings and more. Whether you need to fix issues or reset configurations, this tool has you covered.
 
-Have you ever used the sensitivity button in a [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) or applied a sensitivity label by right-clicking on a file? If so, you've either used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide) or the [Purview Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018). If something is not working as expected with your DLP policies, sensitivity labels or you don't see any labels at all the 'Compliance Utility' will help you.
+Have you ever used the sensitivity button in a [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) app or applied a sensitivity label by right-clicking on a file? If so, you've either used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide) or the [Purview Information Protection client](https://www.microsoft.com/en-us/download/details.aspx?id=53018). If something is not working as expected with your DLP policies, sensitivity labels or you don't see any labels at all the 'Compliance Utility' will help you.
 
 With the 'Compliance Utility', you can run the most common options without local administrative privileges:
 [RESET](#reset), [RECORD PROBLEM](#record-problem), and COLLECT [Endpoint URLs](#endpoint-urls).
 
-However, if you run the 'Compliance Utility' with local administrative privileges, you will get some more collected logs ([RECORD PROBLEM](#record-problem)) and a complete [RESET](#reset) of all settings, instead of just user-specific settings being reset. By the way: The latter option is sufficient in most cases to reset [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services), while a complete reset is usually useful for all other applications.
+However, if you run the 'Compliance Utility' with local administrative privileges, you will get some more collected logs ([RECORD PROBLEM](#record-problem)) and a complete [RESET](#reset) of all settings, instead of just user-specific settings being reset. By the way: The latter option is sufficient in most cases to reset [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) apps, while a complete reset is usually useful for all other applications.
 
 > **Note**
 > 
@@ -89,7 +89,7 @@ The 'Compliance Utility' supports the following Windows versions:
 
 The 'Compliance Utility' supports the following Office and Microsoft 365 editions:
 
-* Microsoft 365 Apps (versions listed in the table of [supported versions](https://learn.microsoft.com/en-us/officeupdates/update-history-microsoft365-apps-by-date#supported-versions) for Microsoft 365 Apps)
+* Microsoft 365 apps (versions listed in the table of [supported versions](https://learn.microsoft.com/en-us/officeupdates/update-history-microsoft365-apps-by-date#supported-versions) for Microsoft 365 apps)
 * Microsoft Office 2024 LTSC
 * Microsoft Office 2021 LTSC
 
@@ -271,7 +271,7 @@ If you select `[C] COLLECT`, a submenu will be expanded, and you can collapse it
 > **Note**
 >
 > * With an exception of the [User license details](#user-license-details) entry, for the most sub-items of the COLLECT menu, you need to run the 'Compliance Utility' as a user with local administrative privileges.
-> * You need to run the 'Compliance Utility' as user with local administrative privileges to continue with option [Endpoint URLs](#endpoint-urls), if the corresponding [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) is not bootstraped. Please contact your administrator if necessary.
+> * You need to run the 'Compliance Utility' as user with local administrative privileges to continue with option [Endpoint URLs](#endpoint-urls), if the corresponding [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) app is not bootstraped. Please contact your administrator if necessary.
 > * You need to know your Microsoft 365 global administrator account information to proceed, as you will be asked for your credentials.
 You can also start the 'Compliance Utility' within the command line. Use the following command line parameter to see a short summary of all available command line parameters:
 
@@ -338,7 +338,7 @@ This option removes all relevant policies, labels and settings.
 
 > **Note**
 >
-> * Reset with the default argument will not reset all settings, but only user-specific settings if you run PowerShell with user privileges. This is sufficient in most cases to reset [Microsoft 365 Apps](https://www.microsoft.com/en-us/microsoft-365/products-apps-services), while a complete reset is useful for all other applications.
+> * Reset with the default argument will not reset all settings, but only user-specific settings if you run PowerShell with user privileges. This is sufficient in most cases to reset [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) apps, while a complete reset is useful for all other applications.
 > * If you want a complete reset, you need to run the 'Compliance Utility' in an administrative PowerShell window as a user with local administrative privileges.
 Valid <String> arguments are: "Default", or "Silent":
 
@@ -660,7 +660,7 @@ An Office log file collected from the users temp folder. For example:
 
 The log file name reflects the compuer name, and date and time when the log was created.<br>
 
-For more information, please see the following documentation: [How to enable Microsoft 365 Apps for enterprise ULS logging](https://learn.microsoft.com/en-us/office/troubleshoot/diagnostic-logs/how-to-enable-office-365-proplus-uls-logging) (part "For sign-in or activation issues, add the following registry key").<br><br>
+For more information, please see the following documentation: [How to enable Microsoft 365 apps for enterprise ULS logging](https://learn.microsoft.com/en-us/office/troubleshoot/diagnostic-logs/how-to-enable-office-365-proplus-uls-logging) (part "For sign-in or activation issues, add the following registry key").<br><br>
 In addition, Office diagnostics data will be collected from the following folder:
 
 ```
@@ -780,7 +780,7 @@ For more information, please see the following documentation: [Get-ScheduledTask
 
 </li>
 
-This file contains several regsitry keys related to the Office/Microsoft 365 Apps and Information Protection configuration. The content were taken from these registry keys:
+This file contains several regsitry keys related to the Office/Microsoft 365 apps and Information Protection configuration. The content were taken from these registry keys:
 
 ```
 [HKLM:\Software\Classes\MSIP.ExcelAddin]
