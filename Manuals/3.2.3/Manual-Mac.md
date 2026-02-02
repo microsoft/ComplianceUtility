@@ -34,13 +34,13 @@
  
 ## 🟦Description <a name="description"></a>
 
-The 'Compliance Utility' is a powerful tool that helps troubleshoot and diagnose sensitivity labels, policies, settings and more. Whether you need to fix issues or reset configurations, this tool has you covered.
+The Compliance Utility is a powerful tool that helps troubleshoot and diagnose sensitivity labels, policies, settings and more. Whether you need to fix issues or reset configurations, this tool has you covered.
 
-Have you ever used the sensitivity button in a [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365/products-apps-services)? If so, you've used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). If something is not working as expected with your DLP policies, sensitivity labels or you don't see any labels at all the 'Compliance Utility' will help you.
+Have you ever used the sensitivity button in a [Microsoft 365 App](https://www.microsoft.com/en-us/microsoft-365/products-apps-services)? If so, you've used the [Office's built-in labeling experience](https://docs.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels-office-apps?view=o365-worldwide). If something is not working as expected with your DLP policies, sensitivity labels or you don't see any labels at all the Compliance Utility will help you.
 
 > **Note**
 > 
-> If you want to use the 'Compliance Utility' on Microsoft Windows, you can find the corresponding online manual [here](Manual-Win.md).
+> If you want to use the Compliance Utility on Microsoft Windows, you can find the corresponding online manual [here](Manual-Win.md).
 
 ### 🔵MIT License <a name="mit-license"></a>
 
@@ -58,7 +58,7 @@ Your privacy is important to us. [This privacy statement](https://privacy.micros
 
 ## 🟦Requirements <a name="requirements"></a>
 
-Before you can use the 'Compliance Utility' make sure that your environment fulfils the following requierements. Please update your environment if necessary.
+Before you can use the Compliance Utility make sure that your environment fulfils the following requierements. Please update your environment if necessary.
 
 The 'Compliance Utility' supports the following operating systems:
 
