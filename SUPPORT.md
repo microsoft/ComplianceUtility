@@ -1,19 +1,19 @@
 # Support
 
-When creating the 'Compliance Utility', great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
+When creating the Compliance Utility, great care was taken to ensure quality and functionality. Extensive tests were carried out before publication to intercept and handle any errors. However, there is no guarantee that an error will not occur in a wide variety of configurations and environments.
 
-Should you ever encounter a problem with the 'Compliance Utility', please use the information on this page to report it.
+Should you ever encounter a problem with the Compliance Utility, please use the information on this page to report it.
 
 ## Microsoft Support Policy  
 
-Under this policy, the 'Compliance Utility' remains in support if the following criteria are met:
+Under this policy, the Compliance Utility remains in support if the following criteria are met:
 
-* You're using the [lastet version](https://aka.ms/ComplianceUtility/Latest) of the 'Compliance Utility'.
+* You're using the [lastet version](https://aka.ms/ComplianceUtility/Latest) of the Compliance Utility.
 * You must be licensed with a product or service that uses a [Microsoft Information Protection subscription](https://learn.microsoft.com/en-us/office365/servicedescriptions/azure-information-protection#available-plans).
 
 ## How to file issues and get help  
 
-The 'Compliance Utility' uses GitHub [Issues](https://github.com/microsoft/ComplianceUtility/issues) to track problems and feature requests.
+The Compliance Utility uses GitHub [Issues](https://github.com/microsoft/ComplianceUtility/issues) to track problems and feature requests.
 
 Please check for [known issues](https://github.com/microsoft/ComplianceUtility/blob/main/SUPPORT.md#known-issues) before submitting new issues to avoid duplicates.
 
@@ -21,9 +21,9 @@ For new issues, file your bug or feature request as a new Issue. Please describe
 
 ## Known issues
 
-* **Error "End of Central Directory record could not be found" when installing the 'Compliance Utility'**
+* **Error "End of Central Directory record could not be found" when installing the Compliance Utility**
 
-    When you try to install the 'Compliance Utility', you may see the following error:
+    When you try to install the Compliance Utility, you may see the following error:
     
     ```
     PackageManagement\Install-Package : Package 'ComplianceUtility' failed to be installed because: End of Central Directory
@@ -87,7 +87,7 @@ For new issues, file your bug or feature request as a new Issue. Please describe
 
 * **Set-ExecutionPolicy has no effect**
 
-    This applies only to a manual installation: If you downloaded the 'Compliance Utility' from its [GitHub website](https://aka.ms/ComplianceUtility/Latest), it will be extended by an [Alternate Data Streams in NTFS](https://blogs.technet.microsoft.com/askcore/2013/03/24/alternate-data-streams-in-ntfs) (ADS). If the corresponding website in the ADS is not trusted in your environment, the PowerShell command "Set-ExecutionPolicy" has no effect.
+    This applies only to a manual installation: If you downloaded the Compliance Utility from its [GitHub website](https://aka.ms/ComplianceUtility/Latest), it will be extended by an [Alternate Data Streams in NTFS](https://blogs.technet.microsoft.com/askcore/2013/03/24/alternate-data-streams-in-ntfs) (ADS). If the corresponding website in the ADS is not trusted in your environment, the PowerShell command "Set-ExecutionPolicy" has no effect.
 
     **Resolution:** Either you right-click the downloaded script files and "Unblock" it, or you add the corresponding website to your trusted site settings.
 
