@@ -4,14 +4,14 @@ When creating the Compliance Utility, great care was taken to ensure quality and
 
 Should you ever encounter a problem with the Compliance Utility, please use the information on this page to report it.
 
-## Microsoft Support Policy  
+## 🟦Microsoft Support Policy  
 
 Under this policy, the Compliance Utility remains in support if the following criteria are met:
 
-* You're using the [lastet version](https://aka.ms/ComplianceUtility/Latest) of the Compliance Utility.
+* You're using the [![Latest release](https://img.shields.io/github/v/release/microsoft/ComplianceUtility?label=Latest%20release&color=2ea44f&logo=github&logoColor=white)](https://aka.ms/ComplianceUtility/latest) of the Compliance Utility.
 * You must be licensed with a product or service that uses a [Microsoft Information Protection subscription](https://learn.microsoft.com/en-us/office365/servicedescriptions/azure-information-protection#available-plans).
 
-## How to file issues and get help  
+## 🟦How to file issues and get help  
 
 The Compliance Utility uses GitHub [Issues](https://github.com/microsoft/ComplianceUtility/issues) to track problems and feature requests.
 
@@ -19,7 +19,7 @@ Please check for [known issues](https://github.com/microsoft/ComplianceUtility/b
 
 For new issues, file your bug or feature request as a new Issue. Please describe the Issue as detailed as possible. A screenshot of the error and/or a step-by-step description of how to reproduce a problem would be very helpful for this.
 
-## Known issues
+## 🟦Known issues
 
 * **Error "End of Central Directory record could not be found" when installing the Compliance Utility**
 
@@ -124,12 +124,4 @@ For new issues, file your bug or feature request as a new Issue. Please describe
     ```
     PS C:\> Register-PSRepository -Default
     ```
-
-* **"powershell-7.3.4-osx-x64.pkg" can't be opened because Apple cannot check it for malicious software** 
-
-    This applies only on Apple macOS: If you double-click the file the above message is displayed (the version may differ). It happens due to your Security & Privacy preferences.
-
-    **Resolution:** To work around this issue, either you click "Open Anyway" in the general settings of your Security & Privacy preferences, or you request assistance from your administrator.
-
-
-
+    
