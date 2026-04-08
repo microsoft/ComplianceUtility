@@ -337,7 +337,7 @@ This option removes all relevant policies, labels and settings.
 >
 > * Reset with the default argument will not reset all settings, but only user-specific settings if you run PowerShell with user privileges. This is sufficient in most cases to reset [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/products-apps-services) apps, while a complete reset is useful for all other applications.
 > * If you want a complete reset, you need to run the Compliance Utility in an administrative PowerShell window as a user with local administrative privileges.
-> * Further information on resetting can also be found in the [![Wiki](https://img.shields.io/badge/Wiki-D29D00?logo=github&logoColor=white)](https://github.com/schiroky/ComplianceUtility/wiki).
+> * Further information on resetting can also be found in the [![Wiki](https://img.shields.io/badge/Wiki-D29D00?logo=github&logoColor=white)](https://github.com/microsoft/ComplianceUtility/wiki).
 
 Valid <String> arguments are: "Default", or "Silent":
 
