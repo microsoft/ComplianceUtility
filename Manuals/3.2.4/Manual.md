@@ -30,6 +30,7 @@
      * [Labels and polcies](#labels-and-policies)
      * [DLP rules and policies](#dlp-rules-and-policies)
      * [User license details](#user-license-details)
+     * [Exchange IRM configuration](#exchange-irm-config)
    * [COMPRESS LOGS](#compress-logs)
    * [EXIT](#exit)
 * [Script log file](#script-log-file)
@@ -495,6 +496,13 @@ The results are written to log file [UserLicenseDetails.log](#user-license-log) 
 > **Note**
 >
 > You must log in with the corresponding Microsoft 365 user account for which you want to check the license details.
+
+### 🔵[G] Exchange IRM configuration | -CollectExchangeIRMConfiguration <a name="exchange-irm-config"></a>
+
+
+
+
+
 ### 🔵[Z] COMPRESS LOGS | -CompressLogs <a name="compress-logs"></a>
 
 This command line parameter should always be used at the very end of a scenario.
