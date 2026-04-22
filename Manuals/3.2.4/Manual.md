@@ -368,7 +368,7 @@ With the above command the following registry keys are cleaned up:
 [HKCR:\AllFilesystemObjects\shell\Microsoft.Azip.RightClick]
 ```
 
-The [DRMEncryptProperty](https://docs.microsoft.com/en-us/deployoffice/security/protect-sensitive-messages-and-documents-by-using-irm-in-office#office-2016-irm-registry-key-options) and [OpenXMLEncryptProperty](https://admx.help/?Category=Office2013&Policy=office15.Office.Microsoft.Policies.Windows::L_Protectdocumentmetadataforpasswordprotected) registry settings are purged of the following keys:
+The [DRMEncryptProperty](https://gpsearch.azurewebsites.net/#11665) and [OpenXMLEncryptProperty](https://gpsearch.azurewebsites.net/#11666) registry settings are purged of the following keys:
 
 ```
 [HKCU:\SOFTWARE\Policies\Microsoft\Cloud\Office\16.0\Common\Security]
